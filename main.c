@@ -17,15 +17,17 @@
 void main(void) {
     // setup pin for output (connected to LED)
     LATDbits.LATD7=0;   //set initial output state of D7 to off
-    LATHbits.LATH3=1;   //set initial output state of H3 to on
+    LATHbits.LATH3=0;   //set initial output state of H3 to on
     TRISDbits.TRISD7=0; //set TRIS value for pin D7 (output)
     TRISHbits.TRISH3=0; //set TRIS value for pin H3 (output)
 
     // setup pin for input (connected to button)
     TRISFbits.TRISF2=1; //set TRIS value for pin F2 (input)
     ANSELFbits.ANSELF2=0; //turn off analogue input on pin F2  
+    TRISFbits.TRISF3=1; //set TRIS value for pin F3 (input)
+    ANSELFbits.ANSELF3=0; //turn off analogue input on pin F3
     
-    //initialise functions
+    //initialize functions
     color_click_init(); //initiate color board
     
     while (1) {
@@ -55,7 +57,7 @@ void main(void) {
     //if color = white
     
     while (1) {
-        turn_on_color();
+        //turn_on_color();
         Sleep();
     }
 }
