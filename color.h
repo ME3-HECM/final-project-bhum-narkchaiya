@@ -25,4 +25,12 @@ void color_writetoaddr(char address, char value);
 unsigned int color_read_Red(void);
 unsigned int color_read_Green(void);
 unsigned int color_read_Blue(void);
+
+/********************************************//**
+ *  Functions to read the red, green, and blue channels
+ *	Returns a 16 bit ADC value representing colour intensity
+ ***********************************************/
+unsigned int color_to_struct(struct RGB_values *RGB);
+unsigned int color_process_easy(struct RGB_values *RGB);
+unsigned int color_process_hard(struct RGB_values *RGB);
 #endif

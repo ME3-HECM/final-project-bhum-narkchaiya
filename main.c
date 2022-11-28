@@ -14,6 +14,11 @@
 
 #define _XTAL_FREQ 64000000
 
+//declare structures
+struct RGB_values{
+    unsigned int R,G,B;
+} RGB;
+
 void main(void) {
     // setup pin for output (connected to LED)
     LATDbits.LATD7=0;   //set initial output state of D7 to off
@@ -30,6 +35,9 @@ void main(void) {
     //initialize functions
     color_click_init(); //initiate color board
     
+    //declare variables
+    extern unsigned char flag_color; //interrupt when card is in front of buggy
+    
     while (1) {
         
         //------------mode selector---------------
@@ -45,12 +53,20 @@ void main(void) {
         while (1) {
             if (LATDbits.LATD7){ //easy mode
                 //color detection for red, green, blue, white only
+                
+                if (flag_color){
+                    color_to_struct(*RGB); //read RGB values of card
+                    color = color_process_easy(*RGB); //converts RGB values into color names
+                    
+                }
             }
             else if (LATHbits.LATH3) {
                 //color detection for harder colors
+                color_to_struct(*RGB);
             }
+            __delay_ms(200); // call built in delay function 
         }
-        __delay_ms(200); // call built in delay function 
+        
     }
     
     //reach destination code
