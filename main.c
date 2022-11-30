@@ -14,10 +14,12 @@
 
 #define _XTAL_FREQ 64000000
 
-//declare structures
-struct RGB_values{
-    unsigned int R,G,B;
-} RGB;
+//definition of RGB structure
+struct RGB_val { 
+	unsigned int R;
+	unsigned int G;
+	unsigned int B;
+};
 
 void main(void) {
     // setup pin for output (connected to LED)
@@ -36,31 +38,27 @@ void main(void) {
     color_click_init(); //initiate color board
     
     //declare variables
-    extern unsigned char flag_color; //interrupt when card is in front of buggy
+    extern unsigned int flag_color; //interrupt when card is in front of buggy
+    unsigned int color;
+    struct RGB_val RGB;
     
     while (1) {
         
         //------------mode selector---------------
-        while (PORTFbits.RF3 &  PORTFbits.RF2); //empty while loop (wait for button press)
-        if (!PORTFbits.RF2){ //wait for F2 button press to choose easy mode
-            LATDbits.LATD7 = !LATDbits.LATD7; //toggle LED D7
-        }
-        else if (!PORTFbits.RF3){ //wait for F3 button press to choose hard mode
-            LATHbits.LATH3 = !LATHbits.LATH3; //toggle LED H3
-        }
+        while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for button press
+        if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}//F2 button (easy mode)
+        else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}//F3 button (hard mode)
         //----------------------------------------
         
         while (1) {
             if (LATDbits.LATD7){ //easy mode
-                //color detection for red, green, blue, white only
-                
                 if (flag_color){
                     color_to_struct(*RGB); //read RGB values of card
-                    color = color_process_easy(*RGB); //converts RGB values into color names
+                    color = color_process_easy(*RGB); //color detection for red, green, blue, white only
                     
                 }
             }
-            else if (LATHbits.LATH3) {
+            else if (LATHbits.LATH3) { //hard mode
                 //color detection for harder colors
                 color_to_struct(*RGB);
             }

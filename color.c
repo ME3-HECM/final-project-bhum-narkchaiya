@@ -2,9 +2,6 @@
 #include "color.h"
 #include "i2c.h"
 
-#define MAX(x, y) (((x) > (y)) ? (x) : (y))
-#define MIN(x, y) (((x) < (y)) ? (x) : (y))
-
 void color_click_init(void)
 {   
     //setup colour sensor via i2c interface
@@ -78,6 +75,18 @@ unsigned int color_to_struct(struct RGB_values *RGB)
     RGB->B = color_read_Blue();
 }
 
+/********************************************//**
+    *color assignment
+    1. red          turn right 90                           
+    2. green        turn left 90                                                                         
+    3. blue         turn 180                           
+    4. yellow       rev 1, turn right 90                                    
+    5. pink         rev 1, turn left 90                                  
+    6. orange       turn right 135                                   
+    7. light blue   turn left 135                                        
+    8. white        finish (ET go home)                                    
+ ***********************************************/
+
 unsigned int color_process_easy(struct RGB_values *RGB)
 {
     unsigned int a = RGB->R;
@@ -90,4 +99,4 @@ unsigned int color_process_easy(struct RGB_values *RGB)
     return color;
 }
 
-unsigned int color_process_hard(struct RGB_values *RGB);
+unsigned int color_process_hard(struct RGB_values *RGB);\
