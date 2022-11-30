@@ -6,6 +6,9 @@
                    projectFiles="true">
       <itemPath>../color.h</itemPath>
       <itemPath>../i2c.h</itemPath>
+      <itemPath>../dc_motor.h</itemPath>
+      <itemPath>../rc_servo.h</itemPath>
+      <itemPath>../serial.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,17 +21,16 @@
       <itemPath>../i2c.c</itemPath>
       <itemPath>../main.c</itemPath>
       <itemPath>../dc_motor.c</itemPath>
-      <itemPath>../dc_motor.h</itemPath>
       <itemPath>../rc_servo.c</itemPath>
-      <itemPath>../rc_servo.h</itemPath>
       <itemPath>../serial.c</itemPath>
-      <itemPath>../serial.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>../interrupts.c</itemPath>
+    <itemPath>../interrupts.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>..</Elem>
