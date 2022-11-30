@@ -69,7 +69,7 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
     __delay_ms(10);
 }
 
-//function to make the robot turn left 
+//movement: left turn 90 degrees
 void turn_left(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
@@ -84,8 +84,8 @@ void turn_left(struct DC_motor *mL, struct DC_motor *mR)
     }
 }
 
-//function to make the robot turn right 
-void turn_left(struct DC_motor *mL, struct DC_motor *mR)
+//movement: right turn 90 degrees
+void turn_right(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 0;
@@ -99,7 +99,7 @@ void turn_left(struct DC_motor *mL, struct DC_motor *mR)
     }
 }
 
-//function to make the robot go straight
+//movement: straight
 void forward(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
