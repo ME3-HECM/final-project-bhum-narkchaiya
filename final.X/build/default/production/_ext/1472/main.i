@@ -24249,6 +24249,7 @@ unsigned char __t3rd16on(void);
 
 
 
+
 struct RGB_val {
     unsigned int L;
  unsigned int R;
@@ -24280,9 +24281,9 @@ unsigned int color_read_Blue(void);
 
 
 
-void color_to_struct(struct RGB_values *rgb);
-int color_process_easy(struct RGB_values *rgb);
-unsigned int color_process_hard(struct RGB_values *rgb);
+void color_read(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb);
 # 11 "../main.c" 2
 
 # 1 "../i2c.h" 1
@@ -24319,6 +24320,82 @@ void I2C_2_Master_Write(unsigned char data_byte);
 
 unsigned char I2C_2_Master_Read(unsigned char ack);
 # 12 "../main.c" 2
+
+# 1 "../dc_motor.h" 1
+
+
+
+
+
+
+
+struct DC_motor {
+    char power;
+    char direction;
+    unsigned char *dutyHighByte;
+    unsigned char *dir_LAT;
+    char dir_pin;
+    int PWMperiod;
+};
+
+
+void initDCmotorsPWM(int PWMperiod);
+void setMotorPWM(struct DC_motor *m);
+void stop(struct DC_motor *mL, struct DC_motor *mR);
+void turn_left(struct DC_motor *mL, struct DC_motor *mR);
+void turn_right(struct DC_motor *mL, struct DC_motor *mR);
+void forward(struct DC_motor *mL, struct DC_motor *mR);
+# 13 "../main.c" 2
+
+# 1 "../rc_servo.h" 1
+
+
+
+
+
+
+
+
+unsigned int on_period,off_period;
+
+void Interrupts_init(void);
+void __attribute__((picinterrupt(("high_priority")))) HighISR();
+
+void Timer0_init(void);
+void write16bitTMR0val(unsigned int);
+
+void angle2PWM(int angle);
+# 14 "../main.c" 2
+
+# 1 "../serial.h" 1
+# 13 "../serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 15 "../main.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
@@ -24464,7 +24541,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 13 "../main.c" 2
+# 16 "../main.c" 2
 
 
 
@@ -24484,21 +24561,24 @@ void main(void) {
 
 
     color_click_init();
-
-
-    extern unsigned int flag_color;
-    unsigned int color;
-    struct RGB_val asdf;
-
-
-
+    initDCmotorsPWM(20);
+    Interrupts_init();
+    Timer0_init();
+    I2C_2_Master_Init();
+    initUSART4();
 
 
 
+    unsigned int color_flag;
+    unsigned int color_name;
+    struct RGB_val RGB_calibrated;
+    struct RGB_val RGB_recorded;
 
+
+    unsigned int color_calibrated[24];
+# 68 "../main.c"
     while (1) {
-
-
+# 77 "../main.c"
         while (PORTFbits.RF3 & PORTFbits.RF2);
         if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}
         else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}
@@ -24506,20 +24586,22 @@ void main(void) {
 
         while (1) {
             if (LATDbits.LATD7){
-                if (flag_color){
-                    color_to_struct(&asdf);
-                    color = color_process_easy(&asdf);
+                if (color_flag){
+                    color_read(&RGB_recorded);
+                    color_name = color_processor_easy(&RGB_recorded);
+
 
                 }
             }
             else if (LATHbits.LATH3) {
 
-                color_to_struct(&asdf);
+                color_read(&RGB_recorded);
             }
             _delay((unsigned long)((200)*(64000000/4000.0)));
         }
-
     }
+
+
 
 
 

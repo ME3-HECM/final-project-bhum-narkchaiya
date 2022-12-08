@@ -5,6 +5,7 @@
 
 #define _XTAL_FREQ 64000000 //note intrinsic _delay function is 62.5ns at 64,000,000Hz  
 
+//declare structure holding LRGB values
 struct RGB_val {
     unsigned int L;
 	unsigned int R;
@@ -36,7 +37,7 @@ unsigned int color_read_Blue(void);
  *  Functions to read the red, green, and blue channels
  *	Returns a 16 bit ADC value representing colour intensity
  ***********************************************/
-void color_to_struct(struct RGB_values *rgb);
-unsigned int color_process_easy(struct RGB_values *rgb);
-unsigned int color_process_hard(struct RGB_values *rgb);
+void color_read(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb);
 #endif

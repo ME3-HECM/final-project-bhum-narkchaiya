@@ -1,8 +1,5 @@
 #include <xc.h>
 #include "serial.h"
-#include "LCD.h"
-#include "ADC.h"
-#include "interrupts.h"
 
 void initUSART4(void) {
 

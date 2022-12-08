@@ -60,53 +60,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ../rc_servo.h
 [; ;../rc_servo.h: 15: void write16bitTMR0val(unsigned int);
 [v _write16bitTMR0val `(v ~T0 @X0 0 ef1`ui ]
-"28811 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28811:     struct {
-[s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1349 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
-"28821
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28821:     struct {
-[s S1350 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1350 . LD0 LD1 LD2 LD3 LD4 LD5 LD6 LD7 ]
-"28810
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28810: typedef union {
-[u S1348 `S1349 1 `S1350 1 ]
-[n S1348 . . . ]
-"28832
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28832: extern volatile LATDbits_t LATDbits __attribute__((address(0xF7C)));
-[v _LATDbits `VS1348 ~T0 @X0 0 e@3964 ]
-"29236
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29236:     struct {
-[s S1361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1361 . LATH0 LATH1 LATH2 LATH3 ]
-"29242
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29242:     struct {
-[s S1362 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1362 . LH0 LH1 LH2 LH3 ]
-"29248
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29248:     struct {
-[s S1363 :4 `uc 1 :1 `uc 1 ]
-[n S1363 . . LH4 ]
-"29252
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29252:     struct {
-[s S1364 :5 `uc 1 :1 `uc 1 ]
-[n S1364 . . LH5 ]
-"29256
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29256:     struct {
-[s S1365 :6 `uc 1 :1 `uc 1 ]
-[n S1365 . . LH6 ]
-"29260
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29260:     struct {
-[s S1366 :7 `uc 1 :1 `uc 1 ]
-[n S1366 . . LH7 ]
-"29235
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29235: typedef union {
-[u S1360 `S1361 1 `S1362 1 `S1363 1 `S1364 1 `S1365 1 `S1366 1 ]
-[n S1360 . . . . . . . ]
-"29265
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29265: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
-[v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
-"39652
+"39652 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 39652:     struct {
 [s S1925 :4 `uc 1 :1 `uc 1 :3 `uc 1 ]
 [n S1925 . T0CKPS T0ASYNC T0CS ]
@@ -2177,9 +2131,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "26
 [; ;../rc_servo.c: 26:             LATEbits.LATE2=0;
 [e = . . _LATEbits 0 2 -> -> 0 `i `uc ]
-"27
-[; ;../rc_servo.c: 27:             LATDbits.LATD7 = !LATDbits.LATD7;
-[e = . . _LATDbits 0 7 -> -> ! != -> . . _LATDbits 0 7 `i -> 0 `i `i `uc ]
 "28
 [; ;../rc_servo.c: 28:         } else {
 }
@@ -2192,9 +2143,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30
 [; ;../rc_servo.c: 30:             LATEbits.LATE2=1;
 [e = . . _LATEbits 0 2 -> -> 1 `i `uc ]
-"31
-[; ;../rc_servo.c: 31:             LATHbits.LATH3 = !LATHbits.LATH3;
-[e = . . _LATHbits 0 3 -> -> ! != -> . . _LATHbits 0 3 `i -> 0 `i `i `uc ]
 "32
 [; ;../rc_servo.c: 32:         }
 }

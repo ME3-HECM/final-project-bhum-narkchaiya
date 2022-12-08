@@ -24,11 +24,11 @@ void __interrupt(high_priority) HighISR()
         if(LATEbits.LATE2){ //if output pin currently high
             write16bitTMR0val(65535-off_period); //set new off_period
             LATEbits.LATE2=0; //turn your output pin off here
-            LATDbits.LATD7 = !LATDbits.LATD7;
+            //LATDbits.LATD7 = !LATDbits.LATD7;
         } else {
             write16bitTMR0val(65535-on_period);  //set new on_period
             LATEbits.LATE2=1; //turn your output pin off here
-            LATHbits.LATH3 = !LATHbits.LATH3;
+            //LATHbits.LATH3 = !LATHbits.LATH3;
         }
     }
     PIR0bits.TMR0IF=0; 

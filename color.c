@@ -83,10 +83,14 @@ unsigned int color_read_Blue(void)
 	return tmp;
 }  
 
-void color_to_struct(struct RGB_val *rgb)
+void color_read(struct RGB_val *rgb)
 {
+    rgb->L = color_read_Luminosity();
+    __delay_ms(100);
     rgb->R = color_read_Red();
+    __delay_ms(100);
     rgb->G = color_read_Green();
+    __delay_ms(100);
     rgb->B = color_read_Blue();
 }
 
@@ -102,7 +106,7 @@ void color_to_struct(struct RGB_val *rgb)
     8. white        finish (ET go home)                                    
  ***********************************************/
 
-unsigned int color_process_easy(struct RGB_val *rgb)
+unsigned int color_processor_easy(struct RGB_val *rgb)
 {
     unsigned int a = rgb->R;
     unsigned int b = rgb->G;
@@ -114,7 +118,15 @@ unsigned int color_process_easy(struct RGB_val *rgb)
     return color;
 }
 
-//unsigned int color_process_hard(struct RGB_values *RGB){
-//    return 1;
-//}
+unsigned int color_processor_hard(struct RGB_val *rgb)
+{
+    unsigned int a = rgb->R;
+    unsigned int b = rgb->G;
+    unsigned int c = rgb->B;
+    unsigned int color;
+    if (a>=b & a>=c){color=1;} //if red strongest
+    else if (b>=a & b>=c){color=2;} //if green strongest
+    else {color=3;} //if blue strongest
+    return color;
+}
 

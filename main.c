@@ -34,49 +34,72 @@ void main(void) {
     color_click_init(); //color board
     initDCmotorsPWM(20); //DC motor at 20 ms PWM period
     Interrupts_init(); //light sensor interrupt
-    Timer0_Init(); //timer interrupt
+    Timer0_init(); //timer interrupt
     I2C_2_Master_Init(); //serial communication
     initUSART4(); //serial communication
     
     
     //declare variables
-    extern unsigned int flag_color; //interrupt when card is in front of buggy
-    unsigned int color;
-    struct RGB_val asdf;
+    unsigned int color_flag; //interrupt when card is in front of buggy
+    unsigned int color_name;
+    struct RGB_val RGB_calibrated;
+    struct RGB_val RGB_recorded;
+    
+    //calibration variables
+    unsigned int color_calibrated[24];
+    /********************************************//**
+    *color assignment
+    1. red          turn right 90                           
+    2. green        turn left 90                                                                         
+    3. blue         turn 180                           
+    4. yellow       rev 1, turn right 90                                    
+    5. pink         rev 1, turn left 90                                  
+    6. orange       turn right 135                                   
+    7. light blue   turn left 135                                        
+    8. white        finish (ET go home)                                    
+ ***********************************************/
     
     //serial communication for color readout
     //color = read_color_function();
     //char readout[50];
-    //sprintf(readout,"%d \r\n", color.R, color.G, color.B);
+    //sprintf(readout,"%d %d %d \r\n", color.R, color.G, color.B);
     //sendStringSerial4(readout);
 
     while (1) {
+//        //calibration
+//        while (PORTFbits.RF3); //wait for button press on F3
+//        int i;
+//        for (i=0;i<9;i++){//add to array 3 rgb values for every color = 24 elements in array
+//            color_read(&RGB_calibrated);
+//        }
         
-        //------------mode selector---------------
-        while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for button press
+        //mode selection
+        while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for any button press
         if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;} //F2 button (easy mode)
         else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;} //F3 button (hard mode)
-        //----------------------------------------
         
+        //maze time
         while (1) {
             if (LATDbits.LATD7){ //easy mode
-                if (flag_color){
-                    color_to_struct(&asdf); //read RGB values of card
-                    color = color_process_easy(&asdf); //color detection for red, green, blue, white only
-                    
+                if (color_flag){
+                    color_read(&RGB_recorded); //read RGB values of card
+                    color_name = color_processor_easy(&RGB_recorded); //color detection for red, green, blue, white only
+                    //color_record(color_name); //records current navigation
+                    //store to array
                 }
             }
             else if (LATHbits.LATH3) { //hard mode
                 //color detection for harder colors
-                color_to_struct(&asdf);
+                color_read(&RGB_recorded);
             }
             __delay_ms(200); // call built in delay function 
         }
-        
     }
     
     //reach destination code
     //if color = white
+    //play back recorded colors from array
+    
     
     while (1) {
         //turn_on_color();

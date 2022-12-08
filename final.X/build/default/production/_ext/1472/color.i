@@ -24239,6 +24239,7 @@ unsigned char __t3rd16on(void);
 
 
 
+
 struct RGB_val {
     unsigned int L;
  unsigned int R;
@@ -24270,9 +24271,9 @@ unsigned int color_read_Blue(void);
 
 
 
-void color_to_struct(struct RGB_values *rgb);
-int color_process_easy(struct RGB_values *rgb);
-unsigned int color_process_hard(struct RGB_values *rgb);
+void color_read(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb);
 # 2 "../color.c" 2
 
 # 1 "../i2c.h" 1
@@ -24392,14 +24393,30 @@ unsigned int color_read_Blue(void)
  return tmp;
 }
 
-void color_to_struct(struct RGB_val *rgb)
+void color_read(struct RGB_val *rgb)
 {
+    rgb->L = color_read_Luminosity();
+    _delay((unsigned long)((100)*(64000000/4000.0)));
     rgb->R = color_read_Red();
+    _delay((unsigned long)((100)*(64000000/4000.0)));
     rgb->G = color_read_Green();
+    _delay((unsigned long)((100)*(64000000/4000.0)));
     rgb->B = color_read_Blue();
 }
-# 105 "../color.c"
-int color_process_easy(struct RGB_val *rgb)
+# 109 "../color.c"
+unsigned int color_processor_easy(struct RGB_val *rgb)
+{
+    unsigned int a = rgb->R;
+    unsigned int b = rgb->G;
+    unsigned int c = rgb->B;
+    unsigned int color;
+    if (a>=b & a>=c){color=1;}
+    else if (b>=a & b>=c){color=2;}
+    else {color=3;}
+    return color;
+}
+
+unsigned int color_processor_hard(struct RGB_val *rgb)
 {
     unsigned int a = rgb->R;
     unsigned int b = rgb->G;

@@ -1,4 +1,4 @@
-# 1 "../rc_servo.c"
+# 1 "../serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../rc_servo.c" 2
+# 1 "../serial.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24229,95 +24229,76 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 1 "../rc_servo.c" 2
+# 1 "../serial.c" 2
 
-# 1 "../rc_servo.h" 1
+# 1 "../serial.h" 1
+# 13 "../serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
 
-
-
-
-
-
-
-
-unsigned int on_period,off_period;
-
-void Interrupts_init(void);
-void __attribute__((picinterrupt(("high_priority")))) HighISR();
-
-void Timer0_init(void);
-void write16bitTMR0val(unsigned int);
-
-void angle2PWM(int angle);
-# 2 "../rc_servo.c" 2
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
 
 
 
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 2 "../serial.c" 2
+
+
+void initUSART4(void) {
 
 
 
-void Interrupts_init(void)
-{
-    PIE0bits.TMR0IE=1;
-    INTCONbits.PEIE=1;
-    INTCONbits.IPEN=0;
-    INTCONbits.GIE=1;
+    RC0PPS = 0x12;
+    RX4PPS = 0x11;
+
+    BAUD4CONbits.BRG16 = 0;
+    TX4STAbits.BRGH = 0;
+    SP4BRGL = 51;
+    SP4BRGH = 0;
+
+    RC4STAbits.CREN = 1;
+    TX4STAbits.TXEN = 1;
+    RC4STAbits.SPEN = 1;
+
+}
+
+
+char getCharSerial4(void) {
+    while (!PIR4bits.RC4IF);
+    return RC4REG;
+}
+
+
+void sendCharSerial4(char charToSend) {
+    while (!PIR4bits.TX4IF);
+    TX4REG = charToSend;
 }
 
 
 
+void sendStringSerial4(char *string){
 
 
-void __attribute__((picinterrupt(("high_priority")))) HighISR()
-{
-    if (PIR0bits.TMR0IF)
+    while (*string != 0)
     {
-        if(LATEbits.LATE2){
-            write16bitTMR0val(65535-off_period);
-            LATEbits.LATE2=0;
-
-        } else {
-            write16bitTMR0val(65535-on_period);
-            LATEbits.LATE2=1;
-
-        }
+        sendCharSerial4(*string++);
     }
-    PIR0bits.TMR0IF=0;
-}
-
-
-
-
-void Timer0_init(void)
-{
-    T0CON1bits.T0CS=0b010;
-    T0CON1bits.T0ASYNC=1;
-    T0CON1bits.T0CKPS=0b0111;
-
-    T0CON0bits.T016BIT=1;
-
-
-    TMR0H=(65535-2500)>>8;
-    TMR0L=(unsigned char)(65535-2500);
-    T0CON0bits.T0EN=1;
-}
-
-
-
-
-
-void write16bitTMR0val(unsigned int tmp)
-{
-    TMR0H=tmp>>8;
-    TMR0L=tmp;
-}
-
-
-
-
-
-
-void angle2PWM(int angle){
-    on_period = angle * (200/180) + 162;
-    off_period = 2500 -on_period;
 }
