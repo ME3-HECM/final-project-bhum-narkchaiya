@@ -112,6 +112,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../color.h: 9: struct RGB_val {
 [s S2015 `ui 1 `ui 1 `ui 1 `ui 1 ]
 [n S2015 RGB_val L R G B ]
+"40
+[; ;../color.h: 40: void color_read(struct RGB_val *rgb);
+[v _color_read `(v ~T0 @X0 0 ef1`*S2015 ]
+"109 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h: 109: int sprintf(char *restrict, const char *restrict, ...);
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+"26 ../serial.h
+[; ;../serial.h: 26: void sendStringSerial4(char *string);
+[v _sendStringSerial4 `(v ~T0 @X0 0 ef1`*uc ]
 "30586 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30586:     struct {
 [s S1412 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -127,10 +136,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30602
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30602: extern volatile PORTFbits_t PORTFbits __attribute__((address(0xF8E)));
 [v _PORTFbits `VS1411 ~T0 @X0 0 e@3982 ]
-"40 ../color.h
-[; ;../color.h: 40: void color_read(struct RGB_val *rgb);
-[v _color_read `(v ~T0 @X0 0 ef1`*S2015 ]
-"41
+"41 ../color.h
 [; ;../color.h: 41: unsigned int color_processor_easy(struct RGB_val *rgb);
 [v _color_processor_easy `(ui ~T0 @X0 0 ef1`*S2015 ]
 [v F192 `(v ~T0 @X0 1 tf1`ul ]
@@ -2217,6 +2223,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "49
 [; ;../main.c: 49:     unsigned int color_calibrated[24];
 [v _color_calibrated `ui ~T0 @X0 -> 24 `i a ]
+"63
+[; ;../main.c: 63:     color_read(&RGB_calibrated);
+[e ( _color_read (1 &U _RGB_calibrated ]
+"64
+[; ;../main.c: 64:     char readout[50];
+[v _readout `uc ~T0 @X0 -> 50 `i a ]
+"65
+[; ;../main.c: 65:     sprintf(readout,"%d %d %d \r\n", RGB_calibrated.R, RGB_calibrated.G, RGB_calibrated.B);
+[e ( _sprintf (1 , , , (. , &U _readout :s 1C . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
+"66
+[; ;../main.c: 66:     sendStringSerial4(readout);
+[e ( _sendStringSerial4 (1 &U _readout ]
 "68
 [; ;../main.c: 68:     while (1) {
 [e :U 2021 ]
@@ -2315,3 +2333,5 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../main.c: 108: }
 [e :UE 2019 ]
 }
+[p f _sprintf 8388736 ]
+[a 1C 37 100 32 37 100 32 37 100 32 13 10 0 ]

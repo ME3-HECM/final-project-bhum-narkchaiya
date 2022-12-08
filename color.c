@@ -16,6 +16,19 @@ void color_click_init(void)
 
     //set integration time
 	color_writetoaddr(0x01, 0xD5);
+    
+    //turn on lights on buggy
+    TRISHbits.TRISH1 = 0; //set H.LAMPS, pin RH1 as output
+    TRISDbits.TRISD3 = 0; //set M.BEAMS, pin RD3 as output
+    TRISDbits.TRISD4 = 0; //set BRAKE, pin RD4 as output
+    TRISHbits.TRISH0 = 0; //set TURN R, pin RH0 as output
+    TRISFbits.TRISF0 = 0; //set TURN L, pin RF0 as output
+    
+    LATHbits.LATH1 = 1; //first turn on the light
+    LATDbits.LATD3 = 1; //set front LED to max brightness
+    LATDbits.LATD4 = 1; //set back LED to max brightness
+    LATHbits.LATH0 = 1; //set right signal LED
+    LATFbits.LATF0 = 1; //set left signal LED 
 }
 
 void color_writetoaddr(char address, char value)

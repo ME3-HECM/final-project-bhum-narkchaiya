@@ -60,10 +60,10 @@ void main(void) {
  ***********************************************/
     
     //serial communication for color readout
-    //color = read_color_function();
-    //char readout[50];
-    //sprintf(readout,"%d %d %d \r\n", color.R, color.G, color.B);
-    //sendStringSerial4(readout);
+    color_read(&RGB_calibrated);
+    char readout[50];
+    sprintf(readout,"%d %d %d \r\n", RGB_calibrated.R, RGB_calibrated.G, RGB_calibrated.B);
+    sendStringSerial4(readout);
 
     while (1) {
 //        //calibration
