@@ -2065,111 +2065,111 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _TxBufReadCnt
 -> -> 0 `i `uc
 ]
-"4 ../serial.c
-[; ;../serial.c: 4: void initUSART4(void) {
+"5 ../serial.c
+[; ;../serial.c: 5: void initUSART4(void) {
 [v _initUSART4 `(v ~T0 @X0 1 ef ]
 {
 [e :U _initUSART4 ]
 [f ]
-"8
-[; ;../serial.c: 8:     RC0PPS = 0x12;
-[e = _RC0PPS -> -> 18 `i `uc ]
 "9
-[; ;../serial.c: 9:     RX4PPS = 0x11;
+[; ;../serial.c: 9:     RC0PPS = 0x12;
+[e = _RC0PPS -> -> 18 `i `uc ]
+"10
+[; ;../serial.c: 10:     RX4PPS = 0x11;
 [e = _RX4PPS -> -> 17 `i `uc ]
-"11
-[; ;../serial.c: 11:     BAUD4CONbits.BRG16 = 0;
-[e = . . _BAUD4CONbits 0 3 -> -> 0 `i `uc ]
 "12
-[; ;../serial.c: 12:     TX4STAbits.BRGH = 0;
-[e = . . _TX4STAbits 0 2 -> -> 0 `i `uc ]
+[; ;../serial.c: 12:     BAUD4CONbits.BRG16 = 0;
+[e = . . _BAUD4CONbits 0 3 -> -> 0 `i `uc ]
 "13
-[; ;../serial.c: 13:     SP4BRGL = 51;
-[e = _SP4BRGL -> -> 51 `i `uc ]
+[; ;../serial.c: 13:     TX4STAbits.BRGH = 0;
+[e = . . _TX4STAbits 0 2 -> -> 0 `i `uc ]
 "14
-[; ;../serial.c: 14:     SP4BRGH = 0;
+[; ;../serial.c: 14:     SP4BRGL = 103;
+[e = _SP4BRGL -> -> 103 `i `uc ]
+"15
+[; ;../serial.c: 15:     SP4BRGH = 0;
 [e = _SP4BRGH -> -> 0 `i `uc ]
-"16
-[; ;../serial.c: 16:     RC4STAbits.CREN = 1;
-[e = . . _RC4STAbits 0 4 -> -> 1 `i `uc ]
 "17
-[; ;../serial.c: 17:     TX4STAbits.TXEN = 1;
-[e = . . _TX4STAbits 0 5 -> -> 1 `i `uc ]
+[; ;../serial.c: 17:     RC4STAbits.CREN = 1;
+[e = . . _RC4STAbits 0 4 -> -> 1 `i `uc ]
 "18
-[; ;../serial.c: 18:     RC4STAbits.SPEN = 1;
+[; ;../serial.c: 18:     TX4STAbits.TXEN = 1;
+[e = . . _TX4STAbits 0 5 -> -> 1 `i `uc ]
+"19
+[; ;../serial.c: 19:     RC4STAbits.SPEN = 1;
 [e = . . _RC4STAbits 0 7 -> -> 1 `i `uc ]
-"20
-[; ;../serial.c: 20: }
-[e :UE 2015 ]
+"21
+[; ;../serial.c: 21: }
+[e :UE 2017 ]
 }
-"23
-[; ;../serial.c: 23: char getCharSerial4(void) {
+"24
+[; ;../serial.c: 24: char getCharSerial4(void) {
 [v _getCharSerial4 `(uc ~T0 @X0 1 ef ]
 {
 [e :U _getCharSerial4 ]
 [f ]
-"24
-[; ;../serial.c: 24:     while (!PIR4bits.RC4IF);
-[e $U 2017  ]
-[e :U 2018 ]
-[e :U 2017 ]
-[e $ ! != -> . . _PIR4bits 0 3 `i -> 0 `i 2018  ]
-[e :U 2019 ]
 "25
-[; ;../serial.c: 25:     return RC4REG;
-[e ) -> _RC4REG `uc ]
-[e $UE 2016  ]
+[; ;../serial.c: 25:     while (!PIR4bits.RC4IF);
+[e $U 2019  ]
+[e :U 2020 ]
+[e :U 2019 ]
+[e $ ! != -> . . _PIR4bits 0 3 `i -> 0 `i 2020  ]
+[e :U 2021 ]
 "26
-[; ;../serial.c: 26: }
-[e :UE 2016 ]
+[; ;../serial.c: 26:     return RC4REG;
+[e ) -> _RC4REG `uc ]
+[e $UE 2018  ]
+"27
+[; ;../serial.c: 27: }
+[e :UE 2018 ]
 }
-"29
-[; ;../serial.c: 29: void sendCharSerial4(char charToSend) {
+"30
+[; ;../serial.c: 30: void sendCharSerial4(char charToSend) {
 [v _sendCharSerial4 `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _sendCharSerial4 ]
 [v _charToSend `uc ~T0 @X0 1 r1 ]
 [f ]
-"30
-[; ;../serial.c: 30:     while (!PIR4bits.TX4IF);
-[e $U 2021  ]
-[e :U 2022 ]
-[e :U 2021 ]
-[e $ ! != -> . . _PIR4bits 0 2 `i -> 0 `i 2022  ]
-[e :U 2023 ]
 "31
-[; ;../serial.c: 31:     TX4REG = charToSend;
-[e = _TX4REG -> _charToSend `uc ]
+[; ;../serial.c: 31:     while (!PIR4bits.TX4IF);
+[e $U 2023  ]
+[e :U 2024 ]
+[e :U 2023 ]
+[e $ ! != -> . . _PIR4bits 0 2 `i -> 0 `i 2024  ]
+[e :U 2025 ]
 "32
-[; ;../serial.c: 32: }
-[e :UE 2020 ]
+[; ;../serial.c: 32:     TX4REG = charToSend;
+[e = _TX4REG -> _charToSend `uc ]
+"33
+[; ;../serial.c: 33: }
+[e :UE 2022 ]
 }
-"36
-[; ;../serial.c: 36: void sendStringSerial4(char *string){
+"37
+[; ;../serial.c: 37: void sendStringSerial4(char *string){
 [v _sendStringSerial4 `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _sendStringSerial4 ]
 [v _string `*uc ~T0 @X0 1 r1 ]
 [f ]
-"39
-[; ;../serial.c: 39:     while (*string != 0)
-[e $U 2025  ]
-[e :U 2026 ]
 "40
-[; ;../serial.c: 40:     {
-{
+[; ;../serial.c: 40:     while (*string != 0)
+[e $U 2027  ]
+[e :U 2028 ]
 "41
-[; ;../serial.c: 41:         sendCharSerial4(*string++);
-[e ( _sendCharSerial4 (1 *U ++ _string * -> -> 1 `i `x -> -> # *U _string `i `x ]
+[; ;../serial.c: 41:     {
+{
 "42
-[; ;../serial.c: 42:     }
-}
-[e :U 2025 ]
-"39
-[; ;../serial.c: 39:     while (*string != 0)
-[e $ != -> *U _string `i -> 0 `i 2026  ]
-[e :U 2027 ]
+[; ;../serial.c: 42:         sendCharSerial4(*string++);
+[e ( _sendCharSerial4 (1 *U ++ _string * -> -> 1 `i `x -> -> # *U _string `i `x ]
 "43
-[; ;../serial.c: 43: }
-[e :UE 2024 ]
+[; ;../serial.c: 43:     }
+}
+[e :U 2027 ]
+"40
+[; ;../serial.c: 40:     while (*string != 0)
+[e $ != -> *U _string `i -> 0 `i 2028  ]
+[e :U 2029 ]
+"44
+[; ;../serial.c: 44: }
+[e :UE 2026 ]
 }

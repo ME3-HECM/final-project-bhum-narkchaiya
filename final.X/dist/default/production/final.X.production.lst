@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                               Thu Dec 08 19:24:48 2022
+                                                                                               Thu Dec 08 19:28:45 2022
 
 Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1 
      1                           	processor	18F67K40
@@ -2583,7 +2583,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2452                           
   2453 ;; *************** function _sendStringSerial4 *****************
   2454 ;; Defined at:
-  2455 ;;		line 36 in file "../serial.c"
+  2455 ;;		line 37 in file "../serial.c"
   2456 ;; Parameters:    Size  Location     Type
   2457 ;;  string          2    3[COMRAM] PTR unsigned char 
   2458 ;;		 -> main@readout(50), 
@@ -2623,11 +2623,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2487   001C2C                     _sendStringSerial4:
   2488                           	callstack 27
   2489   001C2C                     
-  2490                           ;../serial.c: 39:     while (*string != 0)
+  2490                           ;../serial.c: 40:     while (*string != 0)
   2491   001C2C  EF21  F00E         	goto	l2069
   2492   001C30                     l2065:
   2493                           
-  2494                           ;../serial.c: 40:     {;../serial.c: 41:         sendCharSerial4(*string++);
+  2494                           ;../serial.c: 41:     {;../serial.c: 42:         sendCharSerial4(*string++);
   2495   001C30  C004  FFD9         	movff	sendStringSerial4@string,fsr2l
   2496   001C34  C005  FFDA         	movff	sendStringSerial4@string+1,fsr2h
   2497   001C38  50DF               	movf	indf2,w,c
@@ -2636,7 +2636,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2500   001C40  2A05               	incf	(sendStringSerial4@string+1)^0,f,c
   2501   001C42                     l2069:
   2502                           
-  2503                           ;../serial.c: 39:     while (*string != 0)
+  2503                           ;../serial.c: 40:     while (*string != 0)
   2504   001C42  C004  FFD9         	movff	sendStringSerial4@string,fsr2l
   2505   001C46  C005  FFDA         	movff	sendStringSerial4@string+1,fsr2h
   2506   001C4A  50DF               	movf	indf2,w,c
@@ -2652,7 +2652,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2516                           
   2517 ;; *************** function _sendCharSerial4 *****************
   2518 ;; Defined at:
-  2519 ;;		line 29 in file "../serial.c"
+  2519 ;;		line 30 in file "../serial.c"
   2520 ;; Parameters:    Size  Location     Type
   2521 ;;  charToSend      1    wreg     unsigned char 
   2522 ;; Auto vars:     Size  Location     Type
@@ -2704,7 +2704,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2563   001D4C                     u1060:
   2564   001D4C                     
   2565                           ; BSR set to: 14
-  2566                           ;../serial.c: 31:     TX4REG = charToSend;
+  2566                           ;../serial.c: 32:     TX4REG = charToSend;
   2567   001D4C  C003  FEE4         	movff	sendCharSerial4@charToSend,3812	;volatile
   2568   001D50                     
   2569                           ; BSR set to: 14
@@ -2714,7 +2714,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2573                           
   2574 ;; *************** function _initUSART4 *****************
   2575 ;; Defined at:
-  2576 ;;		line 4 in file "../serial.c"
+  2576 ;;		line 5 in file "../serial.c"
   2577 ;; Parameters:    Size  Location     Type
   2578 ;;		None
   2579 ;; Auto vars:     Size  Location     Type
@@ -2753,41 +2753,41 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2607   001D1C                     _initUSART4:
   2608                           	callstack 28
   2609   001D1C                     
-  2610                           ;../serial.c: 8:     RC0PPS = 0x12;
+  2610                           ;../serial.c: 9:     RC0PPS = 0x12;
   2611   001D1C  0E12               	movlw	18
   2612   001D1E  010E               	movlb	14	; () banked
   2613   001D20  6F62               	movwf	98,b	;volatile
   2614                           
-  2615                           ;../serial.c: 9:     RX4PPS = 0x11;
+  2615                           ;../serial.c: 10:     RX4PPS = 0x11;
   2616   001D22  0E11               	movlw	17
   2617   001D24  6F15               	movwf	21,b	;volatile
   2618   001D26                     
   2619                           ; BSR set to: 14
-  2620                           ;../serial.c: 11:     BAUD4CONbits.BRG16 = 0;
+  2620                           ;../serial.c: 12:     BAUD4CONbits.BRG16 = 0;
   2621   001D26  97E9               	bcf	233,3,b	;volatile
   2622   001D28                     
   2623                           ; BSR set to: 14
-  2624                           ;../serial.c: 12:     TX4STAbits.BRGH = 0;
+  2624                           ;../serial.c: 13:     TX4STAbits.BRGH = 0;
   2625   001D28  95E8               	bcf	232,2,b	;volatile
   2626                           
-  2627                           ;../serial.c: 13:     SP4BRGL = 51;
-  2628   001D2A  0E33               	movlw	51
+  2627                           ;../serial.c: 14:     SP4BRGL = 103;
+  2628   001D2A  0E67               	movlw	103
   2629   001D2C  6FE5               	movwf	229,b	;volatile
   2630                           
-  2631                           ;../serial.c: 14:     SP4BRGH = 0;
+  2631                           ;../serial.c: 15:     SP4BRGH = 0;
   2632   001D2E  0E00               	movlw	0
   2633   001D30  6FE6               	movwf	230,b	;volatile
   2634   001D32                     
   2635                           ; BSR set to: 14
-  2636                           ;../serial.c: 16:     RC4STAbits.CREN = 1;
+  2636                           ;../serial.c: 17:     RC4STAbits.CREN = 1;
   2637   001D32  89E7               	bsf	231,4,b	;volatile
   2638   001D34                     
   2639                           ; BSR set to: 14
-  2640                           ;../serial.c: 17:     TX4STAbits.TXEN = 1;
+  2640                           ;../serial.c: 18:     TX4STAbits.TXEN = 1;
   2641   001D34  8BE8               	bsf	232,5,b	;volatile
   2642   001D36                     
   2643                           ; BSR set to: 14
-  2644                           ;../serial.c: 18:     RC4STAbits.SPEN = 1;
+  2644                           ;../serial.c: 19:     RC4STAbits.SPEN = 1;
   2645   001D36  8FE7               	bsf	231,7,b	;volatile
   2646   001D38                     
   2647                           ; BSR set to: 14
@@ -5355,7 +5355,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                   Thu Dec 08 19:24:48 2022
+Symbol Table                                                                                   Thu Dec 08 19:28:45 2022
 
                _color_read_Red 194A                _color_read_Blue 1A3A                             l31 1B1E  
                            l40 1998                             l34 1CFA                             l43 1A38  

@@ -6,9 +6,9 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v2.40\pic\dat\20220703182018_en.msgs \
   -cn -h+dist/default/production\final.X.production.sym \
   --cmf=dist/default/production\final.X.production.cmf -z -Q18F67K40 \
-  -oC:\Users\POOMNA~1\AppData\Local\Temp\xcAs5dc.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.4 --defsym=__MPLAB_BUILD=1 \
   --fixupoverflow=error -Mdist/default/production/final.X.production.map \
-  --md=C:\Users\POOMNA~1\AppData\Local\Temp\xcAs5dc.dat -E1 \
+  --md=C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.dat -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ACODE=00h-01FFFFh -ACONST=00h-01FFFFh \
   -ASMALLCONST=0E00h-0EFFhx498 -AMEDIUMCONST=0E00h-0FFFFh,010E00h-01FFFFh \
   -ACOMRAM=01h-05Fh -AABS1=00h-0DE9h -ABIGRAM=01h-0DE9h \
@@ -28,7 +28,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\POOMNA~1\AppData\Local\Temp\xcAs5dc.o \
+  C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o \
   dist/default/production\final.X.production.o 
 
 Object code version is 3.11
@@ -38,7 +38,7 @@ Machine type is 18F67K40
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\POOMNA~1\AppData\Local\Temp\xcAs5dc.o
+C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
                 idloc                            200000   200000       10        0       5
                 config                           300000   300000        C        0       4
                 init                                 54       54        4        4       0
