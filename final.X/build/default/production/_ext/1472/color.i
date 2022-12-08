@@ -24232,7 +24232,22 @@ unsigned char __t3rd16on(void);
 # 1 "../color.c" 2
 
 # 1 "../color.h" 1
-# 12 "../color.h"
+
+
+
+
+
+
+
+struct RGB_val {
+    unsigned int L;
+ unsigned int R;
+ unsigned int G;
+ unsigned int B;
+};
+
+
+
 void color_click_init(void);
 
 
@@ -24246,9 +24261,18 @@ void color_writetoaddr(char address, char value);
 
 
 
+unsigned int color_read_Luminosity(void);
 unsigned int color_read_Red(void);
 unsigned int color_read_Green(void);
 unsigned int color_read_Blue(void);
+
+
+
+
+
+void color_to_struct(struct RGB_values *rgb);
+int color_process_easy(struct RGB_values *rgb);
+unsigned int color_process_hard(struct RGB_values *rgb);
 # 2 "../color.c" 2
 
 # 1 "../i2c.h" 1
@@ -24303,12 +24327,27 @@ void color_click_init(void)
  color_writetoaddr(0x01, 0xD5);
 }
 
-void color_writetoaddr(char address, char value){
+void color_writetoaddr(char address, char value)
+{
     I2C_2_Master_Start();
     I2C_2_Master_Write(0x52 | 0x00);
     I2C_2_Master_Write(0x80 | address);
     I2C_2_Master_Write(value);
     I2C_2_Master_Stop();
+}
+
+unsigned int color_read_Luminosity(void)
+{
+ unsigned int tmp;
+ I2C_2_Master_Start();
+ I2C_2_Master_Write(0x52 | 0x00);
+ I2C_2_Master_Write(0xA0 | 0x14);
+ I2C_2_Master_RepStart();
+ I2C_2_Master_Write(0x52 | 0x01);
+ tmp=I2C_2_Master_Read(1);
+ tmp=tmp | (I2C_2_Master_Read(0)<<8);
+ I2C_2_Master_Stop();
+ return tmp;
 }
 
 unsigned int color_read_Red(void)
@@ -24351,4 +24390,23 @@ unsigned int color_read_Blue(void)
  tmp=tmp | (I2C_2_Master_Read(0)<<8);
  I2C_2_Master_Stop();
  return tmp;
+}
+
+void color_to_struct(struct RGB_val *rgb)
+{
+    rgb->R = color_read_Red();
+    rgb->G = color_read_Green();
+    rgb->B = color_read_Blue();
+}
+# 105 "../color.c"
+int color_process_easy(struct RGB_val *rgb)
+{
+    unsigned int a = rgb->R;
+    unsigned int b = rgb->G;
+    unsigned int c = rgb->B;
+    unsigned int color;
+    if (a>=b & a>=c){color=1;}
+    else if (b>=a & b>=c){color=2;}
+    else {color=3;}
+    return color;
 }

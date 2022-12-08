@@ -10,16 +10,12 @@
 #include <xc.h>
 #include "color.h"
 #include "i2c.h"
+#include "dc_motor.h"
+#include "rc_servo.h"
+#include "serial.h"
 #include <stdio.h>
 
 #define _XTAL_FREQ 64000000
-
-//definition of RGB structure
-struct RGB_val { 
-	unsigned int R;
-	unsigned int G;
-	unsigned int B;
-};
 
 void main(void) {
     // setup pin for output (connected to LED)
@@ -35,32 +31,44 @@ void main(void) {
     ANSELFbits.ANSELF3=0; //turn off analogue input on pin F3
     
     //initialize functions
-    color_click_init(); //initiate color board
+    color_click_init(); //color board
+    initDCmotorsPWM(20); //DC motor at 20 ms PWM period
+    Interrupts_init(); //light sensor interrupt
+    Timer0_Init(); //timer interrupt
+    I2C_2_Master_Init(); //serial communication
+    initUSART4(); //serial communication
+    
     
     //declare variables
     extern unsigned int flag_color; //interrupt when card is in front of buggy
     unsigned int color;
-    struct RGB_val RGB;
+    struct RGB_val asdf;
     
+    //serial communication for color readout
+    //color = read_color_function();
+    //char readout[50];
+    //sprintf(readout,"%d \r\n", color.R, color.G, color.B);
+    //sendStringSerial4(readout);
+
     while (1) {
         
         //------------mode selector---------------
         while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for button press
-        if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}//F2 button (easy mode)
-        else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}//F3 button (hard mode)
+        if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;} //F2 button (easy mode)
+        else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;} //F3 button (hard mode)
         //----------------------------------------
         
         while (1) {
             if (LATDbits.LATD7){ //easy mode
                 if (flag_color){
-                    color_to_struct(*RGB); //read RGB values of card
-                    color = color_process_easy(*RGB); //color detection for red, green, blue, white only
+                    color_to_struct(&asdf); //read RGB values of card
+                    color = color_process_easy(&asdf); //color detection for red, green, blue, white only
                     
                 }
             }
             else if (LATHbits.LATH3) { //hard mode
                 //color detection for harder colors
-                color_to_struct(*RGB);
+                color_to_struct(&asdf);
             }
             __delay_ms(200); // call built in delay function 
         }

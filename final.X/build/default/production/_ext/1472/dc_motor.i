@@ -1,4 +1,4 @@
-# 1 "../main.c"
+# 1 "../dc_motor.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,17 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../main.c" 2
-
-#pragma config FEXTOSC = HS
-#pragma config RSTOSC = EXTOSC_4PLL
-
-
-#pragma config WDTCPS = WDTCPS_31
-#pragma config WDTE = OFF
-
-
-
+# 1 "../dc_motor.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24239,293 +24229,144 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 10 "../main.c" 2
+# 1 "../dc_motor.c" 2
 
-# 1 "../color.h" 1
-
-
+# 1 "../dc_motor.h" 1
 
 
 
 
 
-struct RGB_val {
-    unsigned int L;
- unsigned int R;
- unsigned int G;
- unsigned int B;
+
+
+struct DC_motor {
+    char power;
+    char direction;
+    unsigned char *dutyHighByte;
+    unsigned char *dir_LAT;
+    char dir_pin;
+    int PWMperiod;
 };
 
 
+void initDCmotorsPWM(int PWMperiod);
+void setMotorPWM(struct DC_motor *m);
+void stop(struct DC_motor *mL, struct DC_motor *mR);
+void turn_left(struct DC_motor *mL, struct DC_motor *mR);
+void turn_right(struct DC_motor *mL, struct DC_motor *mR);
+void forward(struct DC_motor *mL, struct DC_motor *mR);
+# 2 "../dc_motor.c" 2
 
-void color_click_init(void);
 
 
+void initDCmotorsPWM(int PWMperiod){
 
+    TRISEbits.TRISE2 = 0;
+    TRISEbits.TRISE4 = 0;
+    TRISCbits.TRISC7 = 0;
+    TRISGbits.TRISG6 = 0;
 
+    LATEbits.LATE2 = 0;
+    LATEbits.LATE4 = 0;
+    LATCbits.LATC7 = 0;
+    LATGbits.LATG6 = 0;
 
+    T2CONbits.CKPS=0b0011;
+    T2HLTbits.MODE=0b00000;
+    T2CLKCONbits.CS=0b0001;
 
-void color_writetoaddr(char address, char value);
 
 
+    T2PR=PWMperiod * 2000000 - 1;
+    T2CONbits.ON=1;
 
+    RE2PPS=0x0A;
+    RC7PPS=0x0B;
 
+    PWM6DCH=0;
+    PWM7DCH=0;
 
-unsigned int color_read_Luminosity(void);
-unsigned int color_read_Red(void);
-unsigned int color_read_Green(void);
-unsigned int color_read_Blue(void);
+    PWM6CONbits.EN = 1;
+    PWM7CONbits.EN = 1;
+}
 
 
 
+void setMotorPWM(struct DC_motor *m)
+{
+ int PWMduty;
 
+ if (m->direction){
 
-void color_to_struct(struct RGB_values *rgb);
-int color_process_easy(struct RGB_values *rgb);
-unsigned int color_process_hard(struct RGB_values *rgb);
-# 11 "../main.c" 2
+  PWMduty=m->PWMperiod - ((int)(m->power)*(m->PWMperiod))/100;
+ }
+ else {
 
-# 1 "../i2c.h" 1
-# 13 "../i2c.h"
-void I2C_2_Master_Init(void);
+  PWMduty=((int)(m->power)*(m->PWMperiod))/100;
+ }
 
+ *(m->dutyHighByte) = PWMduty;
 
+ if (m->direction){
+  *(m->dir_LAT) = *(m->dir_LAT) | (1<<(m->dir_pin));
+ } else {
+  *(m->dir_LAT) = *(m->dir_LAT) & (~(1<<(m->dir_pin)));
+ }
+}
 
 
-void I2C_2_Master_Idle(void);
+void stop(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 0;
+    mL->power = 0;
+    mR->power = 0;
+    setMotorPWM(mL);
+    setMotorPWM(mR);
+    _delay((unsigned long)((10)*(64000000/4000.0)));
+}
 
 
-
-
-void I2C_2_Master_Start(void);
-
-
-
-
-void I2C_2_Master_RepStart(void);
-
-
-
-
-void I2C_2_Master_Stop(void);
-
-
-
-
-void I2C_2_Master_Write(unsigned char data_byte);
-
-
-
-
-unsigned char I2C_2_Master_Read(unsigned char ack);
-# 12 "../main.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 1 3
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 1 3
-
-
-
-
-
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 137 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long ssize_t;
-# 246 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef long long off_t;
-# 399 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 2 3
-# 52 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-int ungetc(int, FILE *);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-__attribute__((__format__(__printf__, 1, 2)))
-int printf(const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int fprintf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int sprintf(char *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 3, 4)))
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-__attribute__((__format__(__printf__, 1, 0)))
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 2, 0)))
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 3, 0)))
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-__attribute__((__format__(__scanf__, 1, 2)))
-int scanf(const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int fscanf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int sscanf(const char *restrict, const char *restrict, ...);
-
-__attribute__((__format__(__scanf__, 1, 0)))
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__scanf__, 2, 0)))
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 13 "../main.c" 2
-
-
-
-
-void main(void) {
-
-    LATDbits.LATD7=0;
-    LATHbits.LATH3=0;
-    TRISDbits.TRISD7=0;
-    TRISHbits.TRISH3=0;
-
-
-    TRISFbits.TRISF2=1;
-    ANSELFbits.ANSELF2=0;
-    TRISFbits.TRISF3=1;
-    ANSELFbits.ANSELF3=0;
-
-
-    color_click_init();
-
-
-    extern unsigned int flag_color;
-    unsigned int color;
-    struct RGB_val asdf;
-
-
-
-
-
-
-
-    while (1) {
-
-
-        while (PORTFbits.RF3 & PORTFbits.RF2);
-        if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}
-        else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}
-
-
-        while (1) {
-            if (LATDbits.LATD7){
-                if (flag_color){
-                    color_to_struct(&asdf);
-                    color = color_process_easy(&asdf);
-
-                }
-            }
-            else if (LATHbits.LATH3) {
-
-                color_to_struct(&asdf);
-            }
-            _delay((unsigned long)((200)*(64000000/4000.0)));
-        }
-
+void turn_left(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 1;
+    for (char i = 0;i<101;i = i + 4)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((20)*(64000000/4000.0)));
     }
+}
 
 
+void turn_right(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 0;
+    for (char i = 0;i<101;i = i + 4)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((20)*(64000000/4000.0)));
+    }
+}
 
 
-    while (1) {
-
-        __asm(" sleep");
+void forward(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 1;
+    for (int i = 0;i<101;i = i+4)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((20)*(64000000/4000.0)));
     }
 }

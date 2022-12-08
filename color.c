@@ -18,12 +18,27 @@ void color_click_init(void)
 	color_writetoaddr(0x01, 0xD5);
 }
 
-void color_writetoaddr(char address, char value){
+void color_writetoaddr(char address, char value)
+{
     I2C_2_Master_Start();         //Start condition
     I2C_2_Master_Write(0x52 | 0x00);     //7 bit device address + Write mode
     I2C_2_Master_Write(0x80 | address);    //command + register address
     I2C_2_Master_Write(value);    
     I2C_2_Master_Stop();          //Stop condition
+}
+
+unsigned int color_read_Luminosity(void)
+{
+	unsigned int tmp;
+	I2C_2_Master_Start();         //Start condition
+	I2C_2_Master_Write(0x52 | 0x00);     //7 bit address + Write mode
+	I2C_2_Master_Write(0xA0 | 0x14);    //command (auto-increment protocol transaction) + start at L low register
+	I2C_2_Master_RepStart();			// start a repeated transmission
+	I2C_2_Master_Write(0x52 | 0x01);     //7 bit address + Read (1) mode
+	tmp=I2C_2_Master_Read(1);			//read the L LSB
+	tmp=tmp | (I2C_2_Master_Read(0)<<8); //read the L MSB (don't acknowledge as this is the last read)
+	I2C_2_Master_Stop();          //Stop condition
+	return tmp;
 }
 
 unsigned int color_read_Red(void)
@@ -68,11 +83,11 @@ unsigned int color_read_Blue(void)
 	return tmp;
 }  
 
-unsigned int color_to_struct(struct RGB_values *RGB)
+void color_to_struct(struct RGB_val *rgb)
 {
-    RGB->R = color_read_Red();
-    RGB->G = color_read_Green();
-    RGB->B = color_read_Blue();
+    rgb->R = color_read_Red();
+    rgb->G = color_read_Green();
+    rgb->B = color_read_Blue();
 }
 
 /********************************************//**
@@ -87,11 +102,11 @@ unsigned int color_to_struct(struct RGB_values *RGB)
     8. white        finish (ET go home)                                    
  ***********************************************/
 
-unsigned int color_process_easy(struct RGB_values *RGB)
+unsigned int color_process_easy(struct RGB_val *rgb)
 {
-    unsigned int a = RGB->R;
-    unsigned int b = RGB->G;
-    unsigned int c = RGB->B;
+    unsigned int a = rgb->R;
+    unsigned int b = rgb->G;
+    unsigned int c = rgb->B;
     unsigned int color;
     if (a>=b & a>=c){color=1;} //if red strongest
     else if (b>=a & b>=c){color=2;} //if green strongest
@@ -99,4 +114,7 @@ unsigned int color_process_easy(struct RGB_values *RGB)
     return color;
 }
 
-unsigned int color_process_hard(struct RGB_values *RGB);\
+//unsigned int color_process_hard(struct RGB_values *RGB){
+//    return 1;
+//}
+
