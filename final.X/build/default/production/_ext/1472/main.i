@@ -24579,7 +24579,7 @@ void main(void) {
 # 63 "../main.c"
     color_read(&RGB_calibrated);
     char readout[50];
-    sprintf(readout,"%d %d %d \r\n", RGB_calibrated.R, RGB_calibrated.G, RGB_calibrated.B);
+    sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
     sendStringSerial4(readout);
 
     while (1) {
@@ -24596,6 +24596,11 @@ void main(void) {
                     color_name = color_processor_easy(&RGB_recorded);
 
 
+
+                    color_read(&RGB_calibrated);
+                    char readout[50];
+                    sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+                    sendStringSerial4(readout);
                 }
             }
             else if (LATHbits.LATH3) {

@@ -12,52 +12,52 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $dist/default/production\final.X.production.o
-cinit CODE 0 1C5C 1C5C 2E 1 2
+cinit CODE 0 1CB8 1CB8 2E 1 2
 idloc IDLOC 5 200000 200000 10 1 1
-text0 CODE 0 108A 108A 18C 1 2
-text1 CODE 0 18F8 18F8 52 1 2
-text2 CODE 0 1A8A 1A8A 4E 1 2
-text3 CODE 0 1502 1502 14E 1 2
-text4 CODE 0 E0E E0E 27C 1 2
-text5 CODE 0 187E 187E 7A 1 2
-text6 CODE 0 1B66 1B66 44 1 2
-text7 CODE 0 1650 1650 CA 1 2
-text8 CODE 0 1D92 1D92 2 1 2
-text9 CODE 0 1BEC 1BEC 40 1 2
-text10 CODE 0 139E 139E 164 1 2
-text11 CODE 0 1216 1216 188 1 2
-text12 CODE 0 1C2C 1C2C 30 1 2
-text13 CODE 0 1D3A 1D3A 18 1 2
-text14 CODE 0 1D1C 1D1C 1E 1 2
-text15 CODE 0 1B20 1B20 46 1 2
-text16 CODE 0 17D8 17D8 A6 1 2
-text17 CODE 0 194A 194A 50 1 2
-text18 CODE 0 199A 199A 50 1 2
-text19 CODE 0 19EA 19EA 50 1 2
-text20 CODE 0 1A3A 1A3A 50 1 2
-text21 CODE 0 1D6A 1D6A A 1 2
-text22 CODE 0 1BAA 1BAA 42 1 2
-text23 CODE 0 171A 171A BE 1 2
-text24 CODE 0 1AD8 1AD8 48 1 2
-text25 CODE 0 1CDC 1CDC 20 1 2
-text26 CODE 0 1D52 1D52 C 1 2
-text27 CODE 0 1D74 1D74 A 1 2
-text28 CODE 0 1D7E 1D7E A 1 2
-text29 CODE 0 1CB4 1CB4 28 1 2
-text30 CODE 0 1C8A 1C8A 2A 1 2
-text31 CODE 0 1CFC 1CFC 20 1 2
-text32 CODE 0 1D5E 1D5E C 1 2
-text34 CODE 0 1D88 1D88 A 1 2
+text0 CODE 0 1090 1090 1E2 1 2
+text1 CODE 0 1954 1954 52 1 2
+text2 CODE 0 1AE6 1AE6 4E 1 2
+text3 CODE 0 155E 155E 14E 1 2
+text4 CODE 0 E12 E12 27E 1 2
+text5 CODE 0 18DA 18DA 7A 1 2
+text6 CODE 0 1BC2 1BC2 44 1 2
+text7 CODE 0 16AC 16AC CA 1 2
+text8 CODE 0 1DEE 1DEE 2 1 2
+text9 CODE 0 1C48 1C48 40 1 2
+text10 CODE 0 13FA 13FA 164 1 2
+text11 CODE 0 1272 1272 188 1 2
+text12 CODE 0 1C88 1C88 30 1 2
+text13 CODE 0 1D96 1D96 18 1 2
+text14 CODE 0 1D78 1D78 1E 1 2
+text15 CODE 0 1B7C 1B7C 46 1 2
+text16 CODE 0 1834 1834 A6 1 2
+text17 CODE 0 19A6 19A6 50 1 2
+text18 CODE 0 19F6 19F6 50 1 2
+text19 CODE 0 1A46 1A46 50 1 2
+text20 CODE 0 1A96 1A96 50 1 2
+text21 CODE 0 1DC6 1DC6 A 1 2
+text22 CODE 0 1C06 1C06 42 1 2
+text23 CODE 0 1776 1776 BE 1 2
+text24 CODE 0 1B34 1B34 48 1 2
+text25 CODE 0 1D38 1D38 20 1 2
+text26 CODE 0 1DAE 1DAE C 1 2
+text27 CODE 0 1DD0 1DD0 A 1 2
+text28 CODE 0 1DDA 1DDA A 1 2
+text29 CODE 0 1D10 1D10 28 1 2
+text30 CODE 0 1CE6 1CE6 2A 1 2
+text31 CODE 0 1D58 1D58 20 1 2
+text32 CODE 0 1DBA 1DBA C 1 2
+text34 CODE 0 1DE4 1DE4 A 1 2
 cstackCOMRAM COMRAM 1 1 1 5A 1 1
-cstackBANK0 BANK0 1 60 60 5D 1 1
+cstackBANK0 BANK0 1 60 60 91 1 1
 temp COMRAM 1 5D 5D 1 1 1
-bssBANK0 BANK0 1 BD BD 3F 1 1
-bssBANK1 BANK1 1 100 100 3C 1 1
+bssBANK0 BANK0 1 F1 F1 B 1 1
+bssBANK1 BANK1 1 100 100 70 1 1
 intcode CODE 0 8 8 4C 1 2
-smallconst SMALLCONST 0 E00 E00 E 1 2
+smallconst SMALLCONST 0 E00 E00 12 1 2
 bssCOMRAM COMRAM 1 5B 5B 2 1 1
 config CONFIG 4 300000 300000 C 1 1
-$C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+$C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 idloc IDLOC 5 200000 200000 10 1 1
 init CODE 0 54 54 4 1 2
 reset_vec CODE 0 0 0 4 1 2
@@ -69,10 +69,10 @@ config CONFIG 4 300000 300000 C 1 1
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
 RAM FC-FF 1
-RAM 13C-DE9 1
+RAM 170-DE9 1
 SFR DEF-FFF 1
 BANK0 FC-FF 1
-BANK1 13C-1FF 1
+BANK1 170-1FF 1
 BANK2 200-2FF 1
 BANK3 300-3FF 1
 BANK4 400-4FF 1
@@ -83,22 +83,22 @@ BANK8 800-8FF 1
 BANK9 900-9FF 1
 CONST 4-7 1
 CONST 58-DFF 1
-CONST 1D94-1FFFF 1
-SMALLCONST 1D94-1FFFF 1
+CONST 1DF0-1FFFF 1
+SMALLCONST 1DF0-1FFFF 1
 CODE 4-7 1
 CODE 58-DFF 1
-CODE 1D94-1FFFF 1
+CODE 1DF0-1FFFF 1
 BANK10 A00-AFF 1
 BANK11 B00-BFF 1
 BANK12 C00-CFF 1
 BANK13 D00-DE9 1
 BIGRAM 5E-5F 1
 BIGRAM FC-FF 1
-BIGRAM 13C-DE9 1
+BIGRAM 170-DE9 1
 BIGSFR DEF-FFF 1
 COMRAM 5E-5F 1
 EEDATA 310000-3103FF 1
-MEDIUMCONST 1D94-FFFF 1
+MEDIUMCONST 1DF0-FFFF 1
 MEDIUMCONST 10E00-1FFFF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -115,7 +115,7 @@ MEDIUMCONST 10E00-1FFFF 1
 %LINETAB
 $dist/default/production\final.X.production.o
 8 intcode CODE >20:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-8 intcode CODE >13719:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
+8 intcode CODE >13772:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
 A intcode CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
 1A intcode CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
 28 intcode CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
@@ -125,392 +125,395 @@ A intcode CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-
 4A intcode CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
 4C intcode CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
 50 intcode CODE >35:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D88 text34 CODE >58:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D88 text34 CODE >60:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D8C text34 CODE >61:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D90 text34 CODE >62:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D5E text32 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D5E text32 CODE >10:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D62 text32 CODE >11:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D64 text32 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D66 text32 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D68 text32 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1CFC text31 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1CFC text31 CODE >42:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D04 text31 CODE >43:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D06 text31 CODE >44:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D0E text31 CODE >46:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D10 text31 CODE >49:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D14 text31 CODE >50:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D18 text31 CODE >51:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1D1A text31 CODE >52:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
-1C8A text30 CODE >4:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1C8A text30 CODE >7:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1C94 text30 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1C96 text30 CODE >9:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1C9A text30 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1C9C text30 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1C9E text30 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CA0 text30 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CA2 text30 CODE >16:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CA6 text30 CODE >17:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CAA text30 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CAE text30 CODE >19:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CB2 text30 CODE >20:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CB4 text29 CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CB4 text29 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CDA text29 CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D7E text28 CODE >27:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D7E text28 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D82 text28 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D86 text28 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D74 text27 CODE >39:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D74 text27 CODE >41:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D78 text27 CODE >42:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D7C text27 CODE >43:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D52 text26 CODE >45:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D54 text26 CODE >47:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D58 text26 CODE >48:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D5C text26 CODE >49:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1CDC text25 CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1CDE text25 CODE >36:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1CE2 text25 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1CE8 text25 CODE >38:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1CF0 text25 CODE >39:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1CF6 text25 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1CFA text25 CODE >41:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1AD8 text24 CODE >5:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1AD8 text24 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1ADC text24 CODE >11:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1AE6 text24 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1AF6 text24 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B00 text24 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B0A text24 CODE >21:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B0C text24 CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B0E text24 CODE >23:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B10 text24 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B12 text24 CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B14 text24 CODE >27:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B16 text24 CODE >28:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B18 text24 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B1A text24 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B1C text24 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B1E text24 CODE >32:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-171A text23 CODE >122:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-171A text23 CODE >124:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-172E text23 CODE >125:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1742 text23 CODE >126:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1756 text23 CODE >128:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-178E text23 CODE >129:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-17C6 text23 CODE >130:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-17CE text23 CODE >131:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-17D6 text23 CODE >132:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1BAA text22 CODE >51:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BAC text22 CODE >54:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BB0 text22 CODE >55:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BB4 text22 CODE >56:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BB8 text22 CODE >57:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BBC text22 CODE >58:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BC0 text22 CODE >59:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BE6 text22 CODE >60:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BE8 text22 CODE >61:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1BEA text22 CODE >62:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D6A text21 CODE >33:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D6A text21 CODE >35:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D6E text21 CODE >36:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1D72 text21 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
-1A3A text20 CODE >85:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A3A text20 CODE >88:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A3E text20 CODE >89:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A44 text20 CODE >90:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A4A text20 CODE >91:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A4E text20 CODE >92:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A54 text20 CODE >93:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A62 text20 CODE >94:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A7C text20 CODE >95:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A80 text20 CODE >96:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A88 text20 CODE >97:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19EA text19 CODE >71:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19EA text19 CODE >74:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19EE text19 CODE >75:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19F4 text19 CODE >76:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19FA text19 CODE >77:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19FE text19 CODE >78:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A04 text19 CODE >79:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A12 text19 CODE >80:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A2C text19 CODE >81:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A30 text19 CODE >82:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1A38 text19 CODE >83:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-199A text18 CODE >43:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-199A text18 CODE >46:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-199E text18 CODE >47:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19A4 text18 CODE >48:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19AA text18 CODE >49:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19AE text18 CODE >50:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19B4 text18 CODE >51:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19C2 text18 CODE >52:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19DC text18 CODE >53:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19E0 text18 CODE >54:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-19E8 text18 CODE >55:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-194A text17 CODE >57:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-194A text17 CODE >60:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-194E text17 CODE >61:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1954 text17 CODE >62:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-195A text17 CODE >63:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-195E text17 CODE >64:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1964 text17 CODE >65:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1972 text17 CODE >66:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-198C text17 CODE >67:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1990 text17 CODE >68:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1998 text17 CODE >69:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-17D8 text16 CODE >99:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-17D8 text16 CODE >101:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-17EC text16 CODE >102:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1804 text16 CODE >103:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-181C text16 CODE >104:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1834 text16 CODE >105:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-184C text16 CODE >106:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1864 text16 CODE >107:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-187C text16 CODE >108:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
-1B20 text15 CODE >5:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B20 text15 CODE >7:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B22 text15 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B24 text15 CODE >9:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B26 text15 CODE >10:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B28 text15 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B2A text15 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B2C text15 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B2E text15 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B30 text15 CODE >17:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B38 text15 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B3C text15 CODE >19:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B44 text15 CODE >23:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B4C text15 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B4E text15 CODE >26:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B54 text15 CODE >27:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B58 text15 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B5C text15 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B60 text15 CODE >32:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B62 text15 CODE >33:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1B64 text15 CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
-1D1C text14 CODE >5:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D1C text14 CODE >9:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D22 text14 CODE >10:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D26 text14 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D28 text14 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D2A text14 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D2E text14 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D32 text14 CODE >17:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D34 text14 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D36 text14 CODE >19:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D38 text14 CODE >21:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D3A text13 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D3C text13 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D4C text13 CODE >32:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1D50 text13 CODE >33:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1C2C text12 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1C2C text12 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1C30 text12 CODE >42:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1C42 text12 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1C5A text12 CODE >44:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
-1216 text11 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1216 text11 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-121A text11 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1228 text11 CODE >17:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1248 text11 CODE >18:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-124C text11 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-125A text11 CODE >21:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-127A text11 CODE >22:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-127E text11 CODE >24:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-128A text11 CODE >25:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12A8 text11 CODE >26:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12AC text11 CODE >27:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12B0 text11 CODE >28:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12C2 text11 CODE >29:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12C4 text11 CODE >27:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12D2 text11 CODE >32:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-12E4 text11 CODE >33:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1312 text11 CODE >34:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1332 text11 CODE >35:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1334 text11 CODE >37:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-1346 text11 CODE >38:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-134C text11 CODE >40:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-135C text11 CODE >41:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-137C text11 CODE >42:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-139C text11 CODE >43:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-139E text10 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-139E text10 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-13A2 text10 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-13B0 text10 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-13D0 text10 CODE >17:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-13D4 text10 CODE >19:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-13E2 text10 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1402 text10 CODE >21:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1420 text10 CODE >22:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1424 text10 CODE >23:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1428 text10 CODE >24:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-143A text10 CODE >25:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-143C text10 CODE >23:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-144A text10 CODE >28:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1478 text10 CODE >29:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1498 text10 CODE >30:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-14AA text10 CODE >31:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-14B0 text10 CODE >33:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-14C0 text10 CODE >34:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-14E0 text10 CODE >35:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1500 text10 CODE >36:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-1BEC text9 CODE >1:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
-1BEC text9 CODE >3:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
-1C2A text9 CODE >4:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
-1D92 text8 CODE >7:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\putch.c
-1D92 text8 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\putch.c
-1650 text7 CODE >8:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-1650 text7 CODE >12:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-1674 text7 CODE >13:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-167A text7 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-167E text7 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-16D2 text7 CODE >18:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-1706 text7 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-1718 text7 CODE >24:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
-1B66 text6 CODE >8:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-1B66 text6 CODE >13:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-1B6E text6 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-1B72 text6 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-1B84 text6 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-1B88 text6 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-1BA8 text6 CODE >19:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-187E text5 CODE >133:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-187E text5 CODE >145:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18A0 text5 CODE >146:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18A8 text5 CODE >147:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18AC text5 CODE >148:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18C0 text5 CODE >149:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18C4 text5 CODE >147:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18E2 text5 CODE >156:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18F6 text5 CODE >164:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-E0E text4 CODE >443:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-E0E text4 CODE >450:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-E2E text4 CODE >451:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-E42 text4 CODE >452:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-E52 text4 CODE >453:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-E72 text4 CODE >462:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EA2 text4 CODE >463:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EAA text4 CODE >464:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EBA text4 CODE >469:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EC0 text4 CODE >470:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EE8 text4 CODE >471:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EE8 text4 CODE >480:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EF0 text4 CODE >481:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EF4 text4 CODE >482:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EF8 text4 CODE >487:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-EFE text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F2A text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F2E text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F32 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F36 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F3A text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F3E text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F42 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F46 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F80 text4 CODE >489:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F86 text4 CODE >490:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-F8C text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FAC text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FB0 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FB4 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FB8 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FBC text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FC0 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FC4 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FC8 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-FF0 text4 CODE >482:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1042 text4 CODE >495:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1052 text4 CODE >496:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1058 text4 CODE >497:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1068 text4 CODE >501:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1088 text4 CODE >502:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1502 text3 CODE >1007:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1502 text3 CODE >1019:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1526 text3 CODE >1020:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1534 text3 CODE >1022:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1542 text3 CODE >1023:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1546 text3 CODE >1117:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1556 text3 CODE >1187:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-158E text3 CODE >1230:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-15C8 text3 CODE >1232:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-15E4 text3 CODE >1233:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1614 text3 CODE >1509:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1626 text3 CODE >1514:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-164E text3 CODE >1517:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1A8A text2 CODE >1520:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1A8A text2 CODE >1525:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1A92 text2 CODE >1529:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1A96 text2 CODE >1533:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1AB2 text2 CODE >1529:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1ACE text2 CODE >1538:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-1AD6 text2 CODE >1543:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-18F8 text1 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-18F8 text1 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-1902 text1 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-190A text1 CODE >17:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-1912 text1 CODE >18:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-191A text1 CODE >19:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-1936 text1 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-1948 text1 CODE >23:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
-108A text0 CODE >20:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-108A text0 CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-108C text0 CODE >23:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-108E text0 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1090 text0 CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1092 text0 CODE >28:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1094 text0 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1098 text0 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-109A text0 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-109C text0 CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10A0 text0 CODE >35:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10AC text0 CODE >36:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10B0 text0 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10B4 text0 CODE >38:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10B8 text0 CODE >39:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10BC text0 CODE >63:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10C8 text0 CODE >65:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-10F6 text0 CODE >66:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1102 text0 CODE >77:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1134 text0 CODE >78:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-116A text0 CODE >79:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-119E text0 CODE >83:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-11AC text0 CODE >84:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-11C0 text0 CODE >85:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-11CC text0 CODE >86:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-11DC text0 CODE >91:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-11EA text0 CODE >93:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-11F6 text0 CODE >95:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
-1C5C cinit CODE >8215:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C5C cinit CODE >8217:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C5C cinit CODE >8220:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C5C cinit CODE >8273:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C60 cinit CODE >8274:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C62 cinit CODE >8275:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C62 cinit CODE >8276:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C64 cinit CODE >8277:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C66 cinit CODE >8278:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C68 cinit CODE >8281:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C6C cinit CODE >8282:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C6E cinit CODE >8283:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C6E cinit CODE >8284:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C70 cinit CODE >8285:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C72 cinit CODE >8286:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C74 cinit CODE >8289:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C76 cinit CODE >8290:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C78 cinit CODE >8296:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C78 cinit CODE >8298:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C7A cinit CODE >8299:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C7C cinit CODE >8301:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C7E cinit CODE >8302:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C80 cinit CODE >8303:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C82 cinit CODE >8304:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C84 cinit CODE >8305:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
-1C86 cinit CODE >8306:C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.s
+1DE4 text34 CODE >58:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DE4 text34 CODE >60:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DE8 text34 CODE >61:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DEC text34 CODE >62:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DBA text32 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DBA text32 CODE >10:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DBE text32 CODE >11:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DC0 text32 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DC2 text32 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1DC4 text32 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D58 text31 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D58 text31 CODE >42:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D60 text31 CODE >43:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D62 text31 CODE >44:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D6A text31 CODE >46:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D6C text31 CODE >49:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D70 text31 CODE >50:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D74 text31 CODE >51:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1D76 text31 CODE >52:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/rc_servo.c
+1CE6 text30 CODE >4:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CE6 text30 CODE >7:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CF0 text30 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CF2 text30 CODE >9:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CF6 text30 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CF8 text30 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CFA text30 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CFC text30 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1CFE text30 CODE >16:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D02 text30 CODE >17:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D06 text30 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D0A text30 CODE >19:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D0E text30 CODE >20:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D10 text29 CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D10 text29 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D36 text29 CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DDA text28 CODE >27:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DDA text28 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DDE text28 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DE2 text28 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DD0 text27 CODE >39:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DD0 text27 CODE >41:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DD4 text27 CODE >42:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DD8 text27 CODE >43:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DAE text26 CODE >45:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DB0 text26 CODE >47:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DB4 text26 CODE >48:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DB8 text26 CODE >49:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1D38 text25 CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1D3A text25 CODE >36:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1D3E text25 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1D44 text25 CODE >38:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1D4C text25 CODE >39:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1D52 text25 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1D56 text25 CODE >41:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B34 text24 CODE >5:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B34 text24 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B38 text24 CODE >11:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B42 text24 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B52 text24 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B5C text24 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B66 text24 CODE >21:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B68 text24 CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B6A text24 CODE >23:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B6C text24 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B6E text24 CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B70 text24 CODE >27:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B72 text24 CODE >28:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B74 text24 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B76 text24 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B78 text24 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B7A text24 CODE >32:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1776 text23 CODE >122:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1776 text23 CODE >124:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+178A text23 CODE >125:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+179E text23 CODE >126:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+17B2 text23 CODE >128:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+17EA text23 CODE >129:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1822 text23 CODE >130:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+182A text23 CODE >131:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1832 text23 CODE >132:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1C06 text22 CODE >51:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C08 text22 CODE >54:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C0C text22 CODE >55:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C10 text22 CODE >56:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C14 text22 CODE >57:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C18 text22 CODE >58:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C1C text22 CODE >59:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C42 text22 CODE >60:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C44 text22 CODE >61:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1C46 text22 CODE >62:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DC6 text21 CODE >33:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DC6 text21 CODE >35:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DCA text21 CODE >36:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1DCE text21 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
+1A96 text20 CODE >85:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A96 text20 CODE >88:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A9A text20 CODE >89:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1AA0 text20 CODE >90:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1AA6 text20 CODE >91:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1AAA text20 CODE >92:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1AB0 text20 CODE >93:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1ABE text20 CODE >94:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1AD8 text20 CODE >95:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1ADC text20 CODE >96:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1AE4 text20 CODE >97:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A46 text19 CODE >71:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A46 text19 CODE >74:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A4A text19 CODE >75:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A50 text19 CODE >76:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A56 text19 CODE >77:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A5A text19 CODE >78:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A60 text19 CODE >79:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A6E text19 CODE >80:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A88 text19 CODE >81:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A8C text19 CODE >82:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A94 text19 CODE >83:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19F6 text18 CODE >43:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19F6 text18 CODE >46:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19FA text18 CODE >47:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A00 text18 CODE >48:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A06 text18 CODE >49:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A0A text18 CODE >50:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A10 text18 CODE >51:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A1E text18 CODE >52:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A38 text18 CODE >53:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A3C text18 CODE >54:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1A44 text18 CODE >55:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19A6 text17 CODE >57:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19A6 text17 CODE >60:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19AA text17 CODE >61:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19B0 text17 CODE >62:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19B6 text17 CODE >63:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19BA text17 CODE >64:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19C0 text17 CODE >65:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19CE text17 CODE >66:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19E8 text17 CODE >67:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19EC text17 CODE >68:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+19F4 text17 CODE >69:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1834 text16 CODE >99:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1834 text16 CODE >101:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1848 text16 CODE >102:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1860 text16 CODE >103:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1878 text16 CODE >104:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1890 text16 CODE >105:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+18A8 text16 CODE >106:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+18C0 text16 CODE >107:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+18D8 text16 CODE >108:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/color.c
+1B7C text15 CODE >5:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B7C text15 CODE >7:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B7E text15 CODE >8:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B80 text15 CODE >9:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B82 text15 CODE >10:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B84 text15 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B86 text15 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B88 text15 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B8A text15 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B8C text15 CODE >17:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B94 text15 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1B98 text15 CODE >19:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BA0 text15 CODE >23:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BA8 text15 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BAA text15 CODE >26:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BB0 text15 CODE >27:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BB4 text15 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BB8 text15 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BBC text15 CODE >32:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BBE text15 CODE >33:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1BC0 text15 CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+1D78 text14 CODE >5:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D78 text14 CODE >9:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D7E text14 CODE >10:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D82 text14 CODE >12:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D84 text14 CODE >13:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D86 text14 CODE >14:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D8A text14 CODE >15:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D8E text14 CODE >17:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D90 text14 CODE >18:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D92 text14 CODE >19:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D94 text14 CODE >21:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D96 text13 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1D98 text13 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1DA8 text13 CODE >32:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1DAC text13 CODE >33:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1C88 text12 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1C88 text12 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1C8C text12 CODE >42:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1C9E text12 CODE >40:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1CB6 text12 CODE >44:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
+1272 text11 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1272 text11 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1276 text11 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1284 text11 CODE >17:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+12A4 text11 CODE >18:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+12A8 text11 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+12B6 text11 CODE >21:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+12D6 text11 CODE >22:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+12DA text11 CODE >24:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+12E6 text11 CODE >25:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1304 text11 CODE >26:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1308 text11 CODE >27:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+130C text11 CODE >28:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+131E text11 CODE >29:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1320 text11 CODE >27:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+132E text11 CODE >32:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1340 text11 CODE >33:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+136E text11 CODE >34:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+138E text11 CODE >35:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+1390 text11 CODE >37:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+13A2 text11 CODE >38:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+13A8 text11 CODE >40:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+13B8 text11 CODE >41:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+13D8 text11 CODE >42:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+13F8 text11 CODE >43:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+13FA text10 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+13FA text10 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+13FE text10 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+140C text10 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+142C text10 CODE >17:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1430 text10 CODE >19:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+143E text10 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+145E text10 CODE >21:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+147C text10 CODE >22:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1480 text10 CODE >23:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1484 text10 CODE >24:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1496 text10 CODE >25:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1498 text10 CODE >23:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+14A6 text10 CODE >28:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+14D4 text10 CODE >29:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+14F4 text10 CODE >30:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1506 text10 CODE >31:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+150C text10 CODE >33:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+151C text10 CODE >34:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+153C text10 CODE >35:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+155C text10 CODE >36:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
+1C48 text9 CODE >1:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
+1C48 text9 CODE >3:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
+1C86 text9 CODE >4:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
+1DEE text8 CODE >7:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\putch.c
+1DEE text8 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\putch.c
+16AC text7 CODE >8:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+16AC text7 CODE >12:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+16D0 text7 CODE >13:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+16D6 text7 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+16DA text7 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+172E text7 CODE >18:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+1762 text7 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+1774 text7 CODE >24:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+1BC2 text6 CODE >8:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+1BC2 text6 CODE >13:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+1BCA text6 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+1BCE text6 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+1BE0 text6 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+1BE4 text6 CODE >14:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+1C04 text6 CODE >19:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+18DA text5 CODE >133:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+18DA text5 CODE >145:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+18FC text5 CODE >146:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1904 text5 CODE >147:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1908 text5 CODE >148:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+191C text5 CODE >149:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1920 text5 CODE >147:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+193E text5 CODE >156:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1952 text5 CODE >164:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+E12 text4 CODE >443:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+E12 text4 CODE >450:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+E32 text4 CODE >451:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+E46 text4 CODE >452:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+E56 text4 CODE >453:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+E76 text4 CODE >462:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EA6 text4 CODE >463:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EAE text4 CODE >464:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EBE text4 CODE >469:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EC4 text4 CODE >470:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EEC text4 CODE >471:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EEC text4 CODE >480:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EF4 text4 CODE >481:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EFA text4 CODE >482:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+EFE text4 CODE >487:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F04 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F30 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F34 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F38 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F3C text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F40 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F44 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F48 text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F4C text4 CODE >488:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F86 text4 CODE >489:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F8C text4 CODE >490:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+F92 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FB2 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FB6 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FBA text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FBE text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FC2 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FC6 text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FCA text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FCE text4 CODE >491:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+FF6 text4 CODE >482:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1048 text4 CODE >495:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1058 text4 CODE >496:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+105E text4 CODE >497:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+106E text4 CODE >501:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+108E text4 CODE >502:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+155E text3 CODE >1007:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+155E text3 CODE >1019:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1582 text3 CODE >1020:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1590 text3 CODE >1022:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+159E text3 CODE >1023:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+15A2 text3 CODE >1117:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+15B2 text3 CODE >1187:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+15EA text3 CODE >1230:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1624 text3 CODE >1232:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1640 text3 CODE >1233:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1670 text3 CODE >1509:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1682 text3 CODE >1514:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+16AA text3 CODE >1517:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1AE6 text2 CODE >1520:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1AE6 text2 CODE >1525:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1AEE text2 CODE >1529:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1AF2 text2 CODE >1533:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1B0E text2 CODE >1529:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1B2A text2 CODE >1538:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1B32 text2 CODE >1543:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+1954 text1 CODE >9:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+1954 text1 CODE >15:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+195E text1 CODE >16:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+1966 text1 CODE >17:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+196E text1 CODE >18:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+1976 text1 CODE >19:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+1992 text1 CODE >20:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+19A4 text1 CODE >23:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
+1090 text0 CODE >20:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1090 text0 CODE >22:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1092 text0 CODE >23:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1094 text0 CODE >24:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1096 text0 CODE >25:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1098 text0 CODE >28:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+109A text0 CODE >29:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+109E text0 CODE >30:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10A0 text0 CODE >31:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10A2 text0 CODE >34:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10A6 text0 CODE >35:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10B2 text0 CODE >36:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10B6 text0 CODE >37:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10BA text0 CODE >38:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10BE text0 CODE >39:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10C2 text0 CODE >63:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+10CE text0 CODE >65:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1104 text0 CODE >66:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1110 text0 CODE >77:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1142 text0 CODE >78:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1178 text0 CODE >79:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+11AC text0 CODE >83:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+11BA text0 CODE >84:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+11CE text0 CODE >85:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+11DA text0 CODE >86:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+11E6 text0 CODE >90:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+11F2 text0 CODE >92:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1228 text0 CODE >93:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1238 text0 CODE >96:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1246 text0 CODE >98:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1252 text0 CODE >100:C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
+1CB8 cinit CODE >8219:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CB8 cinit CODE >8221:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CB8 cinit CODE >8224:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CB8 cinit CODE >8277:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CBC cinit CODE >8278:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CBE cinit CODE >8279:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CBE cinit CODE >8280:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CC0 cinit CODE >8281:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CC2 cinit CODE >8282:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CC4 cinit CODE >8285:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CC8 cinit CODE >8286:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CCA cinit CODE >8287:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CCA cinit CODE >8288:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CCC cinit CODE >8289:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CCE cinit CODE >8290:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CD0 cinit CODE >8293:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CD2 cinit CODE >8294:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CD4 cinit CODE >8300:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CD4 cinit CODE >8302:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CD6 cinit CODE >8303:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CD8 cinit CODE >8305:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CDA cinit CODE >8306:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CDC cinit CODE >8307:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CDE cinit CODE >8308:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CE0 cinit CODE >8309:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
+1CE2 cinit CODE >8310:C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -524,90 +527,91 @@ FF0 text4 CODE >482:C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\final.X.production.o
-__Hspace_0 1D94 0 ABS 0 - dist/default/production\final.X.production.o
-__Hspace_1 13C 0 ABS 0 - dist/default/production\final.X.production.o
+__Hspace_0 1DF0 0 ABS 0 - dist/default/production\final.X.production.o
+__Hspace_1 170 0 ABS 0 - dist/default/production\final.X.production.o
 __Hspace_2 0 0 ABS 0 - dist/default/production\final.X.production.o
 __Hspace_4 60000C 0 ABS 0 - dist/default/production\final.X.production.o
 color_writetoaddr@address 6 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-_sendCharSerial4 1D3A 0 CODE 0 text13 dist/default/production\final.X.production.o
+_sendCharSerial4 1D96 0 CODE 0 text13 dist/default/production\final.X.production.o
 _PWM6DCH FA3 0 ABS 0 - dist/default/production\final.X.production.o
 _PWM7DCH FA0 0 ABS 0 - dist/default/production\final.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\final.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\final.X.production.o
 ?_abs 15 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 ?_vfprintf 53 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Lsmallconst E00 0 SMALLCONST 0 smallconst dist/default/production\final.X.production.o
 _T2PR FBC 0 ABS 0 - dist/default/production\final.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+___sp 0 0 STACK 2 stack C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 ?_color_read_Luminosity 7 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-_dbuf DC 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
-_dtoa E0E 0 CODE 0 text4 dist/default/production\final.X.production.o
-_main 108A 0 CODE 0 text0 dist/default/production\final.X.production.o
-_prec D3 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_dbuf 150 0 BANK1 1 bssBANK1 dist/default/production\final.X.production.o
+_dtoa E12 0 CODE 0 text4 dist/default/production\final.X.production.o
+_main 1090 0 CODE 0 text0 dist/default/production\final.X.production.o
+_prec F3 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 abs@a 15 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 btemp 5D 0 COMRAM 1 temp dist/default/production\final.X.production.o
 pad@i 1A 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 pad@p 17 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 pad@w 1C 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-start 54 0 CODE 0 init C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+start 54 0 CODE 0 init C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 ___aomod@counter 13 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\final.X.production.o
 pad@fp 13 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 _RxBufReadCnt 5B 0 COMRAM 1 bssCOMRAM dist/default/production\final.X.production.o
 color_read_Green@tmp C 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Hpowerup 54 0 CODE 0 powerup dist/default/production\final.X.production.o
-__end_of_vfpfcnvrt 1650 0 CODE 0 text3 dist/default/production\final.X.production.o
+__end_of_vfpfcnvrt 16AC 0 CODE 0 text3 dist/default/production\final.X.production.o
 ttemp5 5E 0 COMRAM 1 temp dist/default/production\final.X.production.o
 ttemp6 61 0 COMRAM 1 temp dist/default/production\final.X.production.o
 ttemp7 65 0 COMRAM 1 temp dist/default/production\final.X.production.o
-__accesstop 60 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-intlevel0 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-intlevel1 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-intlevel2 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-intlevel3 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+__accesstop 60 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+intlevel0 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+intlevel1 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+intlevel2 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+intlevel3 0 0 CODE 0 text C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\final.X.production.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\final.X.production.o
 wtemp8 5E 0 COMRAM 1 temp dist/default/production\final.X.production.o
 __Hifardata 0 0 CODE 0 ifardata dist/default/production\final.X.production.o
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\final.X.production.o
-_vfpfcnvrt 1502 0 CODE 0 text3 dist/default/production\final.X.production.o
+_vfpfcnvrt 155E 0 CODE 0 text3 dist/default/production\final.X.production.o
 dtoa@fp 1E 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__end_of_Interrupts_init 1D6A 0 CODE 0 text32 dist/default/production\final.X.production.o
-___inthi_sp 0 0 STACK 2 stack C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-___intlo_sp 0 0 STACK 2 stack C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+__end_of_Interrupts_init 1DC6 0 CODE 0 text32 dist/default/production\final.X.production.o
+___inthi_sp 0 0 STACK 2 stack C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+___intlo_sp 0 0 STACK 2 stack C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 I2C_2_Master_Read@ack 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 I2C_2_Master_Read@tmp 6 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 color_read_Luminosity@tmp C 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 color_writetoaddr@value 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\final.X.production.o
-_TxBufWriteCnt DB 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_TxBufWriteCnt FB 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\final.X.production.o
-__end_of_write16bitTMR0val 1D92 0 CODE 0 text34 dist/default/production\final.X.production.o
+__end_of_write16bitTMR0val 1DEE 0 CODE 0 text34 dist/default/production\final.X.production.o
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/default/production\final.X.production.o
 _PWM7CONbits FA1 0 ABS 0 - dist/default/production\final.X.production.o
 color_read_Blue@tmp C 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Hintcodelo 54 0 CODE 0 intcodelo dist/default/production\final.X.production.o
-__end_of___aodiv 139E 0 CODE 0 text11 dist/default/production\final.X.production.o
-__end_of___aomod 1502 0 CODE 0 text10 dist/default/production\final.X.production.o
+__end_of___aodiv 13FA 0 CODE 0 text11 dist/default/production\final.X.production.o
+__end_of___aomod 155E 0 CODE 0 text10 dist/default/production\final.X.production.o
 ___aodiv@quotient 15 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 ___aomod@dividend 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Lintcodelo 54 0 CODE 0 intcodelo dist/default/production\final.X.production.o
 ___aomod@divisor B 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-_Interrupts_init 1D5E 0 CODE 0 text32 dist/default/production\final.X.production.o
+_Interrupts_init 1DBA 0 CODE 0 text32 dist/default/production\final.X.production.o
 _SSP2CON1bits ED9 0 ABS 0 - dist/default/production\final.X.production.o
-start_initialization 1C5C 0 CODE 0 cinit dist/default/production\final.X.production.o
+start_initialization 1CB8 0 CODE 0 cinit dist/default/production\final.X.production.o
 _SSP2CON2bits EDA 0 ABS 0 - dist/default/production\final.X.production.o
 _PWM6CONbits FA4 0 ABS 0 - dist/default/production\final.X.production.o
-_off_period D5 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_off_period F5 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\final.X.production.o
 _TRISCbits F83 0 ABS 0 - dist/default/production\final.X.production.o
 _TRISDbits F84 0 ABS 0 - dist/default/production\final.X.production.o
 _TRISEbits F85 0 ABS 0 - dist/default/production\final.X.production.o
 _TRISFbits F86 0 ABS 0 - dist/default/production\final.X.production.o
+main@readout_752 AD 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 _TRISGbits F87 0 ABS 0 - dist/default/production\final.X.production.o
 _TRISHbits F88 0 ABS 0 - dist/default/production\final.X.production.o
-main@RGB_recorded AD 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
+main@RGB_recorded E1 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 ___rparam_used 1 0 ABS 0 - dist/default/production\final.X.production.o
 _RC0PPS E62 0 ABS 0 - dist/default/production\final.X.production.o
 _RC4REG EE3 0 ABS 0 - dist/default/production\final.X.production.o
@@ -615,16 +619,16 @@ _RC7PPS E69 0 ABS 0 - dist/default/production\final.X.production.o
 _RD5PPS E6F 0 ABS 0 - dist/default/production\final.X.production.o
 _RD6PPS E70 0 ABS 0 - dist/default/production\final.X.production.o
 _RE2PPS E74 0 ABS 0 - dist/default/production\final.X.production.o
-_on_period D7 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_on_period F7 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 _RX4PPS E15 0 ABS 0 - dist/default/production\final.X.production.o
 __pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
-__end_of_color_processor_easy 17D8 0 CODE 0 text23 dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_Start 1D88 0 CODE 0 text28 dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_Write 1D5E 0 CODE 0 text26 dist/default/production\final.X.production.o
+__end_of_color_processor_easy 1834 0 CODE 0 text23 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_Start 1DE4 0 CODE 0 text28 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_Write 1DBA 0 CODE 0 text26 dist/default/production\final.X.production.o
 color_read@rgb E 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 _TX4REG EE4 0 ABS 0 - dist/default/production\final.X.production.o
 I2C_2_Master_Write@data_byte 4 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-isa$xinst 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
+isa$xinst 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
 fputc@fp 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 fputs@fp E 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/production\final.X.production.o
@@ -642,7 +646,7 @@ __Hconst 0 0 CONST 0 const dist/default/production\final.X.production.o
 __Hidata 0 0 CODE 0 idata dist/default/production\final.X.production.o
 __Hidloc 200010 0 IDLOC 5 idloc dist/default/production\final.X.production.o
 __Hnvbit 0 0 COMRAM 1 nvbit dist/default/production\final.X.production.o
-_color_read_Green 19EA 0 CODE 0 text19 dist/default/production\final.X.production.o
+_color_read_Green 1A46 0 CODE 0 text19 dist/default/production\final.X.production.o
 __Hparam 0 0 COMRAM 1 rparam dist/default/production\final.X.production.o
 __Hrdata 0 0 COMRAM 1 rdata dist/default/production\final.X.production.o
 __Hstack 0 0 STACK 2 stack dist/default/production\final.X.production.o
@@ -656,7 +660,7 @@ __Htext6 0 0 ABS 0 text6 dist/default/production\final.X.production.o
 __Htext7 0 0 ABS 0 text7 dist/default/production\final.X.production.o
 __Htext8 0 0 ABS 0 text8 dist/default/production\final.X.production.o
 __Htext9 0 0 ABS 0 text9 dist/default/production\final.X.production.o
-_write16bitTMR0val 1D88 0 CODE 0 text34 dist/default/production\final.X.production.o
+_write16bitTMR0val 1DE4 0 CODE 0 text34 dist/default/production\final.X.production.o
 __Hbank10 0 0 ABS 0 bank10 dist/default/production\final.X.production.o
 __Hbank11 0 0 ABS 0 bank11 dist/default/production\final.X.production.o
 __Hbank12 0 0 ABS 0 bank12 dist/default/production\final.X.production.o
@@ -664,8 +668,8 @@ __Hbank13 0 0 ABS 0 bank13 dist/default/production\final.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\final.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production\final.X.production.o
 __Hbigsfr 0 0 ABS 0 bigsfr dist/default/production\final.X.production.o
-__smallconst E00 0 SMALLCONST 0 smallconst C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-__end_of_sprintf 194A 0 CODE 0 text1 dist/default/production\final.X.production.o
+__smallconst E00 0 SMALLCONST 0 smallconst C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+__end_of_sprintf 19A6 0 CODE 0 text1 dist/default/production\final.X.production.o
 __end_of_HighISR 54 0 CODE 0 intcode dist/default/production\final.X.production.o
 __Hcomram 0 0 ABS 0 comram dist/default/production\final.X.production.o
 __Hconfig 30000C 0 CONFIG 4 config dist/default/production\final.X.production.o
@@ -698,9 +702,9 @@ __Ltext6 0 0 ABS 0 text6 dist/default/production\final.X.production.o
 __Ltext7 0 0 ABS 0 text7 dist/default/production\final.X.production.o
 __Ltext8 0 0 ABS 0 text8 dist/default/production\final.X.production.o
 __Ltext9 0 0 ABS 0 text9 dist/default/production\final.X.production.o
-_I2C_2_Master_Start 1D7E 0 CODE 0 text28 dist/default/production\final.X.production.o
+_I2C_2_Master_Start 1DDA 0 CODE 0 text28 dist/default/production\final.X.production.o
 initDCmotorsPWM@PWMperiod 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-_I2C_2_Master_Write 1D52 0 CODE 0 text26 dist/default/production\final.X.production.o
+_I2C_2_Master_Write 1DAE 0 CODE 0 text26 dist/default/production\final.X.production.o
 __Hfarbss 0 0 FARRAM 0 farbss dist/default/production\final.X.production.o
 __Lintcode_body 0 0 ABS 0 intcode_body dist/default/production\final.X.production.o
 _PORTFbits F8E 0 ABS 0 - dist/default/production\final.X.production.o
@@ -724,33 +728,33 @@ __Ltext 0 0 ABS 0 text dist/default/production\final.X.production.o
 ___aodiv@counter 13 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 _SSP2CON2 EDA 0 ABS 0 - dist/default/production\final.X.production.o
 _SSP2STAT ED8 0 ABS 0 - dist/default/production\final.X.production.o
-_TxBufReadCnt DA 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_TxBufReadCnt FA 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 ___aomod@sign 14 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/production\final.X.production.o
 int$flags 5D 0 COMRAM 1 temp dist/default/production\final.X.production.o
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\final.X.production.o
-_Timer0_init 1CFC 0 CODE 0 text31 dist/default/production\final.X.production.o
+_Timer0_init 1D58 0 CODE 0 text31 dist/default/production\final.X.production.o
 __Hintret 0 0 ABS 0 intret dist/default/production\final.X.production.o
 __Hirdata 0 0 CODE 0 irdata dist/default/production\final.X.production.o
-__S0 1D94 0 ABS 0 - dist/default/production\final.X.production.o
-__S1 13C 0 ABS 0 - dist/default/production\final.X.production.o
+__S0 1DF0 0 ABS 0 - dist/default/production\final.X.production.o
+__S1 170 0 ABS 0 - dist/default/production\final.X.production.o
 __S4 0 0 ABS 0 - dist/default/production\final.X.production.o
 __S5 0 0 ABS 0 - dist/default/production\final.X.production.o
-_abs 1BEC 0 CODE 0 text9 dist/default/production\final.X.production.o
-_pad 187E 0 CODE 0 text5 dist/default/production\final.X.production.o
+_abs 1C48 0 CODE 0 text9 dist/default/production\final.X.production.o
+_pad 18DA 0 CODE 0 text5 dist/default/production\final.X.production.o
 write16bitTMR0val@tmp 1 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 _TX4STAbits EE8 0 ABS 0 - dist/default/production\final.X.production.o
-_color_read_Red 194A 0 CODE 0 text17 dist/default/production\final.X.production.o
+_color_read_Red 19A6 0 CODE 0 text17 dist/default/production\final.X.production.o
 _BAUD4CONbits EE9 0 ABS 0 - dist/default/production\final.X.production.o
 ___aodiv@sign 14 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Lbigdata 0 0 BIGRAM 1 bigdata dist/default/production\final.X.production.o
 __Hnvrram 0 0 COMRAM 1 nvrram dist/default/production\final.X.production.o
 sprintf@fmt 62 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
-_dtoa$2145 30 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__end_of_abs 1C2C 0 CODE 0 text9 dist/default/production\final.X.production.o
-__end_of_pad 18F8 0 CODE 0 text5 dist/default/production\final.X.production.o
+_dtoa$2147 30 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
+__end_of_abs 1C88 0 CODE 0 text9 dist/default/production\final.X.production.o
+__end_of_pad 1954 0 CODE 0 text5 dist/default/production\final.X.production.o
 __Lintentry 0 0 ABS 0 intentry dist/default/production\final.X.production.o
-_color_click_init 1AD8 0 CODE 0 text24 dist/default/production\final.X.production.o
+_color_click_init 1B34 0 CODE 0 text24 dist/default/production\final.X.production.o
 __Hramtop E00 0 RAM 0 ramtop dist/default/production\final.X.production.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/production\final.X.production.o
 color_processor_easy@rgb 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
@@ -782,39 +786,39 @@ __Htext30 0 0 ABS 0 text30 dist/default/production\final.X.production.o
 __Htext31 0 0 ABS 0 text31 dist/default/production\final.X.production.o
 __Htext32 0 0 ABS 0 text32 dist/default/production\final.X.production.o
 __Htext34 0 0 ABS 0 text34 dist/default/production\final.X.production.o
-__end_of_color_read_Green 1A3A 0 CODE 0 text19 dist/default/production\final.X.production.o
+__end_of_color_read_Green 1A96 0 CODE 0 text19 dist/default/production\final.X.production.o
 vfpfcnvrt@fmt 43 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-_color_read 17D8 0 CODE 0 text16 dist/default/production\final.X.production.o
+_color_read 1834 0 CODE 0 text16 dist/default/production\final.X.production.o
 _PIE0bits E29 0 ABS 0 - dist/default/production\final.X.production.o
 pad@buf 15 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__end_of_sendStringSerial4 1C5C 0 CODE 0 text12 dist/default/production\final.X.production.o
+__end_of_sendStringSerial4 1CB8 0 CODE 0 text12 dist/default/production\final.X.production.o
 _RxBufWriteCnt 5C 0 COMRAM 1 bssCOMRAM dist/default/production\final.X.production.o
-__ptext10 139E 0 CODE 0 text10 dist/default/production\final.X.production.o
-__ptext11 1216 0 CODE 0 text11 dist/default/production\final.X.production.o
-__ptext12 1C2C 0 CODE 0 text12 dist/default/production\final.X.production.o
-__ptext13 1D3A 0 CODE 0 text13 dist/default/production\final.X.production.o
-__ptext14 1D1C 0 CODE 0 text14 dist/default/production\final.X.production.o
-__ptext15 1B20 0 CODE 0 text15 dist/default/production\final.X.production.o
-__ptext16 17D8 0 CODE 0 text16 dist/default/production\final.X.production.o
-__ptext17 194A 0 CODE 0 text17 dist/default/production\final.X.production.o
-__ptext18 199A 0 CODE 0 text18 dist/default/production\final.X.production.o
-__ptext19 19EA 0 CODE 0 text19 dist/default/production\final.X.production.o
-__ptext20 1A3A 0 CODE 0 text20 dist/default/production\final.X.production.o
-__ptext21 1D6A 0 CODE 0 text21 dist/default/production\final.X.production.o
-__ptext22 1BAA 0 CODE 0 text22 dist/default/production\final.X.production.o
-__ptext23 171A 0 CODE 0 text23 dist/default/production\final.X.production.o
-__ptext24 1AD8 0 CODE 0 text24 dist/default/production\final.X.production.o
-__ptext25 1CDC 0 CODE 0 text25 dist/default/production\final.X.production.o
-__ptext26 1D52 0 CODE 0 text26 dist/default/production\final.X.production.o
-__ptext27 1D74 0 CODE 0 text27 dist/default/production\final.X.production.o
-__ptext28 1D7E 0 CODE 0 text28 dist/default/production\final.X.production.o
-__ptext29 1CB4 0 CODE 0 text29 dist/default/production\final.X.production.o
-__ptext30 1C8A 0 CODE 0 text30 dist/default/production\final.X.production.o
-__ptext31 1CFC 0 CODE 0 text31 dist/default/production\final.X.production.o
-__ptext32 1D5E 0 CODE 0 text32 dist/default/production\final.X.production.o
-__ptext34 1D88 0 CODE 0 text34 dist/default/production\final.X.production.o
-___aodiv 1216 0 CODE 0 text11 dist/default/production\final.X.production.o
-___aomod 139E 0 CODE 0 text10 dist/default/production\final.X.production.o
+__ptext10 13FA 0 CODE 0 text10 dist/default/production\final.X.production.o
+__ptext11 1272 0 CODE 0 text11 dist/default/production\final.X.production.o
+__ptext12 1C88 0 CODE 0 text12 dist/default/production\final.X.production.o
+__ptext13 1D96 0 CODE 0 text13 dist/default/production\final.X.production.o
+__ptext14 1D78 0 CODE 0 text14 dist/default/production\final.X.production.o
+__ptext15 1B7C 0 CODE 0 text15 dist/default/production\final.X.production.o
+__ptext16 1834 0 CODE 0 text16 dist/default/production\final.X.production.o
+__ptext17 19A6 0 CODE 0 text17 dist/default/production\final.X.production.o
+__ptext18 19F6 0 CODE 0 text18 dist/default/production\final.X.production.o
+__ptext19 1A46 0 CODE 0 text19 dist/default/production\final.X.production.o
+__ptext20 1A96 0 CODE 0 text20 dist/default/production\final.X.production.o
+__ptext21 1DC6 0 CODE 0 text21 dist/default/production\final.X.production.o
+__ptext22 1C06 0 CODE 0 text22 dist/default/production\final.X.production.o
+__ptext23 1776 0 CODE 0 text23 dist/default/production\final.X.production.o
+__ptext24 1B34 0 CODE 0 text24 dist/default/production\final.X.production.o
+__ptext25 1D38 0 CODE 0 text25 dist/default/production\final.X.production.o
+__ptext26 1DAE 0 CODE 0 text26 dist/default/production\final.X.production.o
+__ptext27 1DD0 0 CODE 0 text27 dist/default/production\final.X.production.o
+__ptext28 1DDA 0 CODE 0 text28 dist/default/production\final.X.production.o
+__ptext29 1D10 0 CODE 0 text29 dist/default/production\final.X.production.o
+__ptext30 1CE6 0 CODE 0 text30 dist/default/production\final.X.production.o
+__ptext31 1D58 0 CODE 0 text31 dist/default/production\final.X.production.o
+__ptext32 1DBA 0 CODE 0 text32 dist/default/production\final.X.production.o
+__ptext34 1DE4 0 CODE 0 text34 dist/default/production\final.X.production.o
+___aodiv 1272 0 CODE 0 text11 dist/default/production\final.X.production.o
+___aomod 13FA 0 CODE 0 text10 dist/default/production\final.X.production.o
 __Lbank10 0 0 ABS 0 bank10 dist/default/production\final.X.production.o
 __Lbank11 0 0 ABS 0 bank11 dist/default/production\final.X.production.o
 __Lbank12 0 0 ABS 0 bank12 dist/default/production\final.X.production.o
@@ -823,7 +827,7 @@ __Lbigbss 0 0 BIGRAM 1 bigbss dist/default/production\final.X.production.o
 __Lbigram 0 0 ABS 0 bigram dist/default/production\final.X.production.o
 __Lbigsfr 0 0 ABS 0 bigsfr dist/default/production\final.X.production.o
 color_read_Red@tmp C 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__end_of_color_read_Red 199A 0 CODE 0 text17 dist/default/production\final.X.production.o
+__end_of_color_read_Red 19F6 0 CODE 0 text17 dist/default/production\final.X.production.o
 __Lcomram 0 0 ABS 0 comram dist/default/production\final.X.production.o
 __Lconfig 0 0 CONFIG 4 config dist/default/production\final.X.production.o
 _LATCbits F7B 0 ABS 0 - dist/default/production\final.X.production.o
@@ -832,23 +836,23 @@ _LATEbits F7D 0 ABS 0 - dist/default/production\final.X.production.o
 _LATFbits F7E 0 ABS 0 - dist/default/production\final.X.production.o
 _LATGbits F7F 0 ABS 0 - dist/default/production\final.X.production.o
 _LATHbits F80 0 ABS 0 - dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_Idle 1CDC 0 CODE 0 text29 dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_Init 1CB4 0 CODE 0 text30 dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_Read 1BEC 0 CODE 0 text22 dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_Stop 1D7E 0 CODE 0 text27 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_Idle 1D38 0 CODE 0 text29 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_Init 1D10 0 CODE 0 text30 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_Read 1C48 0 CODE 0 text22 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_Stop 1DDA 0 CODE 0 text27 dist/default/production\final.X.production.o
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\final.X.production.o
 ?_color_read_Red 7 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\final.X.production.o
-isa$std 1 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-_EUSART4RXbuf BD 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+isa$std 1 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+_EUSART4RXbuf 13C 0 BANK1 1 bssBANK1 dist/default/production\final.X.production.o
 _EUSART4TXbuf 100 0 BANK1 1 bssBANK1 dist/default/production\final.X.production.o
-stackhi 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-stacklo 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-main@color_flag AB 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
+stackhi 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+stacklo 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+main@color_flag DF 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production\final.X.production.o
 __Lintret 0 0 ABS 0 intret dist/default/production\final.X.production.o
 __Lirdata 0 0 CODE 0 irdata dist/default/production\final.X.production.o
-_initUSART4 1D1C 0 CODE 0 text14 dist/default/production\final.X.production.o
+_initUSART4 1D78 0 CODE 0 text14 dist/default/production\final.X.production.o
 __Lspace_0 0 0 ABS 0 - dist/default/production\final.X.production.o
 __Lspace_1 0 0 ABS 0 - dist/default/production\final.X.production.o
 __Lspace_2 0 0 ABS 0 - dist/default/production\final.X.production.o
@@ -861,10 +865,10 @@ ___aodiv@divisor B 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.produ
 vfpfcnvrt@convarg 49 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 ___aodiv@dividend 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/production\final.X.production.o
-main@readout 79 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
-__end_of_color_read 187E 0 CODE 0 text16 dist/default/production\final.X.production.o
-end_of_initialization 1C78 0 CODE 0 cinit dist/default/production\final.X.production.o
-__end_of_color_click_init 1B20 0 CODE 0 text24 dist/default/production\final.X.production.o
+main@readout 7B 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
+__end_of_color_read 18DA 0 CODE 0 text16 dist/default/production\final.X.production.o
+end_of_initialization 1CD4 0 CODE 0 cinit dist/default/production\final.X.production.o
+__end_of_color_click_init 1B7C 0 CODE 0 text24 dist/default/production\final.X.production.o
 _T2CLKCONbits FBF 0 ABS 0 - dist/default/production\final.X.production.o
 __Lnvrram 0 0 COMRAM 1 nvrram dist/default/production\final.X.production.o
 __Hintentry 0 0 ABS 0 intentry dist/default/production\final.X.production.o
@@ -880,25 +884,25 @@ __Hreset_vec 4 0 CODE 0 reset_vec dist/default/production\final.X.production.o
 __HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/production\final.X.production.o
 __HbssBANK1 0 0 ABS 0 bssBANK1 dist/default/production\final.X.production.o
 sendStringSerial4@string 4 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__end_of_initDCmotorsPWM 1B66 0 CODE 0 text15 dist/default/production\final.X.production.o
+__end_of_initDCmotorsPWM 1BC2 0 CODE 0 text15 dist/default/production\final.X.production.o
 __Lramtop E00 0 RAM 0 ramtop dist/default/production\final.X.production.o
 __Lrparam 0 0 COMRAM 1 rparam dist/default/production\final.X.production.o
-__pcinit 1C5C 0 CODE 0 cinit dist/default/production\final.X.production.o
-__end_of_color_read_Blue 1A8A 0 CODE 0 text20 dist/default/production\final.X.production.o
+__pcinit 1CB8 0 CODE 0 cinit dist/default/production\final.X.production.o
+__end_of_color_read_Blue 1AE6 0 CODE 0 text20 dist/default/production\final.X.production.o
 vfpfcnvrt@ap 45 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 vfpfcnvrt@cp 51 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 vfpfcnvrt@fp 41 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__ptext0 108A 0 CODE 0 text0 dist/default/production\final.X.production.o
-__ptext1 18F8 0 CODE 0 text1 dist/default/production\final.X.production.o
-__ptext2 1A8A 0 CODE 0 text2 dist/default/production\final.X.production.o
-__ptext3 1502 0 CODE 0 text3 dist/default/production\final.X.production.o
-__ptext4 E0E 0 CODE 0 text4 dist/default/production\final.X.production.o
-__ptext5 187E 0 CODE 0 text5 dist/default/production\final.X.production.o
-__ptext6 1B66 0 CODE 0 text6 dist/default/production\final.X.production.o
-__ptext7 1650 0 CODE 0 text7 dist/default/production\final.X.production.o
-__ptext8 1D92 0 CODE 0 text8 dist/default/production\final.X.production.o
-__ptext9 1BEC 0 CODE 0 text9 dist/default/production\final.X.production.o
-__end_of_I2C_2_Master_RepStart 1D74 0 CODE 0 text21 dist/default/production\final.X.production.o
+__ptext0 1090 0 CODE 0 text0 dist/default/production\final.X.production.o
+__ptext1 1954 0 CODE 0 text1 dist/default/production\final.X.production.o
+__ptext2 1AE6 0 CODE 0 text2 dist/default/production\final.X.production.o
+__ptext3 155E 0 CODE 0 text3 dist/default/production\final.X.production.o
+__ptext4 E12 0 CODE 0 text4 dist/default/production\final.X.production.o
+__ptext5 18DA 0 CODE 0 text5 dist/default/production\final.X.production.o
+__ptext6 1BC2 0 CODE 0 text6 dist/default/production\final.X.production.o
+__ptext7 16AC 0 CODE 0 text7 dist/default/production\final.X.production.o
+__ptext8 1DEE 0 CODE 0 text8 dist/default/production\final.X.production.o
+__ptext9 1C48 0 CODE 0 text9 dist/default/production\final.X.production.o
+__end_of_I2C_2_Master_RepStart 1DD0 0 CODE 0 text21 dist/default/production\final.X.production.o
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\final.X.production.o
 vfprintf@ap 57 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 vfprintf@fp 53 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
@@ -928,61 +932,61 @@ __Ltext30 0 0 ABS 0 text30 dist/default/production\final.X.production.o
 __Ltext31 0 0 ABS 0 text31 dist/default/production\final.X.production.o
 __Ltext32 0 0 ABS 0 text32 dist/default/production\final.X.production.o
 __Ltext34 0 0 ABS 0 text34 dist/default/production\final.X.production.o
-__end_of_color_writetoaddr 1CFC 0 CODE 0 text25 dist/default/production\final.X.production.o
-_color_processor_easy 171A 0 CODE 0 text23 dist/default/production\final.X.production.o
-__ramtop E00 0 RAM 0 ramtop C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-_sprintf 18F8 0 CODE 0 text1 dist/default/production\final.X.production.o
-_sendStringSerial4 1C2C 0 CODE 0 text12 dist/default/production\final.X.production.o
+__end_of_color_writetoaddr 1D58 0 CODE 0 text25 dist/default/production\final.X.production.o
+_color_processor_easy 1776 0 CODE 0 text23 dist/default/production\final.X.production.o
+__ramtop E00 0 RAM 0 ramtop C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+_sprintf 1954 0 CODE 0 text1 dist/default/production\final.X.production.o
+_sendStringSerial4 1C88 0 CODE 0 text12 dist/default/production\final.X.production.o
 _HighISR 8 0 CODE 0 intcode dist/default/production\final.X.production.o
-_vfprintf 1A8A 0 CODE 0 text2 dist/default/production\final.X.production.o
+_vfprintf 1AE6 0 CODE 0 text2 dist/default/production\final.X.production.o
 __Lpowerup 54 0 CODE 0 powerup dist/default/production\final.X.production.o
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\final.X.production.o
-sprintf@ap 6A 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
+sprintf@ap 6C 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 __psmallconst E00 0 SMALLCONST 0 smallconst dist/default/production\final.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\final.X.production.o
-__end_of_vfprintf 1AD8 0 CODE 0 text2 dist/default/production\final.X.production.o
+__end_of_vfprintf 1B34 0 CODE 0 text2 dist/default/production\final.X.production.o
 color_processor_easy@a 9 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 color_processor_easy@b B 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 color_processor_easy@c 7 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-_I2C_2_Master_RepStart 1D6A 0 CODE 0 text21 dist/default/production\final.X.production.o
-___heap_hi 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-___heap_lo 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAsegs.o
-_I2C_2_Master_Idle 1CB4 0 CODE 0 text29 dist/default/production\final.X.production.o
-_I2C_2_Master_Init 1C8A 0 CODE 0 text30 dist/default/production\final.X.production.o
-_I2C_2_Master_Read 1BAA 0 CODE 0 text22 dist/default/production\final.X.production.o
-_I2C_2_Master_Stop 1D74 0 CODE 0 text27 dist/default/production\final.X.production.o
-__end_of_initUSART4 1D3A 0 CODE 0 text14 dist/default/production\final.X.production.o
+_I2C_2_Master_RepStart 1DC6 0 CODE 0 text21 dist/default/production\final.X.production.o
+___heap_hi 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+___heap_lo 0 0 ABS 0 - C:\Users\POOMNA~1\AppData\Local\Temp\xcAs894.o
+_I2C_2_Master_Idle 1D10 0 CODE 0 text29 dist/default/production\final.X.production.o
+_I2C_2_Master_Init 1CE6 0 CODE 0 text30 dist/default/production\final.X.production.o
+_I2C_2_Master_Read 1C06 0 CODE 0 text22 dist/default/production\final.X.production.o
+_I2C_2_Master_Stop 1DD0 0 CODE 0 text27 dist/default/production\final.X.production.o
+__end_of_initUSART4 1D96 0 CODE 0 text14 dist/default/production\final.X.production.o
 ___param_bank 0 0 ABS 0 - dist/default/production\final.X.production.o
 __Hbigdata 0 0 BIGRAM 1 bigdata dist/default/production\final.X.production.o
-__end_of__initialization 1C78 0 CODE 0 cinit dist/default/production\final.X.production.o
+__end_of__initialization 1CD4 0 CODE 0 cinit dist/default/production\final.X.production.o
 color_processor_easy@color 5 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Libigdata 0 0 CODE 0 ibigdata dist/default/production\final.X.production.o
-__end_of_color_read_Luminosity 19EA 0 CODE 0 text18 dist/default/production\final.X.production.o
+__end_of_color_read_Luminosity 1A46 0 CODE 0 text18 dist/default/production\final.X.production.o
 _SP4BRGH EE6 0 ABS 0 - dist/default/production\final.X.production.o
 _SP4BRGL EE5 0 ABS 0 - dist/default/production\final.X.production.o
 __Lclrtext 0 0 ABS 0 clrtext dist/default/production\final.X.production.o
-__end_of_Timer0_init 1D1C 0 CODE 0 text31 dist/default/production\final.X.production.o
-_initDCmotorsPWM 1B20 0 CODE 0 text15 dist/default/production\final.X.production.o
+__end_of_Timer0_init 1D78 0 CODE 0 text31 dist/default/production\final.X.production.o
+_initDCmotorsPWM 1B7C 0 CODE 0 text15 dist/default/production\final.X.production.o
 __pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 _T0CON0bits FD5 0 ABS 0 - dist/default/production\final.X.production.o
 _T0CON1bits FD6 0 ABS 0 - dist/default/production\final.X.production.o
-_color_read_Blue 1A3A 0 CODE 0 text20 dist/default/production\final.X.production.o
+_color_read_Blue 1A96 0 CODE 0 text20 dist/default/production\final.X.production.o
 _SSP2ADD ED6 0 ABS 0 - dist/default/production\final.X.production.o
 _SSP2BUF ED5 0 ABS 0 - dist/default/production\final.X.production.o
-sprintf@f 6C 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
+sprintf@f 6E 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 sprintf@s 60 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
-_color_read_Luminosity 199A 0 CODE 0 text18 dist/default/production\final.X.production.o
+_color_read_Luminosity 19F6 0 CODE 0 text18 dist/default/production\final.X.production.o
 ?_color_read_Green 7 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__end_of_dtoa 108A 0 CODE 0 text4 dist/default/production\final.X.production.o
-__end_of_main 1216 0 CODE 0 text0 dist/default/production\final.X.production.o
-__end_of_sendCharSerial4 1D52 0 CODE 0 text13 dist/default/production\final.X.production.o
+__end_of_dtoa 1090 0 CODE 0 text4 dist/default/production\final.X.production.o
+__end_of_main 1272 0 CODE 0 text0 dist/default/production\final.X.production.o
+__end_of_sendCharSerial4 1DAE 0 CODE 0 text13 dist/default/production\final.X.production.o
 __pintcode 8 0 CODE 0 intcode dist/default/production\final.X.production.o
-__end_of_fputc 171A 0 CODE 0 text7 dist/default/production\final.X.production.o
-__end_of_fputs 1BAA 0 CODE 0 text6 dist/default/production\final.X.production.o
+__end_of_fputc 1776 0 CODE 0 text7 dist/default/production\final.X.production.o
+__end_of_fputs 1C06 0 CODE 0 text6 dist/default/production\final.X.production.o
 ?_sprintf 60 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 _TMR0H FD4 0 ABS 0 - dist/default/production\final.X.production.o
 _TMR0L FD3 0 ABS 0 - dist/default/production\final.X.production.o
-__end_of_putch 1D94 0 CODE 0 text8 dist/default/production\final.X.production.o
+__end_of_putch 1DF0 0 CODE 0 text8 dist/default/production\final.X.production.o
 _RC4STAbits EE7 0 ABS 0 - dist/default/production\final.X.production.o
 __HRAM 0 0 ABS 0 - dist/default/production\final.X.production.o
 __Hbss 0 0 RAM 1 bss dist/default/production\final.X.production.o
@@ -992,19 +996,19 @@ __LRAM 1 0 ABS 0 - dist/default/production\final.X.production.o
 __Lbss 0 0 RAM 1 bss dist/default/production\final.X.production.o
 __Lram 0 0 ABS 0 ram dist/default/production\final.X.production.o
 __Lsfr 0 0 ABS 0 sfr dist/default/production\final.X.production.o
-_flags D9 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
-_fputc 1650 0 CODE 0 text7 dist/default/production\final.X.production.o
-_fputs 1B66 0 CODE 0 text6 dist/default/production\final.X.production.o
-_putch 1D92 0 CODE 0 text8 dist/default/production\final.X.production.o
-_width D1 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_flags F9 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+_fputc 16AC 0 CODE 0 text7 dist/default/production\final.X.production.o
+_fputs 1BC2 0 CODE 0 text6 dist/default/production\final.X.production.o
+_putch 1DEE 0 CODE 0 text8 dist/default/production\final.X.production.o
+_width F1 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 ?_color_processor_easy 3 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
-__initialization 1C5C 0 CODE 0 cinit dist/default/production\final.X.production.o
-__pbssBANK0 BD 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
+__initialization 1CB8 0 CODE 0 cinit dist/default/production\final.X.production.o
+__pbssBANK0 F1 0 BANK0 1 bssBANK0 dist/default/production\final.X.production.o
 __pbssBANK1 100 0 BANK1 1 bssBANK1 dist/default/production\final.X.production.o
 _T2CONbits FBD 0 ABS 0 - dist/default/production\final.X.production.o
 __Hfardata 0 0 FARRAM 0 fardata dist/default/production\final.X.production.o
-_color_writetoaddr 1CDC 0 CODE 0 text25 dist/default/production\final.X.production.o
-__Hsmallconst E0E 0 SMALLCONST 0 smallconst dist/default/production\final.X.production.o
+_color_writetoaddr 1D38 0 CODE 0 text25 dist/default/production\final.X.production.o
+__Hsmallconst E12 0 SMALLCONST 0 smallconst dist/default/production\final.X.production.o
 dtoa@d 20 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 dtoa@i 3E 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 dtoa@n 36 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
@@ -1012,7 +1016,7 @@ dtoa@p 32 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 dtoa@s 40 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 dtoa@w 34 0 COMRAM 1 cstackCOMRAM dist/default/production\final.X.production.o
 __Lifardata 0 0 CODE 0 ifardata dist/default/production\final.X.production.o
-main@RGB_calibrated B5 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
+main@RGB_calibrated E9 0 BANK0 1 cstackBANK0 dist/default/production\final.X.production.o
 _SSP2CLKPPS E1C 0 ABS 0 - dist/default/production\final.X.production.o
 _ANSELDbits EA7 0 ABS 0 - dist/default/production\final.X.production.o
 _ANSELFbits EB4 0 ABS 0 - dist/default/production\final.X.production.o
@@ -1043,13 +1047,13 @@ __Hintcode 54 0 CODE 0 intcode dist/default/production\final.X.production.o
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-text4 0 E0E E0E F86 1
+text4 0 E12 E12 FDE 1
 cstackCOMRAM 1 1 1 5D 1
 cstackBANK0 1 60 60 9C 1
 reset_vec 0 0 0 4 1
-bssBANK1 1 100 100 3C 1
+bssBANK1 1 100 100 70 1
 intcode 0 8 8 50 1
-smallconst 0 E00 E00 E 1
+smallconst 0 E00 E00 12 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal
