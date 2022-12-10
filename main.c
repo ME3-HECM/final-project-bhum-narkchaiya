@@ -45,7 +45,6 @@ void main(void) {
     setMotorPWM(&motorR);
     
     //color variables
-    unsigned int color_flag; //interrupt when card is in front of buggy
     unsigned int color_name;
     unsigned int color_path[15];
     int color_calibrated[32];
@@ -59,13 +58,12 @@ void main(void) {
     int j; //iterator
 
     while (1) {
-//        //calibration for stopping at a card
-//        color_read(&L_calibrated);    
-//        char readout1[100];
-//        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-//        sendStringSerial4(readout1);
-//        __delay_ms(500);
-        
+        //calibration for stopping at a card
+        color_read(&L_calibrated);    
+        char readout1[100];
+        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+        sendStringSerial4(readout1);
+        __delay_ms(500);
         
         //calibration for detecting color of the card
         while (PORTFbits.RF3); //wait for button press on F3
@@ -76,10 +74,10 @@ void main(void) {
             color_calibrated[4*i+2] = RGB_calibrated.G;
             color_calibrated[4*i+3] = RGB_calibrated.B;
             LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
-            //serial communication
+            
             char readout2[100];
             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-            sendStringSerial4(readout2);
+            sendStringSerial4(readout2); //serial communication
             __delay_ms(2000);
             LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
             __delay_ms(2000);
