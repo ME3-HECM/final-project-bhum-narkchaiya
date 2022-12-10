@@ -33,20 +33,20 @@
 ## 2. Calibration
 
 ### i. Color Interpretation
-The calibration sequence for color will store the LRGB values for the 8 colors in an array. This will be used later in 4.ii to interpret the card during maze navigation.
+The calibration sequence for color will store the LRGB values for the 8 colors in an array (holds 32 values total). This will be used later in 4.ii to interpret the card during maze navigation.
 This will occur when the H3 LED turns on. The user will have 4 seconds from then to change to the next color. The H3 LED will indicate the first two seconds by turning on, and the second two seconds by turning off.
 
 ```C
 for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
-            color_read(&RGB_calibrated);
-            color_calibrated[4*i] = RGB_calibrated.L;
-            color_calibrated[4*i+1] = RGB_calibrated.R;
-            color_calibrated[4*i+2] = RGB_calibrated.G;
-            color_calibrated[4*i+3] = RGB_calibrated.B;
-            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
-            __delay_ms(2000);
-            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
-            __delay_ms(2000);
+	color_read(&RGB_calibrated);
+        color_calibrated[4*i] = RGB_calibrated.L;
+        color_calibrated[4*i+1] = RGB_calibrated.R;
+        color_calibrated[4*i+2] = RGB_calibrated.G;
+        color_calibrated[4*i+3] = RGB_calibrated.B;
+        LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
+        __delay_ms(2000);
+        LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
+        __delay_ms(2000);
 }
 ```
 ### ii. Card Detection
