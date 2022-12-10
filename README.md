@@ -17,13 +17,13 @@
 6. return home
 
 ## Initialisation functions
-1. Turn on buggy LEDs
-2. Assign color click tri-color LEDs to registers
-3. Enable I2C communication with color click board
-4. Enable USART4 serial communication for debugging (at 9600 baud rate)
-5. Assign motor control to registers
-6. Enable ADC converter
-7. Set up timer TMR0 interrupt
+- Turn on buggy LEDs
+- Assign color click tri-color LEDs to registers
+- Enable I2C communication with color click board
+- Enable USART4 serial communication for debugging (at 9600 baud rate)
+- Assign motor control to registers
+- Enable ADC converter
+- Set up timer TMR0 interrupt
 
 ## Calibration
 ### Stopping Distance
