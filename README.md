@@ -19,6 +19,7 @@
 	3. motor action
 	4. store path
 5. return home
+6. sleepy time
 
 ## 1. Initialisation functions
 - Turn on buggy LEDs
@@ -39,7 +40,16 @@ The calibration sequence for color will store the LRGB values for the 8 colors i
 ## 3. Mode Selector
 There are two modes (easy/hard) that can be selected with the F2 and F3 buttons on the clicker board. The easy mode will be able to differentiate between red, blue, and green. Whereas, the hard mode will be able to interpret all 8 colors of the cards.
 ## 4. Maze Navigation
+```C
+stop(&motorL,&motorR); //stop the buggy
+color_read(&RGB_recorded); //read RGB values of card
+if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color detection for easy mode
+else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);} //color detection for hard mode 
+color_path[j] = color_name; //store color to array
+time_path[j] = time;
+```
 ### i. Reading Color
+The LRGB colors will be read and stored into the structure
 
 ### ii. Interpreting Color
 ### iii. Motor Action
