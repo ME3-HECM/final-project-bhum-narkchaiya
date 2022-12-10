@@ -47,12 +47,25 @@ if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color d
 else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);} //color detection for hard mode 
 color_path[j] = color_name; //store color to array
 time_path[j] = time; //store time taken from the last action to array
+motor_action(color_name,&motorL,&motorR);
 ```
 ### i. Reading Color
 The LRGB colors will be read and stored into the structure
 
 ### ii. Interpreting Color
 ### iii. Motor Action
+The color_name variable will be input to the motor_action() function. This function makes use of the switch...case statement, where each number corresponds to a color. For each color, there will be a specific action summarised below in the table.
+Colour | Case | Instruction
+---------|---------|---------
+Red | 1 | Turn Right 90
+Green | 4 | Turn Left 90
+Blue | 5 | Turn 180
+Yellow | 3 | Reverse 1 square and turn right 90
+Pink | 7 | Reverse 1 square and turn left 90
+Orange | 2 | Turn Right 135
+Light blue | 6 | Turn Left 135 
+White | 8 | Finish (return home)
+Black | 9 | Maze wall colour
 ### iv. Storage of Path
 
 ## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
