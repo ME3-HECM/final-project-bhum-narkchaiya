@@ -46,7 +46,7 @@ color_read(&RGB_recorded); //read RGB values of card
 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color detection for easy mode
 else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);} //color detection for hard mode 
 color_path[j] = color_name; //store color to array
-time_path[j] = time;
+time_path[j] = time; //store time taken from the last action to array
 ```
 ### i. Reading Color
 The LRGB colors will be read and stored into the structure
