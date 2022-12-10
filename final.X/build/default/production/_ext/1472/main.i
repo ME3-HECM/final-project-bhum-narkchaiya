@@ -24283,7 +24283,7 @@ unsigned int color_read_Blue(void);
 
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated);
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated);
 # 11 "../main.c" 2
 
 # 1 "../i2c.h" 1
@@ -24583,20 +24583,18 @@ void main(void) {
     unsigned int color_flag;
     unsigned int color_name;
     unsigned int color_path[15];
+    int color_calibrated[32];
+    struct RGB_val RGB_calibrated;
+    struct RGB_val L_calibrated;
     struct RGB_val RGB_recorded;
+
 
     unsigned int time_path[15];
     unsigned int time_return;
-    unsigned int time_flag;
     int j;
-    unsigned int home = 0;
 
-    int color_calibrated[32];
-    struct RGB_val RGB_calibrated;
-    struct RGB_val distance_calibration;
-# 70 "../main.c"
     while (1) {
-# 80 "../main.c"
+# 71 "../main.c"
         while (PORTFbits.RF3);
         for (int i=0;i<8;i++){
             color_read(&RGB_calibrated);
@@ -24628,7 +24626,7 @@ void main(void) {
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);
                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
-
+                else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
                 color_path[j] = color_name;
                 time_path[j] = time;
 

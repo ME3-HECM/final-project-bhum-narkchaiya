@@ -24,9 +24,9 @@ void main(void) {
     Interrupts_init(); //light sensor interrupt
     Timer0_init(); //timer interrupt
     I2C_2_Master_Init(); //serial communication
-    initUSART4(); //serial communication
-    
-    //
+    initUSART4(); //serial communication Baud=9600, Port 3
+
+    //motor initialisation
     struct DC_motor motorL, motorR; //create structures for both sides motors
     unsigned char PWMcycle = 200; //set PWMcycle for motor
     motorL.power = 0; //initial motor power
@@ -48,28 +48,19 @@ void main(void) {
     unsigned int color_flag; //interrupt when card is in front of buggy
     unsigned int color_name;
     unsigned int color_path[15];
-    struct RGB_val RGB_recorded;
-    
-    unsigned int time_path[15];
-    unsigned int time_return;
-    unsigned int time_flag; //timer interrupt flag
-    int j; //iterator for storing path of buggy
-    unsigned int home = 0;
-    
     int color_calibrated[32];
     struct RGB_val RGB_calibrated;
-    struct RGB_val distance_calibration;
+    struct RGB_val L_calibrated;
+    struct RGB_val RGB_recorded;
     
-    
-    //serial communication for color readout on RealTerm: Baud=9600, Port 3
-//    color_read(&RGB_calibrated);
-//    char readout[50];
-//    sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-//    sendStringSerial4(readout);
+    //path storage variables
+    unsigned int time_path[15];
+    unsigned int time_return;
+    int j; //iterator
 
     while (1) {
 //        //calibration for stopping at a card
-//        color_read(&distance_calibration);    
+//        color_read(&L_calibrated);    
 //        char readout1[100];
 //        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
 //        sendStringSerial4(readout1);
@@ -108,7 +99,7 @@ void main(void) {
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card
                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color detection for easy mode
-                //else {color_name = color_processor_hard(&RGB_recorded,&color_calibrated);} //color detection for hard mode 
+                else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);} //color detection for hard mode 
                 color_path[j] = color_name; //store color to array
                 time_path[j] = time; //store time taken from the last action to array
                 
@@ -130,7 +121,7 @@ void main(void) {
         spin_180(&motorL,&motorR);
         for (int k=0;k<15;k++){
             INTCONbits.GIE = 0; //turn off global interrupts
-            time_return = 0; //reset clock for this action
+            time_return = 0; //reset clock
             motor_action(color_path[k],&motorL,&motorR); //need to write opposite functions
             forward(&motorL,&motorR);
             while (time_return < time_path[k]) { 

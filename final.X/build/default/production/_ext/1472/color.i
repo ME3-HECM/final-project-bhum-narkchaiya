@@ -24273,7 +24273,7 @@ unsigned int color_read_Blue(void);
 
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated);
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated);
 # 2 "../color.c" 2
 
 # 1 "../i2c.h" 1
@@ -24437,26 +24437,33 @@ unsigned int color_processor_easy(struct RGB_val *rgb)
     unsigned int b = rgb->G;
     unsigned int c = rgb->B;
     unsigned int color;
-    if (a>=b & a>=c){color=1;}
-    else if (b>=a & b>=c){color=2;}
-    else {color=3;}
+    if (a>=b & a>=c){
+        color=1;
+    }
+    else if (b>=a & b>=c){
+        color=2;
+    }
+    else {
+        color=3;
+    }
     return color;
 }
 
-unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated)
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
 {
     unsigned int r = rgb->R;
     unsigned int g = rgb->G;
     unsigned int b = rgb->B;
-    unsigned int cr = calibrated->R;
-    unsigned int cg = calibrated->G;
-    unsigned int cb = calibrated->B;
 
-    _Bool condition_r = r>cr-20 && r<cr+20;
-    _Bool condition_g = b>cb-20 && b<cb+20;
-    _Bool condition_b = g>cg-20 && g<cg+20;
 
-    for (int i=0;i<9;i++){
+    for (int i=0;i<8;i++){
+        unsigned int cr = calibrated[4*i+1];
+        unsigned int cg = calibrated[4*i+2];
+        unsigned int cb = calibrated[4*i+3];
+        _Bool condition_r = r>cr-20 && r<cr+20;
+        _Bool condition_g = b>cb-20 && b<cb+20;
+        _Bool condition_b = g>cg-20 && g<cg+20;
+
         if (condition_r && condition_g && condition_b){
             return i;
         }

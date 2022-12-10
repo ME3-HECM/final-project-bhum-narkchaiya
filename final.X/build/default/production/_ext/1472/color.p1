@@ -2460,115 +2460,127 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../color.c: 139:     unsigned int color;
 [v _color `ui ~T0 @X0 1 a ]
 "140
-[; ;../color.c: 140:     if (a>=b & a>=c){color=1;}
+[; ;../color.c: 140:     if (a>=b & a>=c){
 [e $ ! & >= _a _b >= _a _c 2024  ]
 {
+"141
+[; ;../color.c: 141:         color=1;
 [e = _color -> -> 1 `i `ui ]
+"142
+[; ;../color.c: 142:     }
 }
 [e $U 2025  ]
-"141
-[; ;../color.c: 141:     else if (b>=a & b>=c){color=2;}
+"143
+[; ;../color.c: 143:     else if (b>=a & b>=c){
 [e :U 2024 ]
 [e $ ! & >= _b _a >= _b _c 2026  ]
 {
+"144
+[; ;../color.c: 144:         color=2;
 [e = _color -> -> 2 `i `ui ]
+"145
+[; ;../color.c: 145:     }
 }
 [e $U 2027  ]
-"142
-[; ;../color.c: 142:     else {color=3;}
+"146
+[; ;../color.c: 146:     else {
 [e :U 2026 ]
 {
+"147
+[; ;../color.c: 147:         color=3;
 [e = _color -> -> 3 `i `ui ]
+"148
+[; ;../color.c: 148:     }
 }
 [e :U 2027 ]
 [e :U 2025 ]
-"143
-[; ;../color.c: 143:     return color;
+"149
+[; ;../color.c: 149:     return color;
 [e ) _color ]
 [e $UE 2023  ]
-"144
-[; ;../color.c: 144: }
+"150
+[; ;../color.c: 150: }
 [e :UE 2023 ]
 }
-"146
-[; ;../color.c: 146: unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated)
-[v _color_processor_hard `(ui ~T0 @X0 1 ef2`*S2015`*S2015 ]
-"147
-[; ;../color.c: 147: {
+"152
+[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
+[v _color_processor_hard `(ui ~T0 @X0 1 ef2`*S2015`*ui ]
+"153
+[; ;../color.c: 153: {
 {
 [e :U _color_processor_hard ]
-"146
-[; ;../color.c: 146: unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated)
+"152
+[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
 [v _rgb `*S2015 ~T0 @X0 1 r1 ]
-[v _calibrated `*S2015 ~T0 @X0 1 r2 ]
-"147
-[; ;../color.c: 147: {
+[v _calibrated `*ui ~T0 @X0 1 r2 ]
+"153
+[; ;../color.c: 153: {
 [f ]
-"148
-[; ;../color.c: 148:     unsigned int r = rgb->R;
+"154
+[; ;../color.c: 154:     unsigned int r = rgb->R;
 [v _r `ui ~T0 @X0 1 a ]
 [e = _r . *U _rgb 1 ]
-"149
-[; ;../color.c: 149:     unsigned int g = rgb->G;
+"155
+[; ;../color.c: 155:     unsigned int g = rgb->G;
 [v _g `ui ~T0 @X0 1 a ]
 [e = _g . *U _rgb 2 ]
-"150
-[; ;../color.c: 150:     unsigned int b = rgb->B;
+"156
+[; ;../color.c: 156:     unsigned int b = rgb->B;
 [v _b `ui ~T0 @X0 1 a ]
 [e = _b . *U _rgb 3 ]
-"151
-[; ;../color.c: 151:     unsigned int cr = calibrated->R;
-[v _cr `ui ~T0 @X0 1 a ]
-[e = _cr . *U _calibrated 1 ]
-"152
-[; ;../color.c: 152:     unsigned int cg = calibrated->G;
-[v _cg `ui ~T0 @X0 1 a ]
-[e = _cg . *U _calibrated 2 ]
-"153
-[; ;../color.c: 153:     unsigned int cb = calibrated->B;
-[v _cb `ui ~T0 @X0 1 a ]
-[e = _cb . *U _calibrated 3 ]
-"155
-[; ;../color.c: 155:     _Bool condition_r = r>cr-20 && r<cr+20;
-[v _condition_r `a ~T0 @X0 1 a ]
-[e = _condition_r -> -> && > _r - _cr -> -> 20 `i `ui < _r + _cr -> -> 20 `i `ui `i `a ]
-"156
-[; ;../color.c: 156:     _Bool condition_g = b>cb-20 && b<cb+20;
-[v _condition_g `a ~T0 @X0 1 a ]
-[e = _condition_g -> -> && > _b - _cb -> -> 20 `i `ui < _b + _cb -> -> 20 `i `ui `i `a ]
-"157
-[; ;../color.c: 157:     _Bool condition_b = g>cg-20 && g<cg+20;
-[v _condition_b `a ~T0 @X0 1 a ]
-[e = _condition_b -> -> && > _g - _cg -> -> 20 `i `ui < _g + _cg -> -> 20 `i `ui `i `a ]
 "159
-[; ;../color.c: 159:     for (int i=0;i<9;i++){
+[; ;../color.c: 159:     for (int i=0;i<8;i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 9 `i 2029  ]
+[e $ < _i -> 8 `i 2029  ]
 [e $U 2030  ]
 [e :U 2029 ]
 {
 "160
-[; ;../color.c: 160:         if (condition_r && condition_g && condition_b){
+[; ;../color.c: 160:         unsigned int cr = calibrated[4*i+1];
+[v _cr `ui ~T0 @X0 1 a ]
+[e = _cr *U + _calibrated * -> + * -> 4 `i _i -> 1 `i `x -> -> # *U _calibrated `i `x ]
+"161
+[; ;../color.c: 161:         unsigned int cg = calibrated[4*i+2];
+[v _cg `ui ~T0 @X0 1 a ]
+[e = _cg *U + _calibrated * -> + * -> 4 `i _i -> 2 `i `x -> -> # *U _calibrated `i `x ]
+"162
+[; ;../color.c: 162:         unsigned int cb = calibrated[4*i+3];
+[v _cb `ui ~T0 @X0 1 a ]
+[e = _cb *U + _calibrated * -> + * -> 4 `i _i -> 3 `i `x -> -> # *U _calibrated `i `x ]
+"163
+[; ;../color.c: 163:         _Bool condition_r = r>cr-20 && r<cr+20;
+[v _condition_r `a ~T0 @X0 1 a ]
+[e = _condition_r -> -> && > _r - _cr -> -> 20 `i `ui < _r + _cr -> -> 20 `i `ui `i `a ]
+"164
+[; ;../color.c: 164:         _Bool condition_g = b>cb-20 && b<cb+20;
+[v _condition_g `a ~T0 @X0 1 a ]
+[e = _condition_g -> -> && > _b - _cb -> -> 20 `i `ui < _b + _cb -> -> 20 `i `ui `i `a ]
+"165
+[; ;../color.c: 165:         _Bool condition_b = g>cg-20 && g<cg+20;
+[v _condition_b `a ~T0 @X0 1 a ]
+[e = _condition_b -> -> && > _g - _cg -> -> 20 `i `ui < _g + _cg -> -> 20 `i `ui `i `a ]
+"167
+[; ;../color.c: 167:         if (condition_r && condition_g && condition_b){
 [e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2032  ]
 {
-"161
-[; ;../color.c: 161:             return i;
+"168
+[; ;../color.c: 168:             return i;
 [e ) -> _i `ui ]
 [e $UE 2028  ]
-"162
-[; ;../color.c: 162:         }
+"169
+[; ;../color.c: 169:         }
 }
 [e :U 2032 ]
-"163
-[; ;../color.c: 163:     }
+"170
+[; ;../color.c: 170:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 9 `i 2029  ]
+[e $ < _i -> 8 `i 2029  ]
 [e :U 2030 ]
 }
-"164
-[; ;../color.c: 164: }
+"171
+[; ;../color.c: 171: }
 [e :UE 2028 ]
 }
