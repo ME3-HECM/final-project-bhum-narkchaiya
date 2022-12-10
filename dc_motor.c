@@ -88,7 +88,22 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
     }
 }
 
-void reverse (struct DC_motor *mL, struct DC_motor *mR)
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mL->direction = 0;
+    for (int i = 0;i < 41;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(500);
+}
+
+void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mR->direction = 0;
@@ -179,33 +194,77 @@ void left_135(struct DC_motor *mL, struct DC_motor *mR)
 }
 
 void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
+{//1,2,3 fixed
     switch (color){
         case 1: //red: right 90
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
+            stop(l,r);
             right_90(l,r);
             break;
         case 2: //green: left 90
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
+            stop(l,r);
             left_90(l,r);
             break;
         case 3: //blue: turn 180
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
             spin_180(l,r);
+            stop(l,r);
             break;
         case 4: //yellow: rev, right 90
-            reverse(l,r);
+            reverse_onesquare(l,r);
             right_90(l,r);
             break;
         case 5: //pink: rev, left 90
-            reverse(l,r);
+            reverse_onesquare(l,r);
             left_90(l,r);
             break;
         case 6: //orange: right 135
+            reverse_fromcard(l,r);
             right_135(l,r);
             break;
         case 7: //light blue: left 135
+            reverse_fromcard(l,r);
             left_135(l,r);
             break;
         default:
             break;
     }
-            
+}
+
+void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r)
+{//4 & 5 not fixed
+    switch (color){ //opposite
+        case 1: //red: right 90
+            left_90(l,r);
+            break;
+        case 2: //green: left 90
+            right_90(l,r);
+            break;
+        case 3: //blue: turn 180
+            spin_180(l,r);
+            break;
+        case 4: //yellow: rev, right 90
+            right_90(l,r);
+            forward(l,r);
+            break;
+        case 5: //pink: rev, left 90
+            left_90(l,r);
+            forward(l,r);
+            break;
+        case 6: //orange: right 135
+            left_135(l,r);
+            break;
+        case 7: //light blue: left 135
+            right_135(l,r);
+            break;
+        default:
+            break;
+    }
 }

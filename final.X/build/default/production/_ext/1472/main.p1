@@ -127,11 +127,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "42
 [; ;../color.h: 42: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated);
 [v _color_processor_hard `(ui ~T0 @X0 0 ef2`*S2015`*ui ]
-"28 ../dc_motor.h
-[; ;../dc_motor.h: 28: void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
+"29 ../dc_motor.h
+[; ;../dc_motor.h: 29: void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
 [v _motor_action `(v ~T0 @X0 0 ef3`ui`*S2016`*S2016 ]
-"25
-[; ;../dc_motor.h: 25: void spin_180(struct DC_motor *mL, struct DC_motor *mR);
+"26
+[; ;../dc_motor.h: 26: void spin_180(struct DC_motor *mL, struct DC_motor *mR);
 [v _spin_180 `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
 "40479 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40479:     struct {

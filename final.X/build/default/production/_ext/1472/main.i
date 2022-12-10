@@ -24343,13 +24343,15 @@ void initDCmotorsPWM(int PWMperiod);
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse (struct DC_motor *mL, struct DC_motor *mR);
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
+
 void right_90(struct DC_motor *mL, struct DC_motor *mR);
 void left_90(struct DC_motor *mL, struct DC_motor *mR);
 void spin_180(struct DC_motor *mL, struct DC_motor *mR);
 void right_135(struct DC_motor *mL, struct DC_motor *mR);
 void left_135(struct DC_motor *mL, struct DC_motor *mR);
 void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
+void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r);
 # 13 "../main.c" 2
 
 # 1 "../rc_servo.h" 1

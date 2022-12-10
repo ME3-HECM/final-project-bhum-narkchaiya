@@ -24253,13 +24253,15 @@ void initDCmotorsPWM(int PWMperiod);
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse (struct DC_motor *mL, struct DC_motor *mR);
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
+
 void right_90(struct DC_motor *mL, struct DC_motor *mR);
 void left_90(struct DC_motor *mL, struct DC_motor *mR);
 void spin_180(struct DC_motor *mL, struct DC_motor *mR);
 void right_135(struct DC_motor *mL, struct DC_motor *mR);
 void left_135(struct DC_motor *mL, struct DC_motor *mR);
 void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
+void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r);
 # 2 "../dc_motor.c" 2
 
 
@@ -24350,7 +24352,22 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
     }
 }
 
-void reverse (struct DC_motor *mL, struct DC_motor *mR)
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mL->direction = 0;
+    for (int i = 0;i < 41;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((10)*(64000000/4000000.0)));
+    }
+    _delay((unsigned long)((500)*(64000000/4000.0)));
+}
+
+void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mR->direction = 0;
@@ -24444,30 +24461,74 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
 {
     switch (color){
         case 1:
+            reverse_fromcard(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            stop(l,r);
             right_90(l,r);
             break;
         case 2:
+            reverse_fromcard(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            stop(l,r);
             left_90(l,r);
             break;
         case 3:
+            reverse_fromcard(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
             spin_180(l,r);
+            stop(l,r);
             break;
         case 4:
-            reverse(l,r);
+            reverse_onesquare(l,r);
             right_90(l,r);
             break;
         case 5:
-            reverse(l,r);
+            reverse_onesquare(l,r);
             left_90(l,r);
             break;
         case 6:
+            reverse_fromcard(l,r);
             right_135(l,r);
             break;
         case 7:
+            reverse_fromcard(l,r);
             left_135(l,r);
             break;
         default:
             break;
     }
+}
 
+void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r)
+{
+    switch (color){
+        case 1:
+            left_90(l,r);
+            break;
+        case 2:
+            right_90(l,r);
+            break;
+        case 3:
+            spin_180(l,r);
+            break;
+        case 4:
+            right_90(l,r);
+            forward(l,r);
+            break;
+        case 5:
+            left_90(l,r);
+            forward(l,r);
+            break;
+        case 6:
+            left_135(l,r);
+            break;
+        case 7:
+            right_135(l,r);
+            break;
+        default:
+            break;
+    }
 }

@@ -59,12 +59,12 @@ The color_name variable will be input to the motor_action() function. This funct
 Colour | Case | Instruction
 ---------|---------|---------
 Red | 1 | Turn Right 90
-Green | 4 | Turn Left 90
-Blue | 5 | Turn 180
-Yellow | 3 | Reverse 1 square and turn right 90
-Pink | 7 | Reverse 1 square and turn left 90
-Orange | 2 | Turn Right 135
-Light blue | 6 | Turn Left 135 
+Green | 2 | Turn Left 90
+Blue | 3 | Turn 180
+Yellow | 4 | Reverse 1 square and turn right 90
+Pink | 5 | Reverse 1 square and turn left 90
+Orange | 6 | Turn Right 135
+Light blue | 7 | Turn Left 135 
 White | 8 | Finish (return home)
 Black | 9 | Maze wall colour
 
@@ -72,4 +72,4 @@ Black | 9 | Maze wall colour
 Finally, two arrays will be used to record the path of the buggy - color_path[] and time_path. The former will store the id of the color (color_name) and the latter will store the time taken for the previous action to complete.
 
 ## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
-To return back to the entrance of the mine, the buggy will first spin 180 degrees. Then, the program will iterate through the stored path, performing the opposite actions from the path it took. This makes use of the function motor_action_return().
+To return back to the entrance of the mine, the buggy will first spin around 180 degrees. Then, the program will iterate through the stored path, performing the opposite actions from the path it took. This makes use of the function motor_action_return().
