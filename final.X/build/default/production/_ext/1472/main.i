@@ -24596,7 +24596,7 @@ void main(void) {
     int j;
 
     while (1) {
-# 75 "../main.c"
+
         while (PORTFbits.RF3);
         for (int i=0;i<8;i++){
             color_read(&RGB_calibrated);
@@ -24615,8 +24615,8 @@ void main(void) {
         }
 
 
-
-
+        lowerbound_calibrated = color_calibrated[8];
+        upperbound_calibrated = color_calibrated[28];
 
 
         while (PORTFbits.RF3 & PORTFbits.RF2);

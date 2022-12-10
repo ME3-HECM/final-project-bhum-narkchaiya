@@ -791,13 +791,13 @@
 "20 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"116
+"104
 [v main@readout3 readout3 `[100]uc  1 a 100 0 ]
-"84
+"72
 [v main@readout2 readout2 `[100]uc  1 a 100 27 ]
-"131
+"119
 [v main@k k `i  1 a 2 202 ]
-"76
+"64
 [v main@i i `i  1 a 2 204 ]
 "51
 [v main@color_calibrated color_calibrated `[32]i  1 a 64 130 ]
@@ -826,7 +826,7 @@
 [v main@upperbound_calibrated upperbound_calibrated `ui  1 a 2 194 ]
 "52
 [v main@lowerbound_calibrated lowerbound_calibrated `ui  1 a 2 157 ]
-"148
+"136
 } 0
 "9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
