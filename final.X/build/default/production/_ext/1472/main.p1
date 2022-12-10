@@ -111,9 +111,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29265
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29265: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
 [v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
+"20 ../dc_motor.h
+[; ;../dc_motor.h: 20: void stop(struct DC_motor *mL, struct DC_motor *mR);
+[v _stop `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
 "41 ../color.h
 [; ;../color.h: 41: unsigned int color_processor_easy(struct RGB_val *rgb);
 [v _color_processor_easy `(ui ~T0 @X0 0 ef1`*S2015 ]
+"28 ../dc_motor.h
+[; ;../dc_motor.h: 28: void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
+[v _motor_action `(v ~T0 @X0 0 ef3`ui`*S2016`*S2016 ]
 [v F192 `(v ~T0 @X0 1 tf1`ul ]
 "12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\builtins.h
 [v __delay `JF192 ~T0 @X0 0 e ]
@@ -2308,32 +2314,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != _color_flag -> -> 0 `i `ui 2033  ]
 {
 "91
-[; ;../main.c: 91:                     color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
+[; ;../main.c: 91:                     stop(&motorL,&motorR);
+[e ( _stop (2 , &U _motorL &U _motorR ]
 "92
-[; ;../main.c: 92:                     color_name = color_processor_easy(&RGB_recorded);
-[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
+[; ;../main.c: 92:                     color_read(&RGB_recorded);
+[e ( _color_read (1 &U _RGB_recorded ]
 "93
-[; ;../main.c: 93:                     color_storage[j] = color_name;
-[e = *U + &U _color_storage * -> -> _j `ui `ux -> -> # *U &U _color_storage `ui `ux _color_name ]
+[; ;../main.c: 93:                     color_name = color_processor_easy(&RGB_recorded);
+[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
 "94
-[; ;../main.c: 94:                     time_storage[j] = time;
+[; ;../main.c: 94:                     color_storage[j] = color_name;
+[e = *U + &U _color_storage * -> -> _j `ui `ux -> -> # *U &U _color_storage `ui `ux _color_name ]
+"95
+[; ;../main.c: 95:                     time_storage[j] = time;
 [e = *U + &U _time_storage * -> -> _j `ui `ux -> -> # *U &U _time_storage `ui `ux _time ]
 "96
-[; ;../main.c: 96:                     j++;
-[e ++ _j -> 1 `i ]
+[; ;../main.c: 96:                     motor_action(color_flag,&motorL,&motorR);
+[e ( _motor_action (3 , , _color_flag &U _motorL &U _motorR ]
 "97
-[; ;../main.c: 97:                     time = 0;
+[; ;../main.c: 97:                     j++;
+[e ++ _j -> 1 `i ]
+"98
+[; ;../main.c: 98:                     time = 0;
 [e = _time -> -> 0 `i `ui ]
-"99
-[; ;../main.c: 99:                     if (color_name != 8) {
+"100
+[; ;../main.c: 100:                     if (color_name != 8) {
 [e $ ! != _color_name -> -> 8 `i `ui 2034  ]
 {
-"100
-[; ;../main.c: 100:                         color_flag = 0;
-[e = _color_flag -> -> 0 `i `ui ]
 "101
-[; ;../main.c: 101:                         home = 1;
+[; ;../main.c: 101:                         color_flag = 0;
+[e = _color_flag -> -> 0 `i `ui ]
+"102
+[; ;../main.c: 102:                         home = 1;
 [e = _home -> -> 1 `i `ui ]
 "103
 [; ;../main.c: 103:                     }

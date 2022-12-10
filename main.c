@@ -88,18 +88,18 @@ void main(void) {
         while (!home) {
             if (LATDbits.LATD7){ //easy mode
                 if (color_flag){
+                    stop(&motorL,&motorR);
                     color_read(&RGB_recorded); //read RGB values of card
                     color_name = color_processor_easy(&RGB_recorded); //color detection for red, green, blue, white only
                     color_storage[j] = color_name; //store color path to array
                     time_storage[j] = time; //store time taken from the last action
-                    //motor_action(çolor_flag); //performs action based on the color of the card
+                    motor_action(color_flag,&motorL,&motorR); //performs action based on the color of the card
                     j++;
                     time = 0;
                     //moves onto return home phase once reaching the white card
                     if (color_name != 8) { 
                         color_flag = 0; //clear flag
                         home = 1; //stops while loop
-                        
                     }
                 }
             }

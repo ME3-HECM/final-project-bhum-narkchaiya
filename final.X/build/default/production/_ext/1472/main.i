@@ -24615,18 +24615,18 @@ void main(void) {
         while (!home) {
             if (LATDbits.LATD7){
                 if (color_flag){
+                    stop(&motorL,&motorR);
                     color_read(&RGB_recorded);
                     color_name = color_processor_easy(&RGB_recorded);
                     color_storage[j] = color_name;
                     time_storage[j] = time;
-
+                    motor_action(color_flag,&motorL,&motorR);
                     j++;
                     time = 0;
 
                     if (color_name != 8) {
                         color_flag = 0;
                         home = 1;
-
                     }
                 }
             }
