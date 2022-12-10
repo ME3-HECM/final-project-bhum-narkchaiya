@@ -24273,7 +24273,7 @@ unsigned int color_read_Blue(void);
 
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated);
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
 # 2 "../color.c" 2
 
 # 1 "../i2c.h" 1
@@ -24449,7 +24449,7 @@ unsigned int color_processor_easy(struct RGB_val *rgb)
     return color;
 }
 
-unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
 {
     unsigned int r = rgb->R;
     unsigned int g = rgb->G;
@@ -24460,6 +24460,7 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
         unsigned int cr = calibrated[4*i+1];
         unsigned int cg = calibrated[4*i+2];
         unsigned int cb = calibrated[4*i+3];
+
         _Bool condition_r = r>cr-20 && r<cr+20;
         _Bool condition_g = b>cb-20 && b<cb+20;
         _Bool condition_b = g>cg-20 && g<cg+20;
@@ -24467,5 +24468,6 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
         if (condition_r && condition_g && condition_b){
             return i;
         }
+        else {return 0;}
     }
 }

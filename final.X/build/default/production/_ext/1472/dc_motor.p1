@@ -2384,7 +2384,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../dc_motor.c: 80:     mR->direction = 1;
 [e = . *U _mR 1 -> -> 1 `i `uc ]
 "81
-[; ;../dc_motor.c: 81:     for (int i=0;i<31;i = i+2)
+[; ;../dc_motor.c: 81:     for (int i=0;i<31;i=i+2)
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -3017,79 +3017,115 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../dc_motor.c: 244:         case 1:
 [e :U 2072 ]
 "245
-[; ;../dc_motor.c: 245:             left_90(l,r);
-[e ( _left_90 (2 , _l _r ]
+[; ;../dc_motor.c: 245:             reverse_fromcard(l,r);
+[e ( _reverse_fromcard (2 , _l _r ]
 "246
-[; ;../dc_motor.c: 246:             break;
-[e $U 2070  ]
+[; ;../dc_motor.c: 246:             stop(l,r);
+[e ( _stop (2 , _l _r ]
 "247
-[; ;../dc_motor.c: 247:         case 2:
-[e :U 2073 ]
+[; ;../dc_motor.c: 247:             _delay((unsigned long)((500)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "248
-[; ;../dc_motor.c: 248:             right_90(l,r);
-[e ( _right_90 (2 , _l _r ]
+[; ;../dc_motor.c: 248:             stop(l,r);
+[e ( _stop (2 , _l _r ]
 "249
-[; ;../dc_motor.c: 249:             break;
-[e $U 2070  ]
-"250
-[; ;../dc_motor.c: 250:         case 3:
-[e :U 2074 ]
-"251
-[; ;../dc_motor.c: 251:             spin_180(l,r);
-[e ( _spin_180 (2 , _l _r ]
-"252
-[; ;../dc_motor.c: 252:             break;
-[e $U 2070  ]
-"253
-[; ;../dc_motor.c: 253:         case 4:
-[e :U 2075 ]
-"254
-[; ;../dc_motor.c: 254:             right_90(l,r);
-[e ( _right_90 (2 , _l _r ]
-"255
-[; ;../dc_motor.c: 255:             forward(l,r);
-[e ( _forward (2 , _l _r ]
-"256
-[; ;../dc_motor.c: 256:             break;
-[e $U 2070  ]
-"257
-[; ;../dc_motor.c: 257:         case 5:
-[e :U 2076 ]
-"258
-[; ;../dc_motor.c: 258:             left_90(l,r);
+[; ;../dc_motor.c: 249:             left_90(l,r);
 [e ( _left_90 (2 , _l _r ]
+"250
+[; ;../dc_motor.c: 250:             break;
+[e $U 2070  ]
+"251
+[; ;../dc_motor.c: 251:         case 2:
+[e :U 2073 ]
+"252
+[; ;../dc_motor.c: 252:             reverse_fromcard(l,r);
+[e ( _reverse_fromcard (2 , _l _r ]
+"253
+[; ;../dc_motor.c: 253:             stop(l,r);
+[e ( _stop (2 , _l _r ]
+"254
+[; ;../dc_motor.c: 254:             _delay((unsigned long)((500)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"255
+[; ;../dc_motor.c: 255:             stop(l,r);
+[e ( _stop (2 , _l _r ]
+"256
+[; ;../dc_motor.c: 256:             right_90(l,r);
+[e ( _right_90 (2 , _l _r ]
+"257
+[; ;../dc_motor.c: 257:             break;
+[e $U 2070  ]
+"258
+[; ;../dc_motor.c: 258:         case 3:
+[e :U 2074 ]
 "259
-[; ;../dc_motor.c: 259:             forward(l,r);
-[e ( _forward (2 , _l _r ]
+[; ;../dc_motor.c: 259:             reverse_fromcard(l,r);
+[e ( _reverse_fromcard (2 , _l _r ]
 "260
-[; ;../dc_motor.c: 260:             break;
-[e $U 2070  ]
+[; ;../dc_motor.c: 260:             stop(l,r);
+[e ( _stop (2 , _l _r ]
 "261
-[; ;../dc_motor.c: 261:         case 6:
-[e :U 2077 ]
+[; ;../dc_motor.c: 261:             _delay((unsigned long)((500)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
 "262
-[; ;../dc_motor.c: 262:             left_135(l,r);
-[e ( _left_135 (2 , _l _r ]
+[; ;../dc_motor.c: 262:             spin_180(l,r);
+[e ( _spin_180 (2 , _l _r ]
 "263
-[; ;../dc_motor.c: 263:             break;
-[e $U 2070  ]
+[; ;../dc_motor.c: 263:             stop(l,r);
+[e ( _stop (2 , _l _r ]
 "264
-[; ;../dc_motor.c: 264:         case 7:
-[e :U 2078 ]
-"265
-[; ;../dc_motor.c: 265:             right_135(l,r);
-[e ( _right_135 (2 , _l _r ]
-"266
-[; ;../dc_motor.c: 266:             break;
+[; ;../dc_motor.c: 264:             break;
 [e $U 2070  ]
+"265
+[; ;../dc_motor.c: 265:         case 4:
+[e :U 2075 ]
+"266
+[; ;../dc_motor.c: 266:             right_90(l,r);
+[e ( _right_90 (2 , _l _r ]
 "267
-[; ;../dc_motor.c: 267:         default:
-[e :U 2079 ]
+[; ;../dc_motor.c: 267:             forward(l,r);
+[e ( _forward (2 , _l _r ]
 "268
 [; ;../dc_motor.c: 268:             break;
 [e $U 2070  ]
 "269
-[; ;../dc_motor.c: 269:     }
+[; ;../dc_motor.c: 269:         case 5:
+[e :U 2076 ]
+"270
+[; ;../dc_motor.c: 270:             left_90(l,r);
+[e ( _left_90 (2 , _l _r ]
+"271
+[; ;../dc_motor.c: 271:             forward(l,r);
+[e ( _forward (2 , _l _r ]
+"272
+[; ;../dc_motor.c: 272:             break;
+[e $U 2070  ]
+"273
+[; ;../dc_motor.c: 273:         case 6:
+[e :U 2077 ]
+"274
+[; ;../dc_motor.c: 274:             left_135(l,r);
+[e ( _left_135 (2 , _l _r ]
+"275
+[; ;../dc_motor.c: 275:             break;
+[e $U 2070  ]
+"276
+[; ;../dc_motor.c: 276:         case 7:
+[e :U 2078 ]
+"277
+[; ;../dc_motor.c: 277:             right_135(l,r);
+[e ( _right_135 (2 , _l _r ]
+"278
+[; ;../dc_motor.c: 278:             break;
+[e $U 2070  ]
+"279
+[; ;../dc_motor.c: 279:         default:
+[e :U 2079 ]
+"280
+[; ;../dc_motor.c: 280:             break;
+[e $U 2070  ]
+"281
+[; ;../dc_motor.c: 281:     }
 }
 [e $U 2070  ]
 [e :U 2071 ]
@@ -3102,7 +3138,7 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 7 `i `ui 2078
  2079 ]
 [e :U 2070 ]
-"270
-[; ;../dc_motor.c: 270: }
+"282
+[; ;../dc_motor.c: 282: }
 [e :UE 2069 ]
 }

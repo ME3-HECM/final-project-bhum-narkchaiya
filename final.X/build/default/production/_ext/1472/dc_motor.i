@@ -24342,7 +24342,7 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 1;
-    for (int i=0;i<31;i = i+2)
+    for (int i=0;i<31;i=i+2)
     {
         mL->power = i;
         mR->power = i;
@@ -24506,13 +24506,25 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
 {
     switch (color){
         case 1:
+            reverse_fromcard(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            stop(l,r);
             left_90(l,r);
             break;
         case 2:
+            reverse_fromcard(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            stop(l,r);
             right_90(l,r);
             break;
         case 3:
+            reverse_fromcard(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
             spin_180(l,r);
+            stop(l,r);
             break;
         case 4:
             right_90(l,r);

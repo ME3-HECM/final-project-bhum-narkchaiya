@@ -59,18 +59,6 @@ void main(void) {
     int j; 
 
     while (1) {
-        //calibration for stopping at a card
-        forward(&motorL,&motorR)
-        color_read(&L_calibrated);    
-        char readout1[100];
-        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-        sendStringSerial4(readout1);
-        __delay_ms(500);
-        
-        //bounds where flag will be raised
-        lowerbound_calibrated = 0.5*RGB_calibrated.L; //adjust values to fit
-        upperbound_calibrated = 0.9*RGB_calibrated.L;
-        
         //calibration for detecting color of the card
         while (PORTFbits.RF3); //wait for button press on F3
         for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
@@ -89,6 +77,10 @@ void main(void) {
             __delay_ms(2000);
         }
         
+        //setting bounds for detecting if the card is in front of the buggy
+        lowerbound_calibrated = color_calibrated[8]; //L value of blue card (minimum)
+        upperbound_calibrated = color_calibrated[28]; //L value of white card (maximum)
+        
         //mode selection
         while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for any button press
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;} //F2 button (easy mode)
@@ -99,7 +91,7 @@ void main(void) {
             time = 0; //reset clock
             forward(&motorL,&motorR);
             color_read(&RGB_recorded);
-            if (RGB_recorded.L<upperbound_calibrated && RGB_recorded>lowerbound_calibrated){color_flag=1;}
+            if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;} //raise flag if there is a card in front
             if (color_flag){
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card

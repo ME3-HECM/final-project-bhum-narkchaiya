@@ -24283,7 +24283,7 @@ unsigned int color_read_Blue(void);
 
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated);
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
 # 11 "../main.c" 2
 
 # 1 "../i2c.h" 1
@@ -24586,25 +24586,17 @@ void main(void) {
     unsigned int color_name;
     unsigned int color_path[15];
     int color_calibrated[32];
+    unsigned int lowerbound_calibrated;
+    unsigned int upperbound_calibrated;
     struct RGB_val RGB_calibrated;
     struct RGB_val L_calibrated;
     struct RGB_val RGB_recorded;
-
-
     unsigned int time_path[15];
     unsigned int time_return;
     int j;
 
     while (1) {
-
-        color_read(&L_calibrated);
-        char readout1[100];
-        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-        sendStringSerial4(readout1);
-        _delay((unsigned long)((500)*(64000000/4000.0)));
-        color_flag = 1;
-
-
+# 75 "../main.c"
         while (PORTFbits.RF3);
         for (int i=0;i<8;i++){
             color_read(&RGB_calibrated);
@@ -24623,6 +24615,10 @@ void main(void) {
         }
 
 
+
+
+
+
         while (PORTFbits.RF3 & PORTFbits.RF2);
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
         else {LATHbits.LATH3 = 1;}
@@ -24632,6 +24628,7 @@ void main(void) {
             time = 0;
             forward(&motorL,&motorR);
             color_read(&RGB_recorded);
+            if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
             if (color_flag){
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);

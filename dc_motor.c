@@ -78,7 +78,7 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 1;
-    for (int i=0;i<31;i = i+2)
+    for (int i=0;i<31;i=i+2)
     {
         mL->power = i;
         mR->power = i;

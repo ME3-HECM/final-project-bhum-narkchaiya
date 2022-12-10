@@ -10,8 +10,8 @@
 # Structure of Program
 1. initiliasation functions
 2. calibration
-	1. for stopping distance
-	2. for color detection
+	1. for color interpretation
+	2. for detection of the card in front
 3. mode selector
 4. maze navigation
 	1. read color
@@ -31,12 +31,13 @@
 - Set up timer TMR0 interrupt
 
 ## 2. Calibration
-### i. Stopping Distance
-The program will make use of the clear/"L" channel of the color-click board to determine when there is a card in front of the buggy. As the buggy navigates the maze, the light will be continuously recorded and checked. If the light levels experience a drop below a certain threshold, the buggy will stop.
 
-### ii. Color Detection
+### i. Color Interpretation
 The calibration sequence for color will store the LRGB values for the 8 colors in an array. This will be used later in 4.ii to interpret the card during maze navigation.
 
+### ii. Card Detection
+The program will make use of the clear/"L" channel of the color-click board to determine when there is a card in front of the buggy. As the buggy navigates the maze, the light will be continuously recorded and checked. If the light levels experience a drop below a certain threshold, the buggy will stop.
+To be robust, the bounds will be set between the highest and lowest "L" values of the colors. This happens to be white and blue, respectively.
 ## 3. Mode Selector
 There are two modes (easy/hard) that can be selected with the F2 and F3 buttons on the clicker board. The easy mode will be able to differentiate between red, blue, and green. Whereas, the hard mode will be able to interpret all 8 colors of the cards.
 ## 4. Maze Navigation
@@ -69,7 +70,7 @@ White | 8 | Finish (return home)
 Black | 9 | Maze wall colour
 
 ### iv. Storage of Path
-Finally, two arrays will be used to record the path of the buggy - color_path[] and time_path. The former will store the id of the color (color_name) and the latter will store the time taken for the previous action to complete.
+Finally, two arrays will be used to record the path of the buggy - color_path and time_path. The former will store the id of the color (color_name) and the latter will store the time taken for the previous action to complete.
 
 ## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
 To return back to the entrance of the mine, the buggy will first spin around 180 degrees. Then, the program will iterate through the stored path, performing the opposite actions from the path it took. This makes use of the function motor_action_return().

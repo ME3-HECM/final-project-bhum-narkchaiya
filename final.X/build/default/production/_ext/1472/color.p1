@@ -2503,14 +2503,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2023 ]
 }
 "152
-[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
+[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
 [v _color_processor_hard `(ui ~T0 @X0 1 ef2`*S2015`*ui ]
 "153
 [; ;../color.c: 153: {
 {
 [e :U _color_processor_hard ]
 "152
-[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int *calibrated)
+[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
 [v _rgb `*S2015 ~T0 @X0 1 r1 ]
 [v _calibrated `*ui ~T0 @X0 1 r2 ]
 "153
@@ -2549,38 +2549,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../color.c: 162:         unsigned int cb = calibrated[4*i+3];
 [v _cb `ui ~T0 @X0 1 a ]
 [e = _cb *U + _calibrated * -> + * -> 4 `i _i -> 3 `i `x -> -> # *U _calibrated `i `x ]
-"163
-[; ;../color.c: 163:         _Bool condition_r = r>cr-20 && r<cr+20;
+"164
+[; ;../color.c: 164:         _Bool condition_r = r>cr-20 && r<cr+20;
 [v _condition_r `a ~T0 @X0 1 a ]
 [e = _condition_r -> -> && > _r - _cr -> -> 20 `i `ui < _r + _cr -> -> 20 `i `ui `i `a ]
-"164
-[; ;../color.c: 164:         _Bool condition_g = b>cb-20 && b<cb+20;
+"165
+[; ;../color.c: 165:         _Bool condition_g = b>cb-20 && b<cb+20;
 [v _condition_g `a ~T0 @X0 1 a ]
 [e = _condition_g -> -> && > _b - _cb -> -> 20 `i `ui < _b + _cb -> -> 20 `i `ui `i `a ]
-"165
-[; ;../color.c: 165:         _Bool condition_b = g>cg-20 && g<cg+20;
+"166
+[; ;../color.c: 166:         _Bool condition_b = g>cg-20 && g<cg+20;
 [v _condition_b `a ~T0 @X0 1 a ]
 [e = _condition_b -> -> && > _g - _cg -> -> 20 `i `ui < _g + _cg -> -> 20 `i `ui `i `a ]
-"167
-[; ;../color.c: 167:         if (condition_r && condition_g && condition_b){
+"168
+[; ;../color.c: 168:         if (condition_r && condition_g && condition_b){
 [e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2032  ]
 {
-"168
-[; ;../color.c: 168:             return i;
+"169
+[; ;../color.c: 169:             return i;
 [e ) -> _i `ui ]
 [e $UE 2028  ]
-"169
-[; ;../color.c: 169:         }
-}
-[e :U 2032 ]
 "170
-[; ;../color.c: 170:     }
+[; ;../color.c: 170:         }
+}
+[e $U 2033  ]
+"171
+[; ;../color.c: 171:         else {return 0;}
+[e :U 2032 ]
+{
+[e ) -> -> 0 `i `ui ]
+[e $UE 2028  ]
+}
+[e :U 2033 ]
+"172
+[; ;../color.c: 172:     }
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 8 `i 2029  ]
 [e :U 2030 ]
 }
-"171
-[; ;../color.c: 171: }
+"173
+[; ;../color.c: 173: }
 [e :UE 2028 ]
 }
