@@ -10,10 +10,10 @@
 3. calibration for color detection
 4. mode selector
 5. maze navigation
-	5.1 read color
-	5.2 interpret color
-	5.3 motor action
-	5.4 store path
+	..1. read color
+	..2. interpret color
+	3. motor action
+	- store path
 6. return home
 
 ## Initialisation functions
