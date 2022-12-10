@@ -24339,6 +24339,17 @@ void color_click_init(void)
     LATDbits.LATD4 = 1;
     LATHbits.LATH0 = 1;
     LATFbits.LATF0 = 1;
+
+
+    LATDbits.LATD7=0;
+    LATHbits.LATH3=0;
+    TRISDbits.TRISD7=0;
+    TRISHbits.TRISH3=0;
+
+    TRISFbits.TRISF2=1;
+    ANSELFbits.ANSELF2=0;
+    TRISFbits.TRISF3=1;
+    ANSELFbits.ANSELF3=0;
 }
 
 void color_writetoaddr(char address, char value)
@@ -24416,7 +24427,7 @@ void color_read(struct RGB_val *rgb)
     _delay((unsigned long)((100)*(64000000/4000.0)));
     rgb->B = color_read_Blue();
 }
-# 122 "../color.c"
+# 133 "../color.c"
 unsigned int color_processor_easy(struct RGB_val *rgb)
 {
     unsigned int a = rgb->R;

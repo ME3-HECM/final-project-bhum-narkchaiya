@@ -24548,18 +24548,6 @@ char *tempnam(const char *, const char *);
 
 void main(void) {
 
-    LATDbits.LATD7=0;
-    LATHbits.LATH3=0;
-    TRISDbits.TRISD7=0;
-    TRISHbits.TRISH3=0;
-
-
-    TRISFbits.TRISF2=1;
-    ANSELFbits.ANSELF2=0;
-    TRISFbits.TRISF3=1;
-    ANSELFbits.ANSELF3=0;
-
-
     color_click_init();
     initDCmotorsPWM(20);
     Interrupts_init();
@@ -24568,25 +24556,25 @@ void main(void) {
     initUSART4();
 
 
-
     unsigned int color_flag;
     unsigned int color_name;
-    unsigned int color_storage[50];
-    unsigned int time_storage[50];
+    unsigned int color_storage[15];
+    unsigned int time_storage[15];
     unsigned int home = 0;
     struct RGB_val RGB_calibrated;
     struct RGB_val RGB_recorded;
 
 
     unsigned int color_calibrated[24];
-# 67 "../main.c"
+
+
     color_read(&RGB_calibrated);
     char readout[50];
     sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
     sendStringSerial4(readout);
 
     while (1) {
-# 81 "../main.c"
+# 56 "../main.c"
         while (PORTFbits.RF3 & PORTFbits.RF2);
         if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}
         else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}
@@ -24598,6 +24586,8 @@ void main(void) {
                 if (color_flag){
                     color_read(&RGB_recorded);
                     color_name = color_processor_easy(&RGB_recorded);
+
+
 
 
 
@@ -24615,8 +24605,7 @@ void main(void) {
         }
 
         int j;
-        size_t n = sizeof(color_storage)/sizeof(color_storage[0]);
-        for (j=0;j<n;j++){
+        for (j=0;j<15;j++){
 
         }
 

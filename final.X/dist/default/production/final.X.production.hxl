@@ -12,14 +12,14 @@
   0h - 3h		(dist/default/production\final.X.production.hex)
   8h - 57h		(dist/default/production\final.X.production.hex)
   E00h - E10h		(dist/default/production\final.X.production.hex)
-  E12h - 1E1Bh		(dist/default/production\final.X.production.hex)
+  E12h - 1E15h		(dist/default/production\final.X.production.hex)
   200000h - 20000Fh		(dist/default/production\final.X.production.hex)
   300000h - 30000Bh		(dist/default/production\final.X.production.hex)
  Unused ranges:
   4h - 7h
   58h - DFFh
   E11h - E11h
-  1E1Ch - 1FFFFFh
+  1E16h - 1FFFFFh
   200010h - 2FFFFFh
 
 ### Hex Memory Map ###
@@ -293,7 +293,7 @@
 00001DE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001DF0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00001E00 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00001E10 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- --
+00001E10 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00200000 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 ----------------------------------------------------------

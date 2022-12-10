@@ -29,6 +29,17 @@ void color_click_init(void)
     LATDbits.LATD4 = 1; //set back LED to max brightness
     LATHbits.LATH0 = 1; //set right signal LED
     LATFbits.LATF0 = 1; //set left signal LED 
+    
+    //setup pins for clicker board LEDs and buttons
+    LATDbits.LATD7=0;   //set initial output state of D7 to off
+    LATHbits.LATH3=0;   //set initial output state of H3 to on
+    TRISDbits.TRISD7=0; //set TRIS value for pin D7 (output)
+    TRISHbits.TRISH3=0; //set TRIS value for pin H3 (output)
+
+    TRISFbits.TRISF2=1; //set TRIS value for pin F2 (input)
+    ANSELFbits.ANSELF2=0; //turn off analogue input on pin F2  
+    TRISFbits.TRISF3=1; //set TRIS value for pin F3 (input)
+    ANSELFbits.ANSELF3=0; //turn off analogue input on pin F3
 }
 
 void color_writetoaddr(char address, char value)
