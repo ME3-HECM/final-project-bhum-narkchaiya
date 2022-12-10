@@ -177,3 +177,35 @@ void left_135(struct DC_motor *mL, struct DC_motor *mR)
     }
     __delay_ms(230);
 }
+
+void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
+{
+    switch (color){
+        case 1: //red: right 90
+            right_90(l,r);
+            break;
+        case 2: //green: left 90
+            left_90(l,r);
+            break;
+        case 3: //blue: turn 180
+            spin_180(l,r);
+            break;
+        case 4: //yellow: rev, right 90
+            reverse(l,r);
+            right_90(l,r);
+            break;
+        case 5: //pink: rev, left 90
+            reverse(l,r);
+            left_90(l,r);
+            break;
+        case 6: //orange: right 135
+            right_135(l,r);
+            break;
+        case 7: //light blue: left 135
+            left_135(l,r);
+            break;
+        default:
+            break;
+    }
+            
+}

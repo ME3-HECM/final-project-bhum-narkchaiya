@@ -26,7 +26,7 @@ void main(void) {
     I2C_2_Master_Init(); //serial communication
     initUSART4(); //serial communication
     
-    //initial settings for left motor below
+    //
     struct DC_motor motorL, motorR; //create structures for both sides motors
     unsigned char PWMcycle = 200; //set PWMcycle for motor
     motorL.power = 0; //initial motor power
@@ -35,15 +35,12 @@ void main(void) {
     motorL.dir_LAT = (unsigned char *)(&LATE); //set register
     motorL.dir_pin = 4; //set pin
     motorL.PWMperiod = PWMcycle; //set PWMcycle
-    //initial settings for right motor below
     motorR.power = 0;//initial motor power
     motorR.direction = 0; //initial direction : reverse
     motorR.dutyHighByte = (unsigned char *)(&PWM7DCH); //set channel
     motorR.dir_LAT = (unsigned char *)(&LATG); //set register
     motorR.dir_pin = 6; //set Pin
     motorR.PWMperiod = PWMcycle; //set PWM cycle
-    
-    //after initial settings, pass structures to set functions
     setMotorPWM(&motorL);
     setMotorPWM(&motorR);
     
@@ -95,7 +92,7 @@ void main(void) {
                     color_name = color_processor_easy(&RGB_recorded); //color detection for red, green, blue, white only
                     color_storage[j] = color_name; //store color path to array
                     time_storage[j] = time; //store time taken from the last action
-                    
+                    //motor_action(çolor_flag); //performs action based on the color of the card
                     j++;
                     time = 0;
                     //moves onto return home phase once reaching the white card

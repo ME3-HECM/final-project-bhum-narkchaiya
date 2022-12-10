@@ -24342,9 +24342,14 @@ struct DC_motor {
 void initDCmotorsPWM(int PWMperiod);
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
-void turn_left(struct DC_motor *mL, struct DC_motor *mR);
-void turn_right(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
+void reverse (struct DC_motor *mL, struct DC_motor *mR);
+void right_90(struct DC_motor *mL, struct DC_motor *mR);
+void left_90(struct DC_motor *mL, struct DC_motor *mR);
+void spin_180(struct DC_motor *mL, struct DC_motor *mR);
+void right_135(struct DC_motor *mL, struct DC_motor *mR);
+void left_135(struct DC_motor *mL, struct DC_motor *mR);
+void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
 # 13 "../main.c" 2
 
 # 1 "../rc_servo.h" 1
@@ -24556,6 +24561,24 @@ void main(void) {
     initUSART4();
 
 
+    struct DC_motor motorL, motorR;
+    unsigned char PWMcycle = 200;
+    motorL.power = 0;
+    motorL.direction = 0;
+    motorL.dutyHighByte = (unsigned char *)(&PWM6DCH);
+    motorL.dir_LAT = (unsigned char *)(&LATE);
+    motorL.dir_pin = 4;
+    motorL.PWMperiod = PWMcycle;
+    motorR.power = 0;
+    motorR.direction = 0;
+    motorR.dutyHighByte = (unsigned char *)(&PWM7DCH);
+    motorR.dir_LAT = (unsigned char *)(&LATG);
+    motorR.dir_pin = 6;
+    motorR.PWMperiod = PWMcycle;
+    setMotorPWM(&motorL);
+    setMotorPWM(&motorR);
+
+
     unsigned int color_flag;
     unsigned int color_name;
     unsigned int color_storage[15];
@@ -24577,7 +24600,7 @@ void main(void) {
     sendStringSerial4(readout);
 
     while (1) {
-# 59 "../main.c"
+# 77 "../main.c"
         if (time_flag==1){
             time++;
             time_flag = 0;
@@ -24596,6 +24619,7 @@ void main(void) {
                     color_name = color_processor_easy(&RGB_recorded);
                     color_storage[j] = color_name;
                     time_storage[j] = time;
+
                     j++;
                     time = 0;
 
