@@ -33,7 +33,7 @@
 ## 2. Calibration
 
 ### i. Color Interpretation
-The calibration sequence for color will store the LRGB values for the 8 colors in an array (holds 32 values total). This will be used later in 4.ii to interpret the card during maze navigation.
+The calibration sequence for color will store the LRGB values for the 8 colors in the color_calibrated[] array (holds 32 values total). This will be used later in 4.ii to interpret the card during maze navigation.
 This will occur when the H3 LED turns on. The user will have 4 seconds from then to change to the next color. The H3 LED will indicate the first two seconds by turning on, and the second two seconds by turning off.
 
 ```C
@@ -89,7 +89,7 @@ White | 8 | Finish (return home)
 Black | 9 | Maze wall colour
 
 ### iv. Storage of Path
-Finally, two arrays will be used to record the path of the buggy - color_path and time_path. The former will store the id of the color (color_name) and the latter will store the time taken for the previous action to complete.
+Finally, two arrays will be used to record the path of the buggy - color_path[] and time_path[]. The former will store the id of the color (color_name) and the latter will store the time taken for the previous action to complete.
 
 ## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
 To return back to the entrance of the mine, the buggy will first spin around 180 degrees. Then, the program will iterate through the stored path, performing the opposite actions from the path it took. This makes use of the function motor_action_return().
