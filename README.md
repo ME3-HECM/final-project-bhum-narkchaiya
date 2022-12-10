@@ -5,7 +5,7 @@
 4. [Send me on my way.](https://www.youtube.com/watch?v=IGMabBGydC0) 
 
 # Structure of Program
-```C
+```
 1. initiliazation functions
 2. calibration for stopping distance
 3. calibration for color detection
