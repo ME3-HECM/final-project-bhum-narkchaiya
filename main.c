@@ -45,6 +45,7 @@ void main(void) {
     setMotorPWM(&motorR);
     
     //color variables
+    unsigned int color_flag;
     unsigned int color_name;
     unsigned int color_path[15];
     int color_calibrated[32];
@@ -55,7 +56,7 @@ void main(void) {
     //path storage variables
     unsigned int time_path[15];
     unsigned int time_return;
-    int j; //iterator
+    int j; 
 
     while (1) {
         //calibration for stopping at a card
@@ -64,6 +65,7 @@ void main(void) {
         sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
         sendStringSerial4(readout1);
         __delay_ms(500);
+        color_flag = 1;
         
         //calibration for detecting color of the card
         while (PORTFbits.RF3); //wait for button press on F3
@@ -88,12 +90,12 @@ void main(void) {
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;} //F2 button (easy mode)
         else {LATHbits.LATH3 = 1;} //F3 button (hard mode)
         
-        //maze time
+        //maze navigation
         while (color_name != 8){
             time = 0; //reset clock
             forward(&motorL,&motorR);
             color_read(&RGB_recorded);
-            if (&RGB_recorded.L>color_calibrated[8]){
+            if (color_flag){
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card
                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color detection for easy mode

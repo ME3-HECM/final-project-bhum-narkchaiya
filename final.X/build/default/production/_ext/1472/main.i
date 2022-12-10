@@ -24594,7 +24594,15 @@ void main(void) {
     int j;
 
     while (1) {
-# 71 "../main.c"
+
+        color_read(&L_calibrated);
+        char readout1[100];
+        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+        sendStringSerial4(readout1);
+        _delay((unsigned long)((500)*(64000000/4000.0)));
+        color_flag = 1;
+
+
         while (PORTFbits.RF3);
         for (int i=0;i<8;i++){
             color_read(&RGB_calibrated);
@@ -24622,7 +24630,7 @@ void main(void) {
             time = 0;
             forward(&motorL,&motorR);
             color_read(&RGB_recorded);
-            if (&RGB_recorded.L>color_calibrated[8]){
+            if (color_flag){
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);
                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
@@ -24656,7 +24664,6 @@ void main(void) {
                 time_return++;
             }
             stop(&motorL,&motorR);
-
         }
     }
 
