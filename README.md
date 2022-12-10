@@ -35,9 +35,30 @@
 ### i. Color Interpretation
 The calibration sequence for color will store the LRGB values for the 8 colors in an array. This will be used later in 4.ii to interpret the card during maze navigation.
 A window of 2 seconds is available to have the correct colored card in front of the buggy (indicated by H3 LED turning on), and another two seconds to change to the next card (H3 LED off).
+for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
+            color_read(&RGB_calibrated);
+            color_calibrated[4*i] = RGB_calibrated.L;
+            color_calibrated[4*i+1] = RGB_calibrated.R;
+            color_calibrated[4*i+2] = RGB_calibrated.G;
+            color_calibrated[4*i+3] = RGB_calibrated.B;
+            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
+            
+            char readout2[100];
+            sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+            sendStringSerial4(readout2); //serial communication
+            __delay_ms(2000);
+            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
+            __delay_ms(2000);
+}
+
 ### ii. Card Detection
 The program will make use of the clear/"L" channel of the color-click board to determine when there is a card in front of the buggy. As the buggy navigates the maze, the light will be continuously recorded and checked. If the light levels experience a drop below a certain threshold, the buggy will stop.
 To be robust, the bounds will be set between the highest and lowest "L" values of the colors. This happens to be white and blue, respectively.
+```C
+lowerbound_calibrated = color_calibrated[8]; //L value of blue card (minimum)
+upperbound_calibrated = color_calibrated[28]; //L value of white card (maximum)
+```
+
 ## 3. Mode Selector
 There are two modes (easy/hard) that can be selected with the F2 and F3 buttons on the clicker board. The easy mode will be able to differentiate between red, blue, and green. Whereas, the hard mode will be able to interpret all 8 colors of the cards.
 ## 4. Maze Navigation
