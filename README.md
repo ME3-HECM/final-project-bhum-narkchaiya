@@ -9,10 +9,11 @@
 2. calibration for stopping distance
 3. calibration for color detection
 4. mode selector
-5. maze loop
+5. maze navigation
 	5.1 read color
-	5.2 perform action
-	5.3 store path
+	5.2 interpret color
+	5.3 motor action
+	5.4 store path
 6. return home
 
 ## Initialisation functions
@@ -29,3 +30,11 @@
 ### Color Detection
 
 ## Mode Selector
+
+## Maze Navigation
+### Reading Color
+### Interpreting Color
+### Motor Action
+### Storage of Path
+
+## [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
