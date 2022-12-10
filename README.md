@@ -9,15 +9,16 @@
 
 # Structure of Program
 1. initiliasation functions
-2. calibration for stopping distance
-3. calibration for color detection
-4. mode selector
-5. maze navigation
+2. calibration
+	1. for stopping distance
+	2. for color detection
+3. mode selector
+4. maze navigation
 	1. read color
 	2. interpret color
 	3. motor action
 	4. store path
-6. return home
+5. return home
 
 ## 1. Initialisation functions
 - Turn on buggy LEDs
@@ -29,20 +30,20 @@
 - Set up timer TMR0 interrupt
 
 ## 2. Calibration
-### Stopping Distance
+### i. Stopping Distance
 The program will make use of the clear/"L" channel of the color-click board to determine when there is a card in front of the buggy. As the buggy navigates the maze, the light will be continuously recorded and checked. If the light levels experience a drop below a certain threshold, the buggy will stop.
 
-### 3. Color Detection
-The calibration sequence for color will store the LRGB values for the 8 colors in an array. This will be used later in 5.ii to interpret the card during maze navigation.
+### ii. Color Detection
+The calibration sequence for color will store the LRGB values for the 8 colors in an array. This will be used later in 4.ii to interpret the card during maze navigation.
 
-## 4. Mode Selector
+## 3. Mode Selector
 There are two modes (easy/hard) that can be selected with the F2 and F3 buttons on the clicker board.
 
-## 5. Maze Navigation
+## 4. Maze Navigation
 ### i. Reading Color
 
 ### ii. Interpreting Color
 ### iii. Motor Action
 ### iv. Storage of Path
 
-## [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
+## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
