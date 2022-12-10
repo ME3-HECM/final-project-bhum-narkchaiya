@@ -6,15 +6,15 @@
 
 # Structure of Program
 ```C
--initiliazation functions
--calibration for stopping distance
--calibration for color detection
--mode selector
--maze loop
-	-read color
-	-perform action
-	-store path
--return home
+1. initiliazation functions
+2. calibration for stopping distance
+3. calibration for color detection
+4. mode selector
+5. maze loop
+	5.1 read color
+	5.2 perform action
+	5.3 store path
+6. return home
 
 
 ```
