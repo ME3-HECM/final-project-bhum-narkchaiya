@@ -50,9 +50,10 @@ time_path[j] = time; //store time taken from the last action to array
 motor_action(color_name,&motorL,&motorR);
 ```
 ### i. Reading Color
-The LRGB colors will be read and stored into the structure
+The LRGB colors will be read and stored into the structure RGB_recorded with the function color_read().
 
 ### ii. Interpreting Color
+Then, for the easy mode, the recorded RGB values will be interpreted by the function color_processor_easy(). In hard mode, the program will choose to use the color_processor_hard() instead.
 ### iii. Motor Action
 The color_name variable will be input to the motor_action() function. This function makes use of the switch...case statement, where each number corresponds to a color. For each color, there will be a specific action summarised below in the table.
 Colour | Case | Instruction
@@ -66,6 +67,9 @@ Orange | 2 | Turn Right 135
 Light blue | 6 | Turn Left 135 
 White | 8 | Finish (return home)
 Black | 9 | Maze wall colour
+
 ### iv. Storage of Path
+Finally, two arrays will be used to record the path of the buggy - color_path[] and time_path. The former will store the id of the color (color_name) and the latter will store the time taken for the previous action to complete.
 
 ## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
+To return back to the entrance of the mine, the buggy will first spin 180 degrees. Then, the program will iterate through the stored path, performing the opposite actions from the path it took. This makes use of the function motor_action_return().
