@@ -42,6 +42,9 @@ void main(void) {
     //declare variables
     unsigned int color_flag; //interrupt when card is in front of buggy
     unsigned int color_name;
+    unsigned int color_storage[50];
+    unsigned int time_storage[50];
+    unsigned int home = 0;
     struct RGB_val RGB_calibrated;
     struct RGB_val RGB_recorded;
     
@@ -69,7 +72,7 @@ void main(void) {
     while (1) {
 //        //calibration
 //        while (PORTFbits.RF3); //wait for button press on F3
-//        int i;
+//        int i_calibrate;
 //        for (i=0;i<9;i++){//add to array 3 rgb values for every color = 24 elements in array
 //            color_read(&RGB_calibrated);
 //        }
@@ -80,13 +83,19 @@ void main(void) {
         else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;} //F3 button (hard mode)
         
         //maze time
-        while (1) {
+        int i_storage; //iterator for storing path of buggy
+        while (!home) {
             if (LATDbits.LATD7){ //easy mode
                 if (color_flag){
                     color_read(&RGB_recorded); //read RGB values of card
                     color_name = color_processor_easy(&RGB_recorded); //color detection for red, green, blue, white only
                     //color_record(color_name); //records current navigation
                     //store to array
+                    
+                    if (color_name != 8) { //moves onto return home phase once reaching the white card
+                        color_flag = 0; 
+                        home = 1; //stops while loop and moves onto the return home phase
+                    }
                 }
             }
             else if (LATHbits.LATH3) { //hard mode
@@ -95,6 +104,14 @@ void main(void) {
             }
             __delay_ms(200); // call built in delay function 
         }
+        //return home algorithm
+        int j;
+        size_t n = sizeof(color_storage)/sizeof(color_storage[0]); //Mark Harrison @StackOverflow (2008)
+        for (j=0;j<n;j++){
+            //motor_action(&color_storage, &time_storage);
+        }
+            
+        
     }
     
     //reach destination code

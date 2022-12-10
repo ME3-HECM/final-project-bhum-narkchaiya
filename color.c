@@ -143,3 +143,4 @@ unsigned int color_processor_hard(struct RGB_val *rgb)
     return color;
 }
 
+//finish (return home) functions

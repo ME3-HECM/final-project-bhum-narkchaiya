@@ -2215,46 +2215,56 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../main.c: 44:     unsigned int color_name;
 [v _color_name `ui ~T0 @X0 1 a ]
 "45
-[; ;../main.c: 45:     struct RGB_val RGB_calibrated;
-[v _RGB_calibrated `S2015 ~T0 @X0 1 a ]
+[; ;../main.c: 45:     unsigned int color_storage[50];
+[v _color_storage `ui ~T0 @X0 -> 50 `i a ]
 "46
-[; ;../main.c: 46:     struct RGB_val RGB_recorded;
-[v _RGB_recorded `S2015 ~T0 @X0 1 a ]
+[; ;../main.c: 46:     unsigned int time_storage[50];
+[v _time_storage `ui ~T0 @X0 -> 50 `i a ]
+"47
+[; ;../main.c: 47:     unsigned int home = 0;
+[v _home `ui ~T0 @X0 1 a ]
+[e = _home -> -> 0 `i `ui ]
+"48
+[; ;../main.c: 48:     struct RGB_val RGB_calibrated;
+[v _RGB_calibrated `S2015 ~T0 @X0 1 a ]
 "49
-[; ;../main.c: 49:     unsigned int color_calibrated[24];
+[; ;../main.c: 49:     struct RGB_val RGB_recorded;
+[v _RGB_recorded `S2015 ~T0 @X0 1 a ]
+"52
+[; ;../main.c: 52:     unsigned int color_calibrated[24];
 [v _color_calibrated `ui ~T0 @X0 -> 24 `i a ]
-"63
-[; ;../main.c: 63:     color_read(&RGB_calibrated);
+"67
+[; ;../main.c: 67:     color_read(&RGB_calibrated);
 [e ( _color_read (1 &U _RGB_calibrated ]
-"64
-[; ;../main.c: 64:     char readout[50];
-[v _readout `uc ~T0 @X0 -> 50 `i a ]
-"65
-[; ;../main.c: 65:     sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-[e ( _sprintf (1 , , , , (. , &U _readout :s 1C . _RGB_calibrated 0 . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
-"66
-[; ;../main.c: 66:     sendStringSerial4(readout);
-[e ( _sendStringSerial4 (1 &U _readout ]
 "68
-[; ;../main.c: 68:     while (1) {
+[; ;../main.c: 68:     char readout[50];
+[v _readout `uc ~T0 @X0 -> 50 `i a ]
+"69
+[; ;../main.c: 69:     sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+[e ( _sprintf (1 , , , , (. , &U _readout :s 1C . _RGB_calibrated 0 . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
+"70
+[; ;../main.c: 70:     sendStringSerial4(readout);
+[e ( _sendStringSerial4 (1 &U _readout ]
+"72
+[; ;../main.c: 72:     while (1) {
 [e :U 2021 ]
 {
-"77
-[; ;../main.c: 77:         while (PORTFbits.RF3 & PORTFbits.RF2);
+"81
+[; ;../main.c: 81:         while (PORTFbits.RF3 & PORTFbits.RF2);
 [e $U 2023  ]
 [e :U 2024 ]
 [e :U 2023 ]
 [e $ != & -> . . _PORTFbits 0 3 `i -> . . _PORTFbits 0 2 `i -> 0 `i 2024  ]
 [e :U 2025 ]
-"78
-[; ;../main.c: 78:         if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}
+"82
+[; ;../main.c: 82:         if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}
 [e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2026  ]
 {
 [e = . . _LATDbits 0 7 -> -> ! != -> . . _LATDbits 0 7 `i -> 0 `i `i `uc ]
 }
 [e $U 2027  ]
-"79
-[; ;../main.c: 79:         else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}
+"83
+[; ;../main.c: 83:         else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}
 [e :U 2026 ]
 [e $ ! ! != -> . . _PORTFbits 0 3 `i -> 0 `i 2028  ]
 {
@@ -2262,89 +2272,118 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 2028 ]
 [e :U 2027 ]
-"82
-[; ;../main.c: 82:         while (1) {
+"86
+[; ;../main.c: 86:         int i_storage;
+[v _i_storage `i ~T0 @X0 1 a ]
+"87
+[; ;../main.c: 87:         while (!home) {
+[e $U 2029  ]
 [e :U 2030 ]
 {
-"83
-[; ;../main.c: 83:             if (LATDbits.LATD7){
+"88
+[; ;../main.c: 88:             if (LATDbits.LATD7){
 [e $ ! != -> . . _LATDbits 0 7 `i -> 0 `i 2032  ]
 {
-"84
-[; ;../main.c: 84:                 if (color_flag){
+"89
+[; ;../main.c: 89:                 if (color_flag){
 [e $ ! != _color_flag -> -> 0 `i `ui 2033  ]
 {
-"85
-[; ;../main.c: 85:                     color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"86
-[; ;../main.c: 86:                     color_name = color_processor_easy(&RGB_recorded);
-[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
 "90
-[; ;../main.c: 90:                     color_read(&RGB_calibrated);
-[e ( _color_read (1 &U _RGB_calibrated ]
+[; ;../main.c: 90:                     color_read(&RGB_recorded);
+[e ( _color_read (1 &U _RGB_recorded ]
 "91
-[; ;../main.c: 91:                     char readout[50];
-[v _readout `uc ~T0 @X0 -> 50 `i a ]
-"92
-[; ;../main.c: 92:                     sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-[e ( _sprintf (1 , , , , (. , &U _readout :s 2C . _RGB_calibrated 0 . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
-"93
-[; ;../main.c: 93:                     sendStringSerial4(readout);
-[e ( _sendStringSerial4 (1 &U _readout ]
-"94
-[; ;../main.c: 94:                 }
+[; ;../main.c: 91:                     color_name = color_processor_easy(&RGB_recorded);
+[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
+"95
+[; ;../main.c: 95:                     if (color_name != 8) {
+[e $ ! != _color_name -> -> 8 `i `ui 2034  ]
+{
+"96
+[; ;../main.c: 96:                         color_flag = 0;
+[e = _color_flag -> -> 0 `i `ui ]
+"97
+[; ;../main.c: 97:                         home = 1;
+[e = _home -> -> 1 `i `ui ]
+"98
+[; ;../main.c: 98:                     }
+}
+[e :U 2034 ]
+"99
+[; ;../main.c: 99:                 }
 }
 [e :U 2033 ]
-"95
-[; ;../main.c: 95:             }
-}
-[e $U 2034  ]
-"96
-[; ;../main.c: 96:             else if (LATHbits.LATH3) {
-[e :U 2032 ]
-[e $ ! != -> . . _LATHbits 0 3 `i -> 0 `i 2035  ]
-{
-"98
-[; ;../main.c: 98:                 color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"99
-[; ;../main.c: 99:             }
-}
-[e :U 2035 ]
-[e :U 2034 ]
 "100
-[; ;../main.c: 100:             _delay((unsigned long)((200)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+[; ;../main.c: 100:             }
+}
+[e $U 2035  ]
 "101
-[; ;../main.c: 101:         }
+[; ;../main.c: 101:             else if (LATHbits.LATH3) {
+[e :U 2032 ]
+[e $ ! != -> . . _LATHbits 0 3 `i -> 0 `i 2036  ]
+{
+"103
+[; ;../main.c: 103:                 color_read(&RGB_recorded);
+[e ( _color_read (1 &U _RGB_recorded ]
+"104
+[; ;../main.c: 104:             }
+}
+[e :U 2036 ]
+[e :U 2035 ]
+"105
+[; ;../main.c: 105:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"106
+[; ;../main.c: 106:         }
 }
 [e :U 2029 ]
-[e $U 2030  ]
+"87
+[; ;../main.c: 87:         while (!home) {
+[e $ ! != _home -> -> 0 `i `ui 2030  ]
 [e :U 2031 ]
-"102
-[; ;../main.c: 102:     }
+"108
+[; ;../main.c: 108:         int j;
+[v _j `i ~T0 @X0 1 a ]
+"109
+[; ;../main.c: 109:         size_t n = sizeof(color_storage)/sizeof(color_storage[0]);
+[v _n `ui ~T0 @X0 1 a ]
+[e = _n / -> # _color_storage `ui -> # *U + &U _color_storage * -> -> -> 0 `i `ui `ux -> -> # *U &U _color_storage `ui `ux `ui ]
+"110
+[; ;../main.c: 110:         for (j=0;j<n;j++){
+{
+[e = _j -> 0 `i ]
+[e $U 2040  ]
+[e :U 2037 ]
+{
+"112
+[; ;../main.c: 112:         }
+}
+[e ++ _j -> 1 `i ]
+[e :U 2040 ]
+[e $ < -> _j `ui _n 2037  ]
+[e :U 2038 ]
+}
+"115
+[; ;../main.c: 115:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
-"109
-[; ;../main.c: 109:     while (1) {
-[e :U 2037 ]
+"122
+[; ;../main.c: 122:     while (1) {
+[e :U 2042 ]
 {
-"111
-[; ;../main.c: 111:         __asm(" sleep");
+"124
+[; ;../main.c: 124:         __asm(" sleep");
 [; <"  sleep ;# ">
-"112
-[; ;../main.c: 112:     }
+"125
+[; ;../main.c: 125:     }
 }
-[e :U 2036 ]
-[e $U 2037  ]
-[e :U 2038 ]
-"113
-[; ;../main.c: 113: }
+[e :U 2041 ]
+[e $U 2042  ]
+[e :U 2043 ]
+"126
+[; ;../main.c: 126: }
 [e :UE 2019 ]
 }
 [p f _sprintf 8388736 ]
 [a 1C 37 100 32 37 100 32 37 100 32 37 100 32 13 10 0 ]
-[a 2C 37 100 32 37 100 32 37 100 32 37 100 32 13 10 0 ]
