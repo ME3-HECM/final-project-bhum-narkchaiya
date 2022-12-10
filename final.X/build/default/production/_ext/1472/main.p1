@@ -111,7 +111,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29265
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29265: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
 [v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
-"20 ../dc_motor.h
+"21 ../dc_motor.h
+[; ;../dc_motor.h: 21: void forward(struct DC_motor *mL, struct DC_motor *mR);
+[v _forward `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
+"20
 [; ;../dc_motor.h: 20: void stop(struct DC_motor *mL, struct DC_motor *mR);
 [v _stop `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
 "41 ../color.h
@@ -2268,46 +2271,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../main.c: 68:     while (1) {
 [e :U 2021 ]
 {
-"77
-[; ;../main.c: 77:         if (time_flag==1){
+"76
+[; ;../main.c: 76:         if (time_flag==1){
 [e $ ! == _time_flag -> -> 1 `i `ui 2023  ]
 {
-"78
-[; ;../main.c: 78:             time++;
+"77
+[; ;../main.c: 77:             time++;
 [e ++ _time -> -> 1 `i `ui ]
-"79
-[; ;../main.c: 79:             time_flag = 0;
+"78
+[; ;../main.c: 78:             time_flag = 0;
 [e = _time_flag -> -> 0 `i `ui ]
-"80
-[; ;../main.c: 80:         }
+"79
+[; ;../main.c: 79:         }
 }
 [e :U 2023 ]
-"83
-[; ;../main.c: 83:         while (PORTFbits.RF3 & PORTFbits.RF2);
+"82
+[; ;../main.c: 82:         while (PORTFbits.RF3 & PORTFbits.RF2);
 [e $U 2024  ]
 [e :U 2025 ]
 [e :U 2024 ]
 [e $ != & -> . . _PORTFbits 0 3 `i -> . . _PORTFbits 0 2 `i -> 0 `i 2025  ]
 [e :U 2026 ]
-"84
-[; ;../main.c: 84:         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
+"83
+[; ;../main.c: 83:         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
 [e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2027  ]
 {
 [e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
 }
 [e $U 2028  ]
-"85
-[; ;../main.c: 85:         else {LATHbits.LATH3 = 1;}
+"84
+[; ;../main.c: 84:         else {LATHbits.LATH3 = 1;}
 [e :U 2027 ]
 {
 [e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
 }
 [e :U 2028 ]
-"88
-[; ;../main.c: 88:         while (!home) {
+"87
+[; ;../main.c: 87:         while (color_name != 8){
 [e $U 2029  ]
 [e :U 2030 ]
 {
+"88
+[; ;../main.c: 88:             forward(&motorL,&motorR);
+[e ( _forward (2 , &U _motorL &U _motorR ]
 "89
 [; ;../main.c: 89:             if (color_flag){
 [e $ ! != _color_flag -> -> 0 `i `ui 2032  ]
@@ -2347,87 +2353,64 @@ Version 4.0 HI-TECH Software Intermediate Code
 "98
 [; ;../main.c: 98:                 time = 0;
 [e = _time -> -> 0 `i `ui ]
-"100
-[; ;../main.c: 100:                 if (color_name != 8) {
-[e $ ! != _color_name -> -> 8 `i `ui 2035  ]
-{
-"101
-[; ;../main.c: 101:                     color_flag = 0;
+"99
+[; ;../main.c: 99:                 color_flag = 0;
 [e = _color_flag -> -> 0 `i `ui ]
-"102
-[; ;../main.c: 102:                     home = 1;
-[e = _home -> -> 1 `i `ui ]
-"103
-[; ;../main.c: 103:                 }
+"100
+[; ;../main.c: 100:             }
 }
-[e :U 2035 ]
-"104
-[; ;../main.c: 104:             }
-}
-[e $U 2036  ]
-"105
-[; ;../main.c: 105:             else if (LATHbits.LATH3) {
 [e :U 2032 ]
-[e $ ! != -> . . _LATHbits 0 3 `i -> 0 `i 2037  ]
-{
-"107
-[; ;../main.c: 107:                 color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"108
-[; ;../main.c: 108:             }
-}
-[e :U 2037 ]
-[e :U 2036 ]
-"109
-[; ;../main.c: 109:             _delay((unsigned long)((200)*(64000000/4000.0)));
+"101
+[; ;../main.c: 101:             _delay((unsigned long)((200)*(64000000/4000.0)));
 [e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"110
-[; ;../main.c: 110:         }
+"102
+[; ;../main.c: 102:         }
 }
 [e :U 2029 ]
-"88
-[; ;../main.c: 88:         while (!home) {
-[e $ ! != _home -> -> 0 `i `ui 2030  ]
+"87
+[; ;../main.c: 87:         while (color_name != 8){
+[e $ != _color_name -> -> 8 `i `ui 2030  ]
 [e :U 2031 ]
-"112
-[; ;../main.c: 112:         int k;
+"105
+[; ;../main.c: 105:         for (int k=0;k<15;k++){
+{
 [v _k `i ~T0 @X0 1 a ]
-"113
-[; ;../main.c: 113:         for (k=0;k<15;k++){
-{
 [e = _k -> 0 `i ]
-[e $ < _k -> 15 `i 2038  ]
-[e $U 2039  ]
-[e :U 2038 ]
+[e $ < _k -> 15 `i 2035  ]
+[e $U 2036  ]
+[e :U 2035 ]
 {
-"115
-[; ;../main.c: 115:         }
+"106
+[; ;../main.c: 106:             motor_action(color_path[k],&motorL,&motorR);
+[e ( _motor_action (3 , , *U + &U _color_path * -> -> _k `ui `ux -> -> # *U &U _color_path `ui `ux &U _motorL &U _motorR ]
+"107
+[; ;../main.c: 107:         }
 }
 [e ++ _k -> 1 `i ]
-[e $ < _k -> 15 `i 2038  ]
-[e :U 2039 ]
+[e $ < _k -> 15 `i 2035  ]
+[e :U 2036 ]
 }
-"118
-[; ;../main.c: 118:     }
+"110
+[; ;../main.c: 110:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
-"125
-[; ;../main.c: 125:     while (1) {
-[e :U 2042 ]
+"117
+[; ;../main.c: 117:     while (1) {
+[e :U 2039 ]
 {
-"127
-[; ;../main.c: 127:         __asm(" sleep");
+"119
+[; ;../main.c: 119:         __asm(" sleep");
 [; <"  sleep ;# ">
-"128
-[; ;../main.c: 128:     }
+"120
+[; ;../main.c: 120:     }
 }
-[e :U 2041 ]
-[e $U 2042  ]
-[e :U 2043 ]
-"129
-[; ;../main.c: 129: }
+[e :U 2038 ]
+[e $U 2039  ]
+[e :U 2040 ]
+"121
+[; ;../main.c: 121: }
 [e :UE 2019 ]
 }
 [p f _sprintf 8388736 ]

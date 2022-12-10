@@ -84,7 +84,8 @@ void main(void) {
         else {LATHbits.LATH3 = 1;} //F3 button (hard mode)
         
         //maze time
-        while (!home) {
+        while (color_name != 8){
+            forward(&motorL,&motorR);
             if (color_flag){
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card
@@ -95,15 +96,7 @@ void main(void) {
                 motor_action(color_name,&motorL,&motorR); //perform action depending on the color of the card
                 j++;
                 time = 0; //reset clock
-                //moves onto return home phase once reaching the white card
-                if (color_name != 8) { 
-                    color_flag = 0; //clear flag
-                    home = 1; //stops while loop
-                }
-            }
-            else if (LATHbits.LATH3) { //hard mode
-                //color detection for harder colors
-                color_read(&RGB_recorded);
+                color_flag = 0; //clear flag
             }
             __delay_ms(200); // call built in delay function 
         }

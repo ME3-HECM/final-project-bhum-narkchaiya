@@ -24600,7 +24600,13 @@ void main(void) {
     sendStringSerial4(readout);
 
     while (1) {
-# 77 "../main.c"
+
+
+
+
+
+
+
         if (time_flag==1){
             time++;
             time_flag = 0;
@@ -24612,7 +24618,8 @@ void main(void) {
         else {LATHbits.LATH3 = 1;}
 
 
-        while (!home) {
+        while (color_name != 8){
+            forward(&motorL,&motorR);
             if (color_flag){
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);
@@ -24623,22 +24630,14 @@ void main(void) {
                 motor_action(color_name,&motorL,&motorR);
                 j++;
                 time = 0;
-
-                if (color_name != 8) {
-                    color_flag = 0;
-                    home = 1;
-                }
-            }
-            else if (LATHbits.LATH3) {
-
-                color_read(&RGB_recorded);
+                color_flag = 0;
             }
             _delay((unsigned long)((200)*(64000000/4000.0)));
         }
 
-        int k;
-        for (k=0;k<15;k++){
 
+        for (int k=0;k<15;k++){
+            motor_action(color_path[k],&motorL,&motorR);
         }
 
 
