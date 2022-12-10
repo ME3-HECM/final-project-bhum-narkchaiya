@@ -24273,7 +24273,7 @@ unsigned int color_read_Blue(void);
 
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated);
 # 2 "../color.c" 2
 
 # 1 "../i2c.h" 1
@@ -24311,6 +24311,9 @@ void I2C_2_Master_Write(unsigned char data_byte);
 unsigned char I2C_2_Master_Read(unsigned char ack);
 # 3 "../color.c" 2
 
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdbool.h" 1 3
+# 4 "../color.c" 2
+
 
 void color_click_init(void)
 {
@@ -24336,9 +24339,9 @@ void color_click_init(void)
 
     LATHbits.LATH1 = 1;
     LATDbits.LATD3 = 1;
-    LATDbits.LATD4 = 1;
-    LATHbits.LATH0 = 1;
-    LATFbits.LATF0 = 1;
+    LATDbits.LATD4 = 0;
+    LATHbits.LATH0 = 0;
+    LATFbits.LATF0 = 0;
 
 
     LATDbits.LATD7=0;
@@ -24427,7 +24430,7 @@ void color_read(struct RGB_val *rgb)
     _delay((unsigned long)((100)*(64000000/4000.0)));
     rgb->B = color_read_Blue();
 }
-# 133 "../color.c"
+# 134 "../color.c"
 unsigned int color_processor_easy(struct RGB_val *rgb)
 {
     unsigned int a = rgb->R;
@@ -24440,14 +24443,22 @@ unsigned int color_processor_easy(struct RGB_val *rgb)
     return color;
 }
 
-unsigned int color_processor_hard(struct RGB_val *rgb)
+unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated)
 {
-    unsigned int a = rgb->R;
-    unsigned int b = rgb->G;
-    unsigned int c = rgb->B;
-    unsigned int color;
-    if (a>=b & a>=c){color=1;}
-    else if (b>=a & b>=c){color=2;}
-    else {color=3;}
-    return color;
+    unsigned int r = rgb->R;
+    unsigned int g = rgb->G;
+    unsigned int b = rgb->B;
+    unsigned int cr = calibrated->R;
+    unsigned int cg = calibrated->G;
+    unsigned int cb = calibrated->B;
+
+    _Bool condition_r = r>cr-20 && r<cr+20;
+    _Bool condition_g = b>cb-20 && b<cb+20;
+    _Bool condition_b = g>cg-20 && g<cg+20;
+
+    for (int i=0;i<9;i++){
+        if (condition_r && condition_g && condition_b){
+            return i;
+        }
+    }
 }

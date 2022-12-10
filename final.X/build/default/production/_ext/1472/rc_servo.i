@@ -24249,6 +24249,7 @@ void Timer0_init(void);
 void write16bitTMR0val(unsigned int);
 
 void angle2PWM(int angle);
+unsigned int time;
 # 2 "../rc_servo.c" 2
 
 
@@ -24258,10 +24259,21 @@ void angle2PWM(int angle);
 
 void Interrupts_init(void)
 {
-    PIE0bits.TMR0IE=1;
-    INTCONbits.PEIE=1;
-    INTCONbits.IPEN=0;
-    INTCONbits.GIE=1;
+
+
+    INTCONbits.IPEN = 1;
+    INTCONbits.PEIE = 1;
+
+
+    PIE0bits.TMR0IE = 1;
+    IPR0bits.TMR0IP = 1;
+    PIR0bits.TMR0IF = 0;
+
+    PIE2bits.C1IE=1;
+    IPR2bits.C1IP=0;
+    PIR2bits.C1IF=0;
+
+    INTCONbits.GIE = 1;
 }
 
 
@@ -24270,19 +24282,18 @@ void Interrupts_init(void)
 
 void __attribute__((picinterrupt(("high_priority")))) HighISR()
 {
-    if (PIR0bits.TMR0IF)
-    {
-        if(LATEbits.LATE2){
-            write16bitTMR0val(65535-off_period);
-            LATEbits.LATE2=0;
+    if(PIR0bits.TMR0IF||!PORTFbits.RF2){
 
-        } else {
-            write16bitTMR0val(65535-on_period);
-            LATEbits.LATE2=1;
 
-        }
-    }
-    PIR0bits.TMR0IF=0;
+        time++;
+
+
+        TMR0L = 0b11011011;
+        TMR0H = 0b00001011;
+
+        PIR0bits.TMR0IF=0;
+ }
+# 57 "../rc_servo.c"
 }
 
 

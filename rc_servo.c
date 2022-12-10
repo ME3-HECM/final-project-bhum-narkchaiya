@@ -7,10 +7,21 @@
 ************************************/
 void Interrupts_init(void)
 {
-    PIE0bits.TMR0IE=1;  //interrupt on timer0 overflow (or match in 8bit mode)
-    INTCONbits.PEIE=1;  //peripheral interrupts enabled (controls anything in PIE1+)
-    INTCONbits.IPEN=0;  //high priority only
-    INTCONbits.GIE=1;   //global interrupt enabled
+    // turn on global interrupts, peripheral interrupts and the interrupt source 
+	// It's a good idea to turn on global interrupts last, once all other interrupt configuration is done.
+    INTCONbits.IPEN = 1; //enable priority level on interrupts
+    INTCONbits.PEIE = 1;
+    
+    
+    PIE0bits.TMR0IE = 1; //enable time interrupt
+    IPR0bits.TMR0IP = 1; //set as high priority
+    PIR0bits.TMR0IF = 0; //interrupt initially set as off
+    
+    PIE2bits.C1IE=1; //enable interrupt source Comparator 1
+    IPR2bits.C1IP=0; //set as low priority
+    PIR2bits.C1IF=0; //interrupt initially set as off
+    
+    INTCONbits.GIE = 1; //enable global interrupt
 }
 
 /************************************
@@ -19,19 +30,30 @@ void Interrupts_init(void)
 ************************************/
 void __interrupt(high_priority) HighISR()
 {
-    if (PIR0bits.TMR0IF)
-    {
-        if(LATEbits.LATE2){ //if output pin currently high
-            write16bitTMR0val(65535-off_period); //set new off_period
-            LATEbits.LATE2=0; //turn your output pin off here
-            //LATDbits.LATD7 = !LATDbits.LATD7;
-        } else {
-            write16bitTMR0val(65535-on_period);  //set new on_period
-            LATEbits.LATE2=1; //turn your output pin off here
-            //LATHbits.LATH3 = !LATHbits.LATH3;
-        }
-    }
-    PIR0bits.TMR0IF=0; 
+    if(PIR0bits.TMR0IF||!PORTFbits.RF2){ //check the Timer0 interrupt source
+        //LATHbits.LATH3 = !LATHbits.LATH3;  //toggle the LED
+        
+        time++; //counts time in seconds
+        
+        //count from 3035 to 62535 to toggle LED H3 every second (timer runs at 62.5 kHz)
+        TMR0L = 0b11011011;
+        TMR0H = 0b00001011;
+        
+        PIR0bits.TMR0IF=0; //clear the interrupt flag
+	}
+//    if (PIR0bits.TMR0IF)
+//    {
+//        if(LATEbits.LATE2){ //if output pin currently high
+//            write16bitTMR0val(65535-off_period); //set new off_period
+//            LATEbits.LATE2=0; //turn your output pin off here
+//            //LATDbits.LATD7 = !LATDbits.LATD7;
+//        } else {
+//            write16bitTMR0val(65535-on_period);  //set new on_period
+//            LATEbits.LATE2=1; //turn your output pin off here
+//            //LATHbits.LATH3 = !LATHbits.LATH3;
+//        }
+//    }
+//    PIR0bits.TMR0IF=0; 
 }
 
 /************************************
@@ -70,3 +92,9 @@ void angle2PWM(int angle){
     on_period = angle * (200/180) + 162;	//avoid floating point numbers and be careful of calculation order...
     off_period = T_PERIOD-on_period;
 }
+
+/************************************
+ * Function to turn on interrupts and set if priority is used
+ * Note you also need to enable peripheral interrupts in the INTCON register to use CM1IE.
+************************************/
+

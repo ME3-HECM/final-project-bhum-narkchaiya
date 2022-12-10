@@ -51,38 +51,47 @@ void main(void) {
     struct RGB_val RGB_recorded;
     
     unsigned int time_path[15];
-    unsigned int time;
     unsigned int time_return;
     unsigned int time_flag; //timer interrupt flag
     int j; //iterator for storing path of buggy
     unsigned int home = 0;
     
-    unsigned int color_calibrated[32];
+    int color_calibrated[32];
     struct RGB_val RGB_calibrated;
+    struct RGB_val distance_calibration;
+    
     
     //serial communication for color readout on RealTerm: Baud=9600, Port 3
-    color_read(&RGB_calibrated);
-    char readout[50];
-    sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-    sendStringSerial4(readout);
+//    color_read(&RGB_calibrated);
+//    char readout[50];
+//    sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+//    sendStringSerial4(readout);
 
     while (1) {
-        //calibration
-        while (PORTFbits.RF3); //wait for button press on F3
-        if (PORTFbits.RF3){
-            for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
-                color_read(&RGB_calibrated);
-                color_calibrated[4i] = RGB_calibrated.L;
-                color_calibrated[4i+1] = RGB_calibrated.R;
-                color_calibrated[4i+2] = RGB_calibrated.G;
-                color_calibrated[4i+3] = RGB_calibrated.B;
-            }
-        }
+//        //calibration for stopping at a card
+//        color_read(&distance_calibration);    
+//        char readout1[100];
+//        sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+//        sendStringSerial4(readout1);
+//        __delay_ms(500);
         
-        //timer
-        if (time_flag==1){
-            time++;
-            time_flag = 0;
+        
+        //calibration for detecting color of the card
+        while (PORTFbits.RF3); //wait for button press on F3
+        for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
+            color_read(&RGB_calibrated);
+            color_calibrated[4*i] = RGB_calibrated.L;
+            color_calibrated[4*i+1] = RGB_calibrated.R;
+            color_calibrated[4*i+2] = RGB_calibrated.G;
+            color_calibrated[4*i+3] = RGB_calibrated.B;
+            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
+            //serial communication
+            char readout2[100];
+            sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+            sendStringSerial4(readout2);
+            __delay_ms(2000);
+            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
+            __delay_ms(2000);
         }
         
         //mode selection
@@ -92,14 +101,22 @@ void main(void) {
         
         //maze time
         while (color_name != 8){
+            time = 0; //reset clock
             forward(&motorL,&motorR);
-            if (color_flag){
+            color_read(&RGB_recorded);
+            if (&RGB_recorded.L>color_calibrated[8]){
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card
                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color detection for easy mode
-                else {color_name = color_processor_hard(&RGB_recorded);} //color detection for hard mode 
+                //else {color_name = color_processor_hard(&RGB_recorded,&color_calibrated);} //color detection for hard mode 
                 color_path[j] = color_name; //store color to array
                 time_path[j] = time; //store time taken from the last action to array
+                
+                //serial communication
+                char readout3[100];
+                sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
+                sendStringSerial4(readout3);
+            
                 motor_action(color_name,&motorL,&motorR); //perform action depending on the color of the card
                 
                 j++;
@@ -122,18 +139,11 @@ void main(void) {
             }
             stop(&motorL,&motorR);
                     
-        }
-            
-        
+        }   
     }
     
-    //reach destination code
-    //if color = white
-    //play back recorded colors from array
-    
-    
+    //sleepy time
     while (1) {
-        //turn_on_color();
         Sleep();
     }
 }

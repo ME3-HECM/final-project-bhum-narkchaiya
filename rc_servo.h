@@ -15,5 +15,5 @@ void Timer0_init(void);
 void write16bitTMR0val(unsigned int);
 
 void angle2PWM(int angle);
-
+unsigned int time;
 #endif

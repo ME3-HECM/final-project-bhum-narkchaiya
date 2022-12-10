@@ -1,6 +1,7 @@
 #include <xc.h>
 #include "color.h"
 #include "i2c.h"
+#include <stdbool.h>  
 
 void color_click_init(void)
 {   
@@ -26,9 +27,9 @@ void color_click_init(void)
     
     LATHbits.LATH1 = 1; //first turn on the light
     LATDbits.LATD3 = 1; //set front LED to max brightness
-    LATDbits.LATD4 = 1; //set back LED to max brightness
-    LATHbits.LATH0 = 1; //set right signal LED
-    LATFbits.LATF0 = 1; //set left signal LED 
+    LATDbits.LATD4 = 0; //set back LED to max brightness
+    LATHbits.LATH0 = 0; //set right signal LED
+    LATFbits.LATF0 = 0; //set left signal LED 
     
     //setup pins for clicker board LEDs and buttons
     LATDbits.LATD7=0;   //set initial output state of D7 to off
@@ -144,14 +145,20 @@ unsigned int color_processor_easy(struct RGB_val *rgb)
 
 unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated)
 {
-    unsigned int a = rgb->R;
-    unsigned int b = rgb->G;
-    unsigned int c = rgb->B;
-    unsigned int color;
-    if (a>=b & a>=c){color=1;} //if red strongest
-    else if (b>=a & b>=c){color=2;} //if green strongest
-    else {color=3;} //if blue strongest
-    return color;
+    unsigned int r = rgb->R;
+    unsigned int g = rgb->G;
+    unsigned int b = rgb->B;
+    unsigned int cr = calibrated->R;
+    unsigned int cg = calibrated->G;
+    unsigned int cb = calibrated->B;
+    
+    bool condition_r = r>cr-20 && r<cr+20;
+    bool condition_g = b>cb-20 && b<cb+20;
+    bool condition_b = g>cg-20 && g<cg+20;
+    
+    for (int i=0;i<9;i++){
+        if (condition_r && condition_g && condition_b){
+            return i;
+        }
+    }
 }
-
-//finish (return home) functions

@@ -24283,7 +24283,7 @@ unsigned int color_read_Blue(void);
 
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated);
 # 11 "../main.c" 2
 
 # 1 "../i2c.h" 1
@@ -24370,6 +24370,7 @@ void Timer0_init(void);
 void write16bitTMR0val(unsigned int);
 
 void angle2PWM(int angle);
+unsigned int time;
 # 14 "../main.c" 2
 
 # 1 "../serial.h" 1
@@ -24585,32 +24586,32 @@ void main(void) {
     struct RGB_val RGB_recorded;
 
     unsigned int time_path[15];
-    unsigned int time;
     unsigned int time_return;
     unsigned int time_flag;
     int j;
     unsigned int home = 0;
 
-    unsigned int color_calibrated[24];
+    int color_calibrated[32];
     struct RGB_val RGB_calibrated;
-
-
-    color_read(&RGB_calibrated);
-    char readout[50];
-    sprintf(readout,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-    sendStringSerial4(readout);
-
+    struct RGB_val distance_calibration;
+# 70 "../main.c"
     while (1) {
+# 80 "../main.c"
+        while (PORTFbits.RF3);
+        for (int i=0;i<8;i++){
+            color_read(&RGB_calibrated);
+            color_calibrated[4*i] = RGB_calibrated.L;
+            color_calibrated[4*i+1] = RGB_calibrated.R;
+            color_calibrated[4*i+2] = RGB_calibrated.G;
+            color_calibrated[4*i+3] = RGB_calibrated.B;
+            LATHbits.LATH3 = 1;
 
-
-
-
-
-
-
-        if (time_flag==1){
-            time++;
-            time_flag = 0;
+            char readout2[100];
+            sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+            sendStringSerial4(readout2);
+            _delay((unsigned long)((2000)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            _delay((unsigned long)((2000)*(64000000/4000.0)));
         }
 
 
@@ -24620,14 +24621,22 @@ void main(void) {
 
 
         while (color_name != 8){
+            time = 0;
             forward(&motorL,&motorR);
-            if (color_flag){
+            color_read(&RGB_recorded);
+            if (&RGB_recorded.L>color_calibrated[8]){
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);
                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
-                else {color_name = color_processor_hard(&RGB_recorded);}
+
                 color_path[j] = color_name;
                 time_path[j] = time;
+
+
+                char readout3[100];
+                sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
+                sendStringSerial4(readout3);
+
                 motor_action(color_name,&motorL,&motorR);
 
                 j++;
@@ -24638,24 +24647,23 @@ void main(void) {
         }
 
 
+        spin_180(&motorL,&motorR);
         for (int k=0;k<15;k++){
+            INTCONbits.GIE = 0;
+            time_return = 0;
             motor_action(color_path[k],&motorL,&motorR);
+            forward(&motorL,&motorR);
             while (time_return < time_path[k]) {
-                _delay((unsigned long)((87)*(64000000/4000.0)));
+                _delay((unsigned long)((50)*(64000000/4000.0)));
                 time_return++;
             }
+            stop(&motorL,&motorR);
+
         }
-
-
     }
 
 
-
-
-
-
     while (1) {
-
         __asm(" sleep");
     }
 }
