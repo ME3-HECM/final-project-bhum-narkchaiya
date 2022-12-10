@@ -39,5 +39,5 @@ unsigned int color_read_Blue(void);
  ***********************************************/
 void color_read(struct RGB_val *rgb);
 unsigned int color_processor_easy(struct RGB_val *rgb);
-unsigned int color_processor_hard(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb, struct RGB_val *calibrated);
 #endif

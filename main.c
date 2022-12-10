@@ -57,7 +57,7 @@ void main(void) {
     int j; //iterator for storing path of buggy
     unsigned int home = 0;
     
-    unsigned int color_calibrated[24];
+    unsigned int color_calibrated[32];
     struct RGB_val RGB_calibrated;
     
     //serial communication for color readout on RealTerm: Baud=9600, Port 3
@@ -67,11 +67,17 @@ void main(void) {
     sendStringSerial4(readout);
 
     while (1) {
-//        //calibration
-//        while (PORTFbits.RF3); //wait for button press on F3
-//        for (int i=0;i<9;i++){//add to array 3 rgb values for every color = 24 elements in array
-//            color_read(&RGB_calibrated);
-//        }
+        //calibration
+        while (PORTFbits.RF3); //wait for button press on F3
+        if (PORTFbits.RF3){
+            for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
+                color_read(&RGB_calibrated);
+                color_calibrated[4i] = RGB_calibrated.L;
+                color_calibrated[4i+1] = RGB_calibrated.R;
+                color_calibrated[4i+2] = RGB_calibrated.G;
+                color_calibrated[4i+3] = RGB_calibrated.B;
+            }
+        }
         
         //timer
         if (time_flag==1){
@@ -104,15 +110,18 @@ void main(void) {
         }
         
         //return home
+        spin_180(&motorL,&motorR);
         for (int k=0;k<15;k++){
             INTCONbits.GIE = 0; //turn off global interrupts
-            time_return = 0;
+            time_return = 0; //reset clock for this action
             motor_action(color_path[k],&motorL,&motorR); //need to write opposite functions
-            reverse(&motorL,&motorR);
+            forward(&motorL,&motorR);
             while (time_return < time_path[k]) { 
-                __delay_ms(87); //set motor move time
-                time_return++; //record accumulate time
+                __delay_ms(50);
+                time_return++; 
             }
+            stop(&motorL,&motorR);
+                    
         }
             
         
