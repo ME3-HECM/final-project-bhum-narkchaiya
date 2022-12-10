@@ -128,8 +128,7 @@ void main(void) {
                 __delay_ms(50);
                 time_return++; 
             }
-            stop(&motorL,&motorR);
-                    
+            stop(&motorL,&motorR);        
         }   
     }
     
