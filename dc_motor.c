@@ -242,13 +242,25 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
 {//4 & 5 not fixed
     switch (color){ //opposite
         case 1: //red: right 90
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
+            stop(l,r);
             left_90(l,r);
             break;
         case 2: //green: left 90
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
+            stop(l,r);
             right_90(l,r);
             break;
         case 3: //blue: turn 180
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
             spin_180(l,r);
+            stop(l,r);
             break;
         case 4: //yellow: rev, right 90
             right_90(l,r);
