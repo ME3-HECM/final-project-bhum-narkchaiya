@@ -47,10 +47,10 @@ void main(void) {
     //color variables
     unsigned int color_flag; //interrupt when card is in front of buggy
     unsigned int color_name;
-    unsigned int color_storage[15];
+    unsigned int color_path[15];
     struct RGB_val RGB_recorded;
     
-    unsigned int time_storage[15];
+    unsigned int time_path[15];
     unsigned int time;
     unsigned int time_flag; //timer interrupt flag
     int j; //iterator for storing path of buggy
@@ -68,8 +68,7 @@ void main(void) {
     while (1) {
 //        //calibration
 //        while (PORTFbits.RF3); //wait for button press on F3
-//        int i;
-//        for (i=0;i<9;i++){//add to array 3 rgb values for every color = 24 elements in array
+//        for (int i=0;i<9;i++){//add to array 3 rgb values for every color = 24 elements in array
 //            color_read(&RGB_calibrated);
 //        }
         
@@ -86,21 +85,20 @@ void main(void) {
         
         //maze time
         while (!home) {
-            if (LATDbits.LATD7){ //easy mode
-                if (color_flag){
-                    stop(&motorL,&motorR);
-                    color_read(&RGB_recorded); //read RGB values of card
-                    color_name = color_processor_easy(&RGB_recorded); //color detection for red, green, blue, white only
-                    color_storage[j] = color_name; //store color path to array
-                    time_storage[j] = time; //store time taken from the last action
-                    motor_action(color_flag,&motorL,&motorR); //performs action based on the color of the card
-                    j++;
-                    time = 0;
-                    //moves onto return home phase once reaching the white card
-                    if (color_name != 8) { 
-                        color_flag = 0; //clear flag
-                        home = 1; //stops while loop
-                    }
+            if (color_flag){
+                stop(&motorL,&motorR); //stop the buggy
+                color_read(&RGB_recorded); //read RGB values of card
+                if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);} //color detection for easy mode
+                else {color_name = color_processor_hard(&RGB_recorded);} //color detection for hard mode 
+                color_path[j] = color_name; //store color to array
+                time_path[j] = time; //store time taken from the last action to array
+                motor_action(color_name,&motorL,&motorR); //perform action depending on the color of the card
+                j++;
+                time = 0; //reset clock
+                //moves onto return home phase once reaching the white card
+                if (color_name != 8) { 
+                    color_flag = 0; //clear flag
+                    home = 1; //stops while loop
                 }
             }
             else if (LATHbits.LATH3) { //hard mode
@@ -109,10 +107,10 @@ void main(void) {
             }
             __delay_ms(200); // call built in delay function 
         }
-        //return home algorithm
-        int k;
-        for (k=0;k<15;k++){
-            //motor_action(&color_storage, &time_storage);
+        
+        //return home
+        for (int k=0;k<15;k++){
+            motor_action(color_path[k],&motorL,&motorR); //need to write opposite functions
         }
             
         

@@ -24581,10 +24581,10 @@ void main(void) {
 
     unsigned int color_flag;
     unsigned int color_name;
-    unsigned int color_storage[15];
+    unsigned int color_path[15];
     struct RGB_val RGB_recorded;
 
-    unsigned int time_storage[15];
+    unsigned int time_path[15];
     unsigned int time;
     unsigned int time_flag;
     int j;
@@ -24613,21 +24613,20 @@ void main(void) {
 
 
         while (!home) {
-            if (LATDbits.LATD7){
-                if (color_flag){
-                    stop(&motorL,&motorR);
-                    color_read(&RGB_recorded);
-                    color_name = color_processor_easy(&RGB_recorded);
-                    color_storage[j] = color_name;
-                    time_storage[j] = time;
-                    motor_action(color_flag,&motorL,&motorR);
-                    j++;
-                    time = 0;
+            if (color_flag){
+                stop(&motorL,&motorR);
+                color_read(&RGB_recorded);
+                if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
+                else {color_name = color_processor_hard(&RGB_recorded);}
+                color_path[j] = color_name;
+                time_path[j] = time;
+                motor_action(color_name,&motorL,&motorR);
+                j++;
+                time = 0;
 
-                    if (color_name != 8) {
-                        color_flag = 0;
-                        home = 1;
-                    }
+                if (color_name != 8) {
+                    color_flag = 0;
+                    home = 1;
                 }
             }
             else if (LATHbits.LATH3) {
