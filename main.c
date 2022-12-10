@@ -52,6 +52,7 @@ void main(void) {
     
     unsigned int time_path[15];
     unsigned int time;
+    unsigned int time_return;
     unsigned int time_flag; //timer interrupt flag
     int j; //iterator for storing path of buggy
     unsigned int home = 0;
@@ -94,6 +95,7 @@ void main(void) {
                 color_path[j] = color_name; //store color to array
                 time_path[j] = time; //store time taken from the last action to array
                 motor_action(color_name,&motorL,&motorR); //perform action depending on the color of the card
+                
                 j++;
                 time = 0; //reset clock
                 color_flag = 0; //clear flag
@@ -103,7 +105,14 @@ void main(void) {
         
         //return home
         for (int k=0;k<15;k++){
+            INTCONbits.GIE = 0; //turn off global interrupts
+            time_return = 0;
             motor_action(color_path[k],&motorL,&motorR); //need to write opposite functions
+            reverse(&motorL,&motorR);
+            while (time_return < time_path[k]) { 
+                __delay_ms(87); //set motor move time
+                time_return++; //record accumulate time
+            }
         }
             
         

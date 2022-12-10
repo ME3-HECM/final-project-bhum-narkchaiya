@@ -24586,6 +24586,7 @@ void main(void) {
 
     unsigned int time_path[15];
     unsigned int time;
+    unsigned int time_return;
     unsigned int time_flag;
     int j;
     unsigned int home = 0;
@@ -24628,6 +24629,7 @@ void main(void) {
                 color_path[j] = color_name;
                 time_path[j] = time;
                 motor_action(color_name,&motorL,&motorR);
+
                 j++;
                 time = 0;
                 color_flag = 0;
@@ -24638,6 +24640,10 @@ void main(void) {
 
         for (int k=0;k<15;k++){
             motor_action(color_path[k],&motorL,&motorR);
+            while (time_return < time_path[k]) {
+                _delay((unsigned long)((87)*(64000000/4000.0)));
+                time_return++;
+            }
         }
 
 
