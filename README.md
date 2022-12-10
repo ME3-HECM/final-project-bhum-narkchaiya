@@ -1,9 +1,9 @@
 # Use
 1. Calibrate the stopping distance
-- place the blue card 3 ft away from the buggy and press the H3 button
+	- place the blue card 3 ft away from the buggy and press the H3 button
 2. Calibrate each color card
-- starting from the red card, place it in directly in front of the buggy and press H3
-- repeat for the rest of the colors (green, blue, yellow, pink, orange, light blue, white) in order
+	- starting from the red card, place it in directly in front of the buggy and press H3
+	- repeat for the rest of the colors (green, blue, yellow, pink, orange, light blue, white) in order
 3. Select mode with F2 (easy mode) or F3 (hard mode)
 4. [Send me on my way.](https://www.youtube.com/watch?v=IGMabBGydC0) 
 
