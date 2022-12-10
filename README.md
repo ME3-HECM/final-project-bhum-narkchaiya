@@ -37,8 +37,7 @@ The program will make use of the clear/"L" channel of the color-click board to d
 The calibration sequence for color will store the LRGB values for the 8 colors in an array. This will be used later in 4.ii to interpret the card during maze navigation.
 
 ## 3. Mode Selector
-There are two modes (easy/hard) that can be selected with the F2 and F3 buttons on the clicker board.
-
+There are two modes (easy/hard) that can be selected with the F2 and F3 buttons on the clicker board. The easy mode will be able to differentiate between red, blue, and green. Whereas, the hard mode will be able to interpret all 8 colors of the cards.
 ## 4. Maze Navigation
 ### i. Reading Color
 
