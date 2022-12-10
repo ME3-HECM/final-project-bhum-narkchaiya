@@ -24559,13 +24559,16 @@ void main(void) {
     unsigned int color_flag;
     unsigned int color_name;
     unsigned int color_storage[15];
-    unsigned int time_storage[15];
-    unsigned int home = 0;
-    struct RGB_val RGB_calibrated;
     struct RGB_val RGB_recorded;
 
+    unsigned int time_storage[15];
+    unsigned int time;
+    unsigned int time_flag;
+    int j;
+    unsigned int home = 0;
 
     unsigned int color_calibrated[24];
+    struct RGB_val RGB_calibrated;
 
 
     color_read(&RGB_calibrated);
@@ -24574,26 +24577,32 @@ void main(void) {
     sendStringSerial4(readout);
 
     while (1) {
-# 56 "../main.c"
+# 59 "../main.c"
+        if (time_flag==1){
+            time++;
+            time_flag = 0;
+        }
+
+
         while (PORTFbits.RF3 & PORTFbits.RF2);
-        if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;}
-        else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;}
+        if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
+        else {LATHbits.LATH3 = 1;}
 
 
-        int i_storage;
         while (!home) {
             if (LATDbits.LATD7){
                 if (color_flag){
                     color_read(&RGB_recorded);
                     color_name = color_processor_easy(&RGB_recorded);
-
-
-
-
+                    color_storage[j] = color_name;
+                    time_storage[j] = time;
+                    j++;
+                    time = 0;
 
                     if (color_name != 8) {
                         color_flag = 0;
                         home = 1;
+
                     }
                 }
             }
@@ -24604,8 +24613,8 @@ void main(void) {
             _delay((unsigned long)((200)*(64000000/4000.0)));
         }
 
-        int j;
-        for (j=0;j<15;j++){
+        int k;
+        for (k=0;k<15;k++){
 
         }
 

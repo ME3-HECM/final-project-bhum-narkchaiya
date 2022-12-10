@@ -26,18 +26,41 @@ void main(void) {
     I2C_2_Master_Init(); //serial communication
     initUSART4(); //serial communication
     
-    //declare variables
+    //initial settings for left motor below
+    struct DC_motor motorL, motorR; //create structures for both sides motors
+    unsigned char PWMcycle = 200; //set PWMcycle for motor
+    motorL.power = 0; //initial motor power
+    motorL.direction = 0; //initial direction : reverse
+    motorL.dutyHighByte = (unsigned char *)(&PWM6DCH); //set channel
+    motorL.dir_LAT = (unsigned char *)(&LATE); //set register
+    motorL.dir_pin = 4; //set pin
+    motorL.PWMperiod = PWMcycle; //set PWMcycle
+    //initial settings for right motor below
+    motorR.power = 0;//initial motor power
+    motorR.direction = 0; //initial direction : reverse
+    motorR.dutyHighByte = (unsigned char *)(&PWM7DCH); //set channel
+    motorR.dir_LAT = (unsigned char *)(&LATG); //set register
+    motorR.dir_pin = 6; //set Pin
+    motorR.PWMperiod = PWMcycle; //set PWM cycle
+    
+    //after initial settings, pass structures to set functions
+    setMotorPWM(&motorL);
+    setMotorPWM(&motorR);
+    
+    //color variables
     unsigned int color_flag; //interrupt when card is in front of buggy
     unsigned int color_name;
     unsigned int color_storage[15];
-    unsigned int time_storage[15];
-    int j; //iterator for storing path of buggy
-    unsigned int home = 0;
-    struct RGB_val RGB_calibrated;
     struct RGB_val RGB_recorded;
     
-    //calibration variables
+    unsigned int time_storage[15];
+    unsigned int time;
+    unsigned int time_flag; //timer interrupt flag
+    int j; //iterator for storing path of buggy
+    unsigned int home = 0;
+    
     unsigned int color_calibrated[24];
+    struct RGB_val RGB_calibrated;
     
     //serial communication for color readout on RealTerm: Baud=9600, Port 3
     color_read(&RGB_calibrated);
@@ -53,25 +76,33 @@ void main(void) {
 //            color_read(&RGB_calibrated);
 //        }
         
+        //timer
+        if (time_flag==1){
+            time++;
+            time_flag = 0;
+        }
+        
         //mode selection
         while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for any button press
-        if (!PORTFbits.RF2){LATDbits.LATD7 = !LATDbits.LATD7;} //F2 button (easy mode)
-        else if (!PORTFbits.RF3){LATHbits.LATH3 = !LATHbits.LATH3;} //F3 button (hard mode)
+        if (!PORTFbits.RF2){LATDbits.LATD7 = 1;} //F2 button (easy mode)
+        else {LATHbits.LATH3 = 1;} //F3 button (hard mode)
         
         //maze time
-        
         while (!home) {
             if (LATDbits.LATD7){ //easy mode
                 if (color_flag){
                     color_read(&RGB_recorded); //read RGB values of card
                     color_name = color_processor_easy(&RGB_recorded); //color detection for red, green, blue, white only
-                    //color_record(color_name); //records current navigation
                     color_storage[j] = color_name; //store color path to array
+                    time_storage[j] = time; //store time taken from the last action
+                    
                     j++;
+                    time = 0;
                     //moves onto return home phase once reaching the white card
                     if (color_name != 8) { 
                         color_flag = 0; //clear flag
                         home = 1; //stops while loop
+                        
                     }
                 }
             }

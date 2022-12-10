@@ -18,8 +18,12 @@ struct DC_motor { //definition of DC_motor structure
 void initDCmotorsPWM(int PWMperiod); // function to setup PWM
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
-void turn_left(struct DC_motor *mL, struct DC_motor *mR);
-void turn_right(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
+void reverse (struct DC_motor *mL, struct DC_motor *mR);
+void right_90(struct DC_motor *mL, struct DC_motor *mR);
+void left_90(struct DC_motor *mL, struct DC_motor *mR);
+void spin_180(struct DC_motor *mL, struct DC_motor *mR);
+void right_135(struct DC_motor *mL, struct DC_motor *mR);
+void left_135(struct DC_motor *mL, struct DC_motor *mR);
 
 #endif

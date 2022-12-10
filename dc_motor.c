@@ -20,7 +20,7 @@ void initDCmotorsPWM(int PWMperiod){
 
     // Tpwm*(Fosc/4)/prescaler - 1 = PTPER
     //Tpwn * (64000000/4*8) - 1
-    T2PR=PWMperiod * 2000000 - 1; //Period reg 10kHz base period, for 10kHz, the time slot is 1*10^-4, prescaler should be smaller than this
+    T2PR=PWMperiod;// * 2000000 - 1; //Period reg 10kHz base period, for 10kHz, the time slot is 1*10^-4, prescaler should be smaller than this
     T2CONbits.ON=1;
     
     RE2PPS=0x0A; //PWM6 on RE2
@@ -62,55 +62,118 @@ void stop(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mR->direction = 0;
-    mL->power = 0;
-    mR->power = 0;
-    setMotorPWM(mL);
-    setMotorPWM(mR);
-    __delay_ms(10);
-}
-
-//movement: left turn 90 degrees
-void turn_left(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (char i = 0;i<101;i = i + 4)
+    for (int i = 5;i>0;i = i - 1)
     {
         mL->power = i;
         mR->power = i;
         setMotorPWM(mL);
         setMotorPWM(mR);
-        __delay_ms(20);
+        __delay_ms(10);
     }
+    
 }
 
-//movement: right turn 90 degrees
-void turn_right(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (char i = 0;i<101;i = i + 4)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        __delay_ms(20);
-    }
-}
-
-//movement: straight
+//function to make the robot go straight
 void forward(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 1;
-    for (int i = 0;i<101;i = i+4)
+    for (int i=0;i<31;i = i+2)
     {
         mL->power = i;
         mR->power = i;
         setMotorPWM(mL);
         setMotorPWM(mR);
-        __delay_ms(20);
+        __delay_us(20);
     }
 }
 
+void reverse (struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 0;
+    for (int i=0;i<51;i=i + 2)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(1100);
+}
+
+void right_90(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 0;
+    for (int i = 0;i<50;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = 50 + i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(165);
+}
+
+void left_90(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 1;
+    for (int i = 0;i<50;i = i + 2)
+    {
+        mL->power = 50 + i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(165);
+}
+
+void spin_180(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 0;
+    for (int i = 0;i<50;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = 50 + i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(290);
+}
+
+void right_135(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 0;
+    for (int i = 0;i<50;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = 50 + i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(230);
+}
+
+void left_135(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 1;
+    for (int i = 0;i<50;i = i + 2)
+    {
+        mL->power = 50 + i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(230);
+}
