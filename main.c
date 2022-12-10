@@ -44,28 +44,32 @@ void main(void) {
     setMotorPWM(&motorL);
     setMotorPWM(&motorR);
     
-    //color variables
+    //declare variables
     unsigned int color_flag;
     unsigned int color_name;
     unsigned int color_path[15];
     int color_calibrated[32];
+    unsigned int lowerbound_calibrated;
+    unsigned int upperbound_calibrated;
     struct RGB_val RGB_calibrated;
     struct RGB_val L_calibrated;
     struct RGB_val RGB_recorded;
-    
-    //path storage variables
     unsigned int time_path[15];
     unsigned int time_return;
     int j; 
 
     while (1) {
         //calibration for stopping at a card
+        forward(&motorL,&motorR)
         color_read(&L_calibrated);    
         char readout1[100];
         sprintf(readout1,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
         sendStringSerial4(readout1);
         __delay_ms(500);
-        color_flag = 1;
+        
+        //bounds where flag will be raised
+        lowerbound_calibrated = 0.5*RGB_calibrated.L; //adjust values to fit
+        upperbound_calibrated = 0.9*RGB_calibrated.L;
         
         //calibration for detecting color of the card
         while (PORTFbits.RF3); //wait for button press on F3
@@ -95,6 +99,7 @@ void main(void) {
             time = 0; //reset clock
             forward(&motorL,&motorR);
             color_read(&RGB_recorded);
+            if (RGB_recorded.L<upperbound_calibrated && RGB_recorded>lowerbound_calibrated){color_flag=1;}
             if (color_flag){
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card
