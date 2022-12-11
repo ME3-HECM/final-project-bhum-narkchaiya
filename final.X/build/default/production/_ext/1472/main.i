@@ -24583,7 +24583,7 @@ void main(void) {
 
 
     unsigned int color_flag;
-    unsigned int color_name;
+    unsigned int color_name = 0;
     unsigned int color_path[15] = {0};
     int color_calibrated[32];
     unsigned int lowerbound_calibrated;
@@ -24595,6 +24595,11 @@ void main(void) {
     unsigned int time_return;
     int j;
 
+
+    while (1) {
+        while(PORTFbits.RF3);
+        motor_action(1,&motorL,&motorR);
+    }
     while (1) {
 
         while (PORTFbits.RF3);
@@ -24609,9 +24614,9 @@ void main(void) {
             char readout2[100];
             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
             sendStringSerial4(readout2);
-            _delay((unsigned long)((2000)*(64000000/4000.0)));
+            _delay((unsigned long)((20)*(64000000/4000.0)));
             LATHbits.LATH3 = 0;
-            _delay((unsigned long)((2000)*(64000000/4000.0)));
+            _delay((unsigned long)((20)*(64000000/4000.0)));
         }
 
 
@@ -24627,6 +24632,7 @@ void main(void) {
         while (color_name != 8){
             time = 0;
             forward(&motorL,&motorR);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
             color_read(&RGB_recorded);
             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
             if (color_flag){

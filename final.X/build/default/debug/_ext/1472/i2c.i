@@ -1,4 +1,4 @@
-# 1 "../dc_motor.c"
+# 1 "../i2c.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../dc_motor.c" 2
+# 1 "../i2c.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24229,342 +24229,100 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 1 "../dc_motor.c" 2
+# 1 "../i2c.c" 2
 
-# 1 "../dc_motor.h" 1
-
-
-
-
+# 1 "../i2c.h" 1
+# 13 "../i2c.h"
+void I2C_2_Master_Init(void);
 
 
 
-struct DC_motor {
-    char power;
-    char direction;
-    unsigned char *dutyHighByte;
-    unsigned char *dir_LAT;
-    char dir_pin;
-    int PWMperiod;
-};
 
-
-void initDCmotorsPWM(int PWMperiod);
-void setMotorPWM(struct DC_motor *m);
-void stop(struct DC_motor *mL, struct DC_motor *mR);
-void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
-
-void right_90(struct DC_motor *mL, struct DC_motor *mR);
-void left_90(struct DC_motor *mL, struct DC_motor *mR);
-void spin_180(struct DC_motor *mL, struct DC_motor *mR);
-void right_135(struct DC_motor *mL, struct DC_motor *mR);
-void left_135(struct DC_motor *mL, struct DC_motor *mR);
-void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-# 2 "../dc_motor.c" 2
+void I2C_2_Master_Idle(void);
 
 
 
-void initDCmotorsPWM(int PWMperiod){
 
-    TRISEbits.TRISE2 = 0;
-    TRISEbits.TRISE4 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISGbits.TRISG6 = 0;
-
-    LATEbits.LATE2 = 0;
-    LATEbits.LATE4 = 0;
-    LATCbits.LATC7 = 0;
-    LATGbits.LATG6 = 0;
-
-    T2CONbits.CKPS=0b0011;
-    T2HLTbits.MODE=0b00000;
-    T2CLKCONbits.CS=0b0001;
+void I2C_2_Master_Start(void);
 
 
 
-    T2PR=PWMperiod;
-    T2CONbits.ON=1;
 
-    RE2PPS=0x0A;
-    RC7PPS=0x0B;
+void I2C_2_Master_RepStart(void);
 
-    PWM6DCH=0;
-    PWM7DCH=0;
 
-    PWM6CONbits.EN = 1;
-    PWM7CONbits.EN = 1;
+
+
+void I2C_2_Master_Stop(void);
+
+
+
+
+void I2C_2_Master_Write(unsigned char data_byte);
+
+
+
+
+unsigned char I2C_2_Master_Read(unsigned char ack);
+# 2 "../i2c.c" 2
+
+
+void I2C_2_Master_Init(void)
+{
+
+  SSP2CON1bits.SSPM= 0b1000;
+  SSP2CON1bits.SSPEN = 1;
+  SSP2ADD = (64000000/(4*100000))-1;
+
+
+  TRISDbits.TRISD5 = 1;
+  TRISDbits.TRISD6 = 1;
+  ANSELDbits.ANSELD5=0;
+  ANSELDbits.ANSELD6=0;
+  SSP2DATPPS=0x1D;
+  SSP2CLKPPS=0x1E;
+  RD5PPS=0x1C;
+  RD6PPS=0x1B;
 }
 
-
-
-void setMotorPWM(struct DC_motor *m)
+void I2C_2_Master_Idle(void)
 {
- int PWMduty;
-
- if (m->direction){
-
-  PWMduty=m->PWMperiod - ((int)(m->power)*(m->PWMperiod))/100;
- }
- else {
-
-  PWMduty=((int)(m->power)*(m->PWMperiod))/100;
- }
-
- *(m->dutyHighByte) = PWMduty;
-
- if (m->direction){
-  *(m->dir_LAT) = *(m->dir_LAT) | (1<<(m->dir_pin));
- } else {
-  *(m->dir_LAT) = *(m->dir_LAT) & (~(1<<(m->dir_pin)));
- }
+  while ((SSP2STAT & 0x04) || (SSP2CON2 & 0x1F));
 }
 
-
-void stop(struct DC_motor *mL, struct DC_motor *mR)
+void I2C_2_Master_Start(void)
 {
-    mL->direction = 0;
-    mR->direction = 0;
-    for (int i = 5;i>0;i = i - 1)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
+  I2C_2_Master_Idle();
+  SSP2CON2bits.SEN = 1;
 }
 
-
-void forward(struct DC_motor *mL, struct DC_motor *mR)
+void I2C_2_Master_RepStart(void)
 {
-    mL->direction = 1;
-    mR->direction = 1;
-    for (int i=0;i<31;i=i+2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((20)*(64000000/4000000.0)));
-    }
+  I2C_2_Master_Idle();
+  SSP2CON2bits.RSEN = 1;
 }
 
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
+void I2C_2_Master_Stop()
 {
-    mL->direction = 0;
-    mL->direction = 0;
-    for (int i = 0;i < 41;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((500)*(64000000/4000.0)));
+  I2C_2_Master_Idle();
+  SSP2CON2bits.PEN = 1;
 }
 
-void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
+void I2C_2_Master_Write(unsigned char data_byte)
 {
-    mL->direction = 0;
-    mR->direction = 0;
-    for (int i=0;i<51;i=i + 2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((1100)*(64000000/4000.0)));
+  I2C_2_Master_Idle();
+  SSP2BUF = data_byte;
 }
 
-void right_90(struct DC_motor *mL, struct DC_motor *mR)
+unsigned char I2C_2_Master_Read(unsigned char ack)
 {
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((165)*(64000000/4000.0)));
-}
-
-void left_90(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = 50 + i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((165)*(64000000/4000.0)));
-}
-
-void spin_180(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((290)*(64000000/4000.0)));
-}
-
-void right_135(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((230)*(64000000/4000.0)));
-}
-
-void left_135(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = 50 + i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((230)*(64000000/4000.0)));
-}
-
-void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
-    switch (color){
-        case 1:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 2:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 3:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            spin_180(l,r);
-            stop(l,r);
-            break;
-        case 4:
-            reverse_onesquare(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 5:
-            reverse_onesquare(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 6:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_135(l,r);
-            stop(l,r);
-            break;
-        case 7:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_135(l,r);
-            stop(l,r);
-            break;
-        case 0:
-            forward(l,r);
-            stop(l,r);
-            break;
-        default:
-            break;
-    }
-}
-
-void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
-    switch (color){
-        case 1:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 2:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 3:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            spin_180(l,r);
-            stop(l,r);
-            break;
-        case 4:
-            stop(l,r);
-            right_90(l,r);
-            forward(l,r);
-            stop(l,r);
-            break;
-        case 5:
-            stop(l,r);
-            left_90(l,r);
-            forward(l,r);
-            stop(l,r);
-            break;
-        case 6:
-            stop(l,r);
-            left_135(l,r);
-            stop(l,r);
-            break;
-        case 7:
-            stop(l,r);
-            right_135(l,r);
-            stop(l,r);
-            break;
-        default:
-            break;
-    }
+  unsigned char tmp;
+  I2C_2_Master_Idle();
+  SSP2CON2bits.RCEN = 1;
+  I2C_2_Master_Idle();
+  tmp = SSP2BUF;
+  I2C_2_Master_Idle();
+  SSP2CON2bits.ACKDT = !ack;
+  SSP2CON2bits.ACKEN = 1;
+  return tmp;
 }

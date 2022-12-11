@@ -1,4 +1,4 @@
-# 1 "../dc_motor.c"
+# 1 "../main.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,17 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../dc_motor.c" 2
+# 1 "../main.c" 2
+
+#pragma config FEXTOSC = HS
+#pragma config RSTOSC = EXTOSC_4PLL
+
+
+#pragma config WDTCPS = WDTCPS_31
+#pragma config WDTE = OFF
+
+
+
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24229,7 +24239,87 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 1 "../dc_motor.c" 2
+# 10 "../main.c" 2
+
+# 1 "../color.h" 1
+
+
+
+
+
+
+
+
+struct RGB_val {
+    unsigned int L;
+ unsigned int R;
+ unsigned int G;
+ unsigned int B;
+};
+
+
+
+void color_click_init(void);
+
+
+
+
+
+
+void color_writetoaddr(char address, char value);
+
+
+
+
+
+unsigned int color_read_Luminosity(void);
+unsigned int color_read_Red(void);
+unsigned int color_read_Green(void);
+unsigned int color_read_Blue(void);
+
+
+
+
+
+void color_read(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
+# 11 "../main.c" 2
+
+# 1 "../i2c.h" 1
+# 13 "../i2c.h"
+void I2C_2_Master_Init(void);
+
+
+
+
+void I2C_2_Master_Idle(void);
+
+
+
+
+void I2C_2_Master_Start(void);
+
+
+
+
+void I2C_2_Master_RepStart(void);
+
+
+
+
+void I2C_2_Master_Stop(void);
+
+
+
+
+void I2C_2_Master_Write(unsigned char data_byte);
+
+
+
+
+unsigned char I2C_2_Master_Read(unsigned char ack);
+# 12 "../main.c" 2
 
 # 1 "../dc_motor.h" 1
 
@@ -24262,309 +24352,323 @@ void right_135(struct DC_motor *mL, struct DC_motor *mR);
 void left_135(struct DC_motor *mL, struct DC_motor *mR);
 void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
 void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-# 2 "../dc_motor.c" 2
+# 13 "../main.c" 2
+
+# 1 "../rc_servo.h" 1
 
 
 
-void initDCmotorsPWM(int PWMperiod){
-
-    TRISEbits.TRISE2 = 0;
-    TRISEbits.TRISE4 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISGbits.TRISG6 = 0;
-
-    LATEbits.LATE2 = 0;
-    LATEbits.LATE4 = 0;
-    LATCbits.LATC7 = 0;
-    LATGbits.LATG6 = 0;
-
-    T2CONbits.CKPS=0b0011;
-    T2HLTbits.MODE=0b00000;
-    T2CLKCONbits.CS=0b0001;
 
 
 
-    T2PR=PWMperiod;
-    T2CONbits.ON=1;
-
-    RE2PPS=0x0A;
-    RC7PPS=0x0B;
-
-    PWM6DCH=0;
-    PWM7DCH=0;
-
-    PWM6CONbits.EN = 1;
-    PWM7CONbits.EN = 1;
-}
 
 
+unsigned int on_period,off_period;
 
-void setMotorPWM(struct DC_motor *m)
-{
- int PWMduty;
+void Interrupts_init(void);
+void __attribute__((picinterrupt(("high_priority")))) HighISR();
 
- if (m->direction){
+void Timer0_init(void);
+void write16bitTMR0val(unsigned int);
 
-  PWMduty=m->PWMperiod - ((int)(m->power)*(m->PWMperiod))/100;
- }
- else {
+void angle2PWM(int angle);
+unsigned int time;
+# 14 "../main.c" 2
 
-  PWMduty=((int)(m->power)*(m->PWMperiod))/100;
- }
+# 1 "../serial.h" 1
+# 13 "../serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
 
- *(m->dutyHighByte) = PWMduty;
-
- if (m->direction){
-  *(m->dir_LAT) = *(m->dir_LAT) | (1<<(m->dir_pin));
- } else {
-  *(m->dir_LAT) = *(m->dir_LAT) & (~(1<<(m->dir_pin)));
- }
-}
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
 
 
-void stop(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 0;
-    for (int i = 5;i>0;i = i - 1)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 15 "../main.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 1 3
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 1 3
+
+
+
+
+
+typedef void * va_list[1];
+
+
+
+
+typedef void * __isoc_va_list[1];
+# 137 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long ssize_t;
+# 246 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long off_t;
+# 399 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct _IO_FILE FILE;
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 2 3
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
+typedef union _G_fpos64_t {
+ char __opaque[16];
+ double __align;
+} fpos_t;
+
+extern FILE *const stdin;
+extern FILE *const stdout;
+extern FILE *const stderr;
+
+
+
+
+
+FILE *fopen(const char *restrict, const char *restrict);
+FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
+int fclose(FILE *);
+
+int remove(const char *);
+int rename(const char *, const char *);
+
+int feof(FILE *);
+int ferror(FILE *);
+int fflush(FILE *);
+void clearerr(FILE *);
+
+int fseek(FILE *, long, int);
+long ftell(FILE *);
+void rewind(FILE *);
+
+int fgetpos(FILE *restrict, fpos_t *restrict);
+int fsetpos(FILE *, const fpos_t *);
+
+size_t fread(void *restrict, size_t, size_t, FILE *restrict);
+size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
+
+int fgetc(FILE *);
+int getc(FILE *);
+int getchar(void);
+int ungetc(int, FILE *);
+
+int fputc(int, FILE *);
+int putc(int, FILE *);
+int putchar(int);
+
+char *fgets(char *restrict, int, FILE *restrict);
+
+char *gets(char *);
+
+
+int fputs(const char *restrict, FILE *restrict);
+int puts(const char *);
+
+__attribute__((__format__(__printf__, 1, 2)))
+int printf(const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int fprintf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int sprintf(char *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 3, 4)))
+int snprintf(char *restrict, size_t, const char *restrict, ...);
+
+__attribute__((__format__(__printf__, 1, 0)))
+int vprintf(const char *restrict, __isoc_va_list);
+int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 2, 0)))
+int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 3, 0)))
+int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
+
+__attribute__((__format__(__scanf__, 1, 2)))
+int scanf(const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int fscanf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int sscanf(const char *restrict, const char *restrict, ...);
+
+__attribute__((__format__(__scanf__, 1, 0)))
+int vscanf(const char *restrict, __isoc_va_list);
+int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__scanf__, 2, 0)))
+int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
+
+void perror(const char *);
+
+int setvbuf(FILE *restrict, char *restrict, int, size_t);
+void setbuf(FILE *restrict, char *restrict);
+
+char *tmpnam(char *);
+FILE *tmpfile(void);
+
+
+
+
+FILE *fmemopen(void *restrict, size_t, const char *restrict);
+FILE *open_memstream(char **, size_t *);
+FILE *fdopen(int, const char *);
+FILE *popen(const char *, const char *);
+int pclose(FILE *);
+int fileno(FILE *);
+int fseeko(FILE *, off_t, int);
+off_t ftello(FILE *);
+int dprintf(int, const char *restrict, ...);
+int vdprintf(int, const char *restrict, __isoc_va_list);
+void flockfile(FILE *);
+int ftrylockfile(FILE *);
+void funlockfile(FILE *);
+int getc_unlocked(FILE *);
+int getchar_unlocked(void);
+int putc_unlocked(int, FILE *);
+int putchar_unlocked(int);
+ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
+ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
+int renameat(int, const char *, int, const char *);
+char *ctermid(char *);
+
+
+
+
+
+
+
+char *tempnam(const char *, const char *);
+# 16 "../main.c" 2
+
+
+
+
+void main(void) {
+
+    color_click_init();
+    initDCmotorsPWM(20);
+    Interrupts_init();
+    Timer0_init();
+    I2C_2_Master_Init();
+    initUSART4();
+
+
+    struct DC_motor motorL, motorR;
+    unsigned char PWMcycle = 200;
+    motorL.power = 0;
+    motorL.direction = 0;
+    motorL.dutyHighByte = (unsigned char *)(&PWM6DCH);
+    motorL.dir_LAT = (unsigned char *)(&LATE);
+    motorL.dir_pin = 4;
+    motorL.PWMperiod = PWMcycle;
+    motorR.power = 0;
+    motorR.direction = 0;
+    motorR.dutyHighByte = (unsigned char *)(&PWM7DCH);
+    motorR.dir_LAT = (unsigned char *)(&LATG);
+    motorR.dir_pin = 6;
+    motorR.PWMperiod = PWMcycle;
+    setMotorPWM(&motorL);
+    setMotorPWM(&motorR);
+
+
+    unsigned int color_flag;
+    unsigned int color_name = 0;
+    unsigned int color_path[15] = {0};
+    int color_calibrated[32];
+    unsigned int lowerbound_calibrated;
+    unsigned int upperbound_calibrated;
+    struct RGB_val RGB_calibrated;
+    struct RGB_val L_calibrated;
+    struct RGB_val RGB_recorded;
+    unsigned int time_path[15] = {0};
+    unsigned int time_return;
+    int j;
+
+    while (1) {
+
+        while (PORTFbits.RF3);
+        for (int i=0;i<8;i++){
+            color_read(&RGB_calibrated);
+            color_calibrated[4*i] = RGB_calibrated.L;
+            color_calibrated[4*i+1] = RGB_calibrated.R;
+            color_calibrated[4*i+2] = RGB_calibrated.G;
+            color_calibrated[4*i+3] = RGB_calibrated.B;
+            LATHbits.LATH3 = 1;
+
+            char readout2[100];
+            sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+            sendStringSerial4(readout2);
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+        }
+
+
+        lowerbound_calibrated = color_calibrated[8];
+        upperbound_calibrated = color_calibrated[28];
+
+
+        while (PORTFbits.RF3 & PORTFbits.RF2);
+        if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
+        else {LATHbits.LATH3 = 1;}
+
+
+        while (color_name != 8){
+            time = 0;
+            forward(&motorL,&motorR);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            color_read(&RGB_recorded);
+            if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
+            if (color_flag){
+                stop(&motorL,&motorR);
+                color_read(&RGB_recorded);
+                if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
+                else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
+                color_path[j] = color_name;
+                time_path[j] = time;
+
+
+                char readout3[100];
+                sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
+                sendStringSerial4(readout3);
+
+                motor_action(color_name,&motorL,&motorR);
+
+                j++;
+                time = 0;
+                color_flag = 0;
+            }
+            _delay((unsigned long)((200)*(64000000/4000.0)));
+        }
+
+
+        spin_180(&motorL,&motorR);
+        for (int k=15;k>0;k--){
+            INTCONbits.GIE = 0;
+            time_return = 0;
+            motor_action(color_path[k],&motorL,&motorR);
+            forward(&motorL,&motorR);
+            while (time_return < time_path[k]) {
+                _delay((unsigned long)((50)*(64000000/4000.0)));
+                time_return++;
+            }
+            stop(&motorL,&motorR);
+        }
     }
 
-}
 
-
-void forward(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 1;
-    for (int i=0;i<31;i=i+2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((20)*(64000000/4000000.0)));
-    }
-}
-
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mL->direction = 0;
-    for (int i = 0;i < 41;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((500)*(64000000/4000.0)));
-}
-
-void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 0;
-    for (int i=0;i<51;i=i + 2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((1100)*(64000000/4000.0)));
-}
-
-void right_90(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((165)*(64000000/4000.0)));
-}
-
-void left_90(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = 50 + i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((165)*(64000000/4000.0)));
-}
-
-void spin_180(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((290)*(64000000/4000.0)));
-}
-
-void right_135(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((230)*(64000000/4000.0)));
-}
-
-void left_135(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = 50 + i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((230)*(64000000/4000.0)));
-}
-
-void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
-    switch (color){
-        case 1:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 2:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 3:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            spin_180(l,r);
-            stop(l,r);
-            break;
-        case 4:
-            reverse_onesquare(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 5:
-            reverse_onesquare(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 6:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_135(l,r);
-            stop(l,r);
-            break;
-        case 7:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_135(l,r);
-            stop(l,r);
-            break;
-        case 0:
-            forward(l,r);
-            stop(l,r);
-            break;
-        default:
-            break;
-    }
-}
-
-void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
-    switch (color){
-        case 1:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 2:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 3:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            spin_180(l,r);
-            stop(l,r);
-            break;
-        case 4:
-            stop(l,r);
-            right_90(l,r);
-            forward(l,r);
-            stop(l,r);
-            break;
-        case 5:
-            stop(l,r);
-            left_90(l,r);
-            forward(l,r);
-            stop(l,r);
-            break;
-        case 6:
-            stop(l,r);
-            left_135(l,r);
-            stop(l,r);
-            break;
-        case 7:
-            stop(l,r);
-            right_135(l,r);
-            stop(l,r);
-            break;
-        default:
-            break;
+    while (1) {
+        __asm(" sleep");
     }
 }

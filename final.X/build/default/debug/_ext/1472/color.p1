@@ -1,68 +1,48 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"18 ../color.h
-[; ;../color.h: 18: void color_click_init(void);
-[v _color_click_init `(v ~T0 @X0 0 ef ]
-"18 ../dc_motor.h
-[; ;../dc_motor.h: 18: void initDCmotorsPWM(int PWMperiod);
-[v _initDCmotorsPWM `(v ~T0 @X0 0 ef1`i ]
-"11 ../rc_servo.h
-[; ;../rc_servo.h: 11: void Interrupts_init(void);
-[v _Interrupts_init `(v ~T0 @X0 0 ef ]
-"14
-[; ;../rc_servo.h: 14: void Timer0_init(void);
-[v _Timer0_init `(v ~T0 @X0 0 ef ]
 "13 ../i2c.h
 [; ;../i2c.h: 13: void I2C_2_Master_Init(void);
 [v _I2C_2_Master_Init `(v ~T0 @X0 0 ef ]
-"23 ../serial.h
-[; ;../serial.h: 23: void initUSART4(void);
-[v _initUSART4 `(v ~T0 @X0 0 ef ]
-"8 ../dc_motor.h
-[; ;../dc_motor.h: 8: struct DC_motor {
-[s S2016 `uc 1 `uc 1 `*uc 1 `*uc 1 `uc 1 `i 1 ]
-[n S2016 DC_motor power direction dutyHighByte dir_LAT dir_pin PWMperiod ]
-"33937 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 33937: extern volatile unsigned char PWM6DCH __attribute__((address(0xFA3)));
-[v _PWM6DCH `Vuc ~T0 @X0 0 e@4003 ]
-"28917
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28917: extern volatile unsigned char LATE __attribute__((address(0xF7D)));
-[v _LATE `Vuc ~T0 @X0 0 e@3965 ]
-"33628
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 33628: extern volatile unsigned char PWM7DCH __attribute__((address(0xFA0)));
-[v _PWM7DCH `Vuc ~T0 @X0 0 e@4000 ]
-"29141
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29141: extern volatile unsigned char LATG __attribute__((address(0xF7F)));
-[v _LATG `Vuc ~T0 @X0 0 e@3967 ]
-"19 ../dc_motor.h
-[; ;../dc_motor.h: 19: void setMotorPWM(struct DC_motor *m);
-[v _setMotorPWM `(v ~T0 @X0 0 ef1`*S2016 ]
-"9 ../color.h
-[; ;../color.h: 9: struct RGB_val {
-[s S2015 `ui 1 `ui 1 `ui 1 `ui 1 ]
-[n S2015 RGB_val L R G B ]
-"30586 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30586:     struct {
-[s S1412 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1412 . RF0 RF1 RF2 RF3 RF4 RF5 RF6 RF7 ]
-"30596
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30596:     struct {
-[s S1413 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1413 . . C2OUTF C1OUTF ]
-"30585
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30585: typedef union {
-[u S1411 `S1412 1 `S1413 1 ]
-[n S1411 . . . ]
-"30602
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30602: extern volatile PORTFbits_t PORTFbits __attribute__((address(0xF8E)));
-[v _PORTFbits `VS1411 ~T0 @X0 0 e@3982 ]
-"29 ../dc_motor.h
-[; ;../dc_motor.h: 29: void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-[v _motor_action `(v ~T0 @X0 0 ef3`ui`*S2016`*S2016 ]
-"40 ../color.h
-[; ;../color.h: 40: void color_read(struct RGB_val *rgb);
-[v _color_read `(v ~T0 @X0 0 ef1`*S2015 ]
-"29236 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
+"25 ../color.h
+[; ;../color.h: 25: void color_writetoaddr(char address, char value);
+[v _color_writetoaddr `(v ~T0 @X0 0 ef2`uc`uc ]
+[v F192 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\builtins.h
+[v __delay `JF192 ~T0 @X0 0 e ]
+[p i __delay ]
+"30065 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30065:     struct {
+[s S1392 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1392 . TRISH0 TRISH1 TRISH2 TRISH3 ]
+"30064
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30064: typedef union {
+[u S1391 `S1392 1 ]
+[n S1391 . . ]
+"30072
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30072: extern volatile TRISHbits_t TRISHbits __attribute__((address(0xF88)));
+[v _TRISHbits `VS1391 ~T0 @X0 0 e@3976 ]
+"29707
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29707:     struct {
+[s S1380 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1380 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
+"29706
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29706: typedef union {
+[u S1379 `S1380 1 ]
+[n S1379 . . ]
+"29718
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29718: extern volatile TRISDbits_t TRISDbits __attribute__((address(0xF84)));
+[v _TRISDbits `VS1379 ~T0 @X0 0 e@3972 ]
+"29946
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29946:     struct {
+[s S1388 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1388 . TRISF0 TRISF1 TRISF2 TRISF3 TRISF4 TRISF5 TRISF6 TRISF7 ]
+"29945
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29945: typedef union {
+[u S1387 `S1388 1 ]
+[n S1387 . . ]
+"29957
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29957: extern volatile TRISFbits_t TRISFbits __attribute__((address(0xF86)));
+[v _TRISFbits `VS1387 ~T0 @X0 0 e@3974 ]
+"29236
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29236:     struct {
 [s S1361 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1361 . LATH0 LATH1 LATH2 LATH3 ]
@@ -93,17 +73,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "29265
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29265: extern volatile LATHbits_t LATHbits __attribute__((address(0xF80)));
 [v _LATHbits `VS1360 ~T0 @X0 0 e@3968 ]
-"109 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h
-[; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h: 109: int sprintf(char *restrict, const char *restrict, ...);
-[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"26 ../serial.h
-[; ;../serial.h: 26: void sendStringSerial4(char *string);
-[v _sendStringSerial4 `(v ~T0 @X0 0 ef1`*uc ]
-[v F192 `(v ~T0 @X0 1 tf1`ul ]
-"12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\builtins.h
-[v __delay `JF192 ~T0 @X0 0 e ]
-[p i __delay ]
-"28811 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
+"28811
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28811:     struct {
 [s S1349 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S1349 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
@@ -118,48 +88,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28832
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 28832: extern volatile LATDbits_t LATDbits __attribute__((address(0xF7C)));
 [v _LATDbits `VS1348 ~T0 @X0 0 e@3964 ]
-"21 ../dc_motor.h
-[; ;../dc_motor.h: 21: void forward(struct DC_motor *mL, struct DC_motor *mR);
-[v _forward `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
-"20
-[; ;../dc_motor.h: 20: void stop(struct DC_motor *mL, struct DC_motor *mR);
-[v _stop `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
-"41 ../color.h
-[; ;../color.h: 41: unsigned int color_processor_easy(struct RGB_val *rgb);
-[v _color_processor_easy `(ui ~T0 @X0 0 ef1`*S2015 ]
-"42
-[; ;../color.h: 42: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
-[v _color_processor_hard `(ui ~T0 @X0 0 ef2`*S2015`*ui ]
-"26 ../dc_motor.h
-[; ;../dc_motor.h: 26: void spin_180(struct DC_motor *mL, struct DC_motor *mR);
-[v _spin_180 `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
-"40479 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40479:     struct {
-[s S1985 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1985 . INT0EDG INT1EDG INT2EDG INT3EDG . IPEN PEIE_GIEL GIE_GIEH ]
-"40489
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40489:     struct {
-[s S1986 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1986 . . PEIE GIE ]
-"40494
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40494:     struct {
-[s S1987 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S1987 . . GIEL GIEH ]
-"40478
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40478: typedef union {
-[u S1984 `S1985 1 `S1986 1 `S1987 1 ]
-[n S1984 . . . . ]
-"40500
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40500: extern volatile INTCONbits_t INTCONbits __attribute__((address(0xFF2)));
-[v _INTCONbits `VS1984 ~T0 @X0 0 e@4082 ]
-"2 ../main.c
-[p x FEXTOSC  =  HS      ]
-"3
-[p x RSTOSC  =  EXTOSC_4PLL ]
-"6
-[p x WDTCPS  =  WDTCPS_31 ]
-"7
-[p x WDTE  =  OFF         ]
+"29035
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29035:     struct {
+[s S1355 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1355 . LATF0 LATF1 LATF2 LATF3 LATF4 LATF5 LATF6 LATF7 ]
+"29045
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29045:     struct {
+[s S1356 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S1356 . LF0 LF1 LF2 LF3 LF4 LF5 LF6 LF7 ]
+"29034
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29034: typedef union {
+[u S1354 `S1355 1 `S1356 1 ]
+[n S1354 . . . ]
+"29056
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 29056: extern volatile LATFbits_t LATFbits __attribute__((address(0xF7E)));
+[v _LATFbits `VS1354 ~T0 @X0 0 e@3966 ]
+"12309
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 12309:     struct {
+[s S568 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S568 . ANSELF0 ANSELF1 ANSELF2 ANSELF3 ANSELF4 ANSELF5 ANSELF6 ANSELF7 ]
+"12308
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 12308: typedef union {
+[u S567 `S568 1 ]
+[n S567 . . ]
+"12320
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 12320: extern volatile ANSELFbits_t ANSELFbits __attribute__((address(0xEB4)));
+[v _ANSELFbits `VS567 ~T0 @X0 0 e@3764 ]
+"23 ../i2c.h
+[; ;../i2c.h: 23: void I2C_2_Master_Start(void);
+[v _I2C_2_Master_Start `(v ~T0 @X0 0 ef ]
+"38
+[; ;../i2c.h: 38: void I2C_2_Master_Write(unsigned char data_byte);
+[v _I2C_2_Master_Write `(v ~T0 @X0 0 ef1`uc ]
+"33
+[; ;../i2c.h: 33: void I2C_2_Master_Stop(void);
+[v _I2C_2_Master_Stop `(v ~T0 @X0 0 ef ]
+"28
+[; ;../i2c.h: 28: void I2C_2_Master_RepStart(void);
+[v _I2C_2_Master_RepStart `(v ~T0 @X0 0 ef ]
+"43
+[; ;../i2c.h: 43: unsigned char I2C_2_Master_Read(unsigned char ack);
+[v _I2C_2_Master_Read `(uc ~T0 @X0 0 ef1`uc ]
+"9 ../color.h
+[; ;../color.h: 9: struct RGB_val {
+[s S2015 `ui 1 `ui 1 `ui 1 `ui 1 ]
+[n S2015 RGB_val L R G B ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 55: __asm("PPSLOCK equ 0DEFh");
 [; <" PPSLOCK equ 0DEFh ;# ">
@@ -2134,445 +2107,488 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40928
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40928: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 ../rc_servo.h
-[; ;../rc_servo.h: 9: unsigned int on_period,off_period;
-[v _on_period `ui ~T0 @X0 1 e ]
-[v _off_period `ui ~T0 @X0 1 e ]
-"18
-[; ;../rc_servo.h: 18: unsigned int time;
-[v _time `ui ~T0 @X0 1 e ]
-"13 ../serial.h
-[; ;../serial.h: 13: volatile char EUSART4RXbuf[20];
-[v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
-"14
-[; ;../serial.h: 14: volatile char RxBufWriteCnt=0;
-[v _RxBufWriteCnt `Vuc ~T0 @X0 1 e ]
-[i _RxBufWriteCnt
--> -> 0 `i `uc
-]
-"15
-[; ;../serial.h: 15: volatile char RxBufReadCnt=0;
-[v _RxBufReadCnt `Vuc ~T0 @X0 1 e ]
-[i _RxBufReadCnt
--> -> 0 `i `uc
-]
-"17
-[; ;../serial.h: 17: volatile char EUSART4TXbuf[60];
-[v _EUSART4TXbuf `Vuc ~T0 @X0 -> 60 `i e ]
-"18
-[; ;../serial.h: 18: volatile char TxBufWriteCnt=0;
-[v _TxBufWriteCnt `Vuc ~T0 @X0 1 e ]
-[i _TxBufWriteCnt
--> -> 0 `i `uc
-]
-"19
-[; ;../serial.h: 19: volatile char TxBufReadCnt=0;
-[v _TxBufReadCnt `Vuc ~T0 @X0 1 e ]
-[i _TxBufReadCnt
--> -> 0 `i `uc
-]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"20 ../main.c
-[; ;../main.c: 20: void main(void) {
-[v _main `(v ~T0 @X0 1 ef ]
+"6 ../color.c
+[; ;../color.c: 6: void color_click_init(void)
+[v _color_click_init `(v ~T0 @X0 1 ef ]
+"7
+[; ;../color.c: 7: {
 {
-[e :U _main ]
+[e :U _color_click_init ]
 [f ]
-"22
-[; ;../main.c: 22:     color_click_init();
-[e ( _color_click_init ..  ]
-"23
-[; ;../main.c: 23:     initDCmotorsPWM(20);
-[e ( _initDCmotorsPWM (1 -> 20 `i ]
-"24
-[; ;../main.c: 24:     Interrupts_init();
-[e ( _Interrupts_init ..  ]
-"25
-[; ;../main.c: 25:     Timer0_init();
-[e ( _Timer0_init ..  ]
-"26
-[; ;../main.c: 26:     I2C_2_Master_Init();
+"9
+[; ;../color.c: 9:     I2C_2_Master_Init();
 [e ( _I2C_2_Master_Init ..  ]
-"27
-[; ;../main.c: 27:     initUSART4();
-[e ( _initUSART4 ..  ]
+"12
+[; ;../color.c: 12:   color_writetoaddr(0x00, 0x01);
+[e ( _color_writetoaddr (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
+"13
+[; ;../color.c: 13:     _delay((unsigned long)((3)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 3 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"16
+[; ;../color.c: 16:  color_writetoaddr(0x00, 0x03);
+[e ( _color_writetoaddr (2 , -> -> 0 `i `uc -> -> 3 `i `uc ]
+"19
+[; ;../color.c: 19:  color_writetoaddr(0x01, 0xD5);
+[e ( _color_writetoaddr (2 , -> -> 1 `i `uc -> -> 213 `i `uc ]
+"22
+[; ;../color.c: 22:     TRISHbits.TRISH1 = 0;
+[e = . . _TRISHbits 0 1 -> -> 0 `i `uc ]
+"23
+[; ;../color.c: 23:     TRISDbits.TRISD3 = 0;
+[e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+"24
+[; ;../color.c: 24:     TRISDbits.TRISD4 = 0;
+[e = . . _TRISDbits 0 4 -> -> 0 `i `uc ]
+"25
+[; ;../color.c: 25:     TRISHbits.TRISH0 = 0;
+[e = . . _TRISHbits 0 0 -> -> 0 `i `uc ]
+"26
+[; ;../color.c: 26:     TRISFbits.TRISF0 = 0;
+[e = . . _TRISFbits 0 0 -> -> 0 `i `uc ]
+"28
+[; ;../color.c: 28:     LATHbits.LATH1 = 1;
+[e = . . _LATHbits 0 1 -> -> 1 `i `uc ]
+"29
+[; ;../color.c: 29:     LATDbits.LATD3 = 1;
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
 "30
-[; ;../main.c: 30:     struct DC_motor motorL, motorR;
-[v _motorL `S2016 ~T0 @X0 1 a ]
-[v _motorR `S2016 ~T0 @X0 1 a ]
+[; ;../color.c: 30:     LATDbits.LATD4 = 0;
+[e = . . _LATDbits 0 4 -> -> 0 `i `uc ]
 "31
-[; ;../main.c: 31:     unsigned char PWMcycle = 200;
-[v _PWMcycle `uc ~T0 @X0 1 a ]
-[e = _PWMcycle -> -> 200 `i `uc ]
+[; ;../color.c: 31:     LATHbits.LATH0 = 0;
+[e = . . _LATHbits 0 0 -> -> 0 `i `uc ]
 "32
-[; ;../main.c: 32:     motorL.power = 0;
-[e = . _motorL 0 -> -> 0 `i `uc ]
-"33
-[; ;../main.c: 33:     motorL.direction = 0;
-[e = . _motorL 1 -> -> 0 `i `uc ]
-"34
-[; ;../main.c: 34:     motorL.dutyHighByte = (unsigned char *)(&PWM6DCH);
-[e = . _motorL 2 -> &U _PWM6DCH `*uc ]
+[; ;../color.c: 32:     LATFbits.LATF0 = 0;
+[e = . . _LATFbits 0 0 -> -> 0 `i `uc ]
 "35
-[; ;../main.c: 35:     motorL.dir_LAT = (unsigned char *)(&LATE);
-[e = . _motorL 3 -> &U _LATE `*uc ]
+[; ;../color.c: 35:     LATDbits.LATD7=0;
+[e = . . _LATDbits 0 7 -> -> 0 `i `uc ]
 "36
-[; ;../main.c: 36:     motorL.dir_pin = 4;
-[e = . _motorL 4 -> -> 4 `i `uc ]
+[; ;../color.c: 36:     LATHbits.LATH3=0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
 "37
-[; ;../main.c: 37:     motorL.PWMperiod = PWMcycle;
-[e = . _motorL 5 -> _PWMcycle `i ]
+[; ;../color.c: 37:     TRISDbits.TRISD7=0;
+[e = . . _TRISDbits 0 7 -> -> 0 `i `uc ]
 "38
-[; ;../main.c: 38:     motorR.power = 0;
-[e = . _motorR 0 -> -> 0 `i `uc ]
-"39
-[; ;../main.c: 39:     motorR.direction = 0;
-[e = . _motorR 1 -> -> 0 `i `uc ]
+[; ;../color.c: 38:     TRISHbits.TRISH3=0;
+[e = . . _TRISHbits 0 3 -> -> 0 `i `uc ]
 "40
-[; ;../main.c: 40:     motorR.dutyHighByte = (unsigned char *)(&PWM7DCH);
-[e = . _motorR 2 -> &U _PWM7DCH `*uc ]
+[; ;../color.c: 40:     TRISFbits.TRISF2=1;
+[e = . . _TRISFbits 0 2 -> -> 1 `i `uc ]
 "41
-[; ;../main.c: 41:     motorR.dir_LAT = (unsigned char *)(&LATG);
-[e = . _motorR 3 -> &U _LATG `*uc ]
+[; ;../color.c: 41:     ANSELFbits.ANSELF2=0;
+[e = . . _ANSELFbits 0 2 -> -> 0 `i `uc ]
 "42
-[; ;../main.c: 42:     motorR.dir_pin = 6;
-[e = . _motorR 4 -> -> 6 `i `uc ]
+[; ;../color.c: 42:     TRISFbits.TRISF3=1;
+[e = . . _TRISFbits 0 3 -> -> 1 `i `uc ]
 "43
-[; ;../main.c: 43:     motorR.PWMperiod = PWMcycle;
-[e = . _motorR 5 -> _PWMcycle `i ]
+[; ;../color.c: 43:     ANSELFbits.ANSELF3=0;
+[e = . . _ANSELFbits 0 3 -> -> 0 `i `uc ]
 "44
-[; ;../main.c: 44:     setMotorPWM(&motorL);
-[e ( _setMotorPWM (1 &U _motorL ]
-"45
-[; ;../main.c: 45:     setMotorPWM(&motorR);
-[e ( _setMotorPWM (1 &U _motorR ]
-"48
-[; ;../main.c: 48:     unsigned int color_flag;
-[v _color_flag `ui ~T0 @X0 1 a ]
-"49
-[; ;../main.c: 49:     unsigned int color_name = 0;
-[v _color_name `ui ~T0 @X0 1 a ]
-[e = _color_name -> -> 0 `i `ui ]
-[v F14639 `ui ~T0 @X0 -> 15 `i s ]
-[i F14639
-:U ..
-"50
-[; ;../main.c: 50:     unsigned int color_path[15] = {0};
--> -> 0 `i `ui
-..
-]
-[v _color_path `ui ~T0 @X0 -> 15 `i a ]
-[e = _color_path F14639 ]
-"51
-[; ;../main.c: 51:     int color_calibrated[32];
-[v _color_calibrated `i ~T0 @X0 -> 32 `i a ]
-"52
-[; ;../main.c: 52:     unsigned int lowerbound_calibrated;
-[v _lowerbound_calibrated `ui ~T0 @X0 1 a ]
-"53
-[; ;../main.c: 53:     unsigned int upperbound_calibrated;
-[v _upperbound_calibrated `ui ~T0 @X0 1 a ]
-"54
-[; ;../main.c: 54:     struct RGB_val RGB_calibrated;
-[v _RGB_calibrated `S2015 ~T0 @X0 1 a ]
-"55
-[; ;../main.c: 55:     struct RGB_val L_calibrated;
-[v _L_calibrated `S2015 ~T0 @X0 1 a ]
-"56
-[; ;../main.c: 56:     struct RGB_val RGB_recorded;
-[v _RGB_recorded `S2015 ~T0 @X0 1 a ]
-[v F14647 `ui ~T0 @X0 -> 15 `i s ]
-[i F14647
-:U ..
-"57
-[; ;../main.c: 57:     unsigned int time_path[15] = {0};
--> -> 0 `i `ui
-..
-]
-[v _time_path `ui ~T0 @X0 -> 15 `i a ]
-[e = _time_path F14647 ]
-"58
-[; ;../main.c: 58:     unsigned int time_return;
-[v _time_return `ui ~T0 @X0 1 a ]
-"59
-[; ;../main.c: 59:     int j;
-[v _j `i ~T0 @X0 1 a ]
-"62
-[; ;../main.c: 62:     while (1) {
-[e :U 2021 ]
-{
-"63
-[; ;../main.c: 63:         while(PORTFbits.RF3);
-[e $U 2023  ]
-[e :U 2024 ]
-[e :U 2023 ]
-[e $ != -> . . _PORTFbits 0 3 `i -> 0 `i 2024  ]
-[e :U 2025 ]
-"64
-[; ;../main.c: 64:         motor_action(1,&motorL,&motorR);
-[e ( _motor_action (3 , , -> -> 1 `i `ui &U _motorL &U _motorR ]
-"65
-[; ;../main.c: 65:     }
+[; ;../color.c: 44: }
+[e :UE 2016 ]
 }
-[e :U 2020 ]
-[e $U 2021  ]
-[e :U 2022 ]
-"66
-[; ;../main.c: 66:     while (1) {
-[e :U 2027 ]
+"46
+[; ;../color.c: 46: void color_writetoaddr(char address, char value)
+[v _color_writetoaddr `(v ~T0 @X0 1 ef2`uc`uc ]
+"47
+[; ;../color.c: 47: {
 {
-"68
-[; ;../main.c: 68:         while (PORTFbits.RF3);
-[e $U 2029  ]
-[e :U 2030 ]
-[e :U 2029 ]
-[e $ != -> . . _PORTFbits 0 3 `i -> 0 `i 2030  ]
-[e :U 2031 ]
+[e :U _color_writetoaddr ]
+"46
+[; ;../color.c: 46: void color_writetoaddr(char address, char value)
+[v _address `uc ~T0 @X0 1 r1 ]
+[v _value `uc ~T0 @X0 1 r2 ]
+"47
+[; ;../color.c: 47: {
+[f ]
+"48
+[; ;../color.c: 48:     I2C_2_Master_Start();
+[e ( _I2C_2_Master_Start ..  ]
+"49
+[; ;../color.c: 49:     I2C_2_Master_Write(0x52 | 0x00);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 0 `i `uc ]
+"50
+[; ;../color.c: 50:     I2C_2_Master_Write(0x80 | address);
+[e ( _I2C_2_Master_Write (1 -> | -> 128 `i -> _address `i `uc ]
+"51
+[; ;../color.c: 51:     I2C_2_Master_Write(value);
+[e ( _I2C_2_Master_Write (1 -> _value `uc ]
+"52
+[; ;../color.c: 52:     I2C_2_Master_Stop();
+[e ( _I2C_2_Master_Stop ..  ]
+"53
+[; ;../color.c: 53: }
+[e :UE 2017 ]
+}
+"55
+[; ;../color.c: 55: unsigned int color_read_Luminosity(void)
+[v _color_read_Luminosity `(ui ~T0 @X0 1 ef ]
+"56
+[; ;../color.c: 56: {
+{
+[e :U _color_read_Luminosity ]
+[f ]
+"57
+[; ;../color.c: 57:  unsigned int tmp;
+[v _tmp `ui ~T0 @X0 1 a ]
+"58
+[; ;../color.c: 58:  I2C_2_Master_Start();
+[e ( _I2C_2_Master_Start ..  ]
+"59
+[; ;../color.c: 59:  I2C_2_Master_Write(0x52 | 0x00);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 0 `i `uc ]
+"60
+[; ;../color.c: 60:  I2C_2_Master_Write(0xA0 | 0x14);
+[e ( _I2C_2_Master_Write (1 -> | -> 160 `i -> 20 `i `uc ]
+"61
+[; ;../color.c: 61:  I2C_2_Master_RepStart();
+[e ( _I2C_2_Master_RepStart ..  ]
+"62
+[; ;../color.c: 62:  I2C_2_Master_Write(0x52 | 0x01);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 1 `i `uc ]
+"63
+[; ;../color.c: 63:  tmp=I2C_2_Master_Read(1);
+[e = _tmp -> ( _I2C_2_Master_Read (1 -> -> 1 `i `uc `ui ]
+"64
+[; ;../color.c: 64:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+[e = _tmp | _tmp -> << -> ( _I2C_2_Master_Read (1 -> -> 0 `i `uc `i -> 8 `i `ui ]
+"65
+[; ;../color.c: 65:  I2C_2_Master_Stop();
+[e ( _I2C_2_Master_Stop ..  ]
+"66
+[; ;../color.c: 66:  return tmp;
+[e ) _tmp ]
+[e $UE 2018  ]
+"67
+[; ;../color.c: 67: }
+[e :UE 2018 ]
+}
 "69
-[; ;../main.c: 69:         for (int i=0;i<8;i++){
+[; ;../color.c: 69: unsigned int color_read_Red(void)
+[v _color_read_Red `(ui ~T0 @X0 1 ef ]
+"70
+[; ;../color.c: 70: {
+{
+[e :U _color_read_Red ]
+[f ]
+"71
+[; ;../color.c: 71:  unsigned int tmp;
+[v _tmp `ui ~T0 @X0 1 a ]
+"72
+[; ;../color.c: 72:  I2C_2_Master_Start();
+[e ( _I2C_2_Master_Start ..  ]
+"73
+[; ;../color.c: 73:  I2C_2_Master_Write(0x52 | 0x00);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 0 `i `uc ]
+"74
+[; ;../color.c: 74:  I2C_2_Master_Write(0xA0 | 0x16);
+[e ( _I2C_2_Master_Write (1 -> | -> 160 `i -> 22 `i `uc ]
+"75
+[; ;../color.c: 75:  I2C_2_Master_RepStart();
+[e ( _I2C_2_Master_RepStart ..  ]
+"76
+[; ;../color.c: 76:  I2C_2_Master_Write(0x52 | 0x01);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 1 `i `uc ]
+"77
+[; ;../color.c: 77:  tmp=I2C_2_Master_Read(1);
+[e = _tmp -> ( _I2C_2_Master_Read (1 -> -> 1 `i `uc `ui ]
+"78
+[; ;../color.c: 78:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+[e = _tmp | _tmp -> << -> ( _I2C_2_Master_Read (1 -> -> 0 `i `uc `i -> 8 `i `ui ]
+"79
+[; ;../color.c: 79:  I2C_2_Master_Stop();
+[e ( _I2C_2_Master_Stop ..  ]
+"80
+[; ;../color.c: 80:  return tmp;
+[e ) _tmp ]
+[e $UE 2019  ]
+"81
+[; ;../color.c: 81: }
+[e :UE 2019 ]
+}
+"83
+[; ;../color.c: 83: unsigned int color_read_Green(void)
+[v _color_read_Green `(ui ~T0 @X0 1 ef ]
+"84
+[; ;../color.c: 84: {
+{
+[e :U _color_read_Green ]
+[f ]
+"85
+[; ;../color.c: 85:  unsigned int tmp;
+[v _tmp `ui ~T0 @X0 1 a ]
+"86
+[; ;../color.c: 86:  I2C_2_Master_Start();
+[e ( _I2C_2_Master_Start ..  ]
+"87
+[; ;../color.c: 87:  I2C_2_Master_Write(0x52 | 0x00);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 0 `i `uc ]
+"88
+[; ;../color.c: 88:  I2C_2_Master_Write(0xA0 | 0x18);
+[e ( _I2C_2_Master_Write (1 -> | -> 160 `i -> 24 `i `uc ]
+"89
+[; ;../color.c: 89:  I2C_2_Master_RepStart();
+[e ( _I2C_2_Master_RepStart ..  ]
+"90
+[; ;../color.c: 90:  I2C_2_Master_Write(0x52 | 0x01);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 1 `i `uc ]
+"91
+[; ;../color.c: 91:  tmp=I2C_2_Master_Read(1);
+[e = _tmp -> ( _I2C_2_Master_Read (1 -> -> 1 `i `uc `ui ]
+"92
+[; ;../color.c: 92:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+[e = _tmp | _tmp -> << -> ( _I2C_2_Master_Read (1 -> -> 0 `i `uc `i -> 8 `i `ui ]
+"93
+[; ;../color.c: 93:  I2C_2_Master_Stop();
+[e ( _I2C_2_Master_Stop ..  ]
+"94
+[; ;../color.c: 94:  return tmp;
+[e ) _tmp ]
+[e $UE 2020  ]
+"95
+[; ;../color.c: 95: }
+[e :UE 2020 ]
+}
+"97
+[; ;../color.c: 97: unsigned int color_read_Blue(void)
+[v _color_read_Blue `(ui ~T0 @X0 1 ef ]
+"98
+[; ;../color.c: 98: {
+{
+[e :U _color_read_Blue ]
+[f ]
+"99
+[; ;../color.c: 99:  unsigned int tmp;
+[v _tmp `ui ~T0 @X0 1 a ]
+"100
+[; ;../color.c: 100:  I2C_2_Master_Start();
+[e ( _I2C_2_Master_Start ..  ]
+"101
+[; ;../color.c: 101:  I2C_2_Master_Write(0x52 | 0x00);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 0 `i `uc ]
+"102
+[; ;../color.c: 102:  I2C_2_Master_Write(0xA0 | 0x1A);
+[e ( _I2C_2_Master_Write (1 -> | -> 160 `i -> 26 `i `uc ]
+"103
+[; ;../color.c: 103:  I2C_2_Master_RepStart();
+[e ( _I2C_2_Master_RepStart ..  ]
+"104
+[; ;../color.c: 104:  I2C_2_Master_Write(0x52 | 0x01);
+[e ( _I2C_2_Master_Write (1 -> | -> 82 `i -> 1 `i `uc ]
+"105
+[; ;../color.c: 105:  tmp=I2C_2_Master_Read(1);
+[e = _tmp -> ( _I2C_2_Master_Read (1 -> -> 1 `i `uc `ui ]
+"106
+[; ;../color.c: 106:  tmp=tmp | (I2C_2_Master_Read(0)<<8);
+[e = _tmp | _tmp -> << -> ( _I2C_2_Master_Read (1 -> -> 0 `i `uc `i -> 8 `i `ui ]
+"107
+[; ;../color.c: 107:  I2C_2_Master_Stop();
+[e ( _I2C_2_Master_Stop ..  ]
+"108
+[; ;../color.c: 108:  return tmp;
+[e ) _tmp ]
+[e $UE 2021  ]
+"109
+[; ;../color.c: 109: }
+[e :UE 2021 ]
+}
+"111
+[; ;../color.c: 111: void color_read(struct RGB_val *rgb)
+[v _color_read `(v ~T0 @X0 1 ef1`*S2015 ]
+"112
+[; ;../color.c: 112: {
+{
+[e :U _color_read ]
+"111
+[; ;../color.c: 111: void color_read(struct RGB_val *rgb)
+[v _rgb `*S2015 ~T0 @X0 1 r1 ]
+"112
+[; ;../color.c: 112: {
+[f ]
+"113
+[; ;../color.c: 113:     rgb->L = color_read_Luminosity();
+[e = . *U _rgb 0 ( _color_read_Luminosity ..  ]
+"114
+[; ;../color.c: 114:     _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"115
+[; ;../color.c: 115:     rgb->R = color_read_Red();
+[e = . *U _rgb 1 ( _color_read_Red ..  ]
+"116
+[; ;../color.c: 116:     _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"117
+[; ;../color.c: 117:     rgb->G = color_read_Green();
+[e = . *U _rgb 2 ( _color_read_Green ..  ]
+"118
+[; ;../color.c: 118:     _delay((unsigned long)((100)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"119
+[; ;../color.c: 119:     rgb->B = color_read_Blue();
+[e = . *U _rgb 3 ( _color_read_Blue ..  ]
+"120
+[; ;../color.c: 120: }
+[e :UE 2022 ]
+}
+"134
+[; ;../color.c: 134: unsigned int color_processor_easy(struct RGB_val *rgb)
+[v _color_processor_easy `(ui ~T0 @X0 1 ef1`*S2015 ]
+"135
+[; ;../color.c: 135: {
+{
+[e :U _color_processor_easy ]
+"134
+[; ;../color.c: 134: unsigned int color_processor_easy(struct RGB_val *rgb)
+[v _rgb `*S2015 ~T0 @X0 1 r1 ]
+"135
+[; ;../color.c: 135: {
+[f ]
+"136
+[; ;../color.c: 136:     unsigned int a = rgb->R;
+[v _a `ui ~T0 @X0 1 a ]
+[e = _a . *U _rgb 1 ]
+"137
+[; ;../color.c: 137:     unsigned int b = rgb->G;
+[v _b `ui ~T0 @X0 1 a ]
+[e = _b . *U _rgb 2 ]
+"138
+[; ;../color.c: 138:     unsigned int c = rgb->B;
+[v _c `ui ~T0 @X0 1 a ]
+[e = _c . *U _rgb 3 ]
+"139
+[; ;../color.c: 139:     unsigned int color;
+[v _color `ui ~T0 @X0 1 a ]
+"140
+[; ;../color.c: 140:     if (a>=b & a>=c){
+[e $ ! & >= _a _b >= _a _c 2024  ]
+{
+"141
+[; ;../color.c: 141:         color=1;
+[e = _color -> -> 1 `i `ui ]
+"142
+[; ;../color.c: 142:     }
+}
+[e $U 2025  ]
+"143
+[; ;../color.c: 143:     else if (b>=a & b>=c){
+[e :U 2024 ]
+[e $ ! & >= _b _a >= _b _c 2026  ]
+{
+"144
+[; ;../color.c: 144:         color=2;
+[e = _color -> -> 2 `i `ui ]
+"145
+[; ;../color.c: 145:     }
+}
+[e $U 2027  ]
+"146
+[; ;../color.c: 146:     else {
+[e :U 2026 ]
+{
+"147
+[; ;../color.c: 147:         color=3;
+[e = _color -> -> 3 `i `ui ]
+"148
+[; ;../color.c: 148:     }
+}
+[e :U 2027 ]
+[e :U 2025 ]
+"149
+[; ;../color.c: 149:     return color;
+[e ) _color ]
+[e $UE 2023  ]
+"150
+[; ;../color.c: 150: }
+[e :UE 2023 ]
+}
+"152
+[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
+[v _color_processor_hard `(ui ~T0 @X0 1 ef2`*S2015`*ui ]
+"153
+[; ;../color.c: 153: {
+{
+[e :U _color_processor_hard ]
+"152
+[; ;../color.c: 152: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
+[v _rgb `*S2015 ~T0 @X0 1 r1 ]
+[v _calibrated `*ui ~T0 @X0 1 r2 ]
+"153
+[; ;../color.c: 153: {
+[f ]
+"154
+[; ;../color.c: 154:     unsigned int r = rgb->R;
+[v _r `ui ~T0 @X0 1 a ]
+[e = _r . *U _rgb 1 ]
+"155
+[; ;../color.c: 155:     unsigned int g = rgb->G;
+[v _g `ui ~T0 @X0 1 a ]
+[e = _g . *U _rgb 2 ]
+"156
+[; ;../color.c: 156:     unsigned int b = rgb->B;
+[v _b `ui ~T0 @X0 1 a ]
+[e = _b . *U _rgb 3 ]
+"159
+[; ;../color.c: 159:     for (int i=0;i<8;i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 2032  ]
+[e $ < _i -> 8 `i 2029  ]
+[e $U 2030  ]
+[e :U 2029 ]
+{
+"160
+[; ;../color.c: 160:         unsigned int cr = calibrated[4*i+1];
+[v _cr `ui ~T0 @X0 1 a ]
+[e = _cr *U + _calibrated * -> + * -> 4 `i _i -> 1 `i `x -> -> # *U _calibrated `i `x ]
+"161
+[; ;../color.c: 161:         unsigned int cg = calibrated[4*i+2];
+[v _cg `ui ~T0 @X0 1 a ]
+[e = _cg *U + _calibrated * -> + * -> 4 `i _i -> 2 `i `x -> -> # *U _calibrated `i `x ]
+"162
+[; ;../color.c: 162:         unsigned int cb = calibrated[4*i+3];
+[v _cb `ui ~T0 @X0 1 a ]
+[e = _cb *U + _calibrated * -> + * -> 4 `i _i -> 3 `i `x -> -> # *U _calibrated `i `x ]
+"164
+[; ;../color.c: 164:         _Bool condition_r = r>cr-20 && r<cr+20;
+[v _condition_r `a ~T0 @X0 1 a ]
+[e = _condition_r -> -> && > _r - _cr -> -> 20 `i `ui < _r + _cr -> -> 20 `i `ui `i `a ]
+"165
+[; ;../color.c: 165:         _Bool condition_g = b>cb-20 && b<cb+20;
+[v _condition_g `a ~T0 @X0 1 a ]
+[e = _condition_g -> -> && > _b - _cb -> -> 20 `i `ui < _b + _cb -> -> 20 `i `ui `i `a ]
+"166
+[; ;../color.c: 166:         _Bool condition_b = g>cg-20 && g<cg+20;
+[v _condition_b `a ~T0 @X0 1 a ]
+[e = _condition_b -> -> && > _g - _cg -> -> 20 `i `ui < _g + _cg -> -> 20 `i `ui `i `a ]
+"168
+[; ;../color.c: 168:         if (condition_r && condition_g && condition_b){
+[e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2032  ]
+{
+"169
+[; ;../color.c: 169:             return i+1;
+[e ) -> + _i -> 1 `i `ui ]
+[e $UE 2028  ]
+"170
+[; ;../color.c: 170:         }
+}
 [e $U 2033  ]
+"171
+[; ;../color.c: 171:         else {return 0;}
 [e :U 2032 ]
 {
-"70
-[; ;../main.c: 70:             color_read(&RGB_calibrated);
-[e ( _color_read (1 &U _RGB_calibrated ]
-"71
-[; ;../main.c: 71:             color_calibrated[4*i] = RGB_calibrated.L;
-[e = *U + &U _color_calibrated * -> -> * -> 4 `i _i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 0 `i ]
-"72
-[; ;../main.c: 72:             color_calibrated[4*i+1] = RGB_calibrated.R;
-[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 1 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 1 `i ]
-"73
-[; ;../main.c: 73:             color_calibrated[4*i+2] = RGB_calibrated.G;
-[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 2 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 2 `i ]
-"74
-[; ;../main.c: 74:             color_calibrated[4*i+3] = RGB_calibrated.B;
-[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 3 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 3 `i ]
-"75
-[; ;../main.c: 75:             LATHbits.LATH3 = 1;
-[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-"77
-[; ;../main.c: 77:             char readout2[100];
-[v _readout2 `uc ~T0 @X0 -> 100 `i a ]
-"78
-[; ;../main.c: 78:             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-[e ( _sprintf (1 , , , , (. , &U _readout2 :s 1C . _RGB_calibrated 0 . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
-"79
-[; ;../main.c: 79:             sendStringSerial4(readout2);
-[e ( _sendStringSerial4 (1 &U _readout2 ]
-"80
-[; ;../main.c: 80:             _delay((unsigned long)((20)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"81
-[; ;../main.c: 81:             LATHbits.LATH3 = 0;
-[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"82
-[; ;../main.c: 82:             _delay((unsigned long)((20)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"83
-[; ;../main.c: 83:         }
+[e ) -> -> 0 `i `ui ]
+[e $UE 2028  ]
+}
+[e :U 2033 ]
+"172
+[; ;../color.c: 172:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 2032  ]
-[e :U 2033 ]
+[e $ < _i -> 8 `i 2029  ]
+[e :U 2030 ]
 }
-"86
-[; ;../main.c: 86:         lowerbound_calibrated = color_calibrated[8];
-[e = _lowerbound_calibrated -> *U + &U _color_calibrated * -> -> -> 8 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux `ui ]
-"87
-[; ;../main.c: 87:         upperbound_calibrated = color_calibrated[28];
-[e = _upperbound_calibrated -> *U + &U _color_calibrated * -> -> -> 28 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux `ui ]
-"90
-[; ;../main.c: 90:         while (PORTFbits.RF3 & PORTFbits.RF2);
-[e $U 2035  ]
-[e :U 2036 ]
-[e :U 2035 ]
-[e $ != & -> . . _PORTFbits 0 3 `i -> . . _PORTFbits 0 2 `i -> 0 `i 2036  ]
-[e :U 2037 ]
-"91
-[; ;../main.c: 91:         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
-[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2038  ]
-{
-[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+"173
+[; ;../color.c: 173: }
+[e :UE 2028 ]
 }
-[e $U 2039  ]
-"92
-[; ;../main.c: 92:         else {LATHbits.LATH3 = 1;}
-[e :U 2038 ]
-{
-[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-}
-[e :U 2039 ]
-"95
-[; ;../main.c: 95:         while (color_name != 8){
-[e $U 2040  ]
-[e :U 2041 ]
-{
-"96
-[; ;../main.c: 96:             time = 0;
-[e = _time -> -> 0 `i `ui ]
-"97
-[; ;../main.c: 97:             forward(&motorL,&motorR);
-[e ( _forward (2 , &U _motorL &U _motorR ]
-"98
-[; ;../main.c: 98:             _delay((unsigned long)((500)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"99
-[; ;../main.c: 99:             color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"100
-[; ;../main.c: 100:             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
-[e $ ! && < . _RGB_recorded 0 _upperbound_calibrated > . _RGB_recorded 0 _lowerbound_calibrated 2043  ]
-{
-[e = _color_flag -> -> 1 `i `ui ]
-}
-[e :U 2043 ]
-"101
-[; ;../main.c: 101:             if (color_flag){
-[e $ ! != _color_flag -> -> 0 `i `ui 2044  ]
-{
-"102
-[; ;../main.c: 102:                 stop(&motorL,&motorR);
-[e ( _stop (2 , &U _motorL &U _motorR ]
-"103
-[; ;../main.c: 103:                 color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"104
-[; ;../main.c: 104:                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
-[e $ ! != -> . . _LATDbits 0 7 `i -> 0 `i 2045  ]
-{
-[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
-}
-[e $U 2046  ]
-"105
-[; ;../main.c: 105:                 else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
-[e :U 2045 ]
-{
-[e = _color_name ( _color_processor_hard (2 , &U _RGB_recorded -> &U _color_calibrated `*ui ]
-}
-[e :U 2046 ]
-"106
-[; ;../main.c: 106:                 color_path[j] = color_name;
-[e = *U + &U _color_path * -> -> _j `ui `ux -> -> # *U &U _color_path `ui `ux _color_name ]
-"107
-[; ;../main.c: 107:                 time_path[j] = time;
-[e = *U + &U _time_path * -> -> _j `ui `ux -> -> # *U &U _time_path `ui `ux _time ]
-"110
-[; ;../main.c: 110:                 char readout3[100];
-[v _readout3 `uc ~T0 @X0 -> 100 `i a ]
-"111
-[; ;../main.c: 111:                 sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
-[e ( _sprintf (1 , , , , , (. , &U _readout3 :s 2C _color_name . _RGB_recorded 0 . _RGB_recorded 1 . _RGB_recorded 2 . _RGB_recorded 3 ]
-"112
-[; ;../main.c: 112:                 sendStringSerial4(readout3);
-[e ( _sendStringSerial4 (1 &U _readout3 ]
-"114
-[; ;../main.c: 114:                 motor_action(color_name,&motorL,&motorR);
-[e ( _motor_action (3 , , _color_name &U _motorL &U _motorR ]
-"116
-[; ;../main.c: 116:                 j++;
-[e ++ _j -> 1 `i ]
-"117
-[; ;../main.c: 117:                 time = 0;
-[e = _time -> -> 0 `i `ui ]
-"118
-[; ;../main.c: 118:                 color_flag = 0;
-[e = _color_flag -> -> 0 `i `ui ]
-"119
-[; ;../main.c: 119:             }
-}
-[e :U 2044 ]
-"120
-[; ;../main.c: 120:             _delay((unsigned long)((200)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"121
-[; ;../main.c: 121:         }
-}
-[e :U 2040 ]
-"95
-[; ;../main.c: 95:         while (color_name != 8){
-[e $ != _color_name -> -> 8 `i `ui 2041  ]
-[e :U 2042 ]
-"124
-[; ;../main.c: 124:         spin_180(&motorL,&motorR);
-[e ( _spin_180 (2 , &U _motorL &U _motorR ]
-"125
-[; ;../main.c: 125:         for (int k=15;k>0;k--){
-{
-[v _k `i ~T0 @X0 1 a ]
-[e = _k -> 15 `i ]
-[e $ > _k -> 0 `i 2047  ]
-[e $U 2048  ]
-[e :U 2047 ]
-{
-"126
-[; ;../main.c: 126:             INTCONbits.GIE = 0;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"127
-[; ;../main.c: 127:             time_return = 0;
-[e = _time_return -> -> 0 `i `ui ]
-"128
-[; ;../main.c: 128:             motor_action(color_path[k],&motorL,&motorR);
-[e ( _motor_action (3 , , *U + &U _color_path * -> -> _k `ui `ux -> -> # *U &U _color_path `ui `ux &U _motorL &U _motorR ]
-"129
-[; ;../main.c: 129:             forward(&motorL,&motorR);
-[e ( _forward (2 , &U _motorL &U _motorR ]
-"130
-[; ;../main.c: 130:             while (time_return < time_path[k]) {
-[e $U 2050  ]
-[e :U 2051 ]
-{
-"131
-[; ;../main.c: 131:                 _delay((unsigned long)((50)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"132
-[; ;../main.c: 132:                 time_return++;
-[e ++ _time_return -> -> 1 `i `ui ]
-"133
-[; ;../main.c: 133:             }
-}
-[e :U 2050 ]
-"130
-[; ;../main.c: 130:             while (time_return < time_path[k]) {
-[e $ < _time_return *U + &U _time_path * -> -> _k `ui `ux -> -> # *U &U _time_path `ui `ux 2051  ]
-[e :U 2052 ]
-"134
-[; ;../main.c: 134:             stop(&motorL,&motorR);
-[e ( _stop (2 , &U _motorL &U _motorR ]
-"135
-[; ;../main.c: 135:         }
-}
-[e -- _k -> 1 `i ]
-[e $ > _k -> 0 `i 2047  ]
-[e :U 2048 ]
-}
-"136
-[; ;../main.c: 136:     }
-}
-[e :U 2026 ]
-[e $U 2027  ]
-[e :U 2028 ]
-"139
-[; ;../main.c: 139:     while (1) {
-[e :U 2054 ]
-{
-"140
-[; ;../main.c: 140:         __asm(" sleep");
-[; <"  sleep ;# ">
-"141
-[; ;../main.c: 141:     }
-}
-[e :U 2053 ]
-[e $U 2054  ]
-[e :U 2055 ]
-"142
-[; ;../main.c: 142: }
-[e :UE 2019 ]
-}
-[p f _sprintf 8388736 ]
-[a 2C 37 100 32 37 100 32 37 100 32 37 100 32 37 100 32 13 10 0 ]
-[a 1C 37 100 32 37 100 32 37 100 32 37 100 32 13 10 0 ]

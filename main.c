@@ -46,7 +46,7 @@ void main(void) {
     
     //declare variables
     unsigned int color_flag;
-    unsigned int color_name;
+    unsigned int color_name = 0;
     unsigned int color_path[15] = {0};
     int color_calibrated[32];
     unsigned int lowerbound_calibrated;
@@ -58,7 +58,12 @@ void main(void) {
     unsigned int time_return;
     int j; 
 
+    //motor testing
     while (1) {
+        while(PORTFbits.RF3);
+        motor_action(1,&motorL,&motorR);
+    }
+    while (1) {  
         //calibration for detecting color of the card
         while (PORTFbits.RF3); //wait for button press on F3
         for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
@@ -72,9 +77,9 @@ void main(void) {
             char readout2[100];
             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
             sendStringSerial4(readout2); //serial communication
-            __delay_ms(2000);
+            __delay_ms(20);
             LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
-            __delay_ms(2000);
+            __delay_ms(20);
         }
         
         //setting bounds for detecting if the card is in front of the buggy
@@ -85,11 +90,12 @@ void main(void) {
         while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for any button press
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;} //F2 button (easy mode)
         else {LATHbits.LATH3 = 1;} //F3 button (hard mode)
-        
+
         //maze navigation
         while (color_name != 8){
             time = 0; //reset clock
             forward(&motorL,&motorR);
+            __delay_ms(500);
             color_read(&RGB_recorded);
             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;} //raise flag if there is a card in front
             if (color_flag){

@@ -791,10 +791,14 @@
 "20 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"110
+"105
 [v main@readout3 readout3 `[100]uc  1 a 100 0 ]
-"77
+"72
 [v main@readout2 readout2 `[100]uc  1 a 100 27 ]
+"120
+[v main@k k `i  1 a 2 200 ]
+"64
+[v main@i i `i  1 a 2 204 ]
 "51
 [v main@color_calibrated color_calibrated `[32]i  1 a 64 130 ]
 "57
@@ -803,14 +807,26 @@
 [v main@color_path color_path `[15]ui  1 a 30 127 ]
 [s S589 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyHighByte 2 2 `*.39uc 1 dir_LAT 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 "30
-[v main@motorL motorL `S589  1 a 9 211 ]
-[v main@motorR motorR `S589  1 a 9 202 ]
+[v main@motorL motorL `S589  1 a 9 231 ]
+[v main@motorR motorR `S589  1 a 9 222 ]
 [s S270 RGB_val 8 `ui 1 L 2 0 `ui 1 R 2 2 `ui 1 G 2 4 `ui 1 B 2 6 ]
 "56
-[v main@RGB_recorded RGB_recorded `S270  1 a 8 194 ]
+[v main@RGB_recorded RGB_recorded `S270  1 a 8 214 ]
 "54
-[v main@RGB_calibrated RGB_calibrated `S270  1 a 8 194 ]
-"142
+[v main@RGB_calibrated RGB_calibrated `S270  1 a 8 206 ]
+"49
+[v main@color_name color_name `ui  1 a 2 202 ]
+"59
+[v main@j j `i  1 a 2 198 ]
+"58
+[v main@time_return time_return `ui  1 a 2 196 ]
+"48
+[v main@color_flag color_flag `ui  1 a 2 90 ]
+"53
+[v main@upperbound_calibrated upperbound_calibrated `ui  1 a 2 194 ]
+"52
+[v main@lowerbound_calibrated lowerbound_calibrated `ui  1 a 2 157 ]
+"137
 } 0
 "9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -962,7 +978,7 @@
 [s S589 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyHighByte 2 2 `*.39uc 1 dir_LAT 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 [v motor_action@l l `*.39S589  1 p 2 35 ]
 [v motor_action@r r `*.39S589  1 p 2 37 ]
-"255
+"242
 } 0
 "61
 [v _stop stop `(v  1 e 1 0 ]

@@ -1,4 +1,4 @@
-# 1 "../dc_motor.c"
+# 1 "../serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "../dc_motor.c" 2
+# 1 "../serial.c" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -24229,342 +24229,222 @@ __attribute__((__unsupported__("The READTIMER" "0" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\\pic\\include\\xc.h" 2 3
-# 1 "../dc_motor.c" 2
+# 1 "../serial.c" 2
 
-# 1 "../dc_motor.h" 1
+# 1 "../serial.h" 1
+# 13 "../serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
 
-
-
-
-
-
-
-struct DC_motor {
-    char power;
-    char direction;
-    unsigned char *dutyHighByte;
-    unsigned char *dir_LAT;
-    char dir_pin;
-    int PWMperiod;
-};
-
-
-void initDCmotorsPWM(int PWMperiod);
-void setMotorPWM(struct DC_motor *m);
-void stop(struct DC_motor *mL, struct DC_motor *mR);
-void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
-
-void right_90(struct DC_motor *mL, struct DC_motor *mR);
-void left_90(struct DC_motor *mL, struct DC_motor *mR);
-void spin_180(struct DC_motor *mL, struct DC_motor *mR);
-void right_135(struct DC_motor *mL, struct DC_motor *mR);
-void left_135(struct DC_motor *mL, struct DC_motor *mR);
-void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-# 2 "../dc_motor.c" 2
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
 
 
 
-void initDCmotorsPWM(int PWMperiod){
-
-    TRISEbits.TRISE2 = 0;
-    TRISEbits.TRISE4 = 0;
-    TRISCbits.TRISC7 = 0;
-    TRISGbits.TRISG6 = 0;
-
-    LATEbits.LATE2 = 0;
-    LATEbits.LATE4 = 0;
-    LATCbits.LATC7 = 0;
-    LATGbits.LATG6 = 0;
-
-    T2CONbits.CKPS=0b0011;
-    T2HLTbits.MODE=0b00000;
-    T2CLKCONbits.CS=0b0001;
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
 
 
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
 
-    T2PR=PWMperiod;
-    T2CONbits.ON=1;
 
-    RE2PPS=0x0A;
-    RC7PPS=0x0B;
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 2 "../serial.c" 2
 
-    PWM6DCH=0;
-    PWM7DCH=0;
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 1 3
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 1 3
 
-    PWM6CONbits.EN = 1;
-    PWM7CONbits.EN = 1;
+
+
+
+
+typedef void * va_list[1];
+
+
+
+
+typedef void * __isoc_va_list[1];
+# 137 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long ssize_t;
+# 246 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long off_t;
+# 399 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct _IO_FILE FILE;
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 2 3
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
+typedef union _G_fpos64_t {
+ char __opaque[16];
+ double __align;
+} fpos_t;
+
+extern FILE *const stdin;
+extern FILE *const stdout;
+extern FILE *const stderr;
+
+
+
+
+
+FILE *fopen(const char *restrict, const char *restrict);
+FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
+int fclose(FILE *);
+
+int remove(const char *);
+int rename(const char *, const char *);
+
+int feof(FILE *);
+int ferror(FILE *);
+int fflush(FILE *);
+void clearerr(FILE *);
+
+int fseek(FILE *, long, int);
+long ftell(FILE *);
+void rewind(FILE *);
+
+int fgetpos(FILE *restrict, fpos_t *restrict);
+int fsetpos(FILE *, const fpos_t *);
+
+size_t fread(void *restrict, size_t, size_t, FILE *restrict);
+size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
+
+int fgetc(FILE *);
+int getc(FILE *);
+int getchar(void);
+int ungetc(int, FILE *);
+
+int fputc(int, FILE *);
+int putc(int, FILE *);
+int putchar(int);
+
+char *fgets(char *restrict, int, FILE *restrict);
+
+char *gets(char *);
+
+
+int fputs(const char *restrict, FILE *restrict);
+int puts(const char *);
+
+__attribute__((__format__(__printf__, 1, 2)))
+int printf(const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int fprintf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int sprintf(char *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 3, 4)))
+int snprintf(char *restrict, size_t, const char *restrict, ...);
+
+__attribute__((__format__(__printf__, 1, 0)))
+int vprintf(const char *restrict, __isoc_va_list);
+int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 2, 0)))
+int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 3, 0)))
+int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
+
+__attribute__((__format__(__scanf__, 1, 2)))
+int scanf(const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int fscanf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int sscanf(const char *restrict, const char *restrict, ...);
+
+__attribute__((__format__(__scanf__, 1, 0)))
+int vscanf(const char *restrict, __isoc_va_list);
+int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__scanf__, 2, 0)))
+int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
+
+void perror(const char *);
+
+int setvbuf(FILE *restrict, char *restrict, int, size_t);
+void setbuf(FILE *restrict, char *restrict);
+
+char *tmpnam(char *);
+FILE *tmpfile(void);
+
+
+
+
+FILE *fmemopen(void *restrict, size_t, const char *restrict);
+FILE *open_memstream(char **, size_t *);
+FILE *fdopen(int, const char *);
+FILE *popen(const char *, const char *);
+int pclose(FILE *);
+int fileno(FILE *);
+int fseeko(FILE *, off_t, int);
+off_t ftello(FILE *);
+int dprintf(int, const char *restrict, ...);
+int vdprintf(int, const char *restrict, __isoc_va_list);
+void flockfile(FILE *);
+int ftrylockfile(FILE *);
+void funlockfile(FILE *);
+int getc_unlocked(FILE *);
+int getchar_unlocked(void);
+int putc_unlocked(int, FILE *);
+int putchar_unlocked(int);
+ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
+ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
+int renameat(int, const char *, int, const char *);
+char *ctermid(char *);
+
+
+
+
+
+
+
+char *tempnam(const char *, const char *);
+# 3 "../serial.c" 2
+
+
+void initUSART4(void) {
+
+
+
+    RC0PPS = 0x12;
+    RX4PPS = 0x11;
+
+    BAUD4CONbits.BRG16 = 0;
+    TX4STAbits.BRGH = 0;
+    SP4BRGL = 103;
+    SP4BRGH = 0;
+
+    RC4STAbits.CREN = 1;
+    TX4STAbits.TXEN = 1;
+    RC4STAbits.SPEN = 1;
+
+}
+
+
+char getCharSerial4(void) {
+    while (!PIR4bits.RC4IF);
+    return RC4REG;
+}
+
+
+void sendCharSerial4(char charToSend) {
+    while (!PIR4bits.TX4IF);
+    TX4REG = charToSend;
 }
 
 
 
-void setMotorPWM(struct DC_motor *m)
-{
- int PWMduty;
-
- if (m->direction){
-
-  PWMduty=m->PWMperiod - ((int)(m->power)*(m->PWMperiod))/100;
- }
- else {
-
-  PWMduty=((int)(m->power)*(m->PWMperiod))/100;
- }
-
- *(m->dutyHighByte) = PWMduty;
-
- if (m->direction){
-  *(m->dir_LAT) = *(m->dir_LAT) | (1<<(m->dir_pin));
- } else {
-  *(m->dir_LAT) = *(m->dir_LAT) & (~(1<<(m->dir_pin)));
- }
-}
+void sendStringSerial4(char *string){
 
 
-void stop(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 0;
-    for (int i = 5;i>0;i = i - 1)
+    while (*string != 0)
     {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000.0)));
-    }
-
-}
-
-
-void forward(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 1;
-    for (int i=0;i<31;i=i+2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((20)*(64000000/4000000.0)));
-    }
-}
-
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mL->direction = 0;
-    for (int i = 0;i < 41;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((500)*(64000000/4000.0)));
-}
-
-void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 0;
-    for (int i=0;i<51;i=i + 2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((1100)*(64000000/4000.0)));
-}
-
-void right_90(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((165)*(64000000/4000.0)));
-}
-
-void left_90(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = 50 + i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((165)*(64000000/4000.0)));
-}
-
-void spin_180(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((290)*(64000000/4000.0)));
-}
-
-void right_135(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 1;
-    mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = i;
-        mR->power = 50 + i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((230)*(64000000/4000.0)));
-}
-
-void left_135(struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
-    {
-        mL->power = 50 + i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((10)*(64000000/4000000.0)));
-    }
-    _delay((unsigned long)((230)*(64000000/4000.0)));
-}
-
-void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
-    switch (color){
-        case 1:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 2:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 3:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            spin_180(l,r);
-            stop(l,r);
-            break;
-        case 4:
-            reverse_onesquare(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 5:
-            reverse_onesquare(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 6:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_135(l,r);
-            stop(l,r);
-            break;
-        case 7:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_135(l,r);
-            stop(l,r);
-            break;
-        case 0:
-            forward(l,r);
-            stop(l,r);
-            break;
-        default:
-            break;
-    }
-}
-
-void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor *r)
-{
-    switch (color){
-        case 1:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
-            break;
-        case 2:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            right_90(l,r);
-            stop(l,r);
-            break;
-        case 3:
-            reverse_fromcard(l,r);
-            stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            spin_180(l,r);
-            stop(l,r);
-            break;
-        case 4:
-            stop(l,r);
-            right_90(l,r);
-            forward(l,r);
-            stop(l,r);
-            break;
-        case 5:
-            stop(l,r);
-            left_90(l,r);
-            forward(l,r);
-            stop(l,r);
-            break;
-        case 6:
-            stop(l,r);
-            left_135(l,r);
-            stop(l,r);
-            break;
-        case 7:
-            stop(l,r);
-            right_135(l,r);
-            stop(l,r);
-            break;
-        default:
-            break;
+        sendCharSerial4(*string++);
     }
 }

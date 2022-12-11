@@ -56,9 +56,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30602
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 30602: extern volatile PORTFbits_t PORTFbits __attribute__((address(0xF8E)));
 [v _PORTFbits `VS1411 ~T0 @X0 0 e@3982 ]
-"29 ../dc_motor.h
-[; ;../dc_motor.h: 29: void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
-[v _motor_action `(v ~T0 @X0 0 ef3`ui`*S2016`*S2016 ]
 "40 ../color.h
 [; ;../color.h: 40: void color_read(struct RGB_val *rgb);
 [v _color_read `(v ~T0 @X0 0 ef1`*S2015 ]
@@ -130,7 +127,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "42
 [; ;../color.h: 42: unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
 [v _color_processor_hard `(ui ~T0 @X0 0 ef2`*S2015`*ui ]
-"26 ../dc_motor.h
+"29 ../dc_motor.h
+[; ;../dc_motor.h: 29: void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r);
+[v _motor_action `(v ~T0 @X0 0 ef3`ui`*S2016`*S2016 ]
+"26
 [; ;../dc_motor.h: 26: void spin_180(struct DC_motor *mL, struct DC_motor *mR);
 [v _spin_180 `(v ~T0 @X0 0 ef2`*S2016`*S2016 ]
 "40479 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h
@@ -2297,280 +2297,260 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;../main.c: 59:     int j;
 [v _j `i ~T0 @X0 1 a ]
-"62
-[; ;../main.c: 62:     while (1) {
+"61
+[; ;../main.c: 61:     while (1) {
 [e :U 2021 ]
 {
 "63
-[; ;../main.c: 63:         while(PORTFbits.RF3);
+[; ;../main.c: 63:         while (PORTFbits.RF3);
 [e $U 2023  ]
 [e :U 2024 ]
 [e :U 2023 ]
 [e $ != -> . . _PORTFbits 0 3 `i -> 0 `i 2024  ]
 [e :U 2025 ]
 "64
-[; ;../main.c: 64:         motor_action(1,&motorL,&motorR);
-[e ( _motor_action (3 , , -> -> 1 `i `ui &U _motorL &U _motorR ]
+[; ;../main.c: 64:         for (int i=0;i<8;i++){
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 8 `i 2026  ]
+[e $U 2027  ]
+[e :U 2026 ]
+{
 "65
-[; ;../main.c: 65:     }
+[; ;../main.c: 65:             color_read(&RGB_calibrated);
+[e ( _color_read (1 &U _RGB_calibrated ]
+"66
+[; ;../main.c: 66:             color_calibrated[4*i] = RGB_calibrated.L;
+[e = *U + &U _color_calibrated * -> -> * -> 4 `i _i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 0 `i ]
+"67
+[; ;../main.c: 67:             color_calibrated[4*i+1] = RGB_calibrated.R;
+[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 1 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 1 `i ]
+"68
+[; ;../main.c: 68:             color_calibrated[4*i+2] = RGB_calibrated.G;
+[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 2 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 2 `i ]
+"69
+[; ;../main.c: 69:             color_calibrated[4*i+3] = RGB_calibrated.B;
+[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 3 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 3 `i ]
+"70
+[; ;../main.c: 70:             LATHbits.LATH3 = 1;
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+"72
+[; ;../main.c: 72:             char readout2[100];
+[v _readout2 `uc ~T0 @X0 -> 100 `i a ]
+"73
+[; ;../main.c: 73:             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
+[e ( _sprintf (1 , , , , (. , &U _readout2 :s 1C . _RGB_calibrated 0 . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
+"74
+[; ;../main.c: 74:             sendStringSerial4(readout2);
+[e ( _sendStringSerial4 (1 &U _readout2 ]
+"75
+[; ;../main.c: 75:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"76
+[; ;../main.c: 76:             LATHbits.LATH3 = 0;
+[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
+"77
+[; ;../main.c: 77:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"78
+[; ;../main.c: 78:         }
+}
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 8 `i 2026  ]
+[e :U 2027 ]
+}
+"81
+[; ;../main.c: 81:         lowerbound_calibrated = color_calibrated[8];
+[e = _lowerbound_calibrated -> *U + &U _color_calibrated * -> -> -> 8 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux `ui ]
+"82
+[; ;../main.c: 82:         upperbound_calibrated = color_calibrated[28];
+[e = _upperbound_calibrated -> *U + &U _color_calibrated * -> -> -> 28 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux `ui ]
+"85
+[; ;../main.c: 85:         while (PORTFbits.RF3 & PORTFbits.RF2);
+[e $U 2029  ]
+[e :U 2030 ]
+[e :U 2029 ]
+[e $ != & -> . . _PORTFbits 0 3 `i -> . . _PORTFbits 0 2 `i -> 0 `i 2030  ]
+[e :U 2031 ]
+"86
+[; ;../main.c: 86:         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
+[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2032  ]
+{
+[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
+}
+[e $U 2033  ]
+"87
+[; ;../main.c: 87:         else {LATHbits.LATH3 = 1;}
+[e :U 2032 ]
+{
+[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
+}
+[e :U 2033 ]
+"90
+[; ;../main.c: 90:         while (color_name != 8){
+[e $U 2034  ]
+[e :U 2035 ]
+{
+"91
+[; ;../main.c: 91:             time = 0;
+[e = _time -> -> 0 `i `ui ]
+"92
+[; ;../main.c: 92:             forward(&motorL,&motorR);
+[e ( _forward (2 , &U _motorL &U _motorR ]
+"93
+[; ;../main.c: 93:             _delay((unsigned long)((500)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"94
+[; ;../main.c: 94:             color_read(&RGB_recorded);
+[e ( _color_read (1 &U _RGB_recorded ]
+"95
+[; ;../main.c: 95:             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
+[e $ ! && < . _RGB_recorded 0 _upperbound_calibrated > . _RGB_recorded 0 _lowerbound_calibrated 2037  ]
+{
+[e = _color_flag -> -> 1 `i `ui ]
+}
+[e :U 2037 ]
+"96
+[; ;../main.c: 96:             if (color_flag){
+[e $ ! != _color_flag -> -> 0 `i `ui 2038  ]
+{
+"97
+[; ;../main.c: 97:                 stop(&motorL,&motorR);
+[e ( _stop (2 , &U _motorL &U _motorR ]
+"98
+[; ;../main.c: 98:                 color_read(&RGB_recorded);
+[e ( _color_read (1 &U _RGB_recorded ]
+"99
+[; ;../main.c: 99:                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
+[e $ ! != -> . . _LATDbits 0 7 `i -> 0 `i 2039  ]
+{
+[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
+}
+[e $U 2040  ]
+"100
+[; ;../main.c: 100:                 else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
+[e :U 2039 ]
+{
+[e = _color_name ( _color_processor_hard (2 , &U _RGB_recorded -> &U _color_calibrated `*ui ]
+}
+[e :U 2040 ]
+"101
+[; ;../main.c: 101:                 color_path[j] = color_name;
+[e = *U + &U _color_path * -> -> _j `ui `ux -> -> # *U &U _color_path `ui `ux _color_name ]
+"102
+[; ;../main.c: 102:                 time_path[j] = time;
+[e = *U + &U _time_path * -> -> _j `ui `ux -> -> # *U &U _time_path `ui `ux _time ]
+"105
+[; ;../main.c: 105:                 char readout3[100];
+[v _readout3 `uc ~T0 @X0 -> 100 `i a ]
+"106
+[; ;../main.c: 106:                 sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
+[e ( _sprintf (1 , , , , , (. , &U _readout3 :s 2C _color_name . _RGB_recorded 0 . _RGB_recorded 1 . _RGB_recorded 2 . _RGB_recorded 3 ]
+"107
+[; ;../main.c: 107:                 sendStringSerial4(readout3);
+[e ( _sendStringSerial4 (1 &U _readout3 ]
+"109
+[; ;../main.c: 109:                 motor_action(color_name,&motorL,&motorR);
+[e ( _motor_action (3 , , _color_name &U _motorL &U _motorR ]
+"111
+[; ;../main.c: 111:                 j++;
+[e ++ _j -> 1 `i ]
+"112
+[; ;../main.c: 112:                 time = 0;
+[e = _time -> -> 0 `i `ui ]
+"113
+[; ;../main.c: 113:                 color_flag = 0;
+[e = _color_flag -> -> 0 `i `ui ]
+"114
+[; ;../main.c: 114:             }
+}
+[e :U 2038 ]
+"115
+[; ;../main.c: 115:             _delay((unsigned long)((200)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"116
+[; ;../main.c: 116:         }
+}
+[e :U 2034 ]
+"90
+[; ;../main.c: 90:         while (color_name != 8){
+[e $ != _color_name -> -> 8 `i `ui 2035  ]
+[e :U 2036 ]
+"119
+[; ;../main.c: 119:         spin_180(&motorL,&motorR);
+[e ( _spin_180 (2 , &U _motorL &U _motorR ]
+"120
+[; ;../main.c: 120:         for (int k=15;k>0;k--){
+{
+[v _k `i ~T0 @X0 1 a ]
+[e = _k -> 15 `i ]
+[e $ > _k -> 0 `i 2041  ]
+[e $U 2042  ]
+[e :U 2041 ]
+{
+"121
+[; ;../main.c: 121:             INTCONbits.GIE = 0;
+[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
+"122
+[; ;../main.c: 122:             time_return = 0;
+[e = _time_return -> -> 0 `i `ui ]
+"123
+[; ;../main.c: 123:             motor_action(color_path[k],&motorL,&motorR);
+[e ( _motor_action (3 , , *U + &U _color_path * -> -> _k `ui `ux -> -> # *U &U _color_path `ui `ux &U _motorL &U _motorR ]
+"124
+[; ;../main.c: 124:             forward(&motorL,&motorR);
+[e ( _forward (2 , &U _motorL &U _motorR ]
+"125
+[; ;../main.c: 125:             while (time_return < time_path[k]) {
+[e $U 2044  ]
+[e :U 2045 ]
+{
+"126
+[; ;../main.c: 126:                 _delay((unsigned long)((50)*(64000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
+"127
+[; ;../main.c: 127:                 time_return++;
+[e ++ _time_return -> -> 1 `i `ui ]
+"128
+[; ;../main.c: 128:             }
+}
+[e :U 2044 ]
+"125
+[; ;../main.c: 125:             while (time_return < time_path[k]) {
+[e $ < _time_return *U + &U _time_path * -> -> _k `ui `ux -> -> # *U &U _time_path `ui `ux 2045  ]
+[e :U 2046 ]
+"129
+[; ;../main.c: 129:             stop(&motorL,&motorR);
+[e ( _stop (2 , &U _motorL &U _motorR ]
+"130
+[; ;../main.c: 130:         }
+}
+[e -- _k -> 1 `i ]
+[e $ > _k -> 0 `i 2041  ]
+[e :U 2042 ]
+}
+"131
+[; ;../main.c: 131:     }
 }
 [e :U 2020 ]
 [e $U 2021  ]
 [e :U 2022 ]
-"66
-[; ;../main.c: 66:     while (1) {
-[e :U 2027 ]
-{
-"68
-[; ;../main.c: 68:         while (PORTFbits.RF3);
-[e $U 2029  ]
-[e :U 2030 ]
-[e :U 2029 ]
-[e $ != -> . . _PORTFbits 0 3 `i -> 0 `i 2030  ]
-[e :U 2031 ]
-"69
-[; ;../main.c: 69:         for (int i=0;i<8;i++){
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 2032  ]
-[e $U 2033  ]
-[e :U 2032 ]
-{
-"70
-[; ;../main.c: 70:             color_read(&RGB_calibrated);
-[e ( _color_read (1 &U _RGB_calibrated ]
-"71
-[; ;../main.c: 71:             color_calibrated[4*i] = RGB_calibrated.L;
-[e = *U + &U _color_calibrated * -> -> * -> 4 `i _i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 0 `i ]
-"72
-[; ;../main.c: 72:             color_calibrated[4*i+1] = RGB_calibrated.R;
-[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 1 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 1 `i ]
-"73
-[; ;../main.c: 73:             color_calibrated[4*i+2] = RGB_calibrated.G;
-[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 2 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 2 `i ]
-"74
-[; ;../main.c: 74:             color_calibrated[4*i+3] = RGB_calibrated.B;
-[e = *U + &U _color_calibrated * -> -> + * -> 4 `i _i -> 3 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux -> . _RGB_calibrated 3 `i ]
-"75
-[; ;../main.c: 75:             LATHbits.LATH3 = 1;
-[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-"77
-[; ;../main.c: 77:             char readout2[100];
-[v _readout2 `uc ~T0 @X0 -> 100 `i a ]
-"78
-[; ;../main.c: 78:             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-[e ( _sprintf (1 , , , , (. , &U _readout2 :s 1C . _RGB_calibrated 0 . _RGB_calibrated 1 . _RGB_calibrated 2 . _RGB_calibrated 3 ]
-"79
-[; ;../main.c: 79:             sendStringSerial4(readout2);
-[e ( _sendStringSerial4 (1 &U _readout2 ]
-"80
-[; ;../main.c: 80:             _delay((unsigned long)((20)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"81
-[; ;../main.c: 81:             LATHbits.LATH3 = 0;
-[e = . . _LATHbits 0 3 -> -> 0 `i `uc ]
-"82
-[; ;../main.c: 82:             _delay((unsigned long)((20)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"83
-[; ;../main.c: 83:         }
-}
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 2032  ]
-[e :U 2033 ]
-}
-"86
-[; ;../main.c: 86:         lowerbound_calibrated = color_calibrated[8];
-[e = _lowerbound_calibrated -> *U + &U _color_calibrated * -> -> -> 8 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux `ui ]
-"87
-[; ;../main.c: 87:         upperbound_calibrated = color_calibrated[28];
-[e = _upperbound_calibrated -> *U + &U _color_calibrated * -> -> -> 28 `i `ui `ux -> -> # *U &U _color_calibrated `ui `ux `ui ]
-"90
-[; ;../main.c: 90:         while (PORTFbits.RF3 & PORTFbits.RF2);
-[e $U 2035  ]
-[e :U 2036 ]
-[e :U 2035 ]
-[e $ != & -> . . _PORTFbits 0 3 `i -> . . _PORTFbits 0 2 `i -> 0 `i 2036  ]
-[e :U 2037 ]
-"91
-[; ;../main.c: 91:         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
-[e $ ! ! != -> . . _PORTFbits 0 2 `i -> 0 `i 2038  ]
-{
-[e = . . _LATDbits 0 7 -> -> 1 `i `uc ]
-}
-[e $U 2039  ]
-"92
-[; ;../main.c: 92:         else {LATHbits.LATH3 = 1;}
-[e :U 2038 ]
-{
-[e = . . _LATHbits 0 3 -> -> 1 `i `uc ]
-}
-[e :U 2039 ]
-"95
-[; ;../main.c: 95:         while (color_name != 8){
-[e $U 2040  ]
-[e :U 2041 ]
-{
-"96
-[; ;../main.c: 96:             time = 0;
-[e = _time -> -> 0 `i `ui ]
-"97
-[; ;../main.c: 97:             forward(&motorL,&motorR);
-[e ( _forward (2 , &U _motorL &U _motorR ]
-"98
-[; ;../main.c: 98:             _delay((unsigned long)((500)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"99
-[; ;../main.c: 99:             color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"100
-[; ;../main.c: 100:             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
-[e $ ! && < . _RGB_recorded 0 _upperbound_calibrated > . _RGB_recorded 0 _lowerbound_calibrated 2043  ]
-{
-[e = _color_flag -> -> 1 `i `ui ]
-}
-[e :U 2043 ]
-"101
-[; ;../main.c: 101:             if (color_flag){
-[e $ ! != _color_flag -> -> 0 `i `ui 2044  ]
-{
-"102
-[; ;../main.c: 102:                 stop(&motorL,&motorR);
-[e ( _stop (2 , &U _motorL &U _motorR ]
-"103
-[; ;../main.c: 103:                 color_read(&RGB_recorded);
-[e ( _color_read (1 &U _RGB_recorded ]
-"104
-[; ;../main.c: 104:                 if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
-[e $ ! != -> . . _LATDbits 0 7 `i -> 0 `i 2045  ]
-{
-[e = _color_name ( _color_processor_easy (1 &U _RGB_recorded ]
-}
-[e $U 2046  ]
-"105
-[; ;../main.c: 105:                 else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
-[e :U 2045 ]
-{
-[e = _color_name ( _color_processor_hard (2 , &U _RGB_recorded -> &U _color_calibrated `*ui ]
-}
-[e :U 2046 ]
-"106
-[; ;../main.c: 106:                 color_path[j] = color_name;
-[e = *U + &U _color_path * -> -> _j `ui `ux -> -> # *U &U _color_path `ui `ux _color_name ]
-"107
-[; ;../main.c: 107:                 time_path[j] = time;
-[e = *U + &U _time_path * -> -> _j `ui `ux -> -> # *U &U _time_path `ui `ux _time ]
-"110
-[; ;../main.c: 110:                 char readout3[100];
-[v _readout3 `uc ~T0 @X0 -> 100 `i a ]
-"111
-[; ;../main.c: 111:                 sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
-[e ( _sprintf (1 , , , , , (. , &U _readout3 :s 2C _color_name . _RGB_recorded 0 . _RGB_recorded 1 . _RGB_recorded 2 . _RGB_recorded 3 ]
-"112
-[; ;../main.c: 112:                 sendStringSerial4(readout3);
-[e ( _sendStringSerial4 (1 &U _readout3 ]
-"114
-[; ;../main.c: 114:                 motor_action(color_name,&motorL,&motorR);
-[e ( _motor_action (3 , , _color_name &U _motorL &U _motorR ]
-"116
-[; ;../main.c: 116:                 j++;
-[e ++ _j -> 1 `i ]
-"117
-[; ;../main.c: 117:                 time = 0;
-[e = _time -> -> 0 `i `ui ]
-"118
-[; ;../main.c: 118:                 color_flag = 0;
-[e = _color_flag -> -> 0 `i `ui ]
-"119
-[; ;../main.c: 119:             }
-}
-[e :U 2044 ]
-"120
-[; ;../main.c: 120:             _delay((unsigned long)((200)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"121
-[; ;../main.c: 121:         }
-}
-[e :U 2040 ]
-"95
-[; ;../main.c: 95:         while (color_name != 8){
-[e $ != _color_name -> -> 8 `i `ui 2041  ]
-[e :U 2042 ]
-"124
-[; ;../main.c: 124:         spin_180(&motorL,&motorR);
-[e ( _spin_180 (2 , &U _motorL &U _motorR ]
-"125
-[; ;../main.c: 125:         for (int k=15;k>0;k--){
-{
-[v _k `i ~T0 @X0 1 a ]
-[e = _k -> 15 `i ]
-[e $ > _k -> 0 `i 2047  ]
-[e $U 2048  ]
-[e :U 2047 ]
-{
-"126
-[; ;../main.c: 126:             INTCONbits.GIE = 0;
-[e = . . _INTCONbits 1 2 -> -> 0 `i `uc ]
-"127
-[; ;../main.c: 127:             time_return = 0;
-[e = _time_return -> -> 0 `i `ui ]
-"128
-[; ;../main.c: 128:             motor_action(color_path[k],&motorL,&motorR);
-[e ( _motor_action (3 , , *U + &U _color_path * -> -> _k `ui `ux -> -> # *U &U _color_path `ui `ux &U _motorL &U _motorR ]
-"129
-[; ;../main.c: 129:             forward(&motorL,&motorR);
-[e ( _forward (2 , &U _motorL &U _motorR ]
-"130
-[; ;../main.c: 130:             while (time_return < time_path[k]) {
-[e $U 2050  ]
-[e :U 2051 ]
-{
-"131
-[; ;../main.c: 131:                 _delay((unsigned long)((50)*(64000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 64000000 `l `d .4000.0 `ul ]
-"132
-[; ;../main.c: 132:                 time_return++;
-[e ++ _time_return -> -> 1 `i `ui ]
-"133
-[; ;../main.c: 133:             }
-}
-[e :U 2050 ]
-"130
-[; ;../main.c: 130:             while (time_return < time_path[k]) {
-[e $ < _time_return *U + &U _time_path * -> -> _k `ui `ux -> -> # *U &U _time_path `ui `ux 2051  ]
-[e :U 2052 ]
 "134
-[; ;../main.c: 134:             stop(&motorL,&motorR);
-[e ( _stop (2 , &U _motorL &U _motorR ]
-"135
-[; ;../main.c: 135:         }
-}
-[e -- _k -> 1 `i ]
-[e $ > _k -> 0 `i 2047  ]
+[; ;../main.c: 134:     while (1) {
 [e :U 2048 ]
-}
+{
+"135
+[; ;../main.c: 135:         __asm(" sleep");
+[; <"  sleep ;# ">
 "136
 [; ;../main.c: 136:     }
 }
-[e :U 2026 ]
-[e $U 2027  ]
-[e :U 2028 ]
-"139
-[; ;../main.c: 139:     while (1) {
-[e :U 2054 ]
-{
-"140
-[; ;../main.c: 140:         __asm(" sleep");
-[; <"  sleep ;# ">
-"141
-[; ;../main.c: 141:     }
-}
-[e :U 2053 ]
-[e $U 2054  ]
-[e :U 2055 ]
-"142
-[; ;../main.c: 142: }
+[e :U 2047 ]
+[e $U 2048  ]
+[e :U 2049 ]
+"137
+[; ;../main.c: 137: }
 [e :UE 2019 ]
 }
 [p f _sprintf 8388736 ]
