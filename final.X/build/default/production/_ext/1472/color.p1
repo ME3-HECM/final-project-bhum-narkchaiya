@@ -2566,8 +2566,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2032  ]
 {
 "169
-[; ;../color.c: 169:             return i;
-[e ) -> _i `ui ]
+[; ;../color.c: 169:             return i+1;
+[e ) -> + _i -> 1 `i `ui ]
 [e $UE 2028  ]
 "170
 [; ;../color.c: 170:         }

@@ -166,7 +166,7 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
         bool condition_b = g>cg-20 && g<cg+20;
         
         if (condition_r && condition_g && condition_b){
-            return i;
+            return i+1;
         }
         else {return 0;}
     }
