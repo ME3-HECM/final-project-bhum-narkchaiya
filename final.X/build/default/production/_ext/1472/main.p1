@@ -2252,9 +2252,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "49
 [; ;../main.c: 49:     unsigned int color_name;
 [v _color_name `ui ~T0 @X0 1 a ]
+[v F14639 `ui ~T0 @X0 -> 15 `i s ]
+[i F14639
+:U ..
 "50
-[; ;../main.c: 50:     unsigned int color_path[15];
+[; ;../main.c: 50:     unsigned int color_path[15] = {0};
+-> -> 0 `i `ui
+..
+]
 [v _color_path `ui ~T0 @X0 -> 15 `i a ]
+[e = _color_path F14639 ]
 "51
 [; ;../main.c: 51:     int color_calibrated[32];
 [v _color_calibrated `i ~T0 @X0 -> 32 `i a ]
@@ -2273,9 +2280,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [; ;../main.c: 56:     struct RGB_val RGB_recorded;
 [v _RGB_recorded `S2015 ~T0 @X0 1 a ]
+[v F14647 `ui ~T0 @X0 -> 15 `i s ]
+[i F14647
+:U ..
 "57
-[; ;../main.c: 57:     unsigned int time_path[15];
+[; ;../main.c: 57:     unsigned int time_path[15] = {0};
+-> -> 0 `i `ui
+..
+]
 [v _time_path `ui ~T0 @X0 -> 15 `i a ]
+[e = _time_path F14647 ]
 "58
 [; ;../main.c: 58:     unsigned int time_return;
 [v _time_return `ui ~T0 @X0 1 a ]
@@ -2463,11 +2477,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../main.c: 118:         spin_180(&motorL,&motorR);
 [e ( _spin_180 (2 , &U _motorL &U _motorR ]
 "119
-[; ;../main.c: 119:         for (int k=0;k<15;k++){
+[; ;../main.c: 119:         for (int k=15;k>0;k--){
 {
 [v _k `i ~T0 @X0 1 a ]
-[e = _k -> 0 `i ]
-[e $ < _k -> 15 `i 2041  ]
+[e = _k -> 15 `i ]
+[e $ > _k -> 0 `i 2041  ]
 [e $U 2042  ]
 [e :U 2041 ]
 {
@@ -2508,8 +2522,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "129
 [; ;../main.c: 129:         }
 }
-[e ++ _k -> 1 `i ]
-[e $ < _k -> 15 `i 2041  ]
+[e -- _k -> 1 `i ]
+[e $ > _k -> 0 `i 2041  ]
 [e :U 2042 ]
 }
 "130
