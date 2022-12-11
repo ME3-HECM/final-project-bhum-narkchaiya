@@ -24272,7 +24272,7 @@ unsigned int color_read_Blue(void);
 
 
 void color_read(struct RGB_val *rgb);
-unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[]);
 unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
 # 2 "../color.c" 2
 
@@ -24314,6 +24314,35 @@ unsigned char I2C_2_Master_Read(unsigned char ack);
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdbool.h" 1 3
 # 4 "../color.c" 2
 
+# 1 "../serial.h" 1
+# 13 "../serial.h"
+volatile char EUSART4RXbuf[20];
+volatile char RxBufWriteCnt=0;
+volatile char RxBufReadCnt=0;
+
+volatile char EUSART4TXbuf[60];
+volatile char TxBufWriteCnt=0;
+volatile char TxBufReadCnt=0;
+
+
+
+void initUSART4(void);
+char getCharSerial4(void);
+void sendCharSerial4(char charToSend);
+void sendStringSerial4(char *string);
+
+
+char getCharFromRxBuf(void);
+void putCharToRxBuf(char byte);
+char isDataInRxBuf (void);
+
+
+char getCharFromTxBuf(void);
+void putCharToTxBuf(char byte);
+char isDataInTxBuf (void);
+void TxBufferedString(char *string);
+void sendTxBuf(void);
+# 5 "../color.c" 2
 
 void color_click_init(void)
 {
@@ -24431,26 +24460,27 @@ void color_read(struct RGB_val *rgb)
     rgb->B = color_read_Blue();
 }
 # 134 "../color.c"
-unsigned int color_processor_easy(struct RGB_val *rgb)
+unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[])
 {
-    unsigned int a = rgb->R;
-    unsigned int b = rgb->G;
-    unsigned int c = rgb->B;
+    unsigned int l = rgb->L;
+    unsigned int r = rgb->R;
+    unsigned int g = rgb->G;
+    unsigned int b = rgb->B;
     unsigned int color;
-    if (a>=b & a>=c){
-        color=1;
+    if (l<calibrated[28]+100 && l>calibrated[28]-100){
+        return 8;
     }
-    else if (b>=a & b>=c){
-        color=2;
+    if (r>g && r>b){
+        if (g>b){return 2;}
+        else{return 1;}
     }
-    else {
-        color=3;
-    }
+    else{return 3;}
     return color;
 }
 
 unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
 {
+    unsigned int l = rgb->L;
     unsigned int r = rgb->R;
     unsigned int g = rgb->G;
     unsigned int b = rgb->B;
@@ -24461,9 +24491,9 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
         unsigned int cg = calibrated[4*i+2];
         unsigned int cb = calibrated[4*i+3];
 
-        _Bool condition_r = r>cr-20 && r<cr+20;
-        _Bool condition_g = b>cb-20 && b<cb+20;
-        _Bool condition_b = g>cg-20 && g<cg+20;
+        _Bool condition_r = r>cr-40 && r<cr+40;
+        _Bool condition_g = b>cb-40 && b<cb+40;
+        _Bool condition_b = g>cg-40 && g<cg+40;
 
         if (condition_r && condition_g && condition_b){
             return i+1;

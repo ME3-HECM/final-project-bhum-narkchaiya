@@ -2107,6 +2107,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40928
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18F-K_DFP/1.5.114/xc8\pic\include\proc\pic18f67k40.h: 40928: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
+"13 ../serial.h
+[; ;../serial.h: 13: volatile char EUSART4RXbuf[20];
+[v _EUSART4RXbuf `Vuc ~T0 @X0 -> 20 `i e ]
+"14
+[; ;../serial.h: 14: volatile char RxBufWriteCnt=0;
+[v _RxBufWriteCnt `Vuc ~T0 @X0 1 e ]
+[i _RxBufWriteCnt
+-> -> 0 `i `uc
+]
+"15
+[; ;../serial.h: 15: volatile char RxBufReadCnt=0;
+[v _RxBufReadCnt `Vuc ~T0 @X0 1 e ]
+[i _RxBufReadCnt
+-> -> 0 `i `uc
+]
+"17
+[; ;../serial.h: 17: volatile char EUSART4TXbuf[60];
+[v _EUSART4TXbuf `Vuc ~T0 @X0 -> 60 `i e ]
+"18
+[; ;../serial.h: 18: volatile char TxBufWriteCnt=0;
+[v _TxBufWriteCnt `Vuc ~T0 @X0 1 e ]
+[i _TxBufWriteCnt
+-> -> 0 `i `uc
+]
+"19
+[; ;../serial.h: 19: volatile char TxBufReadCnt=0;
+[v _TxBufReadCnt `Vuc ~T0 @X0 1 e ]
+[i _TxBufReadCnt
+-> -> 0 `i `uc
+]
 "6 ../color.c
 [; ;../color.c: 6: void color_click_init(void)
 [v _color_click_init `(v ~T0 @X0 1 ef ]
@@ -2432,68 +2462,82 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 2022 ]
 }
 "134
-[; ;../color.c: 134: unsigned int color_processor_easy(struct RGB_val *rgb)
-[v _color_processor_easy `(ui ~T0 @X0 1 ef1`*S2015 ]
+[; ;../color.c: 134: unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[])
+[v _color_processor_easy `(ui ~T0 @X0 1 ef2`*S2015`*ui ]
 "135
 [; ;../color.c: 135: {
 {
 [e :U _color_processor_easy ]
 "134
-[; ;../color.c: 134: unsigned int color_processor_easy(struct RGB_val *rgb)
+[; ;../color.c: 134: unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[])
 [v _rgb `*S2015 ~T0 @X0 1 r1 ]
+[v _calibrated `*ui ~T0 @X0 1 r2 ]
 "135
 [; ;../color.c: 135: {
 [f ]
 "136
-[; ;../color.c: 136:     unsigned int a = rgb->R;
-[v _a `ui ~T0 @X0 1 a ]
-[e = _a . *U _rgb 1 ]
+[; ;../color.c: 136:     unsigned int l = rgb->L;
+[v _l `ui ~T0 @X0 1 a ]
+[e = _l . *U _rgb 0 ]
 "137
-[; ;../color.c: 137:     unsigned int b = rgb->G;
-[v _b `ui ~T0 @X0 1 a ]
-[e = _b . *U _rgb 2 ]
+[; ;../color.c: 137:     unsigned int r = rgb->R;
+[v _r `ui ~T0 @X0 1 a ]
+[e = _r . *U _rgb 1 ]
 "138
-[; ;../color.c: 138:     unsigned int c = rgb->B;
-[v _c `ui ~T0 @X0 1 a ]
-[e = _c . *U _rgb 3 ]
+[; ;../color.c: 138:     unsigned int g = rgb->G;
+[v _g `ui ~T0 @X0 1 a ]
+[e = _g . *U _rgb 2 ]
 "139
-[; ;../color.c: 139:     unsigned int color;
-[v _color `ui ~T0 @X0 1 a ]
+[; ;../color.c: 139:     unsigned int b = rgb->B;
+[v _b `ui ~T0 @X0 1 a ]
+[e = _b . *U _rgb 3 ]
 "140
-[; ;../color.c: 140:     if (a>=b & a>=c){
-[e $ ! & >= _a _b >= _a _c 2024  ]
-{
+[; ;../color.c: 140:     unsigned int color;
+[v _color `ui ~T0 @X0 1 a ]
 "141
-[; ;../color.c: 141:         color=1;
-[e = _color -> -> 1 `i `ui ]
-"142
-[; ;../color.c: 142:     }
-}
-[e $U 2025  ]
-"143
-[; ;../color.c: 143:     else if (b>=a & b>=c){
-[e :U 2024 ]
-[e $ ! & >= _b _a >= _b _c 2026  ]
+[; ;../color.c: 141:     if (l<calibrated[28]+100 && l>calibrated[28]-100){
+[e $ ! && < _l + *U + _calibrated * -> -> 28 `i `x -> -> # *U _calibrated `i `x -> -> 100 `i `ui > _l - *U + _calibrated * -> -> 28 `i `x -> -> # *U _calibrated `i `x -> -> 100 `i `ui 2024  ]
 {
+"142
+[; ;../color.c: 142:         return 8;
+[e ) -> -> 8 `i `ui ]
+[e $UE 2023  ]
+"143
+[; ;../color.c: 143:     }
+}
+[e :U 2024 ]
 "144
-[; ;../color.c: 144:         color=2;
-[e = _color -> -> 2 `i `ui ]
+[; ;../color.c: 144:     if (r>g && r>b){
+[e $ ! && > _r _g > _r _b 2025  ]
+{
 "145
-[; ;../color.c: 145:     }
+[; ;../color.c: 145:         if (g>b){return 2;}
+[e $ ! > _g _b 2026  ]
+{
+[e ) -> -> 2 `i `ui ]
+[e $UE 2023  ]
 }
 [e $U 2027  ]
 "146
-[; ;../color.c: 146:     else {
+[; ;../color.c: 146:         else{return 1;}
 [e :U 2026 ]
 {
-"147
-[; ;../color.c: 147:         color=3;
-[e = _color -> -> 3 `i `ui ]
-"148
-[; ;../color.c: 148:     }
+[e ) -> -> 1 `i `ui ]
+[e $UE 2023  ]
 }
 [e :U 2027 ]
+"147
+[; ;../color.c: 147:     }
+}
+[e $U 2028  ]
+"148
+[; ;../color.c: 148:     else{return 3;}
 [e :U 2025 ]
+{
+[e ) -> -> 3 `i `ui ]
+[e $UE 2023  ]
+}
+[e :U 2028 ]
 "149
 [; ;../color.c: 149:     return color;
 [e ) _color ]
@@ -2517,78 +2561,82 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../color.c: 153: {
 [f ]
 "154
-[; ;../color.c: 154:     unsigned int r = rgb->R;
+[; ;../color.c: 154:     unsigned int l = rgb->L;
+[v _l `ui ~T0 @X0 1 a ]
+[e = _l . *U _rgb 0 ]
+"155
+[; ;../color.c: 155:     unsigned int r = rgb->R;
 [v _r `ui ~T0 @X0 1 a ]
 [e = _r . *U _rgb 1 ]
-"155
-[; ;../color.c: 155:     unsigned int g = rgb->G;
+"156
+[; ;../color.c: 156:     unsigned int g = rgb->G;
 [v _g `ui ~T0 @X0 1 a ]
 [e = _g . *U _rgb 2 ]
-"156
-[; ;../color.c: 156:     unsigned int b = rgb->B;
+"157
+[; ;../color.c: 157:     unsigned int b = rgb->B;
 [v _b `ui ~T0 @X0 1 a ]
 [e = _b . *U _rgb 3 ]
-"159
-[; ;../color.c: 159:     for (int i=0;i<8;i++){
+"160
+[; ;../color.c: 160:     for (int i=0;i<8;i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 2029  ]
-[e $U 2030  ]
-[e :U 2029 ]
+[e $ < _i -> 8 `i 2030  ]
+[e $U 2031  ]
+[e :U 2030 ]
 {
-"160
-[; ;../color.c: 160:         unsigned int cr = calibrated[4*i+1];
+"161
+[; ;../color.c: 161:         unsigned int cr = calibrated[4*i+1];
 [v _cr `ui ~T0 @X0 1 a ]
 [e = _cr *U + _calibrated * -> + * -> 4 `i _i -> 1 `i `x -> -> # *U _calibrated `i `x ]
-"161
-[; ;../color.c: 161:         unsigned int cg = calibrated[4*i+2];
+"162
+[; ;../color.c: 162:         unsigned int cg = calibrated[4*i+2];
 [v _cg `ui ~T0 @X0 1 a ]
 [e = _cg *U + _calibrated * -> + * -> 4 `i _i -> 2 `i `x -> -> # *U _calibrated `i `x ]
-"162
-[; ;../color.c: 162:         unsigned int cb = calibrated[4*i+3];
+"163
+[; ;../color.c: 163:         unsigned int cb = calibrated[4*i+3];
 [v _cb `ui ~T0 @X0 1 a ]
 [e = _cb *U + _calibrated * -> + * -> 4 `i _i -> 3 `i `x -> -> # *U _calibrated `i `x ]
-"164
-[; ;../color.c: 164:         _Bool condition_r = r>cr-20 && r<cr+20;
-[v _condition_r `a ~T0 @X0 1 a ]
-[e = _condition_r -> -> && > _r - _cr -> -> 20 `i `ui < _r + _cr -> -> 20 `i `ui `i `a ]
 "165
-[; ;../color.c: 165:         _Bool condition_g = b>cb-20 && b<cb+20;
-[v _condition_g `a ~T0 @X0 1 a ]
-[e = _condition_g -> -> && > _b - _cb -> -> 20 `i `ui < _b + _cb -> -> 20 `i `ui `i `a ]
+[; ;../color.c: 165:         _Bool condition_r = r>cr-40 && r<cr+40;
+[v _condition_r `a ~T0 @X0 1 a ]
+[e = _condition_r -> -> && > _r - _cr -> -> 40 `i `ui < _r + _cr -> -> 40 `i `ui `i `a ]
 "166
-[; ;../color.c: 166:         _Bool condition_b = g>cg-20 && g<cg+20;
+[; ;../color.c: 166:         _Bool condition_g = b>cb-40 && b<cb+40;
+[v _condition_g `a ~T0 @X0 1 a ]
+[e = _condition_g -> -> && > _b - _cb -> -> 40 `i `ui < _b + _cb -> -> 40 `i `ui `i `a ]
+"167
+[; ;../color.c: 167:         _Bool condition_b = g>cg-40 && g<cg+40;
 [v _condition_b `a ~T0 @X0 1 a ]
-[e = _condition_b -> -> && > _g - _cg -> -> 20 `i `ui < _g + _cg -> -> 20 `i `ui `i `a ]
-"168
-[; ;../color.c: 168:         if (condition_r && condition_g && condition_b){
-[e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2032  ]
-{
+[e = _condition_b -> -> && > _g - _cg -> -> 40 `i `ui < _g + _cg -> -> 40 `i `ui `i `a ]
 "169
-[; ;../color.c: 169:             return i+1;
-[e ) -> + _i -> 1 `i `ui ]
-[e $UE 2028  ]
+[; ;../color.c: 169:         if (condition_r && condition_g && condition_b){
+[e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2033  ]
+{
 "170
-[; ;../color.c: 170:         }
-}
-[e $U 2033  ]
+[; ;../color.c: 170:             return i+1;
+[e ) -> + _i -> 1 `i `ui ]
+[e $UE 2029  ]
 "171
-[; ;../color.c: 171:         else {return 0;}
-[e :U 2032 ]
+[; ;../color.c: 171:         }
+}
+[e $U 2034  ]
+"172
+[; ;../color.c: 172:         else {return 0;}
+[e :U 2033 ]
 {
 [e ) -> -> 0 `i `ui ]
-[e $UE 2028  ]
+[e $UE 2029  ]
 }
-[e :U 2033 ]
-"172
-[; ;../color.c: 172:     }
+[e :U 2034 ]
+"173
+[; ;../color.c: 173:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 2029  ]
-[e :U 2030 ]
+[e $ < _i -> 8 `i 2030  ]
+[e :U 2031 ]
 }
-"173
-[; ;../color.c: 173: }
-[e :UE 2028 ]
+"174
+[; ;../color.c: 174: }
+[e :UE 2029 ]
 }

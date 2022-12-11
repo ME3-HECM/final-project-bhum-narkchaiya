@@ -38,6 +38,6 @@ unsigned int color_read_Blue(void);
  *	Returns a 16 bit ADC value representing colour intensity
  ***********************************************/
 void color_read(struct RGB_val *rgb);
-unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[]);
 unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
 #endif

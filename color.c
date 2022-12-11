@@ -2,7 +2,7 @@
 #include "color.h"
 #include "i2c.h"
 #include <stdbool.h>  
-
+#include "serial.h"
 void color_click_init(void)
 {   
     //setup colour sensor via i2c interface
@@ -131,26 +131,27 @@ void color_read(struct RGB_val *rgb)
     8. white        finish (ET go home)                                    
  ***********************************************/
 
-unsigned int color_processor_easy(struct RGB_val *rgb)
+unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[])
 {
-    unsigned int a = rgb->R;
-    unsigned int b = rgb->G;
-    unsigned int c = rgb->B;
-    unsigned int color;
-    if (a>=b & a>=c){ //if red strongest
-        color=1;
-    } 
-    else if (b>=a & b>=c){ //if green strongest
-        color=2;
-    } 
-    else {
-        color=3; //if blue strongest
-    } 
+    unsigned int l = rgb->L;
+    unsigned int r = rgb->R;
+    unsigned int g = rgb->G;
+    unsigned int b = rgb->B;
+    unsigned int color;  
+    if (l<calibrated[28]+100 && l>calibrated[28]-100){
+        return 8; //white card
+    }
+    if (r>g && r>b){//red or green
+        if (g>b){return 2;}//green
+        else{return 1;}//red
+    }
+    else{return 3;}//blue
     return color;
 }
 
 unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[])
 {
+    unsigned int l = rgb->L;
     unsigned int r = rgb->R;
     unsigned int g = rgb->G;
     unsigned int b = rgb->B;
@@ -160,10 +161,10 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
         unsigned int cr = calibrated[4*i+1];
         unsigned int cg = calibrated[4*i+2];
         unsigned int cb = calibrated[4*i+3];
-        // conditions to check if recorded value is within a margin "40"-wide of the calibrated values 
-        bool condition_r = r>cr-20 && r<cr+20;
-        bool condition_g = b>cb-20 && b<cb+20;
-        bool condition_b = g>cg-20 && g<cg+20;
+        //conditions to check if recorded value is within a margin "40"-wide of the calibrated values 
+        bool condition_r = r>cr-40 && r<cr+40;
+        bool condition_g = b>cb-40 && b<cb+40;
+        bool condition_b = g>cg-40 && g<cg+40;
         
         if (condition_r && condition_g && condition_b){
             return i+1;

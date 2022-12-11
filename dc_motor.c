@@ -78,21 +78,7 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 1;
-    for (int i=0;i<31;i=i+2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        __delay_us(20);
-    }
-}
-
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mL->direction = 0;
-    for (int i = 0;i < 9;i = i + 2)
+    for (int i = 0;i < 101;i = i + 2)
     {
         mL->power = i;
         mR->power = i;
@@ -101,6 +87,36 @@ void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
         __delay_us(10);
     }
     __delay_ms(500);
+}
+
+void opposite_forward(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 1;
+    for (int i = 0;i < 9;i = i + 2)
+    {
+        mL->power = 100;
+        mR->power = 100;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(30);
+}
+
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 0;
+    for (int i = 0;i < 9;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        __delay_us(10);
+    }
+    __delay_ms(300);
 }
 
 void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
@@ -271,7 +287,9 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             left_90(l,r);
             stop(l,r);
         case 0:
+            stop(l,r);
             forward(l,r);
+            __delay_ms(500);
             stop(l,r);
             break;
         default:
@@ -325,6 +343,13 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             right_135(l,r);
             stop(l,r);
             break;
+        case 0:
+            stop(l,r);
+            reverse_onesquare(l,r);
+            __delay_ms(500);
+            stop(l,r);
+            break;
+            
         default:
             break;
     }

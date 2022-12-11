@@ -19,7 +19,8 @@ void initDCmotorsPWM(int PWMperiod); // function to setup PWM
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);\
+void opposite_forward(struct DC_motor *mL, struct DC_motor *mR);
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);
 void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
 void right_90(struct DC_motor *mL, struct DC_motor *mR);
 void left_90(struct DC_motor *mL, struct DC_motor *mR);

@@ -24253,8 +24253,9 @@ void initDCmotorsPWM(int PWMperiod);
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
-
+void opposite_forward(struct DC_motor *mL, struct DC_motor *mR);
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);
+void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
 void right_90(struct DC_motor *mL, struct DC_motor *mR);
 void left_90(struct DC_motor *mL, struct DC_motor *mR);
 void spin_180(struct DC_motor *mL, struct DC_motor *mR);
@@ -24342,21 +24343,7 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 1;
-    for (int i=0;i<31;i=i+2)
-    {
-        mL->power = i;
-        mR->power = i;
-        setMotorPWM(mL);
-        setMotorPWM(mR);
-        _delay((unsigned long)((20)*(64000000/4000000.0)));
-    }
-}
-
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
-{
-    mL->direction = 0;
-    mL->direction = 0;
-    for (int i = 0;i < 9;i = i + 2)
+    for (int i = 0;i < 101;i = i + 2)
     {
         mL->power = i;
         mR->power = i;
@@ -24365,6 +24352,36 @@ void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
         _delay((unsigned long)((10)*(64000000/4000000.0)));
     }
     _delay((unsigned long)((500)*(64000000/4000.0)));
+}
+
+void opposite_forward(struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 1;
+    mR->direction = 1;
+    for (int i = 0;i < 9;i = i + 2)
+    {
+        mL->power = 100;
+        mR->power = 100;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((10)*(64000000/4000000.0)));
+    }
+    _delay((unsigned long)((30)*(64000000/4000.0)));
+}
+
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
+{
+    mL->direction = 0;
+    mR->direction = 0;
+    for (int i = 0;i < 9;i = i + 2)
+    {
+        mL->power = i;
+        mR->power = i;
+        setMotorPWM(mL);
+        setMotorPWM(mR);
+        _delay((unsigned long)((10)*(64000000/4000000.0)));
+    }
+    _delay((unsigned long)((300)*(64000000/4000.0)));
 }
 
 void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
@@ -24535,7 +24552,9 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             left_90(l,r);
             stop(l,r);
         case 0:
+            stop(l,r);
             forward(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
             stop(l,r);
             break;
         default:
@@ -24589,6 +24608,13 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             right_135(l,r);
             stop(l,r);
             break;
+        case 0:
+            stop(l,r);
+            reverse_onesquare(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            stop(l,r);
+            break;
+
         default:
             break;
     }

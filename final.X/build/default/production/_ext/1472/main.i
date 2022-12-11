@@ -24282,7 +24282,7 @@ unsigned int color_read_Blue(void);
 
 
 void color_read(struct RGB_val *rgb);
-unsigned int color_processor_easy(struct RGB_val *rgb);
+unsigned int color_processor_easy(struct RGB_val *rgb, unsigned int calibrated[]);
 unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]);
 # 11 "../main.c" 2
 
@@ -24343,8 +24343,9 @@ void initDCmotorsPWM(int PWMperiod);
 void setMotorPWM(struct DC_motor *m);
 void stop(struct DC_motor *mL, struct DC_motor *mR);
 void forward(struct DC_motor *mL, struct DC_motor *mR);
-void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
-
+void opposite_forward(struct DC_motor *mL, struct DC_motor *mR);
+void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR);
+void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR);
 void right_90(struct DC_motor *mL, struct DC_motor *mR);
 void left_90(struct DC_motor *mL, struct DC_motor *mR);
 void spin_180(struct DC_motor *mL, struct DC_motor *mR);
@@ -24565,7 +24566,7 @@ void main(void) {
 
 
     struct DC_motor motorL, motorR;
-    unsigned char PWMcycle = 200;
+    unsigned char PWMcycle = 199;
     motorL.power = 0;
     motorL.direction = 0;
     motorL.dutyHighByte = (unsigned char *)(&PWM6DCH);
@@ -24594,20 +24595,7 @@ void main(void) {
     unsigned int time_path[15] = {0};
     unsigned int time_return;
     int j;
-
-
-    while (1) {
-
-
-
-
-
-        motor_action(8,&motorL,&motorR);
-        stop(&motorL,&motorR);
-
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-
-    }
+# 73 "../main.c"
     while (1) {
 
         while (PORTFbits.RF3);
@@ -24622,13 +24610,18 @@ void main(void) {
             char readout2[100];
             sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
             sendStringSerial4(readout2);
-            _delay((unsigned long)((20)*(64000000/4000.0)));
+            _delay((unsigned long)((2000)*(64000000/4000.0)));
             LATHbits.LATH3 = 0;
-            _delay((unsigned long)((20)*(64000000/4000.0)));
+            _delay((unsigned long)((1000)*(64000000/4000.0)));
+        }
+        for (int i=0;i<8;i++){
+            char readout3[100];
+            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
+            sendStringSerial4(readout3);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
         }
 
-
-        lowerbound_calibrated = color_calibrated[8];
+        lowerbound_calibrated = color_calibrated[8]*0.95;
         upperbound_calibrated = color_calibrated[28];
 
 
@@ -24639,34 +24632,40 @@ void main(void) {
 
         while (color_name != 8){
             time = 0;
-            forward(&motorL,&motorR);
+            motor_action(0,&motorL,&motorR);
             _delay((unsigned long)((500)*(64000000/4000.0)));
             color_read(&RGB_recorded);
             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
             if (color_flag){
+                LATDbits.LATD7 = 1;
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);
-                if (LATDbits.LATD7){color_name = color_processor_easy(&RGB_recorded);}
+                if (LATDbits.LATD7)
+                {color_name = color_processor_easy(&RGB_recorded,color_calibrated);}
                 else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
                 color_path[j] = color_name;
                 time_path[j] = time;
 
 
-                char readout3[100];
-                sprintf(readout3,"%d %d %d %d %d \r\n", color_name,RGB_recorded.L,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
-                sendStringSerial4(readout3);
+                char readout4[100];
+                sprintf(readout4,"color name %d %d %d %d \r\n", color_name,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
+                sendStringSerial4(readout4);
 
                 motor_action(color_name,&motorL,&motorR);
 
                 j++;
                 time = 0;
                 color_flag = 0;
+                LATDbits.LATD7 = 0;
             }
             _delay((unsigned long)((200)*(64000000/4000.0)));
         }
 
 
         spin_180(&motorL,&motorR);
+        for (int m=0;m>12;m++){
+            LATHbits.LATH3=!LATHbits.LATH3;
+        }
         for (int k=15;k>0;k--){
             INTCONbits.GIE = 0;
             time_return = 0;
