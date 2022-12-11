@@ -93,3 +93,14 @@ Finally, two arrays will be used to record the path of the buggy - color_path[] 
 
 ## 5. [Return Home](https://www.youtube.com/watch?v=iyFijjikkeM)
 To return back to the entrance of the mine, the buggy will first spin around 180 degrees. Then, the program will iterate through the stored path, performing the opposite actions from the path it took. This makes use of the function motor_action_return().
+Colour | Case | Instruction | Reverse Instruction
+---------|---------|---------|---------
+Red | 1 | Turn Right 90 | Turn Left 90
+Green | 2 | Turn Left 90 | Turn Right 90
+Blue | 3 | Turn 180 | Turn 180
+Yellow | 4 | Reverse 1 square and turn right 90 | Turn Left 90 and reverse 1 square
+Pink | 5 | Reverse 1 square and turn left 90 | Turn Right 90 and reverse 1 square
+Orange | 6 | Turn Right 135 | Turn Left 135
+Light blue | 7 | Turn Left 135 | Turn Right 135
+White | 8 | Finish (return home) | N/A
+Black | 9 | Maze wall colour | N/A
