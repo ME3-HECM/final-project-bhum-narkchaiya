@@ -41,9 +41,9 @@
 [v _spin_180 spin_180 `(v  1 e 1 0 ]
 "166
 [v _right_135 right_135 `(v  1 e 1 0 ]
-"181
+"182
 [v _left_135 left_135 `(v  1 e 1 0 ]
-"196
+"197
 [v _motor_action motor_action `(v  1 e 1 0 ]
 "4 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/i2c.c
 [v _I2C_2_Master_Init I2C_2_Master_Init `(v  1 e 1 0 ]
@@ -571,7 +571,7 @@
 "30072
 [u S45 . 1 `S40 1 . 1 0 ]
 [v _TRISHbits TRISHbits `VES45  1 e 1 @3976 ]
-[s S610 . 1 `uc 1 RF0 1 0 :1:0 
+[s S625 . 1 `uc 1 RF0 1 0 :1:0 
 `uc 1 RF1 1 0 :1:1 
 `uc 1 RF2 1 0 :1:2 
 `uc 1 RF3 1 0 :1:3 
@@ -581,12 +581,12 @@
 `uc 1 RF7 1 0 :1:7 
 ]
 "30602
-[s S619 . 1 `uc 1 . 1 0 :1:0 
+[s S634 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 C2OUTF 1 0 :1:1 
 `uc 1 C1OUTF 1 0 :1:2 
 ]
-[u S623 . 1 `S610 1 . 1 0 `S619 1 . 1 0 ]
-[v _PORTFbits PORTFbits `VES623  1 e 1 @3982 ]
+[u S638 . 1 `S625 1 . 1 0 `S634 1 . 1 0 ]
+[v _PORTFbits PORTFbits `VES638  1 e 1 @3982 ]
 "33628
 [v _PWM7DCH PWM7DCH `VEuc  1 e 1 @4000 ]
 [s S1170 . 1 `uc 1 . 1 0 :4:0 
@@ -791,9 +791,9 @@
 "20 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"110
+"118
 [v main@readout3 readout3 `[100]uc  1 a 100 0 ]
-"77
+"85
 [v main@readout2 readout2 `[100]uc  1 a 100 27 ]
 "51
 [v main@color_calibrated color_calibrated `[32]i  1 a 64 130 ]
@@ -810,7 +810,7 @@
 [v main@RGB_recorded RGB_recorded `S270  1 a 8 194 ]
 "54
 [v main@RGB_calibrated RGB_calibrated `S270  1 a 8 194 ]
-"142
+"150
 } 0
 "9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -941,6 +941,17 @@
 [v ___aodiv@divisor divisor `o  1 p 8 8 ]
 "43
 } 0
+"151 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+[v _spin_180 spin_180 `(v  1 e 1 0 ]
+{
+"155
+[v spin_180@i i `i  1 a 2 31 ]
+[s S589 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyHighByte 2 2 `*.39uc 1 dir_LAT 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
+"151
+[v spin_180@mL mL `*.39S589  1 p 2 25 ]
+[v spin_180@mR mR `*.39S589  1 p 2 27 ]
+"164
+} 0
 "37 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/serial.c
 [v _sendStringSerial4 sendStringSerial4 `(v  1 e 1 0 ]
 {
@@ -955,14 +966,14 @@
 [v sendCharSerial4@charToSend charToSend `uc  1 a 1 0 ]
 "33
 } 0
-"196 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
+"197 C:\Users\Poom Narkchaiya\Documents\GitHub\final-project-bhum-narkchaiya/dc_motor.c
 [v _motor_action motor_action `(v  1 e 1 0 ]
 {
 [v motor_action@color color `ui  1 p 2 33 ]
 [s S589 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyHighByte 2 2 `*.39uc 1 dir_LAT 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
 [v motor_action@l l `*.39S589  1 p 2 35 ]
 [v motor_action@r r `*.39S589  1 p 2 37 ]
-"255
+"280
 } 0
 "61
 [v _stop stop `(v  1 e 1 0 ]
@@ -974,17 +985,6 @@
 [v stop@mL mL `*.39S589  1 p 2 25 ]
 [v stop@mR mR `*.39S589  1 p 2 27 ]
 "74
-} 0
-"151
-[v _spin_180 spin_180 `(v  1 e 1 0 ]
-{
-"155
-[v spin_180@i i `i  1 a 2 31 ]
-[s S589 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyHighByte 2 2 `*.39uc 1 dir_LAT 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
-"151
-[v spin_180@mL mL `*.39S589  1 p 2 25 ]
-[v spin_180@mR mR `*.39S589  1 p 2 27 ]
-"164
 } 0
 "121
 [v _right_90 right_90 `(v  1 e 1 0 ]
@@ -1041,16 +1041,16 @@
 [v left_90@mR mR `*.39S589  1 p 2 27 ]
 "149
 } 0
-"181
+"182
 [v _left_135 left_135 `(v  1 e 1 0 ]
 {
-"185
+"186
 [v left_135@i i `i  1 a 2 31 ]
 [s S589 DC_motor 9 `uc 1 power 1 0 `uc 1 direction 1 1 `*.39uc 1 dutyHighByte 2 2 `*.39uc 1 dir_LAT 2 4 `uc 1 dir_pin 1 6 `i 1 PWMperiod 2 7 ]
-"181
+"182
 [v left_135@mL mL `*.39S589  1 p 2 25 ]
 [v left_135@mR mR `*.39S589  1 p 2 27 ]
-"194
+"195
 } 0
 "77
 [v _forward forward `(v  1 e 1 0 ]

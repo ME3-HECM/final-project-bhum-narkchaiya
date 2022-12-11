@@ -60,8 +60,16 @@ void main(void) {
 
     //motor testing
     while (1) {
-        while(PORTFbits.RF3);
-        motor_action(1,&motorL,&motorR);
+//        right_90(&motorL,&motorR);
+//        for (int x=0;x>8;x++){
+//            motor_action(x,&motorL,&motorR);
+//        }
+        
+        motor_action(8,&motorL,&motorR);
+        stop(&motorL,&motorR);
+        
+        __delay_ms(2000);
+        
     }
     while (1) {  
         //calibration for detecting color of the card

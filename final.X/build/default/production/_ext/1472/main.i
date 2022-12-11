@@ -24597,8 +24597,16 @@ void main(void) {
 
 
     while (1) {
-        while(PORTFbits.RF3);
-        motor_action(1,&motorL,&motorR);
+
+
+
+
+
+        motor_action(8,&motorL,&motorR);
+        stop(&motorL,&motorR);
+
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+
     }
     while (1) {
 

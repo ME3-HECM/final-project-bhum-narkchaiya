@@ -92,7 +92,7 @@ void reverse_fromcard (struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mL->direction = 0;
-    for (int i = 0;i < 41;i = i + 2)
+    for (int i = 0;i < 9;i = i + 2)
     {
         mL->power = i;
         mR->power = i;
@@ -107,7 +107,7 @@ void reverse_onesquare (struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mR->direction = 0;
-    for (int i=0;i<51;i=i + 2)
+    for (int i=0;i<9;i=i + 2)
     {
         mL->power = i;
         mR->power = i;
@@ -122,7 +122,7 @@ void right_90(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
+    for (int i = 0;i<251;i = i + 2)
     {
         mL->power = i;
         mR->power = 50 + i;
@@ -137,7 +137,7 @@ void left_90(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
+    for (int i = 0;i<301;i = i + 2)
     {
         mL->power = 50 + i;
         mR->power = i;
@@ -145,7 +145,7 @@ void left_90(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mR);
         __delay_us(10);
     }
-    __delay_ms(165);
+    __delay_ms(195);
 }
 
 void spin_180(struct DC_motor *mL, struct DC_motor *mR)
@@ -167,7 +167,7 @@ void right_135(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 1;
     mR->direction = 0;
-    for (int i = 0;i<50;i = i + 2)
+    for (int i = 0;i<300;i = i + 2)
     {
         mL->power = i;
         mR->power = 50 + i;
@@ -178,11 +178,12 @@ void right_135(struct DC_motor *mL, struct DC_motor *mR)
     __delay_ms(230);
 }
 
+//do twice like left/right90
 void left_135(struct DC_motor *mL, struct DC_motor *mR)
 {
     mL->direction = 0;
     mR->direction = 1;
-    for (int i = 0;i<50;i = i + 2)
+    for (int i = 0;i<300;i = i + 2)
     {
         mL->power = 50 + i;
         mR->power = i;
@@ -190,7 +191,7 @@ void left_135(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mR);
         __delay_us(10);
     }
-    __delay_ms(230);
+    __delay_ms(290);
 }
 
 void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
@@ -202,6 +203,9 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             __delay_ms(500);
             right_90(l,r);
             stop(l,r);
+            __delay_ms(500);
+            right_90(l,r);
+            stop(l,r);
             break;
         case 2: //green: left 90
             reverse_fromcard(l,r);
@@ -209,12 +213,18 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             __delay_ms(500); 
             left_90(l,r);
             stop(l,r);
+            __delay_ms(500);
+            left_90(l,r);
+            stop(l,r);
             break;
         case 3: //blue: turn 180
             reverse_fromcard(l,r);
             stop(l,r);
+            __delay_ms(500); 
+            left_90(l,r);
+            stop(l,r);
             __delay_ms(500);
-            spin_180(l,r);
+            left_90(l,r);
             stop(l,r);
             break;
         case 4: //yellow: rev, right 90
@@ -223,6 +233,9 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             __delay_ms(500);
             right_90(l,r);
             stop(l,r);
+            __delay_ms(500);
+            right_90(l,r);
+            stop(l,r);;
             break;
         case 5: //pink: rev, left 90
             reverse_onesquare(l,r);
@@ -237,6 +250,9 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             __delay_ms(500);
             right_135(l,r);
             stop(l,r);
+            __delay_ms(500);
+            right_135(l,r);
+            stop(l,r);
             break;
         case 7: //light blue: left 135
             reverse_fromcard(l,r);
@@ -245,6 +261,15 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             left_135(l,r);
             stop(l,r);
             break;
+        case 8: //white: spin 180
+            reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500); 
+            left_90(l,r);
+            stop(l,r);
+            __delay_ms(800);
+            left_90(l,r);
+            stop(l,r);
         case 0:
             forward(l,r);
             stop(l,r);
