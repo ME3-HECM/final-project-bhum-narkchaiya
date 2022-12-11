@@ -47,14 +47,14 @@ void main(void) {
     //declare variables
     unsigned int color_flag;
     unsigned int color_name;
-    unsigned int color_path[15];
+    unsigned int color_path[15] = {0};
     int color_calibrated[32];
     unsigned int lowerbound_calibrated;
     unsigned int upperbound_calibrated;
     struct RGB_val RGB_calibrated;
     struct RGB_val L_calibrated;
     struct RGB_val RGB_recorded;
-    unsigned int time_path[15];
+    unsigned int time_path[15] = {0};
     unsigned int time_return;
     int j; 
 
@@ -116,7 +116,7 @@ void main(void) {
         
         //return home
         spin_180(&motorL,&motorR);
-        for (int k=0;k<15;k++){
+        for (int k=15;k>0;k--){
             INTCONbits.GIE = 0; //turn off global interrupts
             time_return = 0; //reset clock
             motor_action(color_path[k],&motorL,&motorR); //need to write opposite functions
