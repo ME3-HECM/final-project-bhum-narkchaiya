@@ -1,7 +1,5 @@
 # Use
-1. Calibrate the stopping distance
-	- place the blue card 3 ft away from the buggy and press the F3 button
-2. Calibrate each color card
+1. Calibrate the color reading function
 	- starting from the red card, place it in directly in front of the buggy and press H3
 	- repeat for the rest of the colors (green, blue, yellow, pink, orange, light blue, white) in order
 3. Select mode with F2 (easy mode) or F3 (hard mode)
@@ -31,7 +29,6 @@
 - Set up timer TMR0 interrupt
 
 ## 2. Calibration
-
 ### i. Color Interpretation
 The calibration sequence for color will store the LRGB values for the 8 colors in the color_calibrated[] array (holds 32 values total). This will be used later in 4.ii to interpret the card during maze navigation.
 This will occur when the H3 LED turns on. The user will have 4 seconds from then to change to the next color. The H3 LED will indicate the first two seconds by turning on, and the second two seconds by turning off.
