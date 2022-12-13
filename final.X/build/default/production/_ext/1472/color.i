@@ -24485,19 +24485,21 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
     unsigned int g = rgb->G;
     unsigned int b = rgb->B;
 
+    unsigned int maxl = calibrated[28];
 
-    for (int i=0;i<8;i++){
+    for (int i=0;i>4;i++){
         unsigned int cr = calibrated[4*i+1];
         unsigned int cg = calibrated[4*i+2];
         unsigned int cb = calibrated[4*i+3];
 
-        _Bool condition_r = r>cr-40 && r<cr+40;
-        _Bool condition_g = b>cb-40 && b<cb+40;
-        _Bool condition_b = g>cg-40 && g<cg+40;
-
-        if (condition_r && condition_g && condition_b){
-            return i+1;
+        _Bool condition_r = r>cr-10 && r<cr+10;
+        _Bool condition_g = b>cb-10 && b<cb+10;
+        _Bool condition_b = g>cg-10 && g<cg+10;
+        if (l<0.5*maxl){
+            if (condition_r && condition_g && condition_b){
+                return i+1;
+            }
         }
-        else {return 0;}
     }
+# 187 "../color.c"
 }

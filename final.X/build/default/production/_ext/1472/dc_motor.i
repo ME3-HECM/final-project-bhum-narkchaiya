@@ -24351,7 +24351,7 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mR);
         _delay((unsigned long)((10)*(64000000/4000000.0)));
     }
-    _delay((unsigned long)((500)*(64000000/4000.0)));
+    _delay((unsigned long)((100)*(64000000/4000.0)));
 }
 
 void opposite_forward(struct DC_motor *mL, struct DC_motor *mR)
@@ -24494,9 +24494,6 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             _delay((unsigned long)((500)*(64000000/4000.0)));
             left_90(l,r);
             stop(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-            left_90(l,r);
-            stop(l,r);
             break;
         case 3:
             reverse_fromcard(l,r);
@@ -24554,7 +24551,7 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
         case 0:
             stop(l,r);
             forward(l,r);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
+            _delay((unsigned long)((400)*(64000000/4000.0)));
             stop(l,r);
             break;
         default:
@@ -24578,6 +24575,9 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             _delay((unsigned long)((500)*(64000000/4000.0)));
             right_90(l,r);
             stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            right_90(l,r);
+            stop(l,r);
             break;
         case 3:
             reverse_fromcard(l,r);
@@ -24587,7 +24587,7 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             stop(l,r);
             break;
         case 4:
-            stop(l,r);
+            forward(l,r);
             right_90(l,r);
             forward(l,r);
             stop(l,r);
@@ -24600,11 +24600,16 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             break;
         case 6:
             stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
             left_135(l,r);
             stop(l,r);
             break;
         case 7:
             stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            right_135(l,r);
+            stop(l,r);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
             right_135(l,r);
             stop(l,r);
             break;

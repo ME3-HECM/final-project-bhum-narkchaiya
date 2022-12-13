@@ -86,7 +86,7 @@ void forward(struct DC_motor *mL, struct DC_motor *mR)
         setMotorPWM(mR);
         __delay_us(10);
     }
-    __delay_ms(500);
+    __delay_ms(100);
 }
 
 void opposite_forward(struct DC_motor *mL, struct DC_motor *mR)
@@ -229,9 +229,6 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
             __delay_ms(500); 
             left_90(l,r);
             stop(l,r);
-            __delay_ms(500);
-            left_90(l,r);
-            stop(l,r);
             break;
         case 3: //blue: turn 180
             reverse_fromcard(l,r);
@@ -289,7 +286,7 @@ void motor_action(unsigned int color, struct DC_motor *l, struct DC_motor *r)
         case 0:
             stop(l,r);
             forward(l,r);
-            __delay_ms(500);
+            __delay_ms(400);
             stop(l,r);
             break;
         default:
@@ -303,12 +300,15 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
         case 1: //red: right 90
             reverse_fromcard(l,r);
             stop(l,r);
-            __delay_ms(500);
+            __delay_ms(500); 
             left_90(l,r);
             stop(l,r);
             break;
         case 2: //green: left 90
             reverse_fromcard(l,r);
+            stop(l,r);
+            __delay_ms(500);
+            right_90(l,r);
             stop(l,r);
             __delay_ms(500);
             right_90(l,r);
@@ -321,13 +321,13 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             spin_180(l,r);
             stop(l,r);
             break;
-        case 4: //yellow: rev, right 90
-            stop(l,r);
+        case 4: //yellow: rev, right 90 //not done
+            forward(l,r);
             right_90(l,r);
             forward(l,r);
             stop(l,r);
             break;
-        case 5: //pink: rev, left 90
+        case 5: //pink: rev, left 90 // not done
             stop(l,r);
             left_90(l,r);
             forward(l,r);
@@ -335,11 +335,16 @@ void motor_action_return(unsigned int color, struct DC_motor *l, struct DC_motor
             break;
         case 6: //orange: right 135
             stop(l,r);
+            __delay_ms(500);
             left_135(l,r);
             stop(l,r);
             break;
         case 7: //light blue: left 135
             stop(l,r);
+            __delay_ms(500);
+            right_135(l,r);
+            stop(l,r);
+            __delay_ms(500);
             right_135(l,r);
             stop(l,r);
             break;

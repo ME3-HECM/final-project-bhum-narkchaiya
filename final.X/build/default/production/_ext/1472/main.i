@@ -24595,39 +24595,35 @@ void main(void) {
     unsigned int time_path[15] = {0};
     unsigned int time_return;
     int j;
-# 73 "../main.c"
+# 68 "../main.c"
     while (1) {
-
-        while (PORTFbits.RF3);
-        for (int i=0;i<8;i++){
-            color_read(&RGB_calibrated);
-            color_calibrated[4*i] = RGB_calibrated.L;
-            color_calibrated[4*i+1] = RGB_calibrated.R;
-            color_calibrated[4*i+2] = RGB_calibrated.G;
-            color_calibrated[4*i+3] = RGB_calibrated.B;
-            LATHbits.LATH3 = 1;
-
-            char readout2[100];
-            sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-            sendStringSerial4(readout2);
-            _delay((unsigned long)((2000)*(64000000/4000.0)));
-            LATHbits.LATH3 = 0;
-            _delay((unsigned long)((1000)*(64000000/4000.0)));
-        }
-        for (int i=0;i<8;i++){
-            char readout3[100];
-            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
-            sendStringSerial4(readout3);
-            _delay((unsigned long)((500)*(64000000/4000.0)));
-        }
-
-        lowerbound_calibrated = color_calibrated[8]*0.95;
-        upperbound_calibrated = color_calibrated[28];
-
-
+# 93 "../main.c"
         while (PORTFbits.RF3 & PORTFbits.RF2);
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
         else {LATHbits.LATH3 = 1;}
+# 112 "../main.c"
+        motor_action(1,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        motor_action(2,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        motor_action(3,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        motor_action(4,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        motor_action(5,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        motor_action(6,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        motor_action(7,&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        stop(&motorL,&motorR);
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+        _delay((unsigned long)((2000)*(64000000/4000.0)));
+
+
 
 
         while (color_name != 8){
@@ -24637,26 +24633,23 @@ void main(void) {
             color_read(&RGB_recorded);
             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;}
             if (color_flag){
-                LATDbits.LATD7 = 1;
+                LATHbits.LATH0 = 1;
+                LATFbits.LATF0 = 1;
                 stop(&motorL,&motorR);
                 color_read(&RGB_recorded);
                 if (LATDbits.LATD7)
                 {color_name = color_processor_easy(&RGB_recorded,color_calibrated);}
-                else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
+                else
+                {color_name = color_processor_hard(&RGB_recorded,color_calibrated);}
                 color_path[j] = color_name;
                 time_path[j] = time;
-
-
-                char readout4[100];
-                sprintf(readout4,"color name %d %d %d %d \r\n", color_name,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
-                sendStringSerial4(readout4);
-
                 motor_action(color_name,&motorL,&motorR);
 
                 j++;
                 time = 0;
                 color_flag = 0;
-                LATDbits.LATD7 = 0;
+                LATHbits.LATH0 = 0;
+                LATFbits.LATF0 = 0;
             }
             _delay((unsigned long)((200)*(64000000/4000.0)));
         }

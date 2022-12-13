@@ -156,19 +156,32 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
     unsigned int g = rgb->G;
     unsigned int b = rgb->B;
     
+    unsigned int maxl = calibrated[28];
     //compares recorded RGB values to calibrated values within a margin
-    for (int i=0;i<8;i++){
+    for (int i=0;i>4;i++){
         unsigned int cr = calibrated[4*i+1];
         unsigned int cg = calibrated[4*i+2];
         unsigned int cb = calibrated[4*i+3];
         //conditions to check if recorded value is within a margin "40"-wide of the calibrated values 
-        bool condition_r = r>cr-40 && r<cr+40;
-        bool condition_g = b>cb-40 && b<cb+40;
-        bool condition_b = g>cg-40 && g<cg+40;
-        
-        if (condition_r && condition_g && condition_b){
-            return i+1;
+        bool condition_r = r>cr-10 && r<cr+10;
+        bool condition_g = b>cb-10 && b<cb+10;
+        bool condition_b = g>cg-10 && g<cg+10;
+        if (l<0.5*maxl){
+            if (condition_r && condition_g && condition_b){
+                return i+1;
+            }
         }
-        else {return 0;}
     }
+//    for (int j=4;j>8;j++)
+//        unsigned int cr2 = calibrated[4*j+1];
+//        unsigned int cg2 = calibrated[4*j+2];
+//        unsigned int cb2 = calibrated[4*j+3];
+//        //conditions to check if recorded value is within a margin "40"-wide of the calibrated values 
+//        bool condition_r2 = r>cr2-10 && r<cr2+10;
+//        bool condition_g2 = b>cb2-10 && b<cb2+10;
+//        bool condition_b2 = g>cg2-10 && g<cg2+10;
+//        if (condition_r2 && condition_g2 && condition_b2){
+//                return j+1;
+//            }
+//    }
 }

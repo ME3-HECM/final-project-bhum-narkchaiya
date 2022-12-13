@@ -58,52 +58,81 @@ void main(void) {
     unsigned int time_return;
     int j; 
 
-//    //motor testing
+    //motor testing
 //    while (1) {
-////        color_read(&RGB_calibrated);
-////        color_name=color_processor_easy(&RGB_calibrated);
-////        motor_action(color_name,&motorL,&motorR);
-////        __delay_ms(50);
-//        motor_action(0,&motorL,&motorR);
-//        __delay_ms(500);
-//        color_read(&RGB_recorded);
-//        color_processor_hard(&RGB_recorded)
+//        motor_action(2,&motorL,&motorR);
+//        __delay_ms(2000);
+//        motor_action_return(2,&motorL,&motorR);
 //        __delay_ms(500);
 //    }
     while (1) {  
-        //calibration for detecting color of the card
-        while (PORTFbits.RF3); //wait for button press on F3
-        for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
-            color_read(&RGB_calibrated);
-            color_calibrated[4*i] = RGB_calibrated.L;
-            color_calibrated[4*i+1] = RGB_calibrated.R;
-            color_calibrated[4*i+2] = RGB_calibrated.G;
-            color_calibrated[4*i+3] = RGB_calibrated.B;
-            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
-            
-            char readout2[100];
-            sprintf(readout2,"%d %d %d %d \r\n", RGB_calibrated.L,RGB_calibrated.R,RGB_calibrated.G,RGB_calibrated.B);
-            sendStringSerial4(readout2); //serial communication
-            __delay_ms(2000);
-            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
-            __delay_ms(1000);
-        }
-        for (int i=0;i<8;i++){
-            char readout3[100];
-            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
-            sendStringSerial4(readout3); //serial communication
-            __delay_ms(500);
-        }
-        //setting bounds for detecting if the card is in front of the buggy
-        lowerbound_calibrated = color_calibrated[8]*0.95; //L value of blue card (minimum)
-        upperbound_calibrated = color_calibrated[28]; //L value of white card (maximum)
+//        //calibration for detecting color of the card
+//        while (PORTFbits.RF3); //wait for button press on F3
+//        for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
+//            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
+//            color_read(&RGB_calibrated);
+//            color_calibrated[4*i] = RGB_calibrated.L;
+//            color_calibrated[4*i+1] = RGB_calibrated.R;
+//            color_calibrated[4*i+2] = RGB_calibrated.G;
+//            color_calibrated[4*i+3] = RGB_calibrated.B;     
+//            __delay_ms(1500);
+//            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
+//            __delay_ms(1000);
+//        }
+//        for (int i=0;i<8;i++){
+//            char readout3[100];
+//            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
+//            sendStringSerial4(readout3); //serial communication
+//            __delay_ms(500);
+//        }
+//        //setting bounds for detecting if the card is in front of the buggy
+//        lowerbound_calibrated = color_calibrated[8]*0.95; //L value of blue card (minimum)
+//        upperbound_calibrated = color_calibrated[28]; //L value of white card (maximum)
         
         //mode selection
         while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for any button press
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;} //F2 button (easy mode)
         else {LATHbits.LATH3 = 1;} //F3 button (hard mode)
 
-        //maze navigation
+//        //color testing
+//        char test0[100];
+//        sprintf(test0,"TESTING \r\n");
+//        sendStringSerial4(test0); //serial communication
+//        while (1){
+//            color_read(&RGB_recorded);
+//            __delay_ms(50);
+//            color_name = color_processor_easy(&RGB_recorded,color_calibrated);
+//            __delay_ms(50);
+//            char test[100];
+//            sprintf(test,"%d %d %d %d \r\n", color_name,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
+//            sendStringSerial4(test); //serial communication        
+//        }
+        
+        //motor tests  
+        motor_action(1,&motorL,&motorR);
+        __delay_ms(2000);
+        motor_action(2,&motorL,&motorR);
+        __delay_ms(2000);
+        motor_action(3,&motorL,&motorR);
+        __delay_ms(2000);
+        motor_action(4,&motorL,&motorR);
+        __delay_ms(2000);
+        motor_action(5,&motorL,&motorR);
+        __delay_ms(2000);
+        motor_action(6,&motorL,&motorR);
+        __delay_ms(2000);
+        motor_action(7,&motorL,&motorR);
+        __delay_ms(2000);
+        stop(&motorL,&motorR);
+        __delay_ms(2000);
+        __delay_ms(2000);
+        __delay_ms(2000);
+        __delay_ms(2000);
+        __delay_ms(2000);
+        
+            
+      
+        //maze 
         while (color_name != 8){
             time = 0; //reset clock
             motor_action(0,&motorL,&motorR);
@@ -111,26 +140,23 @@ void main(void) {
             color_read(&RGB_recorded);
             if (RGB_recorded.L<upperbound_calibrated && RGB_recorded.L>lowerbound_calibrated){color_flag=1;} //raise flag if there is a card in front
             if (color_flag){
-                LATDbits.LATD7 = 1;
+                LATHbits.LATH0 = 1; //set right signal LED
+                LATFbits.LATF0 = 1; //set left signal LED 
                 stop(&motorL,&motorR); //stop the buggy
                 color_read(&RGB_recorded); //read RGB values of card
                 if (LATDbits.LATD7)
                 {color_name = color_processor_easy(&RGB_recorded,color_calibrated);} //color detection for easy mode
-                else {color_name = color_processor_hard(&RGB_recorded,color_calibrated);} //color detection for hard mode 
+                else 
+                {color_name = color_processor_hard(&RGB_recorded,color_calibrated);} //color detection for hard mode 
                 color_path[j] = color_name; //store color to array
                 time_path[j] = time; //store time taken from the last action to array
-                
-                //serial communication
-                char readout4[100];
-                sprintf(readout4,"color name %d %d %d %d \r\n", color_name,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
-                sendStringSerial4(readout4);
-            
                 motor_action(color_name,&motorL,&motorR); //perform action depending on the color of the card
                 
                 j++;
                 time = 0; //reset clock
                 color_flag = 0; //clear flag
-                LATDbits.LATD7 = 0;
+                LATHbits.LATH0 = 0; //set right signal LED
+                LATFbits.LATF0 = 0; //set left signal LED
             }
             __delay_ms(200); // call built in delay function 
         }

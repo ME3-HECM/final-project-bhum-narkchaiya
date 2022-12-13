@@ -2576,67 +2576,71 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;../color.c: 157:     unsigned int b = rgb->B;
 [v _b `ui ~T0 @X0 1 a ]
 [e = _b . *U _rgb 3 ]
-"160
-[; ;../color.c: 160:     for (int i=0;i<8;i++){
+"159
+[; ;../color.c: 159:     unsigned int maxl = calibrated[28];
+[v _maxl `ui ~T0 @X0 1 a ]
+[e = _maxl *U + _calibrated * -> -> 28 `i `x -> -> # *U _calibrated `i `x ]
+"161
+[; ;../color.c: 161:     for (int i=0;i>4;i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 2030  ]
+[e $ > _i -> 4 `i 2030  ]
 [e $U 2031  ]
 [e :U 2030 ]
 {
-"161
-[; ;../color.c: 161:         unsigned int cr = calibrated[4*i+1];
+"162
+[; ;../color.c: 162:         unsigned int cr = calibrated[4*i+1];
 [v _cr `ui ~T0 @X0 1 a ]
 [e = _cr *U + _calibrated * -> + * -> 4 `i _i -> 1 `i `x -> -> # *U _calibrated `i `x ]
-"162
-[; ;../color.c: 162:         unsigned int cg = calibrated[4*i+2];
+"163
+[; ;../color.c: 163:         unsigned int cg = calibrated[4*i+2];
 [v _cg `ui ~T0 @X0 1 a ]
 [e = _cg *U + _calibrated * -> + * -> 4 `i _i -> 2 `i `x -> -> # *U _calibrated `i `x ]
-"163
-[; ;../color.c: 163:         unsigned int cb = calibrated[4*i+3];
+"164
+[; ;../color.c: 164:         unsigned int cb = calibrated[4*i+3];
 [v _cb `ui ~T0 @X0 1 a ]
 [e = _cb *U + _calibrated * -> + * -> 4 `i _i -> 3 `i `x -> -> # *U _calibrated `i `x ]
-"165
-[; ;../color.c: 165:         _Bool condition_r = r>cr-40 && r<cr+40;
-[v _condition_r `a ~T0 @X0 1 a ]
-[e = _condition_r -> -> && > _r - _cr -> -> 40 `i `ui < _r + _cr -> -> 40 `i `ui `i `a ]
 "166
-[; ;../color.c: 166:         _Bool condition_g = b>cb-40 && b<cb+40;
-[v _condition_g `a ~T0 @X0 1 a ]
-[e = _condition_g -> -> && > _b - _cb -> -> 40 `i `ui < _b + _cb -> -> 40 `i `ui `i `a ]
+[; ;../color.c: 166:         _Bool condition_r = r>cr-10 && r<cr+10;
+[v _condition_r `a ~T0 @X0 1 a ]
+[e = _condition_r -> -> && > _r - _cr -> -> 10 `i `ui < _r + _cr -> -> 10 `i `ui `i `a ]
 "167
-[; ;../color.c: 167:         _Bool condition_b = g>cg-40 && g<cg+40;
+[; ;../color.c: 167:         _Bool condition_g = b>cb-10 && b<cb+10;
+[v _condition_g `a ~T0 @X0 1 a ]
+[e = _condition_g -> -> && > _b - _cb -> -> 10 `i `ui < _b + _cb -> -> 10 `i `ui `i `a ]
+"168
+[; ;../color.c: 168:         _Bool condition_b = g>cg-10 && g<cg+10;
 [v _condition_b `a ~T0 @X0 1 a ]
-[e = _condition_b -> -> && > _g - _cg -> -> 40 `i `ui < _g + _cg -> -> 40 `i `ui `i `a ]
+[e = _condition_b -> -> && > _g - _cg -> -> 10 `i `ui < _g + _cg -> -> 10 `i `ui `i `a ]
 "169
-[; ;../color.c: 169:         if (condition_r && condition_g && condition_b){
-[e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2033  ]
+[; ;../color.c: 169:         if (l<0.5*maxl){
+[e $ ! < -> _l `d * .0.5 -> _maxl `d 2033  ]
 {
 "170
-[; ;../color.c: 170:             return i+1;
+[; ;../color.c: 170:             if (condition_r && condition_g && condition_b){
+[e $ ! && && != -> _condition_r `i -> 0 `i != -> _condition_g `i -> 0 `i != -> _condition_b `i -> 0 `i 2034  ]
+{
+"171
+[; ;../color.c: 171:                 return i+1;
 [e ) -> + _i -> 1 `i `ui ]
 [e $UE 2029  ]
-"171
-[; ;../color.c: 171:         }
-}
-[e $U 2034  ]
 "172
-[; ;../color.c: 172:         else {return 0;}
-[e :U 2033 ]
-{
-[e ) -> -> 0 `i `ui ]
-[e $UE 2029  ]
+[; ;../color.c: 172:             }
 }
 [e :U 2034 ]
 "173
-[; ;../color.c: 173:     }
+[; ;../color.c: 173:         }
+}
+[e :U 2033 ]
+"174
+[; ;../color.c: 174:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 2030  ]
+[e $ > _i -> 4 `i 2030  ]
 [e :U 2031 ]
 }
-"174
-[; ;../color.c: 174: }
+"187
+[; ;../color.c: 187: }
 [e :UE 2029 ]
 }
