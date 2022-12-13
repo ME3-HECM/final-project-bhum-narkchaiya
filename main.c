@@ -47,14 +47,14 @@ void main(void) {
     //declare variables
     unsigned int color_flag;
     unsigned int color_name = 0;
-    unsigned int color_path[15] = {0};
+    unsigned int color_path[5] = {1,0,2,0,3};
     int color_calibrated[32];
     unsigned int lowerbound_calibrated;
     unsigned int upperbound_calibrated;
     struct RGB_val RGB_calibrated;
     struct RGB_val L_calibrated;
     struct RGB_val RGB_recorded;
-    unsigned int time_path[15] = {0};
+    unsigned int time_path[5] = {1,1,1,1,1};
     unsigned int time_return;
     int j; 
 
@@ -66,71 +66,86 @@ void main(void) {
 //        __delay_ms(500);
 //    }
     while (1) {  
-//        //calibration for detecting color of the card
-//        while (PORTFbits.RF3); //wait for button press on F3
-//        for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
-//            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
-//            color_read(&RGB_calibrated);
-//            color_calibrated[4*i] = RGB_calibrated.L;
-//            color_calibrated[4*i+1] = RGB_calibrated.R;
-//            color_calibrated[4*i+2] = RGB_calibrated.G;
-//            color_calibrated[4*i+3] = RGB_calibrated.B;     
-//            __delay_ms(1500);
-//            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
-//            __delay_ms(1000);
-//        }
-//        for (int i=0;i<8;i++){
-//            char readout3[100];
-//            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
-//            sendStringSerial4(readout3); //serial communication
-//            __delay_ms(500);
-//        }
-//        //setting bounds for detecting if the card is in front of the buggy
-//        lowerbound_calibrated = color_calibrated[8]*0.95; //L value of blue card (minimum)
-//        upperbound_calibrated = color_calibrated[28]; //L value of white card (maximum)
+        //calibration for detecting color of the card
+        while (PORTFbits.RF3); //wait for button press on F3
+        for (int i=0;i<8;i++){//add to array 4 (lrgb) values for every color = 32 elements in array
+            LATHbits.LATH3 = 1; //turn on indicator light on H3 LED
+            color_read(&RGB_calibrated);
+            color_calibrated[4*i] = RGB_calibrated.L;
+            color_calibrated[4*i+1] = RGB_calibrated.R;
+            color_calibrated[4*i+2] = RGB_calibrated.G;
+            color_calibrated[4*i+3] = RGB_calibrated.B;     
+            __delay_ms(1500);
+            LATHbits.LATH3 = 0; //turn off indicator light on H3 LED
+            __delay_ms(1000);
+        }
+        for (int i=0;i<8;i++){
+            char readout3[100];
+            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
+            sendStringSerial4(readout3); //serial communication
+            __delay_ms(500);
+        }
+        //setting bounds for detecting if the card is in front of the buggy
+        lowerbound_calibrated = color_calibrated[8]*0.95; //L value of blue card (minimum)
+        upperbound_calibrated = color_calibrated[28]; //L value of white card (maximum)
         
         //mode selection
         while (PORTFbits.RF3 &  PORTFbits.RF2); //wait for any button press
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;} //F2 button (easy mode)
         else {LATHbits.LATH3 = 1;} //F3 button (hard mode)
 
-//        //color testing
-//        char test0[100];
-//        sprintf(test0,"TESTING \r\n");
-//        sendStringSerial4(test0); //serial communication
-//        while (1){
-//            color_read(&RGB_recorded);
-//            __delay_ms(50);
-//            color_name = color_processor_easy(&RGB_recorded,color_calibrated);
-//            __delay_ms(50);
-//            char test[100];
-//            sprintf(test,"%d %d %d %d \r\n", color_name,RGB_recorded.R,RGB_recorded.G,RGB_recorded.B);
-//            sendStringSerial4(test); //serial communication        
-//        }
+        //color testing
+        char test0[100];
+        sprintf(test0,"TESTING \r\n");
+        sendStringSerial4(test0); //serial communication
+        while (1){
+            color_read(&RGB_recorded);
+            __delay_ms(50);
+            color_name = color_processor_easy(&RGB_recorded,color_calibrated);
+            __delay_ms(50);
+            char test[100];
+            sprintf(test,"%d \r\n", color_name);
+            sendStringSerial4(test); //serial communication        
+        }
         
-        //motor tests  
-        motor_action(1,&motorL,&motorR);
-        __delay_ms(2000);
-        motor_action(2,&motorL,&motorR);
-        __delay_ms(2000);
-        motor_action(3,&motorL,&motorR);
-        __delay_ms(2000);
-        motor_action(4,&motorL,&motorR);
-        __delay_ms(2000);
-        motor_action(5,&motorL,&motorR);
-        __delay_ms(2000);
-        motor_action(6,&motorL,&motorR);
-        __delay_ms(2000);
-        motor_action(7,&motorL,&motorR);
-        __delay_ms(2000);
-        stop(&motorL,&motorR);
-        __delay_ms(2000);
-        __delay_ms(2000);
-        __delay_ms(2000);
-        __delay_ms(2000);
-        __delay_ms(2000);
+//        //motor tests  
+//        motor_action(1,&motorL,&motorR); //red
+//        __delay_ms(2000);
+//        motor_action(2,&motorL,&motorR); //green
+//        __delay_ms(2000);
+//        motor_action(3,&motorL,&motorR); //blue
+//        __delay_ms(2000);
+//        motor_action(4,&motorL,&motorR); //yellow
+//        __delay_ms(2000);
+//        motor_action(5,&motorL,&motorR); //pink
+//        __delay_ms(2000);
+//        motor_action(6,&motorL,&motorR); //orange
+//        __delay_ms(2000);
+//        motor_action(7,&motorL,&motorR); //light blue
+//        __delay_ms(2000);
+//        stop(&motorL,&motorR);
+//        __delay_ms(2000);
+//        __delay_ms(2000);
+//        __delay_ms(2000);
+//        __delay_ms(2000);
+//        __delay_ms(2000);
+//        
+        //return home test preprogrammed
+        for (int k=5;k>0;k--){
+            INTCONbits.GIE = 0; //turn off global interrupts
+            time_return = 0; //reset clock
+            motor_action_return(color_path[k],&motorL,&motorR); //need to write opposite functions
+            __delay_ms(500);
+            reverse_onesquare(&motorL,&motorR);
+            while (time_return < time_path[k]) { 
+                __delay_ms(500);
+                time_return++; 
+                stop(&motorL,&motorR);
+                __delay_ms(100);
+            }
+            stop(&motorL,&motorR);        
+        }   
         
-            
       
         //maze 
         while (color_name != 8){
@@ -169,10 +184,10 @@ void main(void) {
         for (int k=15;k>0;k--){
             INTCONbits.GIE = 0; //turn off global interrupts
             time_return = 0; //reset clock
-            motor_action(color_path[k],&motorL,&motorR); //need to write opposite functions
+            motor_action_return(color_path[k],&motorL,&motorR); //need to write opposite functions
             forward(&motorL,&motorR);
             while (time_return < time_path[k]) { 
-                __delay_ms(50);
+                __delay_ms(500);
                 time_return++; 
             }
             stop(&motorL,&motorR);        

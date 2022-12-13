@@ -166,22 +166,15 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
         bool condition_r = r>cr-10 && r<cr+10;
         bool condition_g = b>cb-10 && b<cb+10;
         bool condition_b = g>cg-10 && g<cg+10;
-        if (l<0.5*maxl){
+        if (l<0.5*maxl && i<4){
             if (condition_r && condition_g && condition_b){
                 return i+1;
             }
         }
+        else {
+            if (condition_r && condition_g && condition_b){
+                return i+1;
+            33
+        }
     }
-//    for (int j=4;j>8;j++)
-//        unsigned int cr2 = calibrated[4*j+1];
-//        unsigned int cg2 = calibrated[4*j+2];
-//        unsigned int cb2 = calibrated[4*j+3];
-//        //conditions to check if recorded value is within a margin "40"-wide of the calibrated values 
-//        bool condition_r2 = r>cr2-10 && r<cr2+10;
-//        bool condition_g2 = b>cb2-10 && b<cb2+10;
-//        bool condition_b2 = g>cg2-10 && g<cg2+10;
-//        if (condition_r2 && condition_g2 && condition_b2){
-//                return j+1;
-//            }
-//    }
 }

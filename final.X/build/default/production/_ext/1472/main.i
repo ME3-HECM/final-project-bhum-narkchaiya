@@ -24585,44 +24585,74 @@ void main(void) {
 
     unsigned int color_flag;
     unsigned int color_name = 0;
-    unsigned int color_path[15] = {0};
+    unsigned int color_path[5] = {1,0,2,0,3};
     int color_calibrated[32];
     unsigned int lowerbound_calibrated;
     unsigned int upperbound_calibrated;
     struct RGB_val RGB_calibrated;
     struct RGB_val L_calibrated;
     struct RGB_val RGB_recorded;
-    unsigned int time_path[15] = {0};
+    unsigned int time_path[5] = {1,1,1,1,1};
     unsigned int time_return;
     int j;
 # 68 "../main.c"
     while (1) {
-# 93 "../main.c"
+
+        while (PORTFbits.RF3);
+        for (int i=0;i<8;i++){
+            LATHbits.LATH3 = 1;
+            color_read(&RGB_calibrated);
+            color_calibrated[4*i] = RGB_calibrated.L;
+            color_calibrated[4*i+1] = RGB_calibrated.R;
+            color_calibrated[4*i+2] = RGB_calibrated.G;
+            color_calibrated[4*i+3] = RGB_calibrated.B;
+            _delay((unsigned long)((1500)*(64000000/4000.0)));
+            LATHbits.LATH3 = 0;
+            _delay((unsigned long)((1000)*(64000000/4000.0)));
+        }
+        for (int i=0;i<8;i++){
+            char readout3[100];
+            sprintf(readout3,"%d %d %d %d %d \r\n", i+1,color_calibrated[4*i],color_calibrated[4*i+1],color_calibrated[4*i+2],color_calibrated[4*i+3]);
+            sendStringSerial4(readout3);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+        }
+
+        lowerbound_calibrated = color_calibrated[8]*0.95;
+        upperbound_calibrated = color_calibrated[28];
+
+
         while (PORTFbits.RF3 & PORTFbits.RF2);
         if (!PORTFbits.RF2){LATDbits.LATD7 = 1;}
         else {LATHbits.LATH3 = 1;}
-# 112 "../main.c"
-        motor_action(1,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        motor_action(2,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        motor_action(3,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        motor_action(4,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        motor_action(5,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        motor_action(6,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        motor_action(7,&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        stop(&motorL,&motorR);
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
-        _delay((unsigned long)((2000)*(64000000/4000.0)));
 
+
+        char test0[100];
+        sprintf(test0,"TESTING \r\n");
+        sendStringSerial4(test0);
+        while (1){
+            color_read(&RGB_recorded);
+            _delay((unsigned long)((50)*(64000000/4000.0)));
+            color_name = color_processor_easy(&RGB_recorded,color_calibrated);
+            _delay((unsigned long)((50)*(64000000/4000.0)));
+            char test[100];
+            sprintf(test,"%d \r\n", color_name);
+            sendStringSerial4(test);
+        }
+# 134 "../main.c"
+        for (int k=5;k>0;k--){
+            INTCONbits.GIE = 0;
+            time_return = 0;
+            motor_action_return(color_path[k],&motorL,&motorR);
+            _delay((unsigned long)((500)*(64000000/4000.0)));
+            reverse_onesquare(&motorL,&motorR);
+            while (time_return < time_path[k]) {
+                _delay((unsigned long)((500)*(64000000/4000.0)));
+                time_return++;
+                stop(&motorL,&motorR);
+                _delay((unsigned long)((100)*(64000000/4000.0)));
+            }
+            stop(&motorL,&motorR);
+        }
 
 
 
@@ -24662,10 +24692,10 @@ void main(void) {
         for (int k=15;k>0;k--){
             INTCONbits.GIE = 0;
             time_return = 0;
-            motor_action(color_path[k],&motorL,&motorR);
+            motor_action_return(color_path[k],&motorL,&motorR);
             forward(&motorL,&motorR);
             while (time_return < time_path[k]) {
-                _delay((unsigned long)((50)*(64000000/4000.0)));
+                _delay((unsigned long)((500)*(64000000/4000.0)));
                 time_return++;
             }
             stop(&motorL,&motorR);

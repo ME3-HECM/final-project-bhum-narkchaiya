@@ -24495,11 +24495,15 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
         _Bool condition_r = r>cr-10 && r<cr+10;
         _Bool condition_g = b>cb-10 && b<cb+10;
         _Bool condition_b = g>cg-10 && g<cg+10;
-        if (l<0.5*maxl){
+        if (l<0.5*maxl && i<4){
             if (condition_r && condition_g && condition_b){
                 return i+1;
             }
         }
+        else {
+            if (condition_r && condition_g && condition_b){
+                return i+1;
+            33
+        }
     }
-# 187 "../color.c"
 }
