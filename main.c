@@ -101,7 +101,7 @@ void main(void) {
         while (1){
             color_read(&RGB_recorded);
             __delay_ms(50);
-            color_name = color_processor_easy(&RGB_recorded,color_calibrated);
+            color_name = color_processor_hard(&RGB_recorded,color_calibrated);
             __delay_ms(50);
             char test[100];
             sprintf(test,"%d \r\n", color_name);

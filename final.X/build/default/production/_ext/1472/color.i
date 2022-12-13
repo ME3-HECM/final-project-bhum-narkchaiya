@@ -24485,25 +24485,23 @@ unsigned int color_processor_hard(struct RGB_val *rgb, unsigned int calibrated[]
     unsigned int g = rgb->G;
     unsigned int b = rgb->B;
 
-    unsigned int maxl = calibrated[28];
+    unsigned int maxl = calibrated;
 
-    for (int i=0;i>4;i++){
+    for (unsigned int i=0;i>8;i++){
         unsigned int cr = calibrated[4*i+1];
         unsigned int cg = calibrated[4*i+2];
         unsigned int cb = calibrated[4*i+3];
 
-        _Bool condition_r = r>cr-10 && r<cr+10;
-        _Bool condition_g = b>cb-10 && b<cb+10;
-        _Bool condition_b = g>cg-10 && g<cg+10;
-        if (l<0.5*maxl && i<4){
+        _Bool condition_r = r>cr-30 && r<cr+30;
+        _Bool condition_g = b>cb-30 && b<cb+30;
+        _Bool condition_b = g>cg-30 && g<cg+30;
+        if (i>=3 && condition_r && condition_g && condition_b){
+                return i+1;
+        }
+        if (l<maxl && i<3){
             if (condition_r && condition_g && condition_b){
                 return i+1;
             }
-        }
-        else {
-            if (condition_r && condition_g && condition_b){
-                return i+1;
-            33
         }
     }
 }

@@ -24632,7 +24632,7 @@ void main(void) {
         while (1){
             color_read(&RGB_recorded);
             _delay((unsigned long)((50)*(64000000/4000.0)));
-            color_name = color_processor_easy(&RGB_recorded,color_calibrated);
+            color_name = color_processor_hard(&RGB_recorded,color_calibrated);
             _delay((unsigned long)((50)*(64000000/4000.0)));
             char test[100];
             sprintf(test,"%d \r\n", color_name);
